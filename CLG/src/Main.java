@@ -1,5 +1,3 @@
-package src;
-
 import java.util.ArrayList;
 
 public class Main {
@@ -10,6 +8,8 @@ public class Main {
 	
 		String entrée = "vjfnvnf #jdnvjn# jdnsvjbidn #njdv # kd\\#djnj";
 
+		
+		//Modif test
 	}
 	
 	public static ArrayList<String> generate(String entree) {
