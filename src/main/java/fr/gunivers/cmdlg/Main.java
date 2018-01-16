@@ -1,4 +1,4 @@
-package fr.gunivers.net;
+package fr.gunivers.cmdlg;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
