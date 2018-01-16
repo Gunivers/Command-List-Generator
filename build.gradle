@@ -1,6 +1,8 @@
 group 'Command-List-Generator'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'idea'
+apply plugin: 'eclipse'
 apply plugin: 'java'
 
 sourceCompatibility = 1.8
