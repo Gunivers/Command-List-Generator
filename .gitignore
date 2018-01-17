@@ -1,7 +1,9 @@
 .gradle
 .idea
-
+*.iml
 .DS_Store
+*.class
+build
 
 .metadata
 bin/
