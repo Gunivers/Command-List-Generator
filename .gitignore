@@ -1,5 +1,7 @@
 .gradle
 .idea
+.classpath
+.project
 *.iml
 .DS_Store
 *.class
