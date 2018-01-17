@@ -1,6 +1,6 @@
 //CONTRIBUTORS:
 
-package fr.gunivers;
+package fr.gunivers.cmdlg;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,11 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.bukkit.Material;
 
 
-
-@SuppressWarnings("deprecation")
 public class McFunctionGenerator {
 	
 	private static File file = null;
@@ -67,7 +64,9 @@ public class McFunctionGenerator {
 		}
 		
 		for (int i = 0; i < gens.size(); i++) {
-			ArrayList<String> parts = gens.get(i).GeneratorParser(values.get(i), command[i]);
+
+		    //TODO: Uncoment this
+		    ArrayList<String> parts = gens.get(i).GeneratorParser(values.get(i), command[i]);
 
 			System.out.println("Start of advanced V1");
 			
