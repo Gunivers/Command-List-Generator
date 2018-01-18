@@ -1,6 +1,6 @@
 //CONTRIBUTORS:
 
-package fr.gunivers.cmdlg;
+package fr.gunivers.cmdlg.generators;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import fr.gunivers.cmdlg.Material;
 
 
 @SuppressWarnings("deprecation")

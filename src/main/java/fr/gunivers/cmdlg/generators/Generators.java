@@ -1,4 +1,4 @@
-package fr.gunivers.cmdlg;
+package fr.gunivers.cmdlg.generators;
 
 public enum Generators {
     Int, Long, Float, Double,
