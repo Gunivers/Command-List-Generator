@@ -10,10 +10,12 @@ import java.util.HashMap;
 import java.util.List;
 
 
-
+@SuppressWarnings("deprecation")
 public class McFunctionGenerator {
 	
-	private static File file = null;
+	private GeneratorParser GP;
+	
+	private File file = null;
 	private FileWriter fw;
 	
 	public ArrayList<String> commands;
@@ -21,15 +23,16 @@ public class McFunctionGenerator {
 	//CONSTRUCTOR
 	public McFunctionGenerator() {
 		//Initialize file
-		try {
-			this.fw = new FileWriter(file);
-		}
-		catch (IOException exception){exception.printStackTrace();}
+		try {this.fw = new FileWriter(file);}
+		catch (IOException exception) {exception.printStackTrace();}
+		
+		this.GP = new GeneratorParser(this);
 	}
 	
 	public void close() throws IOException{
 		fw.close();
 	}
+	
 	
 	//Real Generation
 	public int generate() throws IOException {
@@ -64,18 +67,13 @@ public class McFunctionGenerator {
 		}
 		
 		for (int i = 0; i < gens.size(); i++) {
-
-		    //TODO: Uncoment this
-		    ArrayList<String> parts = gens.get(i).GeneratorParser(values.get(i), command[i]);
-
-			System.out.println("Start of advanced V1");
+			String [] part = {command[i]};
+			
+		    ArrayList<String> parts = GP.parse(gens.get(i),values.get(i), part);
 			
 			int partsSize = parts.size();
 
-			System.out.println("parts.size()");
 			int commandsSize = commands.size();
-			
-			System.out.println("Start of advanced");
 			
 			//Sync sizes
 			if(commandsSize < partsSize) for(int e = 0; e <= partsSize - commandsSize; e++) commands.add(commands.get(0));
@@ -89,8 +87,6 @@ public class McFunctionGenerator {
 			if (i == gens.size() -1) for (int e = command.length - gens.size(); e > 0; e--) 
 				for (int f = 0; f < commands.size(); f++) 
 				commands.set(f, commands.get(f) + command[command.length - e]);
-			
-			System.out.println("advancedGenerator: " + i);
 		}
 		
 		this.commands = commands;
@@ -604,11 +600,12 @@ public class McFunctionGenerator {
 		return commands;
 	}
 	
-	public static File getFile() {
+	public File getFile() {
 		return file;
 	}
 	
-	public static void setFile(File file) {
-		McFunctionGenerator.file = file;
+	public void setFile(File file) {
+		this.file = file;
+		GP = new GeneratorParser(this);
 	}
 }
