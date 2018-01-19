@@ -1,5 +1,6 @@
-@Oromis à toi de commencer à la remplir
-
 TO-DO:
-	@GuniDev: Trier les classes main
-			  Ajouter la JavaDoc à ta classe main
+	@GuniDev: Ajouter la JavaDoc à ta classe main
+			  Finir la classe generateInterp() [fr.gunivers.cmdlg.generators - en bas] -> update sa JavaDoc
+			  
+
+	@Oromis: Finir la classe generateDichotomie() [fr.gunivers.cmdlg.generators - en bas] -> update sa JavaDoc

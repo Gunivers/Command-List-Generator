@@ -722,6 +722,28 @@ public class McFunctionGenerator {
 		return commands;
 	}
 	
+	/**Generate Mathematics:Interpolation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands List
+	 */
+	public ArrayList<String> generateInterp( String[] command) {
+		//TODO finish generateInterp -> KubbyDev
+		ArrayList<String> commands = null;
+		
+		return commands;
+	}
+	
+	/**Generate Mathematics:Dichotomie
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands List
+	 */
+	public ArrayList<String> generateDichotomie( String[] command) {
+		//TODO finish generateDichotomie -> Oromis
+		ArrayList<String> commands = null;
+		
+		return commands;
+	}
+	
 	/**Get the file of this McFunctionGenerator
 	 * @param File file
 	 */
