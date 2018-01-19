@@ -10,13 +10,10 @@ public class Main {
 		//disp(generateInterp(entree, 1));
 		//Modif test test
 		
-
 		System.out.print("\n\n");
 		
 		disp(readTag(entree));
-		
-		
-		
+			
 	}
 	
 	public static void disp(double[] d) {
