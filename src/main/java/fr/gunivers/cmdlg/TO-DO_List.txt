@@ -2,3 +2,4 @@
 
 TO-DO:
 	@GuniDev: Trier les classes main
+			  Ajouter la JavaDoc à ta classe main
