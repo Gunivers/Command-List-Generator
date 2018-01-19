@@ -22,8 +22,11 @@ public class McFunctionGenerator {
 	
 	public ArrayList<String> commands;
 	
-	//CONSTRUCTOR
-	public McFunctionGenerator() {
+	/**Constructor
+	 * @param file location of the mcFunction
+	 * @return a new McFunctionGenerator that will write functions on file
+	 */
+	public McFunctionGenerator(File file) {
 		//Initialize file
 		try {this.fw = new FileWriter(file);}
 		catch (IOException exception) {exception.printStackTrace();}
@@ -31,12 +34,18 @@ public class McFunctionGenerator {
 		this.GP = new GeneratorParser(this);
 	}
 	
+	/** Close the FileWriter -> avoid bug
+	 * @throws IOException
+	 */
 	public void close() throws IOException{
 		fw.close();
 	}
 	
 	
-	//Real Generation
+	/**Real Generation
+	 * @return count of written commands
+	 * @throws IOException
+	 */
 	public int generate() throws IOException {
 		for (String command : commands) {
 			this.fw.write(command);
@@ -45,7 +54,11 @@ public class McFunctionGenerator {
 		
 		return commands.size();
 	}
-	//Real Generation [Method 2]
+	/**Real Generation [Method 2]
+	 * @param commands ArrayList containing the commands to be generated
+	 * @return count of written commands
+	 * @throws IOException
+	 */
 	public int generate(ArrayList<String> commands) throws IOException {
 		for (String command : commands) {
 			this.fw.write(command);
@@ -55,7 +68,11 @@ public class McFunctionGenerator {
 		return commands.size();
 	}
 	
-	//GENERATE Advanced Generation
+	/**AdvancedGeneration
+	 * @param generators HashMap with the generators and their param
+	 * @param command String[] parts of commands
+	 * @return ArrayList<String> commands
+	 */
 	public ArrayList<String> generateAdvanced(HashMap<Generators, Object[]> generators, String [] command) {
 		List<Generators> gens = new ArrayList<Generators>();
 		List<Object[]> values = new ArrayList<Object[]>();
@@ -96,7 +113,13 @@ public class McFunctionGenerator {
 	}
 	
 	
-	//GENERATE RAW TYPES
+	/**Generate Int chain command variation
+	 * @param start int start of chain
+	 * @param end int end of chain
+	 * @param step int step of walk in chain
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateInt(int start, int end, int step, String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -115,7 +138,14 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate Float chain command variation
+	 * @param start float start of chain
+	 * @param end float end of chain
+	 * @param step float step of walk in chain
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateFloat(float start, float end, float step, String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -134,7 +164,14 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate Double chain command variation
+	 * @param start double start of chain
+	 * @param end double end of chain
+	 * @param step double step of walk in chain
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateDouble(double start, double end, double step, String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -153,7 +190,14 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate Long chain command variation
+	 * @param start Long start of chain
+	 * @param end Long end of chain
+	 * @param step Long step of walk in chain
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateLong(long start, long end, long step, String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -173,7 +217,10 @@ public class McFunctionGenerator {
 		return commands;
 	}
 	
-	//GENERATE MATERIAL
+	/**Generate Material:Material command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateMaterial(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -193,7 +240,10 @@ public class McFunctionGenerator {
 		return commands;
 	}
 	
-	//GENERATE MATERIAL ID
+	/**Generate MaterialID:MaterialID command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateMaterialID(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -213,7 +263,10 @@ public class McFunctionGenerator {
 		return commands;
 	}
 	
-	//GENERATE Material<Restricted>
+	/**Generate Material:Block command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateBlock(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -236,6 +289,10 @@ public class McFunctionGenerator {
 		return commands;
 	}
 	
+	/**Generate Material:Burnable command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateBurnable(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -257,7 +314,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate Material:Edible command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateEdible(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -279,7 +340,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate Material:Flammable command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateFlammable(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -301,7 +366,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate Material:Fuel command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateFuel(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -323,7 +392,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate Material:Occluding command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateOccluding(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -345,7 +418,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate Material:Record command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateRecord(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -367,7 +444,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate Material:Solid command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateSolid(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -389,7 +470,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate Material:Transparent command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateTransparent(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -411,8 +496,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
-	//GENERATE Material<Restricted>ID
+
+	/**Generate MaterialID:BlockID command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateBlockID(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -433,7 +521,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate MaterialID:BurnableID command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateBurnableID(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -454,7 +546,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate MaterialID:EdibleID command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateEdibleID(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -475,7 +571,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate MaterialID:FlammableID command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateFlammableID(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -496,7 +596,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate MaterialID:FuelID command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateFuelID(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -517,7 +621,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate MaterialID:OccludingID command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateOccludingID(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -538,7 +646,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate MaterialID:RecordID command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateRecordID(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -559,7 +671,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate MaterialID:SolidID command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateSolidID(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -580,7 +696,11 @@ public class McFunctionGenerator {
 		this.commands = commands;
 		return commands;
 	}
-	
+
+	/**Generate MaterialID:TransparentID command variation
+	 * @param command String[] parts of command
+	 * @return ArrayList<String> commands list
+	 */
 	public ArrayList<String> generateTransparentID(String[] command) {
 		ArrayList<String> commands = new ArrayList<String>();
 		
@@ -602,10 +722,16 @@ public class McFunctionGenerator {
 		return commands;
 	}
 	
+	/**Get the file of this McFunctionGenerator
+	 * @param File file
+	 */
 	public File getFile() {
 		return file;
 	}
-	
+
+	/**Set the file of this McFunctionGenerator
+	 * @return File file
+	 */
 	public void setFile(File file) {
 		this.file = file;
 		GP = new GeneratorParser(this);
