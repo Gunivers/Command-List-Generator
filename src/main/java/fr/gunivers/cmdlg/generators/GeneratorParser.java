@@ -10,7 +10,12 @@ public class GeneratorParser {
 		this.mc = mc;
 	}
 	
-	
+	/**Parse and redirect a generator to the right method
+	 * @param gen Generators
+	 * @param args Object[] arguments for the method
+	 * @param command String[] parts of the command
+	 * @return ArrayLis<String> commands list
+	 */
 	public ArrayList<String> parse(Generators gen, Object[] args, String[] command) {
 		ArrayList<String> commands = null;
 		
