@@ -8,7 +8,7 @@ public class Main {
 	
 		String entree = "#InterpScore:0,100,1.8,0,GNE#";
 		//disp(generateInterp(entree, 1));
-		//Modif test test
+		//Modif test
 		
 		System.out.print("\n\n");
 		
@@ -145,7 +145,6 @@ public class Main {
 		//Temporaire
 		//Apres ce sera une commande complete par String
 		return decompose(entree);
-		
 	}
 	
 	public static ArrayList<String> decompose(String entree) {
