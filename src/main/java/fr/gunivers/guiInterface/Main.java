@@ -1,21 +1,105 @@
-package fr.gunivers.guiInterface;
-
 import java.util.ArrayList;
 
 public class Main {
-
 	
 	//Cette méthode sera ensuite inutile, puisque le bouton "Generate" appellera directement la méthode generate()
 	public static void main(String[] args) {
 	
-		String entree = "#InterpScore:0,100,1.8,0,GNE#";
-		//disp(generateInterp(entree, 1));
-		//Modif tes
+		String entree = "#Interp:0,100,1.8,0,1#";
+		disp(generate(entree, 10));
 		
 		System.out.print("\n\n");
 		
-		disp(readTag(entree));
-			
+		entree = "#InterpScore:0,100,1.8,0,Score#";
+		disp(generate(entree, 10));
+
+	}
+		
+	/**
+	* Renvoie un tableau contenant les Strings a placer dans les commandes générées, a la place de la balise donnée en entree
+	*@param entree: la balise (seule: "#example#")
+	*@param nbreCommandes: le nombre de commandes a generer
+	*@return le String a mettre a la place de la balise sur chaque commande
+	*/
+	public static String[] generate(String entree, int nbreCommandes) {
+		
+		String baliseName = readName(entree);
+		
+		switch(baliseName) {
+		case "Interp": return generateInterp(entree, nbreCommandes);
+		case "InterpScore": return generateScoreInterp(entree, nbreCommandes);
+		default:;
+		}
+		
+		return null;
+	}
+	
+	/**
+	* Renvoie un tableau contenant les Strings a placer dans les commandes générées, a la place de la balise donnée en entree si la balise est un Interp
+	* Format de la balise: #Interp:Debut,Fin,Puissance,Invert(0 ou 1),NombreDeDecimales#
+	*@param entree: la balise (seule: "#example#")
+	*@param nbreCommandes: le nombre de commandes a generer
+	*@return le String a mettre a la place de la balise sur chaque commande
+	*/
+	public static String[] generateInterp(String balise, int nbreCommandes) {
+	
+		String[] infosS = readTag(balise, "Interp");
+		double[] infos = new double[5];
+		//index 0: nombre de départ
+		//index 1: nombre de fin
+		//index 2: puissance (courbure de la montée)
+		//index 3: invert (0 ou 1)
+		//index 4: nombre de décimales
+		
+		for(int i = 0; i <= 4; i++) {
+			infos[i] = Double.valueOf(infosS[i]);
+		}
+		
+		String[] ret = new String[nbreCommandes];
+		
+		for(int i = 0; i < nbreCommandes; i++)
+			if(infos[4] == 0)
+				ret[i] = String.valueOf((int) Math.round(interp(infos[0], infos[1], nbreCommandes, i, infos[2], infos[3] == 1)));
+			else
+				ret[i] = String.valueOf(round(interp(infos[0], infos[1], nbreCommandes, i, infos[2], infos[3] == 1), (int) infos[4]));
+				
+		return ret;
+	}
+	
+	/**
+	* Renvoie un tableau contenant les Strings a placer dans les commandes générées, a la place de la balise donnée en entree si la balise est un InterpScore
+	* Format de la balise: #InterpScore:Debut,Fin,Puissance,Invert(0 ou 1),Objectif#
+	*@param entree: la balise (seule: "#example#")
+	*@param nbreCommandes: le nombre de commandes a generer
+	*@return le String a mettre a la place de la balise sur chaque commande
+	*/
+	public static String[] generateScoreInterp(String balise, int nbreCommandes) {
+		
+		String[] infos = readTag(balise, "InterpScore");
+		//index 0: nombre de départ
+		//index 1: nombre de fin
+		//index 2: puissance (courbure de la montée)
+		//index 3: invert (0 ou 1)
+		//index 4: nom de l'objectif
+		
+		int debut = Integer.valueOf(infos[0]);
+		int fin = Integer.valueOf(infos[1]);
+		double puissance = Double.valueOf(infos[2]);
+		boolean invert = (infos[3] == "1");
+		String objective = infos[4];		
+		
+		String[] ret = new String[nbreCommandes];
+		String line = "";
+		
+		for(int i = 0; i < nbreCommandes; i++) {
+			line = "score_" + objective + "_min=";
+			line += String.valueOf(Math.round(interp(debut, fin, nbreCommandes+1, i, puissance, invert)) + ((i == 0) ? 0 : 1));
+			line += ",score_" + objective + "=";
+			line += String.valueOf(Math.round(interp(debut, fin, nbreCommandes+1, i+1, puissance, invert)));
+			ret[i] = line;
+		}
+				
+		return ret;		
 	}
 	
 	public static void disp(double[] d) {
@@ -32,6 +116,11 @@ public class Main {
 		
 	}
 	
+	/**
+	* Renvoie le nom de la balise ("#Interp:25,4324,4,32,4#" renvoie "Interp")
+	*@param entree: la balise (seule: "#example#")
+	*@return le nom de la balise
+	*/
 	public static String readName(String balise) {
 		    
 		String name = "";
@@ -45,22 +134,20 @@ public class Main {
 		return name;
 	}
 		  
-	public static String[] readTag(String balise) {
-		    
-		int beginIndex = 0;
-		int nbreArgs = 0;
-		    
-	    switch(readName(balise)) {  
-	    case "Interp":
-	        beginIndex = 8;
-	        nbreArgs = 5;
-	        break;
-	    case "InterpScore":
-	        beginIndex = 13;
-	        nbreArgs = 5;
-	        break;
-	    default:;
-	    }
+	/**
+	* Renvoie les arguments de la balise dans des Strings séparés
+	*@param entree: la balise (seule: "#example#")
+	*@param baliseName: le nom de la balise (voir readName())
+	*@return les arguments de la balise
+	*/
+	public static String[] readTag(String balise, String baliseName) {
+		 
+		int beginIndex = baliseName.length()+2;
+		int nbreArgs = 1;
+		
+		for(int i = beginIndex; i < balise.length(); i++)
+			if(balise.charAt(i) == ',')
+				nbreArgs++;
 	    
 	    String[] args = new String[nbreArgs];
 	    
@@ -87,10 +174,27 @@ public class Main {
 	    return args;
 	}
 	
+	/**
+	* Renvoie la valeur a alpha% de l'intervalle [debut; fin]
+	*@param debut: le debut de l'intervale
+	*@param fin: la fin de l'intervale
+	*@param alpha: le pourcentage (0 a 1)
+	*@return la valeur a alpha% de l'intervalle [debut; fin]
+	*/
 	public static double linearInterp(double debut, double fin, double alpha) {
 		return fin*alpha + debut;
 	}
 	
+	/**
+	* Calcule alpha et renvoie la valeur a (alpha^puissance)% ou 1-(1-alpha)^puissance% de l'intervalle [debut; fin]
+	*@param debut: le debut de l'intervale
+	*@param fin: la fin de l'intervale
+	*@param nbreCommandes: le nombre de commandes a générer
+	*@param nbreCommandes: le numéro de la commande a générer
+	*@param puissance: la courbure de la montée des valeurs
+	*@param invert: inversion de la progression de la pente (rapide puis lente ou lente puis rapide)
+	*@return la valeur
+	*/
 	public static double interp(double debut, double fin, int nbreCommandes, int numeroCommande, double puissance, boolean invert) {
 		
 		double alpha;
@@ -110,31 +214,12 @@ public class Main {
 		return linearInterp(debut, fin, alpha);
 	}
 	
-	public static String[] generateInterp(String balise, int nbreCommandes) {
-	
-		String[] infosS = readTag(balise);
-		double[] infos = new double[5];
-		//index 0: nombre de départ
-		//index 1: nombre de fin
-		//index 2: puissance (courbure de la montée)
-		//index 3: invert (0 ou 1)
-		//index 4: nombre de décimales
-		
-		for(int i = 0; i <= 4; i++) {
-			infos[i] = Double.valueOf(infosS[i]);
-		}
-		
-		String[] ret = new String[nbreCommandes];
-		
-		for(int i = 0; i < nbreCommandes; i++)
-			if(infos[4] == 0)
-				ret[i] = String.valueOf((int) Math.round(interp(infos[0], infos[1], nbreCommandes, i, infos[2], infos[3] == 1)));
-			else
-				ret[i] = String.valueOf(round(interp(infos[0], infos[1], nbreCommandes, i, infos[2], infos[3] == 1), (int) infos[4]));
-				
-		return ret;
-	}
-	
+	/**
+	* Renvoie l'arrondi a 10^-decimalsNumber
+	*@param number: le nombre
+	*@param decimalsNumber: le nombre de décimales
+	*@return le nombre arrondi
+	*/
 	public static double round(double number, int decimalsNumber) {
 		
 		int power = (int) Math.pow(10, decimalsNumber);
@@ -142,13 +227,11 @@ public class Main {
 		return ((double) Math.round(number)) / power;
 	}
 	
-	public static ArrayList<String> generate(String entree) {
-		
-		//Temporaire
-		//Apres ce sera une commande complete par String
-		return decompose(entree);
-	}
-	
+	/**
+	* Decompose l'entree en une ArrayList de chaque composants (les balises sont séparées)
+	*@param entree: l'entrée (commande brute donnée par l'utilisateur)
+	*@return l'ArrayList contenant chaque composant dans l'ordre
+	*/
 	public static ArrayList<String> decompose(String entree) {
 		
 		ArrayList<String> composants = new ArrayList<String>();
