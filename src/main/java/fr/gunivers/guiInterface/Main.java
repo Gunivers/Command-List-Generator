@@ -1,3 +1,5 @@
+package main.java.fr.gunivers.guiInterface;
+
 import java.util.ArrayList;
 
 public class Main {
