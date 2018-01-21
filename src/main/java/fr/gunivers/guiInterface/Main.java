@@ -1,4 +1,4 @@
-package main.java.fr.gunivers.guiInterface;
+package fr.gunivers.guiInterface;
 
 import java.util.ArrayList;
 

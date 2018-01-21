@@ -1,6 +1,5 @@
 TO-DO:
-	@GuniDev: Ajouter la JavaDoc à ta classe main
-			  Finir la classe generateInterp() [fr.gunivers.cmdlg.generators - en bas] -> update sa JavaDoc
+	@GuniDev: Finir la classe generateInterp() [fr.gunivers.cmdlg.generators - en bas] -> update sa JavaDoc
 			  
 
 	@Oromis: Finir la classe generateDichotomie() [fr.gunivers.cmdlg.generators - en bas] -> update sa JavaDoc
