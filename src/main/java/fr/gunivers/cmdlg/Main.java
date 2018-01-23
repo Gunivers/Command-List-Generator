@@ -24,7 +24,6 @@ public class Main extends Application {
             /**
              * INIT the default page.
              */
-
             AnchorPane root = FXMLLoader.load(FXMLUtil.getFXMLURL("Main"));
 
             Scene scene = new Scene(root);

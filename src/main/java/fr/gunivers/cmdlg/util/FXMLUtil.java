@@ -7,7 +7,8 @@ import java.net.URL;
 public class FXMLUtil {
 
     public static URL getFXMLURL(String name) {
-        return Main.class.getResource("../../../fxml/" + name + ".fxml");
+        URL url = Main.class.getResource("../../../fxml/" + name + ".fxml");
+        return url == null ? Main.class.getResource("/fxml/" + name + ".fxml") : url;
     }
 
 }

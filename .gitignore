@@ -112,3 +112,5 @@ crashlytics-build.properties
 fabric.properties
 
 *.ipr
+
+*.jar
