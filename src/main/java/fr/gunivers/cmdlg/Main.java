@@ -27,14 +27,19 @@ public class Main extends Application {
              */
 
             JFXTabPane root = FXMLLoader.load(FXMLUtil.getFXMLURL("Main"));
+            
             Tab tab = new Tab();
             tab.setText("N 1");
             tab.setContent(FXMLLoader.load(FXMLUtil.getFXMLURL("tab1")));
+            
             Tab tab1 = new Tab();
             tab1.setText("N 2");
             tab1.setContent(new JFXColorPicker());
+            
             root.getTabs().addAll(tab, tab1);
+           
             Scene scene = new Scene(root);
+            
             primaryStage.setScene(scene);
             primaryStage.setTitle("Command List Generator");
             primaryStage.show();
