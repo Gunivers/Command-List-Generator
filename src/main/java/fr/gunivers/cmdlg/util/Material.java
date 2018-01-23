@@ -1,4 +1,4 @@
-package fr.gunivers.cmdlg;
+package fr.gunivers.cmdlg.util;
 
 import com.google.common.collect.Maps;
 
@@ -368,7 +368,6 @@ public enum Material {
     COOKIE(357),
 
 
-
     MAP(358),
     SHEARS(359, 1, 238),
     MELON(360),
@@ -475,8 +474,7 @@ public enum Material {
     RECORD_9(2264, 1),
     RECORD_10(2265, 1),
     RECORD_11(2266, 1),
-    RECORD_12(2267, 1),
-    ;
+    RECORD_12(2267, 1),;
 
     private final int id;
     private static Material[] byId = new Material[383];
@@ -499,7 +497,7 @@ public enum Material {
     }
 
     /**
-     * Gets the item ID or block ID of this Material
+     * Gets the item ID or block ID of this MATERIAL
      *
      * @return ID of this material
      * @deprecated Magic value
@@ -528,7 +526,7 @@ public enum Material {
     }
 
     /**
-     * Checks if this Material is a placable block
+     * Checks if this MATERIAL is a placable block
      *
      * @return true if this material is a block
      */
@@ -537,9 +535,9 @@ public enum Material {
     }
 
     /**
-     * Checks if this Material is edible.
+     * Checks if this MATERIAL is edible.
      *
-     * @return true if this Material is edible.
+     * @return true if this MATERIAL is edible.
      */
     public boolean isEdible() {
         switch (this) {
@@ -580,10 +578,10 @@ public enum Material {
     }
 
     /**
-     * Attempts to get the Material with the given ID
+     * Attempts to get the MATERIAL with the given ID
      *
      * @param id ID of the material to get
-     * @return Material if found, or null
+     * @return MATERIAL if found, or null
      * @deprecated Magic value
      */
     @Deprecated
@@ -596,20 +594,20 @@ public enum Material {
     }
 
     /**
-     * Attempts to get the Material with the given name.
+     * Attempts to get the MATERIAL with the given name.
      * <p>
      * This is a normal lookup, names must be the precise name they are given
      * in the enum.
      *
      * @param name Name of the material to get
-     * @return Material if found, or null
+     * @return MATERIAL if found, or null
      */
     public static Material getMaterial(final String name) {
         return BY_NAME.get(name);
     }
 
     /**
-     * Attempts to match the Material with the given name.
+     * Attempts to match the MATERIAL with the given name.
      * <p>
      * This is a match lookup; names will be converted to uppercase, then
      * stripped of special characters in an attempt to format it like the
@@ -618,14 +616,15 @@ public enum Material {
      * Using this for match by ID is deprecated.
      *
      * @param name Name of the material to get
-     * @return Material if found, or null
+     * @return MATERIAL if found, or null
      */
     public static Material matchMaterial(final String name) {
         Material result = null;
 
         try {
             result = getMaterial(Integer.parseInt(name));
-        } catch (NumberFormatException ex) {}
+        } catch (NumberFormatException ex) {
+        }
 
         if (result == null) {
             String filtered = name.toUpperCase(java.util.Locale.ENGLISH);
@@ -1062,9 +1061,9 @@ public enum Material {
     }
 
     /**
-     * Checks if this Material can be used as fuel in a Furnace
+     * Checks if this MATERIAL can be used as fuel in a Furnace
      *
-     * @return true if this Material can be used as fuel.
+     * @return true if this MATERIAL can be used as fuel.
      */
     public boolean isFuel() {
         switch (this) {
@@ -1272,7 +1271,7 @@ public enum Material {
     }
 
     /**
-     * Checks if this Material is an obtainable item.
+     * Checks if this MATERIAL is an obtainable item.
      *
      * @return true if this material is an item
      */

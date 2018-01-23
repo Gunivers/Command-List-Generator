@@ -1,4 +1,4 @@
-package fr.gunivers.cmdlg.generators;
+package old;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ public class Main {
 	//Cette m�thode sera ensuite inutile, puisque le bouton "Generate" appellera directement la m�thode generate()
 	/*public static void fakeMain(String[] args) {
 	
-		String entree = "#Interp:0,100,1.8,0,1#";
+		String entree = "#INTERP:0,100,1.8,0,1#";
 		disp(generate(entree, 10));
 		
 		System.out.print("\n\n");
@@ -28,7 +28,7 @@ public class Main {
 		String baliseName = readName(entree);
 		
 		switch(baliseName) {
-		case "Interp": return generateInterp(entree, nbreCommandes);
+		case "INTERP": return generateInterp(entree, nbreCommandes);
 		case "InterpScore": return generateScoreInterp(entree, nbreCommandes);
 		default:;
 		}
@@ -37,15 +37,15 @@ public class Main {
 	}
 	
 	/**
-	* Renvoie un tableau contenant les Strings a placer dans les commandes g�n�r�es, a la place de la balise donn�e en entree si la balise est un Interp
-	* Format de la balise: #Interp:Debut,Fin,Puissance,Invert(0 ou 1),NombreDeDecimales#
+	* Renvoie un tableau contenant les Strings a placer dans les commandes g�n�r�es, a la place de la balise donn�e en entree si la balise est un INTERP
+	* Format de la balise: #INTERP:Debut,Fin,Puissance,Invert(0 ou 1),NombreDeDecimales#
 	*@param entree: la balise (seule: "#example#")
 	*@param nbreCommandes: le nombre de commandes a generer
 	*@return le String a mettre a la place de la balise sur chaque commande
 	*/
 	public static String[] generateInterp(String balise, int nbreCommandes) {
 	
-		String[] infosS = readTag(balise, "Interp");
+		String[] infosS = readTag(balise, "INTERP");
 		double[] infos = new double[5];
 		//index 0: nombre de d�part
 		//index 1: nombre de fin
@@ -119,7 +119,7 @@ public class Main {
 	}
 	
 	/**
-	* Renvoie le nom de la balise ("#Interp:25,4324,4,32,4#" renvoie "Interp")
+	* Renvoie le nom de la balise ("#INTERP:25,4324,4,32,4#" renvoie "INTERP")
 	*@param entree: la balise (seule: "#example#")
 	*@return le nom de la balise
 	*/

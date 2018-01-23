@@ -1,6 +1,7 @@
-package fr.gunivers.cmdlg.generators;
+package old;
 
-import fr.gunivers.cmdlg.Material;
+import fr.gunivers.cmdlg.util.Material;
+import fr.gunivers.cmdlg.util.GeneratorType;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@SuppressWarnings("deprecation")
 public class McFunctionGenerator {
 
     public ArrayList<String> commands;
@@ -79,14 +79,14 @@ public class McFunctionGenerator {
      * @param command    String[] parts of commands
      * @return ArrayList<String> commands
      */
-    public ArrayList<String> generateAdvanced(HashMap<Generators, Object[]> generators, String[] command) {
-        List<Generators> gens = new ArrayList<>();
+    public ArrayList<String> generateAdvanced(HashMap<GeneratorType, Object[]> generators, String[] command) {
+        List<GeneratorType> gens = new ArrayList<>();
         List<Object[]> values = new ArrayList<>();
 
         ArrayList<String> commands = new ArrayList<>();
         commands.add("");
 
-        for (HashMap.Entry<Generators, ?> entry : generators.entrySet()) {
+        for (HashMap.Entry<GeneratorType, ?> entry : generators.entrySet()) {
             gens.add(entry.getKey());
             values.add((Object[]) entry.getValue());
         }
@@ -121,7 +121,7 @@ public class McFunctionGenerator {
 
 
     /**
-     * Generate Int chain command variation
+     * Generate INT chain command variation
      *
      * @param start   int start of chain
      * @param end     int end of chain
@@ -149,7 +149,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Float chain command variation
+     * Generate FLOAT chain command variation
      *
      * @param start   float start of chain
      * @param end     float end of chain
@@ -177,7 +177,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Double chain command variation
+     * Generate DOUBLE chain command variation
      *
      * @param start   double start of chain
      * @param end     double end of chain
@@ -205,11 +205,11 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Long chain command variation
+     * Generate LONG chain command variation
      *
-     * @param start   Long start of chain
-     * @param end     Long end of chain
-     * @param step    Long step of walk in chain
+     * @param start   LONG start of chain
+     * @param end     LONG end of chain
+     * @param step    LONG step of walk in chain
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
      */
@@ -233,7 +233,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Material:Material command variation
+     * Generate MATERIAL:MATERIAL command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -258,7 +258,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate MaterialID:MaterialID command variation
+     * Generate MATERIAL_ID:MATERIAL_ID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -283,7 +283,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Material:Block command variation
+     * Generate MATERIAL:BLOCK command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -311,7 +311,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Material:Burnable command variation
+     * Generate MATERIAL:BURNABLE command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -339,7 +339,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Material:Edible command variation
+     * Generate MATERIAL:EDIBLE command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -367,7 +367,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Material:Flammable command variation
+     * Generate MATERIAL:FLAMMABLE command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -395,7 +395,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Material:Fuel command variation
+     * Generate MATERIAL:FUEL command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -423,7 +423,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Material:Occluding command variation
+     * Generate MATERIAL:OCCLUDING command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -451,7 +451,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Material:Record command variation
+     * Generate MATERIAL:RECORD command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -479,7 +479,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Material:Solid command variation
+     * Generate MATERIAL:SOLID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -507,7 +507,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Material:Transparent command variation
+     * Generate MATERIAL:TRANSPARENT command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -535,7 +535,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate MaterialID:BlockID command variation
+     * Generate MATERIAL_ID:BLOCK_ID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -562,7 +562,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate MaterialID:BurnableID command variation
+     * Generate MATERIAL_ID:BURNABLE_ID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -589,7 +589,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate MaterialID:EdibleID command variation
+     * Generate MATERIAL_ID:EDIBLE_ID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -616,7 +616,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate MaterialID:FlammableID command variation
+     * Generate MATERIAL_ID:FLAMMABLE_ID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -643,7 +643,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate MaterialID:FuelID command variation
+     * Generate MATERIAL_ID:FUEL_ID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -670,7 +670,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate MaterialID:OccludingID command variation
+     * Generate MATERIAL_ID:OCCLUDING_ID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -697,7 +697,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate MaterialID:RecordID command variation
+     * Generate MATERIAL_ID:RECORD_ID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -724,7 +724,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate MaterialID:SolidID command variation
+     * Generate MATERIAL_ID:SOLID_ID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -751,7 +751,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate MaterialID:TransparentID command variation
+     * Generate MATERIAL_ID:TRANSPARENT_ID command variation
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands list
@@ -791,7 +791,7 @@ public class McFunctionGenerator {
     }
 
     /**
-     * Generate Mathematics:Dichotomie
+     * Generate Mathematics:DICHOTOMIE
      *
      * @param command String[] parts of command
      * @return ArrayList<String> commands List

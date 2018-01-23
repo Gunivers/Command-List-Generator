@@ -1,7 +1,10 @@
 package fr.gunivers.cmdlg;
 
+import fr.gunivers.cmdlg.api.IGenerator;
+import fr.gunivers.cmdlg.generators.ExempleGenerator;
 import fr.gunivers.cmdlg.util.FXMLUtil;
 
+import fr.gunivers.cmdlg.util.GeneratorType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -35,5 +38,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
+        IGenerator generator = new ExempleGenerator(GeneratorType.INT);
+        generator.generate();
+        generator.getCommands().forEach(System.out::println);
     }
 }
