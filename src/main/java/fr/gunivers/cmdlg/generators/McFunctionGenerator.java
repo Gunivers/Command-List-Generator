@@ -130,18 +130,18 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateInt(int start, int end, int step, String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
         for (int i = start; i <= end; i += step) {
-            String temp = "";
+            StringBuilder temp = new StringBuilder();
 
             for (int e = 0; e < command.length - 1; e++) {
-                temp += command[e] + i;
+                temp.append(command[e]).append(i);
 
-                if (e == command.length - 2) temp += command[e + 1];
+                if (e == command.length - 2) temp.append(command[e + 1]);
             }
 
-            commands.add(temp);
+            commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -158,18 +158,18 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateFloat(float start, float end, float step, String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
         for (float i = start; i <= end; i += step) {
-            String temp = "";
+            StringBuilder temp = new StringBuilder();
 
             for (int e = 0; e < command.length - 1; e++) {
-                temp += command[e] + i + "F";
+                temp.append(command[e]).append(i).append("F");
 
-                if (e == command.length - 2) temp += command[e + 1];
+                if (e == command.length - 2) temp.append(command[e + 1]);
             }
 
-            commands.add(temp);
+            commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -186,18 +186,18 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateDouble(double start, double end, double step, String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
         for (double i = start; i <= end; i += step) {
-            String temp = "";
+            StringBuilder temp = new StringBuilder();
 
             for (int e = 0; e < command.length - 1; e++) {
-                temp += command[e] + i + "D";
+                temp.append(command[e]).append(i).append("D");
 
-                if (e == command.length - 2) temp += command[e + 1];
+                if (e == command.length - 2) temp.append(command[e + 1]);
             }
 
-            commands.add(temp);
+            commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -214,18 +214,18 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateLong(long start, long end, long step, String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
         for (long i = start; i <= end; i += step) {
-            String temp = "";
+            StringBuilder temp = new StringBuilder();
 
             for (int e = 0; e < command.length - 1; e++) {
-                temp += command[e] + i + "L";
+                temp.append(command[e]).append(i).append("L");
 
-                if (e == command.length - 2) temp += command[e + 1];
+                if (e == command.length - 2) temp.append(command[e + 1]);
             }
 
-            commands.add(temp);
+            commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -239,18 +239,18 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateMaterial(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
             for (int e = 0; e < command.length - 1; e++) {
-                temp += command[e] + matos.name();
+                temp.append(command[e]).append(material.name());
 
-                if (e == command.length - 2) temp += command[e + 1];
+                if (e == command.length - 2) temp.append(command[e + 1]);
             }
 
-            commands.add(temp);
+            commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -264,18 +264,18 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateMaterialID(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
             for (int e = 0; e < command.length - 1; e++) {
-                temp += command[e] + matos.getId();
+                temp.append(command[e]).append(material.getId());
 
-                if (e == command.length - 2) temp += command[e + 1];
+                if (e == command.length - 2) temp.append(command[e + 1]);
             }
 
-            commands.add(temp);
+            commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -289,21 +289,21 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateBlock(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isBlock()) {
+            if (material.isBlock()) {
 
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.name();
+                    temp.append(command[e]).append(material.name());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -317,21 +317,21 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateBurnable(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isBurnable()) {
+            if (material.isBurnable()) {
 
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.name();
+                    temp.append(command[e]).append(material.name());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -345,21 +345,21 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateEdible(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isEdible()) {
+            if (material.isEdible()) {
 
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.name();
+                    temp.append(command[e]).append(material.name());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -373,21 +373,21 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateFlammable(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isFlammable()) {
+            if (material.isFlammable()) {
 
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.name();
+                    temp.append(command[e]).append(material.name());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -401,21 +401,21 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateFuel(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isFuel()) {
+            if (material.isFuel()) {
 
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.name();
+                    temp.append(command[e]).append(material.name());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -429,21 +429,21 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateOccluding(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isOccluding()) {
+            if (material.isOccluding()) {
 
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.name();
+                    temp.append(command[e]).append(material.name());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -457,21 +457,21 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateRecord(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isRecord()) {
+            if (material.isRecord()) {
 
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.name();
+                    temp.append(command[e]).append(material.name());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -485,21 +485,21 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateSolid(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isSolid()) {
+            if (material.isSolid()) {
 
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.name();
+                    temp.append(command[e]).append(material.name());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -513,21 +513,21 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateTransparent(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isTransparent()) {
+            if (material.isTransparent()) {
 
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.name();
+                    temp.append(command[e]).append(material.name());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -541,20 +541,20 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateBlockID(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isBlock()) {
+            if (material.isBlock()) {
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.getId();
+                    temp.append(command[e]).append(material.getId());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -568,20 +568,20 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateBurnableID(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isBurnable()) {
+            if (material.isBurnable()) {
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.getId();
+                    temp.append(command[e]).append(material.getId());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -595,20 +595,20 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateEdibleID(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isEdible()) {
+            if (material.isEdible()) {
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.getId();
+                    temp.append(command[e]).append(material.getId());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -622,20 +622,20 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateFlammableID(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isFlammable()) {
+            if (material.isFlammable()) {
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.getId();
+                    temp.append(command[e]).append(material.getId());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -649,20 +649,20 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateFuelID(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isFuel()) {
+            if (material.isFuel()) {
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.getId();
+                    temp.append(command[e]).append(material.getId());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -676,20 +676,20 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateOccludingID(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isOccluding()) {
+            if (material.isOccluding()) {
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.getId();
+                    temp.append(command[e]).append(material.getId());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -703,20 +703,20 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateRecordID(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isRecord()) {
+            if (material.isRecord()) {
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.getId();
+                    temp.append(command[e]).append(material.getId());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -730,20 +730,20 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateSolidID(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isSolid()) {
+            if (material.isSolid()) {
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.getId();
+                    temp.append(command[e]).append(material.getId());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -757,20 +757,20 @@ public class McFunctionGenerator {
      * @return ArrayList<String> commands list
      */
     public ArrayList<String> generateTransparentID(String[] command) {
-        ArrayList<String> commands = new ArrayList<String>();
+        ArrayList<String> commands = new ArrayList<>();
 
-        for (Material matos : Material.values()) {
-            String temp = "";
+        for (Material material : Material.values()) {
+            StringBuilder temp = new StringBuilder();
 
-            if (matos.isTransparent()) {
+            if (material.isTransparent()) {
                 for (int e = 0; e < command.length - 1; e++) {
-                    temp += command[e] + matos.getId();
+                    temp.append(command[e]).append(material.getId());
 
-                    if (e == command.length - 2) temp += command[e + 1];
+                    if (e == command.length - 2) temp.append(command[e + 1]);
                 }
             }
 
-            if (!temp.equals("")) commands.add(temp);
+            if (!temp.toString().equals("")) commands.add(temp.toString());
         }
 
         this.commands = commands;
@@ -787,7 +787,7 @@ public class McFunctionGenerator {
         //TODO finish generateInterp -> KubbyDev
         ArrayList<String> commands = null;
 
-        return commands;
+        return null;
     }
 
     /**
@@ -800,13 +800,11 @@ public class McFunctionGenerator {
         //TODO finish generateDichotomie -> Oromis
         ArrayList<String> commands = null;
 
-        return commands;
+        return null;
     }
 
     /**
-     * Get the file of this McFunctionGenerator
-     *
-     * @param File file
+     * @return Of the file of this McFunctionGenerator
      */
     public File getFile() {
         return file;
