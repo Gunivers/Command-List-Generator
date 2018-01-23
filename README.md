@@ -1,3 +1,3 @@
-# Command-List-Generator
+# McFunctionGenerator
 
-This is a simple java tool that allow you to easily generate mcFunction
+This is a simple java tool that allow you to easily generate mcFunctions
