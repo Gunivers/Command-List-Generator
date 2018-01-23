@@ -1,11 +1,11 @@
-package fr.gunivers.guiInterface;
+package fr.gunivers.cmdlg.generators;
 
 import java.util.ArrayList;
 
 public class Main {
 	
 	//Cette m�thode sera ensuite inutile, puisque le bouton "Generate" appellera directement la m�thode generate()
-	public static void fakeMain(String[] args) {
+	/*public static void fakeMain(String[] args) {
 	
 		String entree = "#Interp:0,100,1.8,0,1#";
 		disp(generate(entree, 10));
@@ -15,7 +15,7 @@ public class Main {
 		entree = "#InterpScore:0,100,1.8,0,Score#";
 		disp(generate(entree, 10));
 
-	}
+	}/*
 		
 	/**
 	* Renvoie un tableau contenant les Strings a placer dans les commandes g�n�r�es, a la place de la balise donn�e en entree
@@ -125,15 +125,15 @@ public class Main {
 	*/
 	public static String readName(String balise) {
 		    
-		String name = "";
+		StringBuilder name = new StringBuilder();
 		int i = 1;    
 		
 		do {
-			name += balise.charAt(i);
+			name.append(balise.charAt(i));
 			i++;  
 		} while(balise.charAt(i) != ':');
 		    
-		return name;
+		return name.toString();
 	}
 		  
 	/**
@@ -237,7 +237,7 @@ public class Main {
 	public static ArrayList<String> decompose(String entree) {
 		
 		ArrayList<String> composants = new ArrayList<String>();
-		String composant = new String();
+		StringBuilder composant = new StringBuilder(new String());
 		//isInSpecial est sur true quand le caractere lu est entre 2 #
 		boolean isInSpecial = false;
 		boolean ignoreNext = false;
@@ -255,16 +255,16 @@ public class Main {
 					
 				case '#':
 					if(isInSpecial) {
-						composant += "#";
+						composant.append("#");
 						i++;
 						isInSpecial = false;
-						composants.add(composant);
-						composant = "";					
+						composants.add(composant.toString());
+						composant = new StringBuilder();
 					}
 					else {
 						isInSpecial = true;
-						composants.add(composant);
-						composant = "";
+						composants.add(composant.toString());
+						composant = new StringBuilder();
 					}
 					break;
 				default:;
@@ -273,10 +273,10 @@ public class Main {
 			else
 				ignoreNext = false;
 			
-			composant += entree.charAt(i);
+			composant.append(entree.charAt(i));
 			
 		}
-		composants.add(composant);
+		composants.add(composant.toString());
 		
 		return composants;
 	}
