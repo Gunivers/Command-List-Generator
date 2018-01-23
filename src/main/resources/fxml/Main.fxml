@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: GRAY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXTextField layoutX="14.0" layoutY="14.0" prefHeight="37.0" prefWidth="354.0" promptText="Insert you command." style="-fx-background-color: WHITE;" />
+      <JFXButton layoutX="501.0" layoutY="17.0" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: WHITE;" text="Generer" />
+      <JFXTextArea layoutX="15.0" layoutY="181.0" prefHeight="200.0" prefWidth="569.0" style="-fx-background-color: WHITE;" />
+      <Pane layoutX="14.0" layoutY="60.0" prefHeight="110.0" prefWidth="354.0" style="-fx-background-color: WHITE;">
+         <children>
+            <JFXColorPicker layoutX="14.0" layoutY="14.0" />
+            <JFXCheckBox layoutX="139.0" layoutY="18.0" />
+            <JFXRadioButton layoutX="125.0" layoutY="68.0" />
+         </children>
+      </Pane>
+      <JFXTabPane layoutX="377.0" layoutY="57.0" prefHeight="110.0" prefWidth="204.0" style="-fx-background-color: WHITE;" />
+   </children>
+</AnchorPane>
