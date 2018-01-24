@@ -1,5 +1,9 @@
 TO-DO:
-	@GuniDev: Finir la classe generateInterp() [fr.gunivers.cmdlg.generators - en bas] -> update sa JavaDoc
-			  
+	Specific to users:
+		@KubbyDev: Finir la classe InterpGenerator() -> update sa JavaDoc
+		@Oromis: Finir la classe DichotomieGenerator() -> update sa JavaDoc
+		@AZ-0: Recréer les classes de générateurs
+		
+	Other:
 
-	@Oromis: Finir la classe generateDichotomie() [fr.gunivers.cmdlg.generators - en bas] -> update sa JavaDoc
+	
