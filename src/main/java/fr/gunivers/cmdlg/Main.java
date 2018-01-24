@@ -37,7 +37,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        BasicGenerator generator = new IntGenerator("LA COMMAND ICI", "LES ARGS ICI");
+        BasicGenerator generator = new IntGenerator(new String[]{"LES COMMAND ICI"}, "LES ARGS ICI");
         generator.generate().forEach(System.out::println);
     }
 }
