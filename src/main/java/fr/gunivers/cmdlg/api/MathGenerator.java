@@ -1,6 +1,4 @@
-package fr.gunivers.cmdlg.generators;
-
-import fr.gunivers.cmdlg.api.BasicGenerator;
+package fr.gunivers.cmdlg.api;
 
 import java.lang.reflect.MalformedParametersException;
 

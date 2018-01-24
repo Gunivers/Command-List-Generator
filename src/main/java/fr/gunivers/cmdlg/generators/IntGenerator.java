@@ -1,5 +1,6 @@
 package fr.gunivers.cmdlg.generators;
 
+import fr.gunivers.cmdlg.api.MathGenerator;
 import fr.gunivers.cmdlg.util.GeneratorType;
 
 import java.util.ArrayList;
