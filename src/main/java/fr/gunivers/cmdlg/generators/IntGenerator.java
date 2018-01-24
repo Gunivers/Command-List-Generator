@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class IntGenerator extends MathGenerator {
 
-    public IntGenerator(String command, Object... args) {
+    public IntGenerator(String[] command, Object... args) {
         super(command, args);
     }
 

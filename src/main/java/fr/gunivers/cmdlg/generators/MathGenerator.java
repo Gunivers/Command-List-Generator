@@ -1,7 +1,6 @@
 package fr.gunivers.cmdlg.generators;
 
 import fr.gunivers.cmdlg.api.BasicGenerator;
-import fr.gunivers.cmdlg.util.GeneratorType;
 
 import java.lang.reflect.MalformedParametersException;
 
@@ -9,7 +8,7 @@ public abstract class MathGenerator extends BasicGenerator {
 
     private Object[] args;
 
-    public MathGenerator(String command, Object... args) {
+    public MathGenerator(String[] command, Object... args) {
         super(command);
 
         if (args.length <= 0)
