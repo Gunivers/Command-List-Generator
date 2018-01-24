@@ -27,8 +27,7 @@ public enum GeneratorType {
     SOLID_ID,
     TRANSPARENT_ID,
     INTERP,
-    DICHOTOMIE,
-    NULL;
+    DICHOTOMIE;
 
     /**
      * Test the primitive type of a generator
