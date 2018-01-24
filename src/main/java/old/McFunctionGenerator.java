@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class McFunctionGenerator {
 
     public ArrayList<String> commands;
@@ -787,7 +788,7 @@ public class McFunctionGenerator {
         //TODO finish generateInterp -> KubbyDev
         ArrayList<String> commands = null;
 
-        return null;
+        return commands;
     }
 
     /**
@@ -800,7 +801,7 @@ public class McFunctionGenerator {
         //TODO finish generateDichotomie -> Oromis
         ArrayList<String> commands = null;
 
-        return null;
+        return commands;
     }
 
     /**
