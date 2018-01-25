@@ -50,12 +50,11 @@ public class MaterialGenerator extends BasicGenerator {
     }
 
     /**
-     * Get the Material to be generated
+     * Get the Materials to be generated
      *
      * @return ArrayList<Material> materialList
      */
     public Iterable<? extends Material> getMaterialList() {
         return Arrays.asList(Material.values());
     }
-
 }
