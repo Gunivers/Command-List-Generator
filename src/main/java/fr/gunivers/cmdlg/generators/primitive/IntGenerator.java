@@ -1,4 +1,4 @@
-package fr.gunivers.cmdlg.generators;
+package fr.gunivers.cmdlg.generators.primitive;
 
 import fr.gunivers.cmdlg.api.MathGenerator;
 import fr.gunivers.cmdlg.util.GeneratorType;

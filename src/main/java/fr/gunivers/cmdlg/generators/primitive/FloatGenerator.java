@@ -1,13 +1,13 @@
-package fr.gunivers.cmdlg.generators;
+package fr.gunivers.cmdlg.generators.primitive;
 
 import fr.gunivers.cmdlg.api.MathGenerator;
 import fr.gunivers.cmdlg.util.GeneratorType;
 
 import java.util.ArrayList;
 
-public class LongGenerator extends MathGenerator {
+public class FloatGenerator extends MathGenerator {
 
-    public LongGenerator(String[] command, long... args) {
+    public FloatGenerator(String[] command, float... args) {
         super(command, args);
     }
 
@@ -15,15 +15,15 @@ public class LongGenerator extends MathGenerator {
     public Iterable<? extends String> generate() {
         ArrayList<String> commands = new ArrayList<>();
 
-        long start = (long) getArgs()[0];
-        long end = (long) getArgs()[1];
-        long step = (long) getArgs()[2];
+        float start = (float) getArgs()[0];
+        float end = (float) getArgs()[1];
+        float step = (float) getArgs()[2];
 
-        for (long i = start; i <= end; i += step) {
+        for (float i = start; i <= end; i += step) {
             StringBuilder temp = new StringBuilder();
 
             for (int e = 0; e < getCommand().length - 1; e++) {
-                temp.append(getCommand()[e]).append(i).append("L");
+                temp.append(getCommand()[e]).append(i).append("F");
 
                 if (e == getCommand().length - 2) temp.append(getCommand()[e + 1]);
             }
@@ -35,6 +35,7 @@ public class LongGenerator extends MathGenerator {
 
     @Override
     public GeneratorType getType() {
-        return GeneratorType.LONG;
+        return GeneratorType.FLOAT;
     }
+
 }
