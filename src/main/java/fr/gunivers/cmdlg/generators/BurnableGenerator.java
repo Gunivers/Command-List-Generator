@@ -1,14 +1,15 @@
 package fr.gunivers.cmdlg.generators;
 
 import java.util.ArrayList;
+
 import fr.gunivers.cmdlg.util.GeneratorType;
 import fr.gunivers.cmdlg.util.Material;
 
-public class BlockGenerator extends MaterialGenerator {
-
-	private GeneratorType type = GeneratorType.BLOCK;
-
-    /**
+public class BurnableGenerator extends MaterialGenerator {
+	
+	private GeneratorType type = GeneratorType.BURNABLE;
+	
+	/**
      * Generate Blocks Material
      *
      * @return ArrayList<String> commands
@@ -18,7 +19,7 @@ public class BlockGenerator extends MaterialGenerator {
         ArrayList<String> commands = new ArrayList<>();
 
         for (Material material : Material.values()) {
-        	if (material.isBlock()) {
+        	if (material.isBurnable()) {
         		StringBuilder temp = new StringBuilder();
         		
         		for (int e = 0; e < getCommand().length - 1; e++) {
@@ -40,7 +41,7 @@ public class BlockGenerator extends MaterialGenerator {
      */
     public Iterable<? extends Material> getMaterialList() {
     	ArrayList<Material> values = new ArrayList<Material>();
-    	for (Material matos : Material.values()) if (matos.isBlock()) values.add(matos);
+    	for (Material matos : Material.values()) if (matos.isBurnable()) values.add(matos);
     	
         return values;
     }
