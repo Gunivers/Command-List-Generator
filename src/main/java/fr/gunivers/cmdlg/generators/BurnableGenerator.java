@@ -10,7 +10,7 @@ public class BurnableGenerator extends MaterialGenerator {
 	private GeneratorType type = GeneratorType.BURNABLE;
 	
 	/**
-     * Generate Fuel Material
+     * Generate Burnable Material
      *
      * @return ArrayList<String> commands
      */

@@ -7,10 +7,10 @@ import fr.gunivers.cmdlg.util.Material;
 
 public class EdibleGenerator extends MaterialGenerator {
 	
-	private GeneratorType type = GeneratorType.FUEL;
+	private GeneratorType type = GeneratorType.EDIBLE;
 	
 	/**
-     * Generate Fuel Material
+     * Generate Edible Material
      *
      * @return ArrayList<String> commands
      */
@@ -19,7 +19,7 @@ public class EdibleGenerator extends MaterialGenerator {
         ArrayList<String> commands = new ArrayList<>();
 
         for (Material material : Material.values()) {
-        	if (material.isFuel()) {
+        	if (material.isEdible()) {
         		StringBuilder temp = new StringBuilder();
         		
         		for (int e = 0; e < getCommand().length - 1; e++) {

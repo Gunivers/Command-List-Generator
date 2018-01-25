@@ -9,7 +9,7 @@ public class BlockGenerator extends MaterialGenerator {
 	private GeneratorType type = GeneratorType.BLOCK;
 
     /**
-     * Generate Blocks Material
+     * Generate Block Material
      *
      * @return ArrayList<String> commands
      */

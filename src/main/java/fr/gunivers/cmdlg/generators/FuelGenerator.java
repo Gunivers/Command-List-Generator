@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import fr.gunivers.cmdlg.util.GeneratorType;
 import fr.gunivers.cmdlg.util.Material;
 
-public class Fuel extends MaterialGenerator {
+public class FuelGenerator extends MaterialGenerator {
 	
 	private GeneratorType type = GeneratorType.FUEL;
 	
