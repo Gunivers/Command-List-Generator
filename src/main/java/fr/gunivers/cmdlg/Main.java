@@ -30,6 +30,7 @@ public class Main extends Application {
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.setTitle("Command List Generator");
             primaryStage.show();
 
@@ -37,7 +38,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        BasicGenerator generator = new IntGenerator(new String[]{"LES COMMAND ICI"}, "LES ARGS ICI");
+        BasicGenerator generator = new IntGenerator(new String[]{"LES COMMAND ICI"}, 1, 2, 3);
         generator.generate().forEach(System.out::println);
     }
 }
