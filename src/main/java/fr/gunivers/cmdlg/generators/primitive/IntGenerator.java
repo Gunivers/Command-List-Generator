@@ -1,11 +1,11 @@
 package fr.gunivers.cmdlg.generators.primitive;
 
-import fr.gunivers.cmdlg.api.MathGenerator;
+import fr.gunivers.cmdlg.api.PrimitiveGenerator;
 import fr.gunivers.cmdlg.util.GeneratorType;
 
 import java.util.ArrayList;
 
-public class IntGenerator extends MathGenerator {
+public class IntGenerator extends PrimitiveGenerator {
 
     public IntGenerator(String[] command, int... args) {
         super(command, args);

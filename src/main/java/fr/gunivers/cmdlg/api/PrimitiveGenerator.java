@@ -2,11 +2,11 @@ package fr.gunivers.cmdlg.api;
 
 import java.lang.reflect.MalformedParametersException;
 
-public abstract class MathGenerator extends BasicGenerator {
+public abstract class PrimitiveGenerator extends BasicGenerator {
 
     private Object[] args;
 
-    public MathGenerator(String[] command, Object... args) {
+    public PrimitiveGenerator(String[] command, Object... args) {
         super(command);
 
         if (args.length <= 0)
