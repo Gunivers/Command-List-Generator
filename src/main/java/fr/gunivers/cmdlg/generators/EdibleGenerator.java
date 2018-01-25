@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import fr.gunivers.cmdlg.util.GeneratorType;
 import fr.gunivers.cmdlg.util.Material;
 
-public class BurnableGenerator extends MaterialGenerator {
+public class EdibleGenerator extends MaterialGenerator {
 	
-	private GeneratorType type = GeneratorType.BURNABLE;
+	private GeneratorType type = GeneratorType.FUEL;
 	
 	/**
      * Generate Fuel Material
@@ -19,7 +19,7 @@ public class BurnableGenerator extends MaterialGenerator {
         ArrayList<String> commands = new ArrayList<>();
 
         for (Material material : Material.values()) {
-        	if (material.isBurnable()) {
+        	if (material.isFuel()) {
         		StringBuilder temp = new StringBuilder();
         		
         		for (int e = 0; e < getCommand().length - 1; e++) {
@@ -41,7 +41,7 @@ public class BurnableGenerator extends MaterialGenerator {
      */
     public Iterable<? extends Material> getMaterialList() {
     	ArrayList<Material> values = new ArrayList<Material>();
-    	for (Material matos : Material.values()) if (matos.isBurnable()) values.add(matos);
+    	for (Material matos : Material.values()) if (matos.isEdible()) values.add(matos);
     	
         return values;
     }
