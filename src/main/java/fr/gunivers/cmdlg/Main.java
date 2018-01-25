@@ -1,7 +1,7 @@
 package fr.gunivers.cmdlg;
 
 import fr.gunivers.cmdlg.api.BasicGenerator;
-import fr.gunivers.cmdlg.generators.IntGenerator;
+import fr.gunivers.cmdlg.generators.primitive.IntGenerator;
 import fr.gunivers.cmdlg.util.FXMLUtil;
 
 import javafx.application.Application;
@@ -38,7 +38,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        BasicGenerator generator = new IntGenerator(new String[]{"LES COMMAND ICI"}, 1, 2, 3);
+        BasicGenerator generator = new IntGenerator(new String[]{"LES COMMAND ICI"}, 1, 3, 2);
         generator.generate().forEach(System.out::println);
     }
 }
