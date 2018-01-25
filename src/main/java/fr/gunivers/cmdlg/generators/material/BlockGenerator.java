@@ -1,16 +1,16 @@
-package fr.gunivers.cmdlg.generators;
+package fr.gunivers.cmdlg.generators.material;
 
 import java.util.ArrayList;
 
 import fr.gunivers.cmdlg.util.GeneratorType;
 import fr.gunivers.cmdlg.util.Material;
 
-public class EdibleGenerator extends MaterialGenerator {
-	
-	private GeneratorType type = GeneratorType.EDIBLE;
-	
-	/**
-     * Generate Edible Material
+public class BlockGenerator extends MaterialGenerator {
+
+	private GeneratorType type = GeneratorType.BLOCK;
+
+    /**
+     * Generate Block Material
      *
      * @return ArrayList<String> commands
      */
@@ -19,7 +19,7 @@ public class EdibleGenerator extends MaterialGenerator {
         ArrayList<String> commands = new ArrayList<>();
 
         for (Material material : Material.values()) {
-        	if (material.isEdible()) {
+        	if (material.isBlock()) {
         		StringBuilder temp = new StringBuilder();
         		
         		for (int e = 0; e < getCommand().length - 1; e++) {
@@ -41,7 +41,7 @@ public class EdibleGenerator extends MaterialGenerator {
      */
     public Iterable<? extends Material> getMaterialList() {
     	ArrayList<Material> values = new ArrayList<Material>();
-    	for (Material matos : Material.values()) if (matos.isEdible()) values.add(matos);
+    	for (Material matos : Material.values()) if (matos.isBlock()) values.add(matos);
     	
         return values;
     }

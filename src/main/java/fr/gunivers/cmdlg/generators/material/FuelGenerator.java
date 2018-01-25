@@ -1,4 +1,4 @@
-package fr.gunivers.cmdlg.generators;
+package fr.gunivers.cmdlg.generators.material;
 
 import java.util.ArrayList;
 
