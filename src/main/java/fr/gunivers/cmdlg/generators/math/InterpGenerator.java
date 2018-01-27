@@ -48,7 +48,7 @@ public class InterpGenerator extends PrimitiveGenerator {
 	 *@return la valeur a alpha% de l'intervalle [start; end]
 	 */
 	public static double linearInterp(double start, double end, double alpha) {
-		return end*alpha + start;
+		return (end-start)*alpha + start;
 	}
 	
 	/**

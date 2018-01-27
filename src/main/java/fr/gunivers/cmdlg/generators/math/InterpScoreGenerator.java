@@ -1,4 +1,4 @@
-package fr.gunivers.cmdlg.generators.primitive;
+package fr.gunivers.cmdlg.generators.math;
 
 import fr.gunivers.cmdlg.api.PrimitiveGenerator;
 import fr.gunivers.cmdlg.util.GeneratorType;
@@ -6,6 +6,13 @@ import java.util.ArrayList;
 
 public class InterpScoreGenerator extends PrimitiveGenerator {
 
+	private GeneratorType type = GeneratorType.INTERPSCORE;
+	
+	/**Constructor
+	 * 
+	 * @param command: the command to generate
+	 * @param args: arguments for this generator
+	 */
     public InterpScoreGenerator(String[] command, Object... args) {
         super(command, args);
     }
@@ -41,7 +48,7 @@ public class InterpScoreGenerator extends PrimitiveGenerator {
 	*@return la valeur a alpha% de l'intervalle [debut; fin]
 	*/
 	public static double linearInterp(double debut, double fin, double alpha) {
-		return fin*alpha + debut;
+		return (fin-debut)*alpha + debut;
 	}
 	
 	/**
@@ -75,7 +82,7 @@ public class InterpScoreGenerator extends PrimitiveGenerator {
 
     @Override
     public GeneratorType getType() {
-        return GeneratorType.DOUBLE;
+        return type;
     }
     
 }

@@ -34,6 +34,7 @@ public enum GeneratorType {
     
     //MATHEMATICS GENERATORS
     INTERP,
+    INTERPSCORE,
     DICHOTOMIE;
 
     /**
@@ -78,7 +79,7 @@ public enum GeneratorType {
      * @return boolean if this is a mathematics generator
      */
     public boolean isMathematicGenerator() {
-        if (this == INTERP || this == DICHOTOMIE) return true;
+        if (this == INTERP || this == INTERPSCORE || this == DICHOTOMIE) return true;
 
         return false;
     }
