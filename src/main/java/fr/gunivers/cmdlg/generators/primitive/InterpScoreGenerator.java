@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class InterpScoreGenerator extends PrimitiveGenerator {
 
-    public InterpScoreGenerator(String[] command, double... args) {
+    public InterpScoreGenerator(String[] command, Object... args) {
         super(command, args);
     }
 

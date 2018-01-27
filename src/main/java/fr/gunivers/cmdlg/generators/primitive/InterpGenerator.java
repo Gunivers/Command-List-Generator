@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class InterpGenerator extends PrimitiveGenerator {
 
-    public InterpGenerator(String[] command, double... args) {
+    public InterpGenerator(String[] command, Object... args) {
         super(command, args);
     }
 
