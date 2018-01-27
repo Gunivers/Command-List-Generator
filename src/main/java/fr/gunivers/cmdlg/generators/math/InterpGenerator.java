@@ -40,19 +40,19 @@ public class InterpGenerator extends PrimitiveGenerator {
         return commands;
     }
     					
-	/**Return the value of alpha % of interval [start; end]
+	/**Return value a alpha % of interval [start; end]
 	 * 
 	 *@param start: start of interval
 	 *@param end: end of interval
 	 *@param alpha: percentage (0 to 1)
-	 *@return la valeur a alpha% de l'intervalle [start; end]
+	 *@return value alpha% of interval [start; end]
 	 */
 	public static double linearInterp(double start, double end, double alpha) {
 		return (end-start)*alpha + start;
 	}
 	
 	/**
-	 * Calcule alpha et renvoie la valeur a (alpha^power)% ou 1-(1-alpha)^power% de l'intervalle [start; end]
+	 * Calculate a alpha and return it (alpha^power)% or 1-(1-alpha)^power% of interval [start; end]
 	 * 
 	 *@param start: start of interval
 	 *@param end: end of interval

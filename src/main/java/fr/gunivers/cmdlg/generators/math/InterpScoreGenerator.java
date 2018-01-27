@@ -22,62 +22,62 @@ public class InterpScoreGenerator extends PrimitiveGenerator {
     	
     	ArrayList<String> commands = new ArrayList<>();
 
-		int debut = (int) getArgs()[0];
-		int fin = (int) getArgs()[1];
-		double puissance = (double) getArgs()[2];  
-		boolean invert = (boolean) getArgs()[3];
+		int start = (int) getArgs()[0];
+		int end = (int) getArgs()[1];
+		double power = (double) getArgs()[2];  
+		boolean revert = (boolean) getArgs()[3];
 		String objective = (String) getArgs()[4];
-		int nbreCommandes = (int) getArgs()[5];
+		int nbCommands = (int) getArgs()[5];
 		
-		for(int i = 0; i < nbreCommandes; i++)
+		for(int i = 0; i < nbCommands; i++)
 			commands.add( new String( 
 					"score_" + objective + "_min="
-				+	(String.valueOf(Math.round(interp(debut, fin, nbreCommandes+1, i, puissance, invert)) + ((i == 0) ? 0 : 1)))
+				+	(String.valueOf(Math.round(interp(start, end, nbCommands+1, i, power, revert)) + ((i == 0) ? 0 : 1)))
 				+	",score_" + objective + "="
-				+	(String.valueOf(Math.round(interp(debut, fin, nbreCommandes+1, i+1, puissance, invert))))
+				+	(String.valueOf(Math.round(interp(start, end, nbCommands+1, i+1, power, revert))))
 					) );
         
         return commands;
     }
 
 	/**
-	* Renvoie la valeur a alpha% de l'intervalle [debut; fin]
-	*@param debut: le debut de l'intervale
-	*@param fin: la fin de l'intervale
-	*@param alpha: le pourcentage (0 a 1)
-	*@return la valeur a alpha% de l'intervalle [debut; fin]
+	* Return value a alpha% of interval [start; end]
+	*@param start: start of interval
+	*@param end: end interval
+	*@param alpha: percentage (0 a 1)
+	*@return value a alpha% of interval [start; end]
 	*/
-	public static double linearInterp(double debut, double fin, double alpha) {
-		return (fin-debut)*alpha + debut;
+	public static double linearInterp(double start, double end, double alpha) {
+		return (end-start)*alpha + start;
 	}
 	
 	/**
-	* Calcule alpha et renvoie la valeur a (alpha^puissance)% ou 1-(1-alpha)^puissance% de l'intervalle [debut; fin]
-	*@param debut: le debut de l'intervale
-	*@param fin: la fin de l'intervale
-	*@param nbreCommandes: le nombre de commandes a generer
-	*@param nbreCommandes: le numero de la commande a generer
-	*@param puissance: la courbure de la montee des valeurs
-	*@param invert: inversion de la progression de la pente (rapide puis lente ou lente puis rapide)
-	*@return la valeur
+	* Calculate a alpha and return value a (alpha^power)% or 1-(1-alpha)^power% of interval [start; end]
+	*@param start:start de l'intervale
+	*@param end:end de l'intervale
+	*@param nbCommands:nombre de commands to generate
+	*@param nbCommands:numero of command to generate
+	*@param power: curve of rising values
+	*@param revert: reversion of the curve rise (fast then slow or slow then fast)
+	*@return value
 	*/
-	public static double interp(double debut, double fin, int nbreCommandes, int numeroCommande, double puissance, boolean invert) {
+	public static double interp(double start, double end, int nbCommands, int commandRange, double power, boolean revert) {
 		
 		double alpha;
-		if(nbreCommandes > 1)
-			alpha = (double) numeroCommande/ (double) (nbreCommandes-1);	
+		if(nbCommands > 1)
+			alpha = (double) commandRange/ (double) (nbCommands-1);	
 		else 
 			alpha = 0.5;
 		
-		if(invert)
+		if(revert)
 			alpha = 1-alpha;
 		
-		alpha = Math.pow(alpha, puissance);
+		alpha = Math.pow(alpha, power);
 		
-		if(invert)
+		if(revert)
 			alpha = 1-alpha;
 		
-		return linearInterp(debut, fin, alpha);
+		return linearInterp(start, end, alpha);
 	}
 
     @Override
