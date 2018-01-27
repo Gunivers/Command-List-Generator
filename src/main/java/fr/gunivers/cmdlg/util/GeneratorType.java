@@ -3,7 +3,7 @@ package fr.gunivers.cmdlg.util;
 public enum GeneratorType {
 
 	//PRIMITIVES GENERATORS
-    INT,
+    INT("Integer"),
     LONG,
     FLOAT,
     DOUBLE,
@@ -36,6 +36,23 @@ public enum GeneratorType {
     INTERP,
     INTERPSCORE,
     DICHOTOMIE;
+
+    private String name = "";
+
+    /**
+     *
+     * @param name This is the name of Generator type.
+     */
+    GeneratorType(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return The name of Type.
+     */
+    public String getName() {
+        return name;
+    }
 
     /**
      * Test the primitive type of a generator
