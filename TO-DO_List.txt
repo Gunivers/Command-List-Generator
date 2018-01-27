@@ -1,9 +1,7 @@
 TO-DO:
 	Specific to users:
-		@KubbyDev: Finir la classe InterpGenerator() -> update sa JavaDoc
 		@Oromis: Finir la classe DichotomieGenerator() -> update sa JavaDoc
 		@AZ-0: Finir les MaterialID
 		
 	Other:
-
-	
+		
