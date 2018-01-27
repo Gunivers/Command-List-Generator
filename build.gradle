@@ -11,6 +11,10 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
+    flatDir {
+        dirs 'libs'
+    }
+
     mavenLocal()
     mavenCentral()
 }
@@ -18,16 +22,8 @@ repositories {
 apply plugin: 'javafx-gradle-plugin'
 
 dependencies {
-    compile group: 'com.google.guava', name: 'guava', version: '23.6-jre'
-    runtime group: 'com.google.guava', name: 'guava', version: '23.6-jre'
-
-    //Google GSON (JSON) API
-    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
-    runtime group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
-
     //graphics API
-    compile group: 'com.jfoenix', name: 'jfoenix', version: '8.0.1'
-    runtime group: 'com.jfoenix', name: 'jfoenix', version: '8.0.1'
+    compile name: 'jfoenix-8.0.1'
 
     testCompile group: 'junit', name: 'junit', version: '4.10'
 }

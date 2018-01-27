@@ -1,8 +1,7 @@
 package fr.gunivers.cmdlg.util;
 
-import com.google.common.collect.Maps;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -478,7 +477,7 @@ public enum Material {
 
     private final int id;
     private static Material[] byId = new Material[383];
-    private final static Map<String, Material> BY_NAME = Maps.newHashMap();
+    private final static Map<String, Material> BY_NAME = new HashMap<>();
     private final int maxStack;
     private final short durability;
 
