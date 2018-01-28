@@ -1,13 +1,18 @@
 package fr.gunivers.cmdlg.util;
 
 import fr.gunivers.cmdlg.api.BasicGenerator;
+
 import fr.gunivers.cmdlg.generators.material.*;
+import fr.gunivers.cmdlg.generators.materialID.*;
+
 import fr.gunivers.cmdlg.generators.math.InterpGenerator;
 import fr.gunivers.cmdlg.generators.math.InterpScoreGenerator;
+
 import fr.gunivers.cmdlg.generators.primitive.DoubleGenerator;
 import fr.gunivers.cmdlg.generators.primitive.FloatGenerator;
 import fr.gunivers.cmdlg.generators.primitive.IntGenerator;
 import fr.gunivers.cmdlg.generators.primitive.LongGenerator;
+
 
 public enum GeneratorType {
 
@@ -30,16 +35,16 @@ public enum GeneratorType {
     TRANSPARENT("Transparent", TransparentGenerator.class),
     
     //MATERIAL ID GENERATORS
-    MATERIAL_ID("Material ID", MaterialGenerator.class),
-    BLOCK_ID("Block ID", MaterialGenerator.class),
-    BURNABLE_ID("Burnable ID", MaterialGenerator.class),
-    EDIBLE_ID("Edible ID", MaterialGenerator.class),
-    FLAMMABLE_ID("Flammable ID", MaterialGenerator.class),
-    FUEL_ID("Fuel ID", MaterialGenerator.class),
-    OCCLUDING_ID("Occluding ID", MaterialGenerator.class),
-    RECORD_ID("Record ID", MaterialGenerator.class),
-    SOLID_ID("Solid ID", MaterialGenerator.class),
-    TRANSPARENT_ID("Transparent ID", MaterialGenerator.class),
+    MATERIAL_ID("Material ID", IDMaterialGenerator.class),
+    BLOCK_ID("Block ID", IDBlockGenerator.class),
+    BURNABLE_ID("Burnable ID", IDBurnableGenerator.class),
+    EDIBLE_ID("Edible ID", IDEdibleGenerator.class),
+    FLAMMABLE_ID("Flammable ID", IDFlammableGenerator.class),
+    FUEL_ID("Fuel ID", IDFuelGenerator.class),
+    OCCLUDING_ID("Occluding ID", IDOccludingGenerator.class),
+    RECORD_ID("Record ID", IDRecordGenerator.class),
+    SOLID_ID("Solid ID", IDSolidGenerator.class),
+    TRANSPARENT_ID("Transparent ID", IDTransparentGenerator.class),
     
     //MATHEMATICS GENERATORS
     INTERP("Interp", InterpGenerator.class),
