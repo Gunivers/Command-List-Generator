@@ -22,7 +22,7 @@
 
 .jfx-decorator .resize-border {
     -fx-border-color: -fx-decorator-color;
-    -fx-border-width: 0 4 4 4;
+    -fx-border-width: 0 5 5 5;
 }
 
 .jfx-decorator .jfx-decorator-title-container .jfx-decorator-text {
@@ -36,12 +36,10 @@
     -fx-background-color: WHITE;
 }
 
-/*******************************************************************************
-*                                                                              *
-* Text Area                                                                    *
-*                                                                              *
-*******************************************************************************/
+.jfx-snackbar-content {
+    -fx-background-color: #212121
+}
 
-.text-area .content{
-  -fx-background-color: #3a3a3a;
+.jfx-snackbar-toast {
+    -fx-text-fill: WHITE
 }

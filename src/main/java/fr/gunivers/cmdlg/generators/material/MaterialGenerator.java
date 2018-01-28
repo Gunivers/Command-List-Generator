@@ -2,6 +2,7 @@ package fr.gunivers.cmdlg.generators.material;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 import fr.gunivers.cmdlg.api.BasicGenerator;
 import fr.gunivers.cmdlg.util.GeneratorType;
@@ -21,7 +22,7 @@ public class MaterialGenerator extends BasicGenerator {
      * @return ArrayList<String> commands
      */
     @Override
-    public Iterable<? extends String> generate() {
+    public Iterator<String> generate() {
         ArrayList<String> commands = new ArrayList<>();
 
         for (Material material : Material.values()) {
@@ -36,7 +37,7 @@ public class MaterialGenerator extends BasicGenerator {
             commands.add(temp.toString());
         }
 
-        return commands;
+        return commands.iterator();
     }
 
     /**

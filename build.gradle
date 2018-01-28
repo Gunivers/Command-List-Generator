@@ -10,6 +10,11 @@ apply plugin: 'java'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+configurations {
+    // configuration that holds jars to include in the jar
+    extraLibs
+}
+
 repositories {
     flatDir {
         dirs 'libs'
@@ -24,7 +29,7 @@ apply plugin: 'javafx-gradle-plugin'
 dependencies {
     //graphics API
     compile name: 'jfoenix-8.0.1'
-
+    extraLibs name: 'jfoenix-8.0.1'
     testCompile group: 'junit', name: 'junit', version: '4.10'
 }
 
@@ -36,6 +41,9 @@ jar {
                         'Main-Class': 'fr.gunivers.cmdlg.Main')
             }
         }
+    }
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 

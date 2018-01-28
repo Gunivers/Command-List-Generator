@@ -2,6 +2,8 @@ package fr.gunivers.cmdlg.api;
 
 import fr.gunivers.cmdlg.util.GeneratorType;
 
+import java.util.Iterator;
+
 public abstract class BasicGenerator {
 
     private String[] command;
@@ -10,7 +12,7 @@ public abstract class BasicGenerator {
      * 
      * @param command to generate
      */
-    public BasicGenerator(String... command) {
+    protected BasicGenerator(String... command) {
         this.command = command;
     }
 
@@ -18,7 +20,7 @@ public abstract class BasicGenerator {
      * 
      * @return the generated command
      */
-    public abstract Iterable<? extends String> generate();
+    public abstract Iterator<String> generate();
 
     
     /**Get the registered command

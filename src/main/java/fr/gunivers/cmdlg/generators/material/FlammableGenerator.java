@@ -1,6 +1,7 @@
 package fr.gunivers.cmdlg.generators.material;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import fr.gunivers.cmdlg.util.GeneratorType;
 import fr.gunivers.cmdlg.util.Material;
@@ -15,7 +16,7 @@ public class FlammableGenerator extends MaterialGenerator {
      * @return ArrayList<String> commands
      */
     @Override
-    public Iterable<? extends String> generate() {
+    public Iterator<String> generate() {
         ArrayList<String> commands = new ArrayList<>();
 
         for (Material material : Material.values()) {
@@ -31,7 +32,7 @@ public class FlammableGenerator extends MaterialGenerator {
         		commands.add(temp.toString());
         	}
         }
-        return commands;
+        return commands.iterator();
     }
 
     /**

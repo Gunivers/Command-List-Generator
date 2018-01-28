@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 
@@ -43,14 +44,26 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(Util.getFXMLURL("Main"));
             loader.setController(new MainController());
             StackPane pane = loader.load();
-            JFXDecorator decorator = new JFXDecorator(stage, pane, false, true, true);
-            decorator.setCustomMaximize(true);
+            JFXDecorator decorator = new JFXDecorator(stage, pane, false, false, true);
+            //decorator.setCustomMaximize(true);
             decorator.setText("Command list generator");
-            Scene scene = new Scene(decorator, 800, 850);
+
+            Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+
+            double width = 800;
+            double height = 850;
+
+            if (screen.getHeight() < 850) {
+                height = screen.getHeight() - 50;
+            }
+
+
+            Scene scene = new Scene(decorator, width, height);
             scene.getStylesheets().addAll(Main.class.getResource("/css/Main.css").toExternalForm());
             stage.setScene(scene);
             stage.setMinHeight(850);
             stage.setMinWidth(800);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

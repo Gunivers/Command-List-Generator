@@ -1,45 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <StackPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXButton fx:id="generate" buttonType="RAISED" onAction="#generateAction" prefHeight="58.0" prefWidth="182.0" style="-fx-background-color: #00a8d6;" text="Generate" textFill="WHITE" StackPane.alignment="CENTER_RIGHT">
+      <JFXButton fx:id="generate" buttonType="RAISED" onAction="#generateAction" prefHeight="58.0" prefWidth="182.0" ripplerFill="#8ae8ff" style="-fx-background-color: #00a8d6;" text="Generate" textFill="WHITE" StackPane.alignment="CENTER_RIGHT">
          <StackPane.margin>
-            <Insets bottom="1.0" left="500.0" right="65.0" top="350.0" />
+            <Insets right="70.0" top="350.0" />
          </StackPane.margin>
       </JFXButton>
-      <JFXListView fx:id="listView" minHeight="-Infinity" minWidth="-Infinity" onMouseReleased="#onMouseReleasedListView" StackPane.alignment="TOP_RIGHT">
+      <JFXListView fx:id="listView" minHeight="-Infinity" minWidth="-Infinity" onMouseReleased="#onMouseReleasedListView">
          <StackPane.margin>
             <Insets bottom="300.0" left="500.0" right="15.0" top="40.0" />
          </StackPane.margin>
       </JFXListView>
-      <Label text="Generator Type" StackPane.alignment="TOP_RIGHT">
+      <Label text="Generator Type" StackPane.alignment="TOP_CENTER">
          <StackPane.margin>
-            <Insets left="500.0" right="115.0" top="15.0" />
+            <Insets left="590.0" right="115.0" top="15.0" />
          </StackPane.margin>
       </Label>
-      <TextArea fx:id="output" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Output" style="-fx-background-color: #00a8d6;" StackPane.alignment="CENTER">
+      <TextArea fx:id="output" editable="false" onMouseReleased="#copyAllCommand" promptText="Output" style="-fx-background-color: #00a8d6;" StackPane.alignment="CENTER">
          <StackPane.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="650.0" />
          </StackPane.margin>
       </TextArea>
-      <JFXTextField fx:id="command" focusColor="#00a8d6" labelFloat="true" promptText="Insert your command here." StackPane.alignment="TOP_LEFT">
+      <JFXTextField fx:id="command" focusColor="#00a8d6" labelFloat="true" promptText="Insert your command here." StackPane.alignment="TOP_CENTER">
          <StackPane.margin>
-            <Insets bottom="15.0" left="15.0" right="350.0" top="25.0" />
+            <Insets left="15.0" right="350.0" top="25.0" />
          </StackPane.margin>
       </JFXTextField>
-      <StackPane id="basic" prefHeight="550.0" prefWidth="435.0" StackPane.alignment="CENTER_LEFT">
+      <JFXListView fx:id="listFilter" StackPane.alignment="CENTER">
          <StackPane.margin>
-            <Insets bottom="225.0" left="15.0" right="350.0" top="75.0" />
+            <Insets bottom="300.0" left="15.0" right="350.0" top="75.0" />
          </StackPane.margin>
-         <children>
-            <Label contentDisplay="CENTER" graphicTextGap="5.0" prefHeight="146.0" prefWidth="105.0" style="-fx-background-color: blue;" text="Basic Option" textFill="WHITE" wrapText="true" />
-         </children>
-      </StackPane>
+      </JFXListView>
+      <JFXButton fx:id="buttonAddFilter" buttonType="RAISED" onAction="#addFilter" style="-fx-background-color: #00a8d6;" text="Add filter" textFill="WHITE" StackPane.alignment="CENTER">
+         <StackPane.margin>
+            <Insets right="10.0" top="325.0" />
+         </StackPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="buttonRemoveFilter" buttonType="RAISED" onAction="#removeFilter" style="-fx-background-color: #00a8d6;" text="Remove filter" textFill="WHITE" StackPane.alignment="CENTER">
+         <StackPane.margin>
+            <Insets right="620.0" top="325.0" />
+         </StackPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="buttonEditFilter" buttonType="RAISED" onAction="#editFilter" style="-fx-background-color: #00a8d6;" text="Edit filter" textFill="WHITE" StackPane.alignment="CENTER">
+         <StackPane.margin>
+            <Insets right="310.0" top="325.0" />
+         </StackPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </JFXButton>
    </children>
 </StackPane>
