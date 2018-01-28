@@ -7,16 +7,16 @@ import fr.gunivers.cmdlg.util.GeneratorType;
 import fr.gunivers.cmdlg.util.Material;
 
 @SuppressWarnings({"deprecation","unused"})
-public class IDBlockGenerator extends IDMaterialGenerator {
+public class IDBurnableGenerator extends IDMaterialGenerator {
 
     private GeneratorType type = GeneratorType.MATERIAL_ID;
 
-    public IDBlockGenerator(String... commands) {
+    public IDBurnableGenerator(String... commands) {
         super(commands);
     }
 
     /**
-     * Generate Blocks ID
+     * Generate Burnables ID
      *
      * @return ArrayList<String> commands
      */
@@ -26,7 +26,7 @@ public class IDBlockGenerator extends IDMaterialGenerator {
 
         for (Material material : Material.values()) {
         	
-            if (material.isBlock()) {
+            if (material.isBurnable()) {
             	StringBuilder temp = new StringBuilder();
             	
             	for (int e = 0; e < getCommand().length - 1; e++) {
@@ -43,14 +43,14 @@ public class IDBlockGenerator extends IDMaterialGenerator {
     }
 
     /**
-     * Get the Blocks ID to be generated
+     * Get the Burnables ID to be generated
      *
      * @return ArrayList<Material> material ID List
      */
     public Iterable<? extends Integer> getIDList() {
     	ArrayList<Integer> matos = new ArrayList<Integer>();
     	
-    	for (Material material : Material.values()) if (material.isBlock()) matos.add(material.getId());
+    	for (Material material : Material.values()) if (material.isBurnable()) matos.add(material.getId());
     	
         return matos;
     }
