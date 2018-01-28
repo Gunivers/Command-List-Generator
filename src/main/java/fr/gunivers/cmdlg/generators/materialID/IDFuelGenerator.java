@@ -6,7 +6,7 @@ import java.util.Iterator;
 import fr.gunivers.cmdlg.util.GeneratorType;
 import fr.gunivers.cmdlg.util.Material;
 
-@SuppressWarnings({"deprecation","unused"})
+
 public class IDFuelGenerator extends IDMaterialGenerator {
 
     private GeneratorType type = GeneratorType.MATERIAL_ID;

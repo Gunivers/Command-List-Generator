@@ -7,7 +7,7 @@ import fr.gunivers.cmdlg.api.BasicGenerator;
 import fr.gunivers.cmdlg.util.GeneratorType;
 import fr.gunivers.cmdlg.util.Material;
 
-@SuppressWarnings("deprecation")
+
 public class IDMaterialGenerator extends BasicGenerator {
 
     private GeneratorType type = GeneratorType.MATERIAL_ID;
