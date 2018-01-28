@@ -4,6 +4,7 @@ import fr.gunivers.cmdlg.api.PrimitiveGenerator;
 import fr.gunivers.cmdlg.util.GeneratorType;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class InterpGenerator extends PrimitiveGenerator {
 
@@ -23,7 +24,7 @@ public class InterpGenerator extends PrimitiveGenerator {
      * @return ArrayList<String> commands list
      */
     @Override
-    public Iterable<? extends String> generate() {
+    public Iterator<String> generate() {
     	
         ArrayList<String> commands = new ArrayList<>();
 
@@ -37,7 +38,7 @@ public class InterpGenerator extends PrimitiveGenerator {
 		for(int i = 0; i < nbCommands; i++)
 			commands.add(String.valueOf(round(interp(start, end, nbCommands, i, power, revert), nbreDecimales)));
         
-        return commands;
+        return commands.iterator();
     }
     					
 	/**Return value a alpha % of interval [start; end]

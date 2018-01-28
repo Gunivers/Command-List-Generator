@@ -1,41 +1,77 @@
 package fr.gunivers.cmdlg.util;
 
+import fr.gunivers.cmdlg.api.BasicGenerator;
+import fr.gunivers.cmdlg.generators.material.*;
+import fr.gunivers.cmdlg.generators.math.InterpGenerator;
+import fr.gunivers.cmdlg.generators.math.InterpScoreGenerator;
+import fr.gunivers.cmdlg.generators.primitive.DoubleGenerator;
+import fr.gunivers.cmdlg.generators.primitive.FloatGenerator;
+import fr.gunivers.cmdlg.generators.primitive.IntGenerator;
+import fr.gunivers.cmdlg.generators.primitive.LongGenerator;
+
 public enum GeneratorType {
 
 	//PRIMITIVES GENERATORS
-    INT,
-    LONG,
-    FLOAT,
-    DOUBLE,
+    INT("Integer", IntGenerator.class),
+    LONG("Long", LongGenerator.class),
+    FLOAT("Float", FloatGenerator.class),
+    DOUBLE("Double", DoubleGenerator.class),
     
     //MATERIAL GENERATORS
-    MATERIAL,
-    BLOCK,
-    BURNABLE,
-    EDIBLE,
-    FLAMMABLE,
-    FUEL,
-    OCCLUDING,
-    RECORD,
-    SOLID,
-    TRANSPARENT,
+    MATERIAL("Material", MaterialGenerator.class),
+    BLOCK("Block", BlockGenerator.class),
+    BURNABLE("Burnable", BurnableGenerator.class),
+    EDIBLE("Edible", EdibleGenerator.class),
+    FLAMMABLE("Flammable", FlammableGenerator.class),
+    FUEL("Fuel", FuelGenerator.class),
+    OCCLUDING("Occluding", OccludingGenerator.class),
+    RECORD("Record", RecordGenerator.class),
+    SOLID("Solid", SolidGenerator.class),
+    TRANSPARENT("Transparent", TransparentGenerator.class),
     
     //MATERIAL ID GENERATORS
-    MATERIAL_ID,
-    BLOCK_ID,
-    BURNABLE_ID,
-    EDIBLE_ID,
-    FLAMMABLE_ID,
-    FUEL_ID,
-    OCCLUDING_ID,
-    RECORD_ID,
-    SOLID_ID,
-    TRANSPARENT_ID,
+    MATERIAL_ID("Material ID", MaterialGenerator.class),
+    BLOCK_ID("Block ID", MaterialGenerator.class),
+    BURNABLE_ID("Burnable ID", MaterialGenerator.class),
+    EDIBLE_ID("Edible ID", MaterialGenerator.class),
+    FLAMMABLE_ID("Flammable ID", MaterialGenerator.class),
+    FUEL_ID("Fuel ID", MaterialGenerator.class),
+    OCCLUDING_ID("Occluding ID", MaterialGenerator.class),
+    RECORD_ID("Record ID", MaterialGenerator.class),
+    SOLID_ID("Solid ID", MaterialGenerator.class),
+    TRANSPARENT_ID("Transparent ID", MaterialGenerator.class),
     
     //MATHEMATICS GENERATORS
-    INTERP,
-    INTERPSCORE,
-    DICHOTOMIE;
+    INTERP("Interp", InterpGenerator.class),
+    INTERPSCORE("Interpscore", InterpScoreGenerator.class),
+    DICHOTOMIE("Dichotomie", null);
+
+    private String name;
+    private Class<? extends BasicGenerator> clazz;
+
+    /**
+     *
+     * @param name This is the name of Generator type.
+     */
+    GeneratorType(String name, Class<? extends BasicGenerator> clazz) {
+        this.clazz = clazz;
+        this.name = name;
+    }
+
+    /**
+     * @return The name of Type.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     *
+     * @return To the class of Type.
+     */
+    public Class<? extends BasicGenerator> getClazz() {
+        return clazz;
+    }
 
     /**
      * Test the primitive type of a generator

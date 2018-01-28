@@ -4,6 +4,7 @@ import fr.gunivers.cmdlg.api.PrimitiveGenerator;
 import fr.gunivers.cmdlg.util.GeneratorType;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class DoubleGenerator extends PrimitiveGenerator {
 
@@ -12,7 +13,7 @@ public class DoubleGenerator extends PrimitiveGenerator {
     }
 
     @Override
-    public Iterable<? extends String> generate() {
+    public Iterator<String> generate() {
         ArrayList<String> commands = new ArrayList<>();
 
         double start = (double) getArgs()[0];
@@ -30,7 +31,7 @@ public class DoubleGenerator extends PrimitiveGenerator {
 
             commands.add(temp.toString());
         }
-        return commands;
+        return commands.iterator();
     }
 
     @Override

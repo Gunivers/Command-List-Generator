@@ -1,21 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #f7f7f7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXTextField labelFloat="true" layoutX="14.0" layoutY="30.0" prefHeight="31.0" prefWidth="354.0" promptText="Insert you command." style="-fx-background-color: WHITE;" unFocusColor="#d31313" />
-      <JFXButton buttonType="RAISED" layoutX="495.0" layoutY="30.0" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: WHITE;" text="Generer" />
-      <JFXTextArea editable="false" layoutX="15.0" layoutY="213.0" prefHeight="253.0" prefWidth="598.0" promptText="Output Command" style="-fx-background-color: WHITE;" />
-      <Pane layoutX="14.0" layoutY="74.0" prefHeight="128.0" prefWidth="354.0" style="-fx-background-color: WHITE;">
-         <children>
-            <JFXColorPicker layoutX="14.0" layoutY="14.0" promptText="Option Color" />
-            <JFXCheckBox layoutX="139.0" layoutY="18.0" text="Option" />
-            <JFXRadioButton layoutX="125.0" layoutY="68.0" text="Option" />
-         </children>
-      </Pane>
-      <JFXTabPane layoutX="377.0" layoutY="74.0" prefHeight="128.0" prefWidth="235.0" style="-fx-background-color: WHITE;" />
+      <JFXButton fx:id="generate" buttonType="RAISED" onAction="#generateAction" prefHeight="58.0" prefWidth="182.0" ripplerFill="#8ae8ff" style="-fx-background-color: #00a8d6;" text="Generate" textFill="WHITE" StackPane.alignment="CENTER_RIGHT">
+         <StackPane.margin>
+            <Insets right="70.0" top="350.0" />
+         </StackPane.margin>
+      </JFXButton>
+      <JFXListView fx:id="listView" minHeight="-Infinity" minWidth="-Infinity" onMouseReleased="#onMouseReleasedListView">
+         <StackPane.margin>
+            <Insets bottom="300.0" left="500.0" right="15.0" top="40.0" />
+         </StackPane.margin>
+      </JFXListView>
+      <Label text="Generator Type" StackPane.alignment="TOP_CENTER">
+         <StackPane.margin>
+            <Insets left="590.0" right="115.0" top="15.0" />
+         </StackPane.margin>
+      </Label>
+      <TextArea fx:id="output" editable="false" onMouseReleased="#copyAllCommand" promptText="Output" style="-fx-background-color: #00a8d6;" StackPane.alignment="CENTER">
+         <StackPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="650.0" />
+         </StackPane.margin>
+      </TextArea>
+      <JFXTextField fx:id="command" focusColor="#00a8d6" labelFloat="true" promptText="Insert your command here." StackPane.alignment="TOP_CENTER">
+         <StackPane.margin>
+            <Insets left="15.0" right="350.0" top="25.0" />
+         </StackPane.margin>
+      </JFXTextField>
+      <JFXListView fx:id="listFilter" StackPane.alignment="CENTER">
+         <StackPane.margin>
+            <Insets bottom="300.0" left="15.0" right="350.0" top="75.0" />
+         </StackPane.margin>
+      </JFXListView>
+      <JFXButton fx:id="buttonAddFilter" buttonType="RAISED" onAction="#addFilter" style="-fx-background-color: #00a8d6;" text="Add filter" textFill="WHITE" StackPane.alignment="CENTER">
+         <StackPane.margin>
+            <Insets right="10.0" top="325.0" />
+         </StackPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="buttonRemoveFilter" buttonType="RAISED" onAction="#removeFilter" style="-fx-background-color: #00a8d6;" text="Remove filter" textFill="WHITE" StackPane.alignment="CENTER">
+         <StackPane.margin>
+            <Insets right="620.0" top="325.0" />
+         </StackPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="buttonEditFilter" buttonType="RAISED" onAction="#editFilter" style="-fx-background-color: #00a8d6;" text="Edit filter" textFill="WHITE" StackPane.alignment="CENTER">
+         <StackPane.margin>
+            <Insets right="310.0" top="325.0" />
+         </StackPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </JFXButton>
    </children>
-</AnchorPane>
+</StackPane>

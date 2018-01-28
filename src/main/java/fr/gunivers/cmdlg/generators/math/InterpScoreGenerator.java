@@ -3,6 +3,7 @@ package fr.gunivers.cmdlg.generators.math;
 import fr.gunivers.cmdlg.api.PrimitiveGenerator;
 import fr.gunivers.cmdlg.util.GeneratorType;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class InterpScoreGenerator extends PrimitiveGenerator {
 
@@ -18,7 +19,7 @@ public class InterpScoreGenerator extends PrimitiveGenerator {
     }
 
     @Override
-    public Iterable<? extends String> generate() {
+    public Iterator<String> generate() {
     	
     	ArrayList<String> commands = new ArrayList<>();
 
@@ -30,14 +31,12 @@ public class InterpScoreGenerator extends PrimitiveGenerator {
 		int nbCommands = (int) getArgs()[5];
 		
 		for(int i = 0; i < nbCommands; i++)
-			commands.add( new String( 
-					"score_" + objective + "_min="
-				+	(String.valueOf(Math.round(interp(start, end, nbCommands+1, i, power, revert)) + ((i == 0) ? 0 : 1)))
-				+	",score_" + objective + "="
-				+	(String.valueOf(Math.round(interp(start, end, nbCommands+1, i+1, power, revert))))
-					) );
+			commands.add("score_" + objective + "_min="
+					+ (String.valueOf(Math.round(interp(start, end, nbCommands + 1, i, power, revert)) + ((i == 0) ? 0 : 1)))
+					+ ",score_" + objective + "="
+					+ (String.valueOf(Math.round(interp(start, end, nbCommands + 1, i + 1, power, revert)))));
         
-        return commands;
+        return commands.iterator();
     }
 
 	/**

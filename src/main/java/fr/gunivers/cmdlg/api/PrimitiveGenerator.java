@@ -6,7 +6,7 @@ public abstract class PrimitiveGenerator extends BasicGenerator {
 
     private Object[] args;
 
-    public PrimitiveGenerator(String[] command, Object... args) {
+    protected PrimitiveGenerator(String[] command, Object... args) {
         super(command);
 
         if (args.length <= 0)
