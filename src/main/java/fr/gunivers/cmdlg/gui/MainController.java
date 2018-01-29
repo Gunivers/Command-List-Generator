@@ -196,7 +196,7 @@ public class MainController implements Initializable {
 
     @FXML
     public void generateAction(ActionEvent event) {
-        getFilter();
+
         if (command.getText().isEmpty() || command.getText() == null) {
             JFXDialogLayout content = new JFXDialogLayout();
             content.setHeading(new Text("Error: Incorrect command"));
