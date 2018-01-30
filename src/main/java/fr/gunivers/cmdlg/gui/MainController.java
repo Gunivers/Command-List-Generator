@@ -187,7 +187,9 @@ public class MainController implements Initializable {
 
     @FXML
     public void copyAllCommand(MouseEvent event) {
+    	
         if (output.getText() != null && !output.getText().isEmpty()) {
+        	
             Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
             clpbrd.setContents(new StringSelection(output.getText()), null);
             snackbar.show("All command has been copied.", 4 * 1000);
@@ -197,7 +199,7 @@ public class MainController implements Initializable {
     @FXML
     public void generateAction(ActionEvent event) {
 
-        if (command.getText().isEmpty() || command.getText() == null) {
+        if (command.getText() == null || command.getText().isEmpty()) {
             JFXDialogLayout content = new JFXDialogLayout();
             content.setHeading(new Text("Error: Incorrect command"));
             content.setBody(new Text("Please set the command"));
