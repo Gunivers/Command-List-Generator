@@ -29,6 +29,10 @@ public class Main extends Application {
         launch(args);
     }
 
+    /**
+     * Ini all class #bordel
+     * @param stage
+     */
     @Override
     public void start(Stage stage) {
         new Thread(() -> {
@@ -45,7 +49,7 @@ public class Main extends Application {
             loader.setController(new MainController());
             StackPane pane = loader.load();
             JFXDecorator decorator = new JFXDecorator(stage, pane, false, false, true);
-            //decorator.setCustomMaximize(true);
+            decorator.setCustomMaximize(true);
             decorator.setText("Command list generator");
 
             Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();

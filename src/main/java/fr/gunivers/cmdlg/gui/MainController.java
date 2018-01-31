@@ -49,6 +49,11 @@ public class MainController implements Initializable {
 
     private JFXSnackbar snackbar;
 
+    /**
+     * Auto init all GeneratorType
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (GeneratorType type : Main.nameToGeneratorType.values()) {
@@ -62,6 +67,10 @@ public class MainController implements Initializable {
 
     }
 
+    /**
+     * This is add filter.
+     * @param event
+     */
     @FXML
     public void addFilter(ActionEvent event) {
         JFXDialogLayout layout = new JFXDialogLayout();
@@ -105,6 +114,10 @@ public class MainController implements Initializable {
         dialog.show(mainPane);
     }
 
+    /**
+     * This is remove filter.
+     * @param event
+     */
     @FXML
     public void removeFilter(ActionEvent event) {
         Label label = listFilter.getSelectionModel().getSelectedItem();
@@ -118,6 +131,10 @@ public class MainController implements Initializable {
         snackbar.show("Successfully removed filter.", 4 * 1000);
     }
 
+    /**
+     * For remove filter.
+     * @param event
+     */
     @FXML
     public void editFilter(ActionEvent event) {
         Label label = listFilter.getSelectionModel().getSelectedItem();
@@ -178,6 +195,10 @@ public class MainController implements Initializable {
         dialog.show(mainPane);
     }
 
+    /**
+     * For set the new GeneratorType when user click on the list.
+     * @param event
+     */
     @FXML
     public void onMouseReleasedListView(MouseEvent event) {
         GeneratorType oldType = type;
@@ -185,6 +206,10 @@ public class MainController implements Initializable {
         type = Main.generatorTypeByDisplayName(string);
     }
 
+    /**
+     * Copy all command when click on the TextArea the outup text is not null
+     * @param event
+     */
     @FXML
     public void copyAllCommand(MouseEvent event) {
     	
@@ -196,6 +221,10 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Generate command
+     * @param event
+     */
     @FXML
     public void generateAction(ActionEvent event) {
 
@@ -273,6 +302,10 @@ public class MainController implements Initializable {
         snackbar.show("All command have been generated.", 4 * 1000);
     }
 
+    /**
+     * Return to the BasicGenerator of GeneratorType
+     * @param type
+     */
     private BasicGenerator getBasicGeneratorForType(GeneratorType type) {
         switch (type) {
             default:
@@ -280,6 +313,9 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Return to the Filter list.
+     */
     private HashMap<String, List<String>> getFilter() {
         HashMap<String, List<String>> filters = new HashMap<>();
         if (listFilter.getItems().size() > 0) {
