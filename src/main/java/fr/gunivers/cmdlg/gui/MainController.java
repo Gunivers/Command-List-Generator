@@ -276,9 +276,13 @@ public class MainController implements Initializable {
             return;
         }
 
+        String command = this.command.getText();
+
         BasicGenerator generator = getBasicGeneratorForType(type);
 
         Iterator<String> commands = generator.generate();
+
+
 
         StringBuilder builder = new StringBuilder();
 
