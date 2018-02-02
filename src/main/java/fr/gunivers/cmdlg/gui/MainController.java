@@ -10,6 +10,7 @@ import fr.gunivers.cmdlg.util.GeneratorType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
@@ -40,9 +41,6 @@ public class MainController implements Initializable {
 
     @FXML
     private StackPane mainPane;
-
-    @FXML
-    private StackPane basic;
 
     @FXML
     private JFXListView<Label> listFilter;
@@ -76,15 +74,16 @@ public class MainController implements Initializable {
         JFXDialogLayout layout = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(mainPane, layout, JFXDialog.DialogTransition.CENTER);
 
-        AnchorPane pane = new AnchorPane();
-        pane.setPrefHeight(400);
-        pane.setPrefWidth(600);
+        layout.setHeading(new StackPane(new Label("Add Filter")));
+
+        StackPane pane = new StackPane();
 
         JFXTextField textField = new JFXTextField();
         textField.setPromptText("To");
         textField.setLabelFloat(true);
         textField.setLayoutX(65);
-        textField.setLayoutY(46);
+        textField.setLayoutY(120);
+        StackPane.setMargin(textField, new Insets(0, 0, 150, 0));
         pane.getChildren().add(textField);
 
         JFXTextArea area = new JFXTextArea();
@@ -92,6 +91,7 @@ public class MainController implements Initializable {
         area.setLabelFloat(true);
         area.setLayoutX(65);
         area.setLayoutY(120);
+        StackPane.setMargin(area, new Insets(100, 0, 0, 0));
         pane.getChildren().add(area);
 
         layout.setBody(pane);
@@ -110,7 +110,6 @@ public class MainController implements Initializable {
         });
 
         layout.setActions(done);
-
         dialog.show(mainPane);
     }
 
@@ -123,7 +122,7 @@ public class MainController implements Initializable {
         Label label = listFilter.getSelectionModel().getSelectedItem();
 
         if (label == null) {
-            snackbar.show("Please select a filter.", 4 * 1000);
+            displayError("Please select a filter", "Error: selected filter is null.");
             return;
         }
 
@@ -140,7 +139,7 @@ public class MainController implements Initializable {
         Label label = listFilter.getSelectionModel().getSelectedItem();
 
         if (label == null) {
-            snackbar.show("Please select a filter.", 4 * 1000);
+            displayError("Please select a filter", "Error: selected filter is null.");
             return;
         }
 
@@ -151,18 +150,17 @@ public class MainController implements Initializable {
         JFXDialogLayout layout = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(mainPane, layout, JFXDialog.DialogTransition.CENTER);
 
+        layout.setHeading(new StackPane(new Label("Edit Filter")));
+
         AnchorPane pane = new AnchorPane();
-        pane.setPrefHeight(400);
-        pane.setPrefWidth(600);
 
         JFXTextField textField = new JFXTextField();
         textField.setPromptText("To");
-
         textField.setText(strings[0]);
-
         textField.setLabelFloat(true);
         textField.setLayoutX(65);
         textField.setLayoutY(46);
+        StackPane.setMargin(textField, new Insets(0, 0, 150, 0));
         pane.getChildren().add(textField);
 
         JFXTextArea area = new JFXTextArea();
@@ -171,6 +169,7 @@ public class MainController implements Initializable {
         area.setLabelFloat(true);
         area.setLayoutX(65);
         area.setLayoutY(120);
+        StackPane.setMargin(area, new Insets(100, 0, 0, 0));
         pane.getChildren().add(area);
 
         layout.setBody(pane);
@@ -212,9 +211,7 @@ public class MainController implements Initializable {
      */
     @FXML
     public void copyAllCommand(MouseEvent event) {
-    	
         if (output.getText() != null && !output.getText().isEmpty()) {
-        	
             Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
             clpbrd.setContents(new StringSelection(output.getText()), null);
             snackbar.show("All command has been copied.", 4 * 1000);
@@ -227,83 +224,52 @@ public class MainController implements Initializable {
      */
     @FXML
     public void generateAction(ActionEvent event) {
+        try {
+            if (command.getText() == null || command.getText().isEmpty()) {
+                displayError("Please insert a command", "Error: command is null.");
+                return;
+            }
 
-        if (command.getText() == null || command.getText().isEmpty()) {
-            JFXDialogLayout content = new JFXDialogLayout();
-            content.setHeading(new Text("Error: Incorrect command"));
-            content.setBody(new Text("Please set the command"));
+            if (type == null) {
+                displayError("Please select a type", "Error: type is null.");
+                return;
+            }
 
-            JFXDialog dialog = new JFXDialog(mainPane, content, JFXDialog.DialogTransition.CENTER);
-            JFXButton button = new JFXButton("Done");
-            button.setButtonType(JFXButton.ButtonType.RAISED);
-            button.setStyle("-fx-background-color: #00a8d6");
-            button.setTextFill(Paint.valueOf("WHITE"));
-            button.setOnAction(event1 -> dialog.close());
-            content.setActions(button);
-            dialog.show();
-            return;
-        }
+            if (type.getClazz() == null) {
+                displayError("This type is not supported yet.", "Error: incorrect value.");
+                return;
+            }
 
-        if (type == null) {
-            JFXDialogLayout content = new JFXDialogLayout();
-            content.setHeading(new Text("Error: Incorrect value"));
-            content.setBody(new Text("The generator Type is not set"));
+            String command = this.command.getText();
 
-            JFXDialog dialog = new JFXDialog(mainPane, content, JFXDialog.DialogTransition.CENTER);
-            JFXButton button = new JFXButton("Done");
-            button.setButtonType(JFXButton.ButtonType.RAISED);
-            button.setStyle("-fx-background-color: #00a8d6");
-            button.setTextFill(Paint.valueOf("WHITE"));
-            button.setOnAction(event1 -> dialog.close());
-            content.setActions(button);
-            dialog.show();
-            return;
-        }
+            BasicGenerator generator = getBasicGeneratorForType(type);
 
-        if (type.getClazz() == null) {
-            JFXDialogLayout content = new JFXDialogLayout();
-            content.setHeading(new Text("Error: Incorrect value"));
-            content.setBody(new Text("Not supported yet"));
-
-            JFXDialog dialog = new JFXDialog(mainPane, content, JFXDialog.DialogTransition.CENTER);
-            JFXButton button = new JFXButton("Done");
-            button.setButtonType(JFXButton.ButtonType.RAISED);
-            button.setStyle("-fx-background-color: #00a8d6");
-            button.setTextFill(Paint.valueOf("WHITE"));
-            button.setOnAction(event1 -> dialog.close());
-            content.setActions(button);
-            dialog.show();
-            return;
-        }
-
-        String command = this.command.getText();
-
-        BasicGenerator generator = getBasicGeneratorForType(type);
-
-        Iterator<String> commands = generator.generate();
+            Iterator<String> commands = generator.generate();
 
 
+            StringBuilder builder = new StringBuilder();
 
-        StringBuilder builder = new StringBuilder();
+            HashMap<String, List<String>> replacedString = getFilter();
 
-        HashMap<String, List<String>> replacedString = getFilter();
-
-        if (replacedString.size() > 0) {
-            while (commands.hasNext()) {
-                for (String key : replacedString.keySet()) {
-                    List<String> by = replacedString.get(key);
-                    for (String b : by) {
-                        builder.append(commands.next().replaceAll(key, b)).append("\n");
+            if (replacedString.size() > 0) {
+                while (commands.hasNext()) {
+                    for (String key : replacedString.keySet()) {
+                        List<String> by = replacedString.get(key);
+                        for (String b : by) {
+                            builder.append(commands.next().replaceAll(key, b)).append("\n");
+                        }
                     }
                 }
+            } else {
+                builder.append(commands.next()).append("\n");
             }
-        } else {
-            builder.append(commands.next()).append("\n");
+
+            output.setText(builder.toString());
+
+            snackbar.show("All command have been generated.", 4 * 1000);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        output.setText(builder.toString());
-
-        snackbar.show("All command have been generated.", 4 * 1000);
     }
 
     /**
@@ -327,9 +293,24 @@ public class MainController implements Initializable {
                 String label = l.getText();
                 String x = label.replaceAll("\\p{Z}","").replaceAll("\n", ",");
                 String[] args = x.split("->");
-                filters.put(args[0], Arrays.asList(args[2].split(",")));
+                filters.put(args[0], Arrays.asList(args[1].split(",")));
             }
         }
         return filters;
+    }
+
+    public void displayError(String message, String error) {
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text(error));
+        content.setBody(new Text(message));
+
+        JFXDialog dialog = new JFXDialog(mainPane, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton button = new JFXButton("Done");
+        button.setButtonType(JFXButton.ButtonType.RAISED);
+        button.setStyle("-fx-background-color: #00a8d6");
+        button.setTextFill(Paint.valueOf("WHITE"));
+        button.setOnAction(event1 -> dialog.close());
+        content.setActions(button);
+        dialog.show();
     }
 }
