@@ -11,6 +11,7 @@ import fr.gunivers.cmdlg.util.Util;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -92,7 +93,14 @@ public class Main extends Application {
 
             stage.setMaxWidth(dimensionGui.getPrefHeigt());
             stage.setMinWidth(dimensionGui.getPrefWidth());
+
+            stage.getIcons().add(new Image("icon/menu.png"));
+
             stage.show();
+
+
+            //set main frame visible
+            Console.mainFrame.setVisible(true);
 
             Console.logInfo("You are showing " + dimensionGui.toString() + ".fxml");
 

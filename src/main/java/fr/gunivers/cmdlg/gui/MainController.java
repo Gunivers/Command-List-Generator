@@ -107,8 +107,10 @@ public class MainController implements Initializable {
         //add the on close event
         dialog.setOnDialogClosed(event1 -> {
             //add a new Label if the text field and text area is not null
-            if (!textField.getText().isEmpty() && !area.getText().isEmpty())
+            if (!textField.getText().isEmpty() && !area.getText().isEmpty()) {
+                Console.logInfo("");
                 listFilter.getItems().add(new Label(textField.getText().trim() + "  ->  " + area.getText().trim()));
+            }
         });
 
         //add the done button and set the event to return of the dialog close event

@@ -1,5 +1,7 @@
 package fr.gunivers.cmdlg.gui.console;
 
+import fr.gunivers.cmdlg.Main;
+
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
@@ -21,7 +23,7 @@ public class Console {
     private static final JTextPane infoTextPane = new JTextPane();
     private static final JTextPane debugTextPane = new JTextPane();
 
-    private static JFrame mainFrame = new JFrame("Console");
+    public static JFrame mainFrame = new JFrame("Console");
 
     /**
      * Start console.
@@ -67,14 +69,14 @@ public class Console {
 
             //set the dimension of the windows
             mainFrame.setPreferredSize(new Dimension(750, 400));
+            //set the icon
+            mainFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(Console.class.getResource("/icon/console.png")));
             //add tab pane
             mainFrame.add(tabbedPane, BorderLayout.CENTER);
             //sync close with the main app
             mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             //pack the main for validate all option
             mainFrame.pack();
-            //set main frame visible
-            mainFrame.setVisible(true);
         }
     }
 
@@ -82,7 +84,10 @@ public class Console {
      * Stop console
      */
     public static void stop() {
-        mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        StackTraceElement element = stackTrace[2];
+        if (element.getClassName().equals(Main.class.getName()))
+            mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
     }
 
     /**
@@ -152,7 +157,7 @@ public class Console {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
         String d = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        String t = "<" + element.getClassName() + ":" + element.getLineNumber() + ":" + element.getMethodName() + "> " + d;
+        String t = d +"<" + element.getClassName() + ":" + element.getLineNumber() + ":" + element.getMethodName() + "> ";
         addText(debugTextPane, t + " [DEBUG]: " + text, Color.MAGENTA);
         addText(allTextPane, t + " [DEBUG]: " + text, Color.MAGENTA);
     }
