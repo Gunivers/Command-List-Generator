@@ -5,24 +5,29 @@ import com.jfoenix.svg.SVGGlyphLoader;
 import fr.gunivers.cmdlg.gui.CmdlgDecorator;
 import fr.gunivers.cmdlg.gui.DimensionGui;
 import fr.gunivers.cmdlg.gui.MainController;
+import fr.gunivers.cmdlg.gui.console.Console;
 import fr.gunivers.cmdlg.util.GeneratorType;
 import fr.gunivers.cmdlg.util.Util;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import javax.swing.*;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.*;
+import java.util.List;
 
 public class Main extends Application {
 
     public static LinkedHashMap<String, GeneratorType> nameToGeneratorType = new LinkedHashMap<>();
     public static List<DimensionGui> dimensionGuis = new ArrayList<>();
+    public static OutputStream newOutputStream = new Console.ConsoleOutputStream();
 
     public static DimensionGui SELECTED_DIMENTION_GUI = null;
 
@@ -38,6 +43,10 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         try {
+            try {
+                Thread.sleep(50);
+            }catch (Exception e){}
+
             launch(args);
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,6 +61,9 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) {
+
+        Console.start();
+
         new Thread(() -> {
             try {
                 SVGGlyphLoader.loadGlyphsFont(Main.class.getResourceAsStream("/fonts/icomoon.svg"),
@@ -63,7 +75,6 @@ public class Main extends Application {
 
         try {
             DimensionGui dimensionGui = getDimensionGui();
-
             Main.SELECTED_DIMENTION_GUI = dimensionGui;
 
             System.out.println("Dimension Gui Selected: " + dimensionGui.toString());
@@ -74,13 +85,21 @@ public class Main extends Application {
             JFXDecorator decorator = new CmdlgDecorator(stage, pane);
             decorator.setCustomMaximize(true);
             decorator.setText("Command list generator");
-
-
             Scene scene = new Scene(decorator, dimensionGui.getPrefWidth(), dimensionGui.getPrefHeigt());
             scene.getStylesheets().addAll(Main.class.getResource("/css/Main.css").toExternalForm());
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.setMaxHeight(dimensionGui.getPrefHeigt());
+            stage.setMinHeight(dimensionGui.getPrefHeigt());
+
+            stage.setMaxWidth(dimensionGui.getPrefHeigt());
+            stage.setMinWidth(dimensionGui.getPrefWidth());
+
             stage.show();
+
+            stage.setOnHiding(event -> {
+                Console.stop();
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
