@@ -30,6 +30,7 @@ public class Console {
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         textPane.setPreferredSize(new Dimension(650, 400));
+        textPane.setEditable(false);
         textPane.setBackground(Color.BLACK);
 
         mainFrame.add(new JScrollPane(textPane));
