@@ -2,7 +2,6 @@ package net.gunivers.cmdlg.generators.material;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 
 import net.gunivers.cmdlg.api.BasicGenerator;
 import net.gunivers.cmdlg.util.GeneratorType;

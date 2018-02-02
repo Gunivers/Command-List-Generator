@@ -1,11 +1,13 @@
+package net.gunivers.cmdlg.generators.material;
+
 <<<<<<< Updated upstream:src/main/java/fr/gunivers/cmdlg/generators/material/RecordGenerator.java
 package fr.gunivers.cmdlg.generators.material;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import fr.gunivers.cmdlg.util.GeneratorType;
-import fr.gunivers.cmdlg.util.Material;
+import net.gunivers.cmdlg.util.GeneratorType;
+import net.gunivers.cmdlg.util.Material;
 
 public class RecordGenerator extends MaterialGenerator {
 	

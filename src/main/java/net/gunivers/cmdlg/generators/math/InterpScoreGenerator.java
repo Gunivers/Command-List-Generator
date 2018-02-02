@@ -1,8 +1,11 @@
+package net.gunivers.cmdlg.generators.math;
+
 <<<<<<< Updated upstream:src/main/java/fr/gunivers/cmdlg/generators/math/InterpScoreGenerator.java
 package fr.gunivers.cmdlg.generators.math;
 
 import fr.gunivers.cmdlg.api.PrimitiveGenerator;
-import fr.gunivers.cmdlg.util.GeneratorType;
+import net.gunivers.cmdlg.util.GeneratorType;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 

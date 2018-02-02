@@ -1,3 +1,5 @@
+package net.gunivers.cmdlg.generators.materialID;
+
 <<<<<<< Updated upstream:src/main/java/fr/gunivers/cmdlg/generators/materialID/IDMaterialGenerator.java
 package fr.gunivers.cmdlg.generators.materialID;
 
@@ -5,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import fr.gunivers.cmdlg.api.BasicGenerator;
-import fr.gunivers.cmdlg.util.GeneratorType;
-import fr.gunivers.cmdlg.util.Material;
+import net.gunivers.cmdlg.util.GeneratorType;
+import net.gunivers.cmdlg.util.Material;
 
 
 public class IDMaterialGenerator extends BasicGenerator {
