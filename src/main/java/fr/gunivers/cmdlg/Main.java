@@ -9,17 +9,14 @@ import fr.gunivers.cmdlg.gui.console.Console;
 import fr.gunivers.cmdlg.util.GeneratorType;
 import fr.gunivers.cmdlg.util.Util;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.*;
 import java.util.List;
 
@@ -27,12 +24,14 @@ public class Main extends Application {
 
     public static LinkedHashMap<String, GeneratorType> nameToGeneratorType = new LinkedHashMap<>();
     public static List<DimensionGui> dimensionGuis = new ArrayList<>();
-    public static OutputStream newOutputStream = new Console.ConsoleOutputStream();
 
     public static DimensionGui SELECTED_DIMENTION_GUI = null;
 
     static {
+        Console.start();
+
         for (GeneratorType type : GeneratorType.values()) {
+            Console.logDebug("Register new Generator Type: " + type);
             nameToGeneratorType.put(type.name(), type);
         }
 
@@ -43,10 +42,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         try {
-            try {
-                Thread.sleep(50);
-            }catch (Exception e){}
-
             launch(args);
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,6 +59,7 @@ public class Main extends Application {
 
         Console.start();
 
+        Console.logInfo("Register icomoon.sgv");
         new Thread(() -> {
             try {
                 SVGGlyphLoader.loadGlyphsFont(Main.class.getResourceAsStream("/fonts/icomoon.svg"),
@@ -74,13 +70,18 @@ public class Main extends Application {
         }).start();
 
         try {
+            Console.logInfo("Getting DimensionGui");
             DimensionGui dimensionGui = getDimensionGui();
             Main.SELECTED_DIMENTION_GUI = dimensionGui;
 
-            System.out.println("Dimension Gui Selected: " + dimensionGui.toString());
+            Console.logInfo("DimensionGui selected: " + dimensionGui.toString());
 
+            Console.logInfo("Loading " + dimensionGui.toString() + ".fxml");
             FXMLLoader loader = new FXMLLoader(Util.getFXMLURL(dimensionGui.toString()));
             loader.setController(new MainController());
+            Console.logInfo("Set the controller of the FXML loader");
+
+            Console.logInfo("Init GUI");
             StackPane pane = loader.load();
             JFXDecorator decorator = new CmdlgDecorator(stage, pane);
             decorator.setCustomMaximize(true);
@@ -94,12 +95,11 @@ public class Main extends Application {
 
             stage.setMaxWidth(dimensionGui.getPrefHeigt());
             stage.setMinWidth(dimensionGui.getPrefWidth());
-
             stage.show();
 
-            stage.setOnHiding(event -> {
-                Console.stop();
-            });
+            Console.logInfo("You are showing " + dimensionGui.toString() + ".fxml");
+
+            stage.setOnHiding(event -> Console.stop());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -118,24 +118,41 @@ public class Main extends Application {
 
         int index = closest((int) (screen.getHeight() + screen.getWidth()), keys);
 
-        System.out.println("GUI INDEX: " + index);
+       Console.logInfo("Index for DimensionGui: " + index);
 
         return dimensionGuiHashMap.get(index);
     }
 
     public static int closest(int value, Collection<Integer> in) {
+        Console.logDebug("Main.closest() value -> " + value);
+        Console.logDebug("Main.closest() in -> " + Arrays.toString(in.toArray()));
+
         Integer[] a = in.toArray(new Integer[in.size()]);
+
+        Console.logDebug("Main.closest() a[] -> " + Arrays.toString(a));
+
         int low = 0;
         int high = a.length - 1;
 
         if (high < 0)
             throw new IllegalArgumentException("The array cannot be empty");
 
+        int test = 0;
+
         while (low < high) {
             int mid = (low + high) / 2;
+
+            Console.logDebug(test + ": Main.closest() mid -> " + mid);
+
+            Console.logDebug(test + ": Main.closest() assert(mid < high) -> " + (mid < high));
             assert (mid < high);
+
+            Console.logDebug(test + ": Main.closest() d1 -> " + Math.abs(a[mid] - value));
             int d1 = Math.abs(a[mid] - value);
+
+            Console.logDebug(test + ": Main.closest() d2 -> " + Math.abs(a[mid + 1] - value));
             int d2 = Math.abs(a[mid + 1] - value);
+
             if (d2 <= d1) {
                 low = mid + 1;
             } else {
@@ -146,9 +163,13 @@ public class Main extends Application {
     }
 
     public static GeneratorType generatorTypeByDisplayName(String s) {
+        Console.logDebug("Main.generatorTypeByDisplayName() s -> " + s);
         for (GeneratorType type : nameToGeneratorType.values()) {
-            if (s.equalsIgnoreCase(type.getName()))
+            Console.logDebug("Main.generatorTypeByDisplayName() type -> " + type);
+            if (s.equalsIgnoreCase(type.getName())) {
+                Console.logDebug("Main.generatorTypeByDisplayName() return -> " + type);
                 return type;
+            }
         }
         return null;
     }

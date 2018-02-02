@@ -1,5 +1,7 @@
 package fr.gunivers.cmdlg.gui;
 
+import fr.gunivers.cmdlg.gui.console.Console;
+
 public class DimensionGui {
 
     private int height;
@@ -14,6 +16,7 @@ public class DimensionGui {
         this.prefWidth = prefWidth;
         this.prefHeigt = prefHeigt;
         this.name = name;
+        Console.logDebug("new DimensionGui(width=" + width + ", height=" + height + ", prefWidth=" + prefWidth + " ,prefWidth=" + prefWidth + ", name=" + name + ")");
     }
 
     public String getName() {

@@ -1,8 +1,8 @@
 package fr.gunivers.cmdlg.gui.console;
 
-import fr.gunivers.cmdlg.Main;
-
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -12,28 +12,57 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Console {
 
-    private static final JTextPane textPane = new JTextPane();
+    private static final JTextPane allTextPane = new JTextPane();
     private static JFrame mainFrame = new JFrame("Console");
-    private static JScrollPane scrollPane = new JScrollPane();
+    private static JScrollPane allScrollPane = null;
 
+    public static boolean DEBUG = true;
 
     /**
      * Start console.
      */
     public static void start() {
-        System.setOut(new PrintStream(Main.newOutputStream, true));
-        System.setErr(new PrintStream(Main.newOutputStream, true));
+        System.setOut(new PrintStream(new ConsoleOutputStream(), true));
+        System.setErr(new PrintStream(new ConsoleErrOutputStream(), true));
 
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        mainFrame.setSize(new Dimension(650, 400));
+        mainFrame.setResizable(false);
 
-        textPane.setPreferredSize(new Dimension(650, 400));
-        textPane.setEditable(false);
-        textPane.setBackground(Color.BLACK);
+        allTextPane.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        allTextPane.setEditable(false);
+        allTextPane.setBackground(Color.BLACK);
 
-        mainFrame.add(new JScrollPane(textPane));
+
+        allScrollPane = new JScrollPane(allTextPane);
+
+        allTextPane.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateSize();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateSize();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateSize();
+            }
+
+            private void updateSize() {
+                allScrollPane.revalidate();
+            }
+        });
+
+        mainFrame.add(allScrollPane);
         mainFrame.pack();
         mainFrame.setVisible(true);
     }
@@ -51,14 +80,9 @@ public class Console {
      * @param color
      */
     private static void addCmd(String text, Color color) {
-        StyledDocument doc = textPane.getStyledDocument();
-        Style style = textPane.addStyle("Color Style", null);
+        StyledDocument doc = allTextPane.getStyledDocument();
+        Style style = allTextPane.addStyle("Color Style", null);
         StyleConstants.setForeground(style, color);
-
-        if(scrollPane.getVerticalScrollBar() != null) {
-            JScrollBar scrollBar = scrollPane.getVerticalScrollBar();
-            scrollBar.setValue(scrollBar.getMaximum());
-        }
 
         try {
             doc.insertString(doc.getLength(), text, style);
@@ -73,18 +97,14 @@ public class Console {
      * @param text
      * @param color
      */
-    public static void addText(String text, Color color) {
-        StyledDocument doc = textPane.getStyledDocument();
-        Style style = textPane.addStyle("Color Style", null);
+    private static void addText(String text, Color color) {
+        StyledDocument doc = allTextPane.getStyledDocument();
+        Style style = allTextPane.addStyle("Color Style", null);
         StyleConstants.setForeground(style, color);
 
         if (!text.endsWith("\n"))
             text = text + "\n";
 
-        if(scrollPane.getVerticalScrollBar() != null) {
-            JScrollBar scrollBar = scrollPane.getVerticalScrollBar();
-            scrollBar.setValue(scrollBar.getMaximum());
-        }
 
         try {
             doc.insertString(doc.getLength(), text, style);
@@ -98,8 +118,24 @@ public class Console {
      * Use for add a info on the console, you cant chose the color
      * @param text
      */
-    public static void addText(String text) {
+    private static void addText(String text) {
         addText(text, Color.WHITE);
+    }
+
+    public static void logInfo(String text) {
+        Date date = new Date();
+        String d = new SimpleDateFormat("HH:mm:ss").format(date);
+        addText(d + " [INFO]: " + text, Color.ORANGE);
+    }
+
+    public static void logDebug(String text) {
+        if (DEBUG) {
+            StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+            StackTraceElement element = stackTrace[2];
+            String d = new SimpleDateFormat("HH:mm:ss").format(new Date());
+            String t = "<" + element.getClassName() + ":" + element.getLineNumber() + ":" + element.getMethodName() + "> " + d;
+            addText(t + " [DEBUG]: " + text, Color.MAGENTA);
+        }
     }
 
     /**
@@ -109,6 +145,16 @@ public class Console {
         @Override
         public void write(int b) throws IOException {
             addCmd(String.valueOf(Character.valueOf((char) b)), Color.WHITE);
+        }
+    }
+
+    /**
+     * The class to sync System.out.print to the console.
+     */
+    public static class ConsoleErrOutputStream extends OutputStream {
+        @Override
+        public void write(int b) throws IOException {
+            addCmd(String.valueOf(Character.valueOf((char) b)), Color.RED);
         }
     }
 }

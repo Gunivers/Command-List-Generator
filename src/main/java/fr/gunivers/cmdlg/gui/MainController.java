@@ -5,6 +5,7 @@ import com.jfoenix.controls.*;
 import fr.gunivers.cmdlg.Main;
 import fr.gunivers.cmdlg.api.BasicGenerator;
 import fr.gunivers.cmdlg.generators.NullGenerator;
+import fr.gunivers.cmdlg.gui.console.Console;
 import fr.gunivers.cmdlg.util.GeneratorType;
 
 import javafx.event.ActionEvent;
@@ -55,6 +56,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Add label to the list view for select the GeneratorType
+        Console.logDebug("Adding all Generator type to the listview");
         for (GeneratorType type : Main.nameToGeneratorType.values()) {
             Label label = new Label();
             label.setText(type.getName());
