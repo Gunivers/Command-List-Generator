@@ -56,9 +56,6 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) {
-
-        Console.start();
-
         Console.logInfo("Register icomoon.sgv");
         new Thread(() -> {
             try {
@@ -124,12 +121,12 @@ public class Main extends Application {
     }
 
     public static int closest(int value, Collection<Integer> in) {
-        Console.logDebug("Main.closest() value -> " + value);
-        Console.logDebug("Main.closest() in -> " + Arrays.toString(in.toArray()));
+        Console.logDebug("value -> " + value);
+        Console.logDebug("in -> " + Arrays.toString(in.toArray()));
 
         Integer[] a = in.toArray(new Integer[in.size()]);
 
-        Console.logDebug("Main.closest() a[] -> " + Arrays.toString(a));
+        Console.logDebug("a[] -> " + Arrays.toString(a));
 
         int low = 0;
         int high = a.length - 1;
@@ -142,15 +139,15 @@ public class Main extends Application {
         while (low < high) {
             int mid = (low + high) / 2;
 
-            Console.logDebug(test + ": Main.closest() mid -> " + mid);
+            Console.logDebug(test + ": mid -> " + mid);
 
-            Console.logDebug(test + ": Main.closest() assert(mid < high) -> " + (mid < high));
+            Console.logDebug(test + ": assert(mid < high) -> " + (mid < high));
             assert (mid < high);
 
-            Console.logDebug(test + ": Main.closest() d1 -> " + Math.abs(a[mid] - value));
+            Console.logDebug(test + ": d1 -> " + Math.abs(a[mid] - value));
             int d1 = Math.abs(a[mid] - value);
 
-            Console.logDebug(test + ": Main.closest() d2 -> " + Math.abs(a[mid + 1] - value));
+            Console.logDebug(test + ": d2 -> " + Math.abs(a[mid + 1] - value));
             int d2 = Math.abs(a[mid + 1] - value);
 
             if (d2 <= d1) {
@@ -163,11 +160,11 @@ public class Main extends Application {
     }
 
     public static GeneratorType generatorTypeByDisplayName(String s) {
-        Console.logDebug("Main.generatorTypeByDisplayName() s -> " + s);
+        Console.logDebug("s -> " + s);
         for (GeneratorType type : nameToGeneratorType.values()) {
-            Console.logDebug("Main.generatorTypeByDisplayName() type -> " + type);
+            Console.logDebug("type -> " + type);
             if (s.equalsIgnoreCase(type.getName())) {
-                Console.logDebug("Main.generatorTypeByDisplayName() return -> " + type);
+                Console.logDebug("return -> " + type);
                 return type;
             }
         }

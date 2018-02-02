@@ -1,13 +1,13 @@
 package fr.gunivers.cmdlg.gui.console;
 
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -18,53 +18,52 @@ import java.util.Date;
 public class Console {
 
     private static final JTextPane allTextPane = new JTextPane();
-    private static JFrame mainFrame = new JFrame("Console");
-    private static JScrollPane allScrollPane = null;
+    private static final JTextPane infoTextPane = new JTextPane();
+    private static final JTextPane debugTextPane = new JTextPane();
 
-    public static boolean DEBUG = true;
+    private static JFrame mainFrame = new JFrame("Console");
 
     /**
      * Start console.
      */
     public static void start() {
-        System.setOut(new PrintStream(new ConsoleOutputStream(), true));
-        System.setErr(new PrintStream(new ConsoleErrOutputStream(), true));
+        if (!mainFrame.isVisible()) {
 
-        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        mainFrame.setSize(new Dimension(650, 400));
-        mainFrame.setResizable(false);
+            System.setOut(new PrintStream(new ConsoleOutputStream(), true));
+            System.setErr(new PrintStream(new ConsoleErrOutputStream(), true));
 
-        allTextPane.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
-        allTextPane.setEditable(false);
-        allTextPane.setBackground(Color.BLACK);
+            JTabbedPane tabbedPane = new JTabbedPane();
 
+            initTab(allTextPane);
+            initTab(infoTextPane);
+            initTab(debugTextPane);
 
-        allScrollPane = new JScrollPane(allTextPane);
+            tabbedPane.addTab("Info Log", new JTable().add(new JScrollPane(infoTextPane)));
+            tabbedPane.addTab("Debug Log", new JTable().add(new JScrollPane(debugTextPane)));
+            tabbedPane.addTab("All Log", new JTable().add(new JScrollPane(allTextPane)));
 
-        allTextPane.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                updateSize();
-            }
+            tabbedPane.setComponentAt(0, new JScrollPane(infoTextPane));
+            tabbedPane.setComponentAt(1, new JScrollPane(debugTextPane));
+            tabbedPane.setComponentAt(2, new JScrollPane(allTextPane));
 
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                updateSize();
-            }
+            tabbedPane.addComponentListener(new ComponentAdapter() {
+                @Override
+                public void componentResized(ComponentEvent e) {
+                    JTabbedPane tabbedPane = (JTabbedPane) e.getComponent();
+                    int tabCount = tabbedPane.getTabCount();
+                    for (int i = 0; i < tabCount; i++) {
+                        Component c = tabbedPane.getComponentAt(i);
+                        c.setPreferredSize(new Dimension(c.getSize().width, c.getPreferredSize().height));
+                    }
+                }
+            });
 
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                updateSize();
-            }
-
-            private void updateSize() {
-                allScrollPane.revalidate();
-            }
-        });
-
-        mainFrame.add(allScrollPane);
-        mainFrame.pack();
-        mainFrame.setVisible(true);
+            tabbedPane.setSize(500, 400);
+            mainFrame.add(tabbedPane);
+            mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            mainFrame.pack();
+            mainFrame.setVisible(true);
+        }
     }
 
     /**
@@ -97,9 +96,9 @@ public class Console {
      * @param text
      * @param color
      */
-    private static void addText(String text, Color color) {
-        StyledDocument doc = allTextPane.getStyledDocument();
-        Style style = allTextPane.addStyle("Color Style", null);
+    private static void addText(JTextPane pane, String text, Color color) {
+        StyledDocument doc = pane.getStyledDocument();
+        Style style = pane.addStyle("Color Style", null);
         StyleConstants.setForeground(style, color);
 
         if (!text.endsWith("\n"))
@@ -114,28 +113,20 @@ public class Console {
         }
     }
 
-    /**
-     * Use for add a info on the console, you cant chose the color
-     * @param text
-     */
-    private static void addText(String text) {
-        addText(text, Color.WHITE);
-    }
-
     public static void logInfo(String text) {
         Date date = new Date();
         String d = new SimpleDateFormat("HH:mm:ss").format(date);
-        addText(d + " [INFO]: " + text, Color.ORANGE);
+        addText(infoTextPane, d + " [INFO]: " + text, Color.ORANGE);
+        addText(allTextPane, d + " [INFO]: " + text, Color.ORANGE);
     }
 
     public static void logDebug(String text) {
-        if (DEBUG) {
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
             StackTraceElement element = stackTrace[2];
             String d = new SimpleDateFormat("HH:mm:ss").format(new Date());
             String t = "<" + element.getClassName() + ":" + element.getLineNumber() + ":" + element.getMethodName() + "> " + d;
-            addText(t + " [DEBUG]: " + text, Color.MAGENTA);
-        }
+            addText(debugTextPane, t + " [DEBUG]: " + text, Color.MAGENTA);
+            addText(allTextPane, t + " [DEBUG]: " + text, Color.MAGENTA);
     }
 
     /**
@@ -156,5 +147,11 @@ public class Console {
         public void write(int b) throws IOException {
             addCmd(String.valueOf(Character.valueOf((char) b)), Color.RED);
         }
+    }
+
+    private static void initTab(JTextPane textPane) {
+        textPane.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        textPane.setEditable(false);
+        textPane.setBackground(Color.BLACK);
     }
 }
