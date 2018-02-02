@@ -42,11 +42,17 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        double java_version = Double.parseDouble(System.getProperty("java.specification.version"));
+
+        if(java_version > 1.8 || java_version < 1.8) {
+            JOptionPane.showMessageDialog(null, "Error cant be start: Please use java 1.8 !", "Error !", JOptionPane.ERROR_MESSAGE);
+        }
+
         try {
             launch(args);
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error cant be start: " + e.fillInStackTrace(), "Error !", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error cant be start: \n" + e.fillInStackTrace(), "Error !", JOptionPane.ERROR_MESSAGE);
         }
     }
 

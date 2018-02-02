@@ -1,5 +1,5 @@
 group 'Command-List-Generator'
-version '1.0-SNAPSHOT'
+version 'Alpha-1'
 
 apply plugin: 'idea'
 apply plugin: 'eclipse'
