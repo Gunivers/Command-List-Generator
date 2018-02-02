@@ -9,5 +9,4 @@ public class CmdlgDecorator extends JFXDecorator {
     public CmdlgDecorator(Stage stage, Node node) {
         super(stage, node, false, false, true);
     }
-
 }
