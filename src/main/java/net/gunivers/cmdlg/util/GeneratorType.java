@@ -1,17 +1,17 @@
 package net.gunivers.cmdlg.util;
 
-import fr.gunivers.cmdlg.api.BasicGenerator;
+import net.gunivers.cmdlg.api.BasicGenerator;
 
-import fr.gunivers.cmdlg.generators.material.*;
-import fr.gunivers.cmdlg.generators.materialID.*;
+import net.gunivers.cmdlg.generators.material.*;
+import net.gunivers.cmdlg.generators.materialID.*;
 
-import fr.gunivers.cmdlg.generators.math.InterpGenerator;
-import fr.gunivers.cmdlg.generators.math.InterpScoreGenerator;
+import net.gunivers.cmdlg.generators.math.InterpGenerator;
+import net.gunivers.cmdlg.generators.math.InterpScoreGenerator;
 
-import fr.gunivers.cmdlg.generators.primitive.DoubleGenerator;
-import fr.gunivers.cmdlg.generators.primitive.FloatGenerator;
-import fr.gunivers.cmdlg.generators.primitive.IntGenerator;
-import fr.gunivers.cmdlg.generators.primitive.LongGenerator;
+import net.gunivers.cmdlg.generators.primitive.DoubleGenerator;
+import net.gunivers.cmdlg.generators.primitive.FloatGenerator;
+import net.gunivers.cmdlg.generators.primitive.IntGenerator;
+import net.gunivers.cmdlg.generators.primitive.LongGenerator;
 
 
 public enum GeneratorType {

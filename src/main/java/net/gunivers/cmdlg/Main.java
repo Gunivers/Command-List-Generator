@@ -2,10 +2,10 @@ package net.gunivers.cmdlg;
 
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.svg.SVGGlyphLoader;
-import fr.gunivers.cmdlg.gui.CmdlgDecorator;
-import fr.gunivers.cmdlg.gui.DimensionGui;
-import fr.gunivers.cmdlg.gui.MainController;
-import fr.gunivers.cmdlg.gui.console.Console;
+import net.gunivers.cmdlg.gui.CmdlgDecorator;
+import net.gunivers.cmdlg.gui.DimensionGui;
+import net.gunivers.cmdlg.gui.MainController;
+import net.gunivers.cmdlg.gui.console.Console;
 import net.gunivers.cmdlg.util.GeneratorType;
 import net.gunivers.cmdlg.util.Util;
 import javafx.application.Application;
