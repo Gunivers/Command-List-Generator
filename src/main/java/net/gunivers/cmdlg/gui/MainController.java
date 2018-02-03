@@ -77,64 +77,7 @@ public class MainController implements Initializable {
         //Init layout and dialog
         Console.logDebug("Init new filter dialog");
         Console.logInfo("Init new filter dialog");
-        JFXDialogLayout layout = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(mainPane, layout, JFXDialog.DialogTransition.CENTER);
-
-        Console.logDebug("Set heading layout");
-        //Set the title of dialog
-        layout.setHeading(new StackPane(new Label("Add Filter")));
-
-        //Create stack pane to add the text field ans text area
-        StackPane pane = new StackPane();
-
-        JFXTextField textField = new JFXTextField();
-        textField.setPromptText("To");
-        textField.setLabelFloat(true);
-        textField.setLayoutX(65);
-        textField.setLayoutY(120);
-        StackPane.setMargin(textField, new Insets(0, 0, 150, 0));
-        //add the text field to the pane
-        pane.getChildren().add(textField);
-
-        JFXTextArea area = new JFXTextArea();
-        area.setPromptText("By");
-        area.setLabelFloat(true);
-        area.setLayoutX(65);
-        area.setLayoutY(120);
-        StackPane.setMargin(area, new Insets(100, 0, 0, 0));
-        //add the text area to the pane
-        pane.getChildren().add(area);
-
-        Console.logDebug("set body layout");
-        //Set the body layout
-        layout.setBody(pane);
-
-        //add the on close event
-        dialog.setOnDialogClosed(event1 -> {
-            //add a new Label if the text field and text area is not null
-            if (!textField.getText().isEmpty() && !area.getText().isEmpty()) {
-                Console.logInfo("Adding new filter [" + textField.getText().trim() + "  ->  " + area.getText().trim() + "]");
-                Console.logDebug("Adding new filter " + textField.toString() + "  ->  " + area.toString());
-                listFilter.getItems().add(new Label(textField.getText().trim() + "  ->  " + area.getText().trim()));
-            }
-            Console.logDebug("Quiting current dialog");
-        });
-
-        //add the done button and set the event to return of the dialog close event
-        JFXButton done = new JFXButton("Done");
-        done.setButtonType(JFXButton.ButtonType.RAISED);
-        done.setStyle("-fx-background-color: #00a8d6;");
-        done.setTextFill(Paint.valueOf("WHITE"));
-        done.setOnAction(event12 -> {
-            Console.logDebug("Closing dialog by button");
-            dialog.close();
-        });
-
-        //add the button
-        layout.setActions(done);
-        Console.logDebug("Show dialog");
-        //show the button
-        dialog.show(mainPane);
+        displayFilter(new Label(), true);
     }
 
     /**
@@ -167,90 +110,10 @@ public class MainController implements Initializable {
      */
     @FXML
     public void editFilter(ActionEvent event) {
-        //Get the selected label
         Label label = listFilter.getSelectionModel().getSelectedItem();
-
-        //if the panel is not null
-        if (label == null) {
-            //display error because is cool
-            displayError("Please select a filter", "Error: selected filter is null.");
-            return;
-        }
-
         Console.logDebug("Editing filter: " + label.toString());
         Console.logInfo("Editing filter [" + label.getText() + "]");
-
-        //replace all " " and "     " by a ""
-        String x = label.getText().replaceAll("\\p{Z}","").trim();
-
-        //split the x string
-        String[] strings = x.split("->");
-
-        //Init layout and dialog
-        JFXDialogLayout layout = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(mainPane, layout, JFXDialog.DialogTransition.CENTER);
-
-        //Set the title of dialog
-        layout.setHeading(new StackPane(new Label("Edit Filter")));
-
-        //Create stack pane to add the text field ans text area
-        AnchorPane pane = new AnchorPane();
-
-        JFXTextField textField = new JFXTextField();
-        textField.setPromptText("To");
-        textField.setText(strings[0]);
-        textField.setLabelFloat(true);
-        textField.setLayoutX(65);
-        textField.setLayoutY(46);
-        StackPane.setMargin(textField, new Insets(0, 0, 150, 0));
-        //add the text field to the pane
-        Console.logDebug("Adding JFXTextField " + textField.toString() + " To the pane");
-        pane.getChildren().add(textField);
-
-        JFXTextArea area = new JFXTextArea();
-        area.setPromptText("By");
-        area.setText(strings[1]);
-        area.setLabelFloat(true);
-        area.setLayoutX(65);
-        area.setLayoutY(120);
-        StackPane.setMargin(area, new Insets(100, 0, 0, 0));
-        //add the text area to the pane
-        Console.logDebug("Adding JFXTextArea " + area.toString() + " To the pane");
-        pane.getChildren().add(area);
-
-        //Set the body layout
-        layout.setBody(pane);
-
-        //add the on close event
-        dialog.setOnDialogClosed(event1 -> {
-            //replace the Label if the text field and text area is not null
-            if (!textField.getText().isEmpty() && !area.getText().isEmpty()) {
-                Console.logDebug("Removing label: " + label + " for editing");
-                listFilter.getItems().remove(label);
-                Label l = new Label(textField.getText().trim() + "  ->  " + area.getText().trim());
-                Console.logDebug("Adding new label: " + l + " for editing");
-                listFilter.getItems().add(l);
-            }
-
-            Console.logDebug("Quiting current dialog");
-        });
-
-        //add the done button and set the event to return of the dialog close event
-        JFXButton done = new JFXButton("Done");
-        done.setButtonType(JFXButton.ButtonType.RAISED);
-        done.setStyle("-fx-background-color: #00a8d6;");
-        done.setTextFill(Paint.valueOf("WHITE"));
-        done.setOnAction(event12 -> {
-
-            Console.logDebug("Closing dialog by button");
-            dialog.close();
-        });
-
-        //add the button
-        layout.setActions(done);
-
-        //show the dialog
-        dialog.show(mainPane);
+        displayFilter(label, false);
     }
 
     /**
@@ -394,5 +257,93 @@ public class MainController implements Initializable {
         button.setOnAction(event1 -> dialog.close());
         content.setActions(button);
         dialog.show();
+    }
+
+    private void displayFilter(Label label, boolean isAdd) {
+
+        //if the panel is not null
+        if (label == null) {
+            //display error because is cool
+            displayError("Please select a filter", "Error: selected filter is null.");
+            return;
+        }
+
+        //replace all " " and "     " by a ""
+        String x = label.getText().replaceAll("\\p{Z}","").trim();
+
+        //split the x string
+        String[] strings = x.split("->");
+
+        //Init layout and dialog
+        JFXDialogLayout layout = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(mainPane, layout, JFXDialog.DialogTransition.CENTER);
+
+        //Set the title of dialog
+        layout.setHeading(new StackPane(new Label("Edit Filter")));
+
+        //Create stack pane to add the text field ans text area
+        AnchorPane pane = new AnchorPane();
+
+        JFXTextField textField = new JFXTextField();
+        textField.setPromptText("To");
+
+        if(!isAdd)
+            textField.setText(strings[0]);
+
+        textField.setLabelFloat(true);
+        textField.setLayoutX(65);
+        textField.setLayoutY(46);
+        StackPane.setMargin(textField, new Insets(0, 0, 150, 0));
+        //add the text field to the pane
+        Console.logDebug("Adding JFXTextField " + textField.toString() + " To the pane");
+        pane.getChildren().add(textField);
+
+        JFXTextArea area = new JFXTextArea();
+        area.setPromptText("By");
+
+        if(!isAdd)
+            area.setText(strings[1]);
+
+        area.setLabelFloat(true);
+        area.setLayoutX(65);
+        area.setLayoutY(120);
+        StackPane.setMargin(area, new Insets(100, 0, 0, 0));
+        //add the text area to the pane
+        Console.logDebug("Adding JFXTextArea " + area.toString() + " To the pane");
+        pane.getChildren().add(area);
+
+        //Set the body layout
+        layout.setBody(pane);
+
+        //add the on close event
+        dialog.setOnDialogClosed(event1 -> {
+            //replace the Label if the text field and text area is not null
+            if (!textField.getText().isEmpty() && !area.getText().isEmpty()) {
+                Console.logDebug("Removing label: " + label + " for editing");
+                listFilter.getItems().remove(label);
+                Label l = new Label(textField.getText().trim() + "  ->  " + area.getText().trim());
+                Console.logDebug("Adding new label: " + l + " for editing");
+                listFilter.getItems().add(l);
+            }
+
+            Console.logDebug("Quiting current dialog");
+        });
+
+        //add the done button and set the event to return of the dialog close event
+        JFXButton done = new JFXButton("Done");
+        done.setButtonType(JFXButton.ButtonType.RAISED);
+        done.setStyle("-fx-background-color: #00a8d6;");
+        done.setTextFill(Paint.valueOf("WHITE"));
+        done.setOnAction(event12 -> {
+
+            Console.logDebug("Closing dialog by button");
+            dialog.close();
+        });
+
+        //add the button
+        layout.setActions(done);
+
+        //show the dialog
+        dialog.show(mainPane);
     }
 }

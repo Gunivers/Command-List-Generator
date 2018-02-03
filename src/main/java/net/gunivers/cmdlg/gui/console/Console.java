@@ -192,8 +192,9 @@ public class Console {
             builder.append((char) b);
 
             if(builder.toString().endsWith("\n")) {
-                addText(errorTextPane, builder.toString(), Color.RED);
-                addText(allTextPane, builder.toString(), Color.RED);
+                String message = builder.toString();
+                addText(errorTextPane, message, message.contains("net.gunivers") ? Color.WHITE : Color.RED);
+                addText(allTextPane, message, message.contains("net.gunivers") ? Color.WHITE : Color.RED);
                 builder = new StringBuilder();
                 updateCurrentJScrollPane();
             }
