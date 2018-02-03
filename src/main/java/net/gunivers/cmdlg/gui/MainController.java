@@ -1,7 +1,17 @@
 package net.gunivers.cmdlg.gui;
 
 import com.jfoenix.controls.*;
-
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 import net.gunivers.cmdlg.Main;
 import net.gunivers.cmdlg.api.BasicGenerator;
 import net.gunivers.cmdlg.generators.NullGenerator;
@@ -15,19 +25,6 @@ import net.gunivers.cmdlg.generators.primitive.IntGenerator;
 import net.gunivers.cmdlg.generators.primitive.LongGenerator;
 import net.gunivers.cmdlg.gui.console.Console;
 import net.gunivers.cmdlg.util.GeneratorType;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Text;
-import sun.plugin.javascript.navig.Array;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -120,6 +117,13 @@ public class MainController implements Initializable {
     @FXML
     public void editFilter(ActionEvent event) {
         Label label = listFilter.getSelectionModel().getSelectedItem();
+        //if the panel is not null
+        if (label == null) {
+            //display error because is cool
+            displayError("Please select a filter", "Error: selected filter is null.");
+            return;
+        }
+
         Console.logDebug("Editing filter: " + label.toString());
         Console.logInfo("Editing filter [" + label.getText() + "]");
         displayFilter(label, false);

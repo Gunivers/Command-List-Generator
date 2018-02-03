@@ -16,7 +16,7 @@ public class DimensionGui {
         this.prefWidth = prefWidth;
         this.prefHeigt = prefHeigt;
         this.name = name;
-        Console.logDebug("new DimensionGui(width=" + width + ", height=" + height + ", prefWidth=" + prefWidth + " ,prefWidth=" + prefWidth + ", name=" + name + ")");
+        Console.logDebug("new DimensionGui(width=" + width + ", height=" + height + ", prefWidth=" + prefWidth + " ,prefHeigt=" + prefHeigt + ", name=" + name + ")");
     }
 
     public String getName() {

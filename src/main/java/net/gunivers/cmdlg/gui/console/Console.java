@@ -11,7 +11,6 @@ import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
@@ -57,6 +56,10 @@ public class Console {
             tabbedPane.setComponentAt(2, new JScrollPane(errorTextPane));
             tabbedPane.setComponentAt(3, new JScrollPane(allTextPane));
 
+            tabbedPane.getComponentAt(0).setFont(Font.getFont("Roboto"));
+            tabbedPane.getComponentAt(1).setFont(Font.getFont("Roboto"));
+            tabbedPane.getComponentAt(2).setFont(Font.getFont("Roboto"));
+            tabbedPane.getComponentAt(3).setFont(Font.getFont("Roboto"));
             //#FixJava 2 (ScrollPane not refreshing on resize)
             tabbedPane.addComponentListener(new ComponentAdapter() {
                 @Override
@@ -168,7 +171,7 @@ public class Console {
         private StringBuilder builder = new StringBuilder();
 
         @Override
-        public void write(int b) throws IOException {
+        public void write(int b) {
             builder.append((char) b);
 
             if(builder.toString().endsWith("\n")) {
@@ -188,7 +191,7 @@ public class Console {
         private StringBuilder builder = new StringBuilder();
 
         @Override
-        public void write(int b) throws IOException {
+        public void write(int b) {
             builder.append((char) b);
 
             if(builder.toString().endsWith("\n")) {

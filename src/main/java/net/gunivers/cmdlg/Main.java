@@ -2,21 +2,22 @@ package net.gunivers.cmdlg;
 
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.svg.SVGGlyphLoader;
-import net.gunivers.cmdlg.gui.CmdlgDecorator;
-import net.gunivers.cmdlg.gui.DimensionGui;
-import net.gunivers.cmdlg.gui.MainController;
-import net.gunivers.cmdlg.gui.console.Console;
-import net.gunivers.cmdlg.util.GeneratorType;
-import net.gunivers.cmdlg.util.Util;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import net.gunivers.cmdlg.gui.CmdlgDecorator;
+import net.gunivers.cmdlg.gui.DimensionGui;
+import net.gunivers.cmdlg.gui.MainController;
+import net.gunivers.cmdlg.gui.console.Console;
+import net.gunivers.cmdlg.util.GeneratorType;
+import net.gunivers.cmdlg.util.Util;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
@@ -29,6 +30,16 @@ public class Main extends Application {
     public static DimensionGui SELECTED_DIMENTION_GUI = null;
 
     static {
+        try {
+            GraphicsEnvironment ge =
+                    GraphicsEnvironment.getLocalGraphicsEnvironment();
+            File tempFile = new File(System.getProperty("java.io.tmpdir") + "/CmdLgTemFontLoader.tmp");
+            Util.copyStream(tempFile, Main.class.getResourceAsStream("/fonts/Roboto-Regular.ttf"));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, tempFile);
+            ge.registerFont(font);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
         Console.start();
 
         for (GeneratorType type : GeneratorType.values()) {
@@ -44,16 +55,36 @@ public class Main extends Application {
     public static void main(String[] args) {
         double java_version = Double.parseDouble(System.getProperty("java.specification.version"));
 
-        if(java_version > 1.8 || java_version < 1.8) {
+        if (java_version > 1.8 || java_version < 1.8) {
             JOptionPane.showMessageDialog(null, "Error cant be start: Please use java 1.8 !", "Error !", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
         try {
             launch(args);
         } catch (Exception e) {
             e.printStackTrace();
+            Console.mainFrame.setVisible(true);
             JOptionPane.showMessageDialog(null, "Error cant be start: \n" + e.fillInStackTrace(), "Error !", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private static DimensionGui getDimensionGui() {
+        HashMap<Integer, DimensionGui> dimensionGuiHashMap = new HashMap<>();
+
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+
+        for (DimensionGui gui : Main.dimensionGuis) {
+            dimensionGuiHashMap.put(gui.getHeight() + gui.getWidth(), gui);
+        }
+
+        List<Integer> keys = new ArrayList<>(dimensionGuiHashMap.keySet());
+
+        int index = closest((int) (screen.getHeight() + screen.getWidth()), keys);
+
+        Console.logInfo("Index for DimensionGui: " + index);
+
+        return dimensionGuiHashMap.get(index);
     }
 
     /**
@@ -90,6 +121,7 @@ public class Main extends Application {
             JFXDecorator decorator = new CmdlgDecorator(stage, pane);
             decorator.setCustomMaximize(true);
             decorator.setText("Command list generator");
+            stage.setTitle("Command list generator");
             Scene scene = new Scene(decorator, dimensionGui.getPrefWidth(), dimensionGui.getPrefHeigt());
             scene.getStylesheets().addAll(Main.class.getResource("/css/Main.css").toExternalForm());
             stage.setScene(scene);
@@ -114,24 +146,6 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private static DimensionGui getDimensionGui() {
-        HashMap<Integer, DimensionGui> dimensionGuiHashMap = new HashMap<>();
-
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-
-        for (DimensionGui gui : Main.dimensionGuis) {
-            dimensionGuiHashMap.put(gui.getHeight() + gui.getWidth(), gui);
-        }
-
-        List<Integer> keys = new ArrayList<>(dimensionGuiHashMap.keySet());
-
-        int index = closest((int) (screen.getHeight() + screen.getWidth()), keys);
-
-       Console.logInfo("Index for DimensionGui: " + index);
-
-        return dimensionGuiHashMap.get(index);
     }
 
     public static int closest(int value, Collection<Integer> in) {
