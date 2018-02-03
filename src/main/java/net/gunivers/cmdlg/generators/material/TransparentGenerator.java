@@ -7,9 +7,13 @@ import net.gunivers.cmdlg.util.Material;
 
 public class TransparentGenerator extends MaterialGenerator {
 	
-	private GeneratorType type = GeneratorType.SOLID;
-	
-	/**
+	private GeneratorType type = GeneratorType.TRANSPARENT;
+
+    public TransparentGenerator(String... command) {
+        super(command);
+    }
+
+    /**
      * Generate Solid Material
      *
      * @return ArrayList<String> commands
@@ -46,4 +50,8 @@ public class TransparentGenerator extends MaterialGenerator {
         return values;
     }
 
+    @Override
+    public GeneratorType getType() {
+        return type;
+    }
 }

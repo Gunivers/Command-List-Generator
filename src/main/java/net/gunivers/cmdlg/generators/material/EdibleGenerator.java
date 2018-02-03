@@ -7,8 +7,12 @@ import net.gunivers.cmdlg.util.Material;
 public class EdibleGenerator extends MaterialGenerator {
 	
 	private GeneratorType type = GeneratorType.EDIBLE;
-	
-	/**
+
+    public EdibleGenerator(String... command) {
+        super(command);
+    }
+
+    /**
      * Generate Edible Material
      *
      * @return ArrayList<String> commands
@@ -43,5 +47,10 @@ public class EdibleGenerator extends MaterialGenerator {
     	for (Material matos : Material.values()) if (matos.isEdible()) values.add(matos);
     	
         return values;
+    }
+
+    @Override
+    public GeneratorType getType() {
+        return type;
     }
 }

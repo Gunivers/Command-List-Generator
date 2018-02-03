@@ -8,7 +8,7 @@ import net.gunivers.cmdlg.util.Material;
 
 public class IDTransparentGenerator extends IDMaterialGenerator {
 
-    private GeneratorType type = GeneratorType.MATERIAL_ID;
+    private GeneratorType type = GeneratorType.TRANSPARENT_ID;
 
     public IDTransparentGenerator(String... commands) {
         super(commands);
@@ -52,5 +52,10 @@ public class IDTransparentGenerator extends IDMaterialGenerator {
     	for (Material material : Material.values()) if (material.isTransparent()) matos.add(material.getId());
     	
         return matos;
+    }
+
+    @Override
+    public GeneratorType getType() {
+        return type;
     }
 }

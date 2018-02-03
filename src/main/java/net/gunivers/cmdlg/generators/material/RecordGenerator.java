@@ -7,8 +7,12 @@ import net.gunivers.cmdlg.util.Material;
 public class RecordGenerator extends MaterialGenerator {
 	
 	private GeneratorType type = GeneratorType.RECORD;
-	
-	/**
+
+    public RecordGenerator(String... command) {
+        super(command);
+    }
+
+    /**
      * Generate record Material
      *
      * @return ArrayList<String> commands
@@ -45,4 +49,8 @@ public class RecordGenerator extends MaterialGenerator {
         return values;
     }
 
+    @Override
+    public GeneratorType getType() {
+        return type;
+    }
 }

@@ -1,7 +1,5 @@
 package net.gunivers.cmdlg.generators.material;
 
-// Updated upstream:src/main/java/fr/gunivers/cmdlg/generators/material/BlockGenerator.java
-
 import java.util.ArrayList;
 import net.gunivers.cmdlg.util.GeneratorType;
 import net.gunivers.cmdlg.util.Material;
@@ -9,6 +7,10 @@ import net.gunivers.cmdlg.util.Material;
 public class BlockGenerator extends MaterialGenerator {
 
 	private GeneratorType type = GeneratorType.BLOCK;
+
+    public BlockGenerator(String... command) {
+        super(command);
+    }
 
     /**
      * Generate Block Material
@@ -45,5 +47,10 @@ public class BlockGenerator extends MaterialGenerator {
     	for (Material matos : Material.values()) if (matos.isBlock()) values.add(matos);
     	
         return values;
+    }
+
+    @Override
+    public GeneratorType getType() {
+        return type;
     }
 }

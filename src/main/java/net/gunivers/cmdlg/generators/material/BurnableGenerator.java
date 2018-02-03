@@ -7,7 +7,11 @@ import net.gunivers.cmdlg.util.Material;
 public class BurnableGenerator extends MaterialGenerator {
 	
 	private GeneratorType type = GeneratorType.BURNABLE;
-	
+
+	public BurnableGenerator(String... command) {
+		super(command);
+	}
+
 	/**
      * Generate Burnable Material
      *
@@ -44,4 +48,9 @@ public class BurnableGenerator extends MaterialGenerator {
     	
         return values;
     }
+
+	@Override
+	public GeneratorType getType() {
+		return type;
+	}
 }

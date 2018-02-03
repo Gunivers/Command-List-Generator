@@ -5,6 +5,14 @@ import com.jfoenix.controls.*;
 import net.gunivers.cmdlg.Main;
 import net.gunivers.cmdlg.api.BasicGenerator;
 import net.gunivers.cmdlg.generators.NullGenerator;
+import net.gunivers.cmdlg.generators.material.*;
+import net.gunivers.cmdlg.generators.materialID.*;
+import net.gunivers.cmdlg.generators.math.InterpGenerator;
+import net.gunivers.cmdlg.generators.math.InterpScoreGenerator;
+import net.gunivers.cmdlg.generators.primitive.DoubleGenerator;
+import net.gunivers.cmdlg.generators.primitive.FloatGenerator;
+import net.gunivers.cmdlg.generators.primitive.IntGenerator;
+import net.gunivers.cmdlg.generators.primitive.LongGenerator;
 import net.gunivers.cmdlg.gui.console.Console;
 import net.gunivers.cmdlg.util.GeneratorType;
 
@@ -19,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import sun.plugin.javascript.navig.Array;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -174,9 +183,8 @@ public class MainController implements Initializable {
             String command = this.command.getText();
             Console.logDebug("Command = " + this.command.toString());
             //Get the generator by the Type of generator
-            BasicGenerator generator = getBasicGeneratorForType(type);
+            BasicGenerator generator = getBasicGeneratorForType(type, command, new Object[]{}); //TODO: Detect the args !
             Console.logDebug("BasicGenerator = " + generator);
-            //TODO: Complete this !
             //Generator command
             ArrayList<String> arrayList = generator.generate();
             Iterator<String> commands = arrayList.iterator();
@@ -221,11 +229,73 @@ public class MainController implements Initializable {
      * Return to the BasicGenerator of GeneratorType
      * @param type
      */
-    private BasicGenerator getBasicGeneratorForType(GeneratorType type) {
+    private BasicGenerator getBasicGeneratorForType(GeneratorType type, String[] command, Object[] args) {
         switch (type) {
+            case INT:
+                return new IntGenerator(command, (int) args[0], (int) args[1], (int) args[2]);
+            case LONG:
+                return new LongGenerator(command, (long) args[0], (long) args[1], (long) args[2]);
+            case FLOAT:
+                return new FloatGenerator(command, (float) args[0], (float) args[1], (float) args[2]);
+            case DOUBLE:
+                return new DoubleGenerator(command, (double) args[0], (double) args[1], (double) args[2]);
+            case MATERIAL:
+                return new MaterialGenerator(command);
+            case BLOCK:
+                return new BlockGenerator(command);
+            case BURNABLE:
+                return new BurnableGenerator(command);
+            case EDIBLE:
+                return new EdibleGenerator(command);
+            case FLAMMABLE:
+                return new FlammableGenerator(command);
+            case FUEL:
+                return new FuelGenerator(command);
+            case OCCLUDING:
+                return new OccludingGenerator(command);
+            case RECORD:
+                return new RecordGenerator(command);
+            case SOLID:
+                return new SolidGenerator(command);
+            case TRANSPARENT:
+                return new TransparentGenerator(command);
+            case MATERIAL_ID:
+                return new IDMaterialGenerator(command);
+            case BLOCK_ID:
+                return new IDBlockGenerator(command);
+            case BURNABLE_ID:
+                return new IDBurnableGenerator(command);
+            case EDIBLE_ID:
+                return new IDEdibleGenerator(command);
+            case FLAMMABLE_ID:
+                return new IDFlammableGenerator(command);
+            case FUEL_ID:
+                return new IDFuelGenerator(command);
+            case OCCLUDING_ID:
+                return new IDOccludingGenerator(command);
+            case RECORD_ID:
+                return new IDRecordGenerator(command);
+            case SOLID_ID:
+                return new IDSolidGenerator(command);
+            case TRANSPARENT_ID:
+                return new IDTransparentGenerator(command);
+            case INTERP:
+                return new InterpGenerator(command, args[0], args[1], args[2], args[3], args[4], args[5]);
+            case INTERPSCORE:
+                return new InterpScoreGenerator(command, args[0], args[1], args[2], args[3], args[4], args[5]);
+            case DICHOTOMIE:
+                return new NullGenerator();
             default:
                 return new NullGenerator();
         }
+    }
+
+    /**
+     * Return to the BasicGenerator of GeneratorType
+     * @param type
+     */
+    private BasicGenerator getBasicGeneratorForType(GeneratorType type, String command, Object[] args) {
+        return this.getBasicGeneratorForType(type, new String[]{command}, args);
     }
 
     /**

@@ -8,7 +8,7 @@ import net.gunivers.cmdlg.util.Material;
 
 public class IDEdibleGenerator extends IDMaterialGenerator {
 
-    private GeneratorType type = GeneratorType.MATERIAL_ID;
+    private GeneratorType type = GeneratorType.EDIBLE_ID;
 
     public IDEdibleGenerator(String... commands) {
         super(commands);
@@ -52,5 +52,10 @@ public class IDEdibleGenerator extends IDMaterialGenerator {
     	for (Material material : Material.values()) if (material.isEdible()) matos.add(material.getId());
     	
         return matos;
+    }
+
+    @Override
+    public GeneratorType getType() {
+        return type;
     }
 }

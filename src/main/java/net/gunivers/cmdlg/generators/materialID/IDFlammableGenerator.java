@@ -7,7 +7,7 @@ import net.gunivers.cmdlg.util.Material;
 
 public class IDFlammableGenerator extends IDMaterialGenerator {
 
-    private GeneratorType type = GeneratorType.MATERIAL_ID;
+    private GeneratorType type = GeneratorType.FLAMMABLE_ID;
 
     public IDFlammableGenerator(String... commands) {
         super(commands);
@@ -51,5 +51,10 @@ public class IDFlammableGenerator extends IDMaterialGenerator {
     	for (Material material : Material.values()) if (material.isFlammable()) matos.add(material.getId());
     	
         return matos;
+    }
+
+    @Override
+    public GeneratorType getType() {
+        return type;
     }
 }

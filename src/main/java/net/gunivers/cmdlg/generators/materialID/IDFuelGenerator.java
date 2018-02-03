@@ -8,7 +8,7 @@ import net.gunivers.cmdlg.util.Material;
 
 public class IDFuelGenerator extends IDMaterialGenerator {
 
-    private GeneratorType type = GeneratorType.MATERIAL_ID;
+    private GeneratorType type = GeneratorType.FUEL_ID;
 
     public IDFuelGenerator(String... commands) {
         super(commands);
@@ -52,5 +52,10 @@ public class IDFuelGenerator extends IDMaterialGenerator {
     	for (Material material : Material.values()) if (material.isFuel()) matos.add(material.getId());
     	
         return matos;
+    }
+
+    @Override
+    public GeneratorType getType() {
+        return type;
     }
 }

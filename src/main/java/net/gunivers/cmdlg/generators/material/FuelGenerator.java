@@ -7,8 +7,12 @@ import net.gunivers.cmdlg.util.Material;
 public class FuelGenerator extends MaterialGenerator {
 	
 	private GeneratorType type = GeneratorType.FUEL;
-	
-	/**
+
+    public FuelGenerator(String... command) {
+        super(command);
+    }
+
+    /**
      * Generate Fuel Material
      *
      * @return ArrayList<String> commands
@@ -45,4 +49,8 @@ public class FuelGenerator extends MaterialGenerator {
         return values;
     }
 
+    @Override
+    public GeneratorType getType() {
+        return type;
+    }
 }

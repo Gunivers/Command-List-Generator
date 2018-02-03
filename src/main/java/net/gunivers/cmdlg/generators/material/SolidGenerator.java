@@ -8,8 +8,12 @@ import net.gunivers.cmdlg.util.Material;
 public class SolidGenerator extends MaterialGenerator {
 	
 	private GeneratorType type = GeneratorType.SOLID;
-	
-	/**
+
+    public SolidGenerator(String... command) {
+        super(command);
+    }
+
+    /**
      * Generate Solid Material
      *
      * @return ArrayList<String> commands
@@ -46,4 +50,8 @@ public class SolidGenerator extends MaterialGenerator {
         return values;
     }
 
+    @Override
+    public GeneratorType getType() {
+        return type;
+    }
 }

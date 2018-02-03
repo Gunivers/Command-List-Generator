@@ -8,7 +8,7 @@ import net.gunivers.cmdlg.util.Material;
 
 public class IDOccludingGenerator extends IDMaterialGenerator {
 
-    private GeneratorType type = GeneratorType.MATERIAL_ID;
+    private GeneratorType type = GeneratorType.OCCLUDING_ID;
 
     public IDOccludingGenerator(String... commands) {
         super(commands);
@@ -52,5 +52,10 @@ public class IDOccludingGenerator extends IDMaterialGenerator {
     	for (Material material : Material.values()) if (material.isOccluding()) matos.add(material.getId());
     	
         return matos;
+    }
+
+    @Override
+    public GeneratorType getType() {
+        return type;
     }
 }

@@ -8,7 +8,7 @@ import net.gunivers.cmdlg.util.Material;
 
 public class IDSolidGenerator extends IDMaterialGenerator {
 
-    private GeneratorType type = GeneratorType.MATERIAL_ID;
+    private GeneratorType type = GeneratorType.SOLID_ID;
 
     public IDSolidGenerator(String... commands) {
         super(commands);
@@ -52,5 +52,10 @@ public class IDSolidGenerator extends IDMaterialGenerator {
     	for (Material material : Material.values()) if (material.isSolid()) matos.add(material.getId());
     	
         return matos;
+    }
+
+    @Override
+    public GeneratorType getType() {
+        return type;
     }
 }

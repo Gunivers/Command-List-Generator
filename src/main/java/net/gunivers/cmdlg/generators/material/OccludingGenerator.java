@@ -7,8 +7,12 @@ import net.gunivers.cmdlg.util.Material;
 public class OccludingGenerator extends MaterialGenerator {
 	
 	private GeneratorType type = GeneratorType.OCCLUDING;
-	
-	/**
+
+    public OccludingGenerator(String... command) {
+        super(command);
+    }
+
+    /**
      * Generate Occluding Material
      *
      * @return ArrayList<String> commands
@@ -45,5 +49,9 @@ public class OccludingGenerator extends MaterialGenerator {
         return values;
     }
 
+    @Override
+    public GeneratorType getType() {
+        return type;
+    }
 }
 

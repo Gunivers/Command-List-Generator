@@ -7,8 +7,12 @@ import net.gunivers.cmdlg.util.Material;
 public class FlammableGenerator extends MaterialGenerator {
 	
 	private GeneratorType type = GeneratorType.FLAMMABLE;
-	
-	/**
+
+    public FlammableGenerator(String... command) {
+        super(command);
+    }
+
+    /**
      * Generate Blocks Material
      *
      * @return ArrayList<String> commands
@@ -43,5 +47,10 @@ public class FlammableGenerator extends MaterialGenerator {
     	for (Material matos : Material.values()) if (matos.isFlammable()) values.add(matos);
     	
         return values;
+    }
+
+    @Override
+    public GeneratorType getType() {
+        return type;
     }
 }
