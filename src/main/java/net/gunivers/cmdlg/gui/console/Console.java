@@ -192,7 +192,7 @@ public class Console {
             builder.append((char) b);
 
             if(builder.toString().endsWith("\n")) {
-                addText(infoTextPane, builder.toString(), Color.RED);
+                addText(errorTextPane, builder.toString(), Color.RED);
                 addText(allTextPane, builder.toString(), Color.RED);
                 builder = new StringBuilder();
                 updateCurrentJScrollPane();
