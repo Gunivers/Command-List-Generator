@@ -63,15 +63,6 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) {
-        new Thread(() -> {
-            while (true) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) { }
-                System.out.println("This is a test");
-            }
-        }).start();
-
         Console.logInfo("Register icomoon.sgv");
         new Thread(() -> {
             try {
