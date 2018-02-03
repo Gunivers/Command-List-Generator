@@ -24,6 +24,8 @@ public class Console {
     private static final JTextPane debugTextPane = new JTextPane();
     private static final JTextPane errorTextPane = new JTextPane();
 
+    private static JTabbedPane tabbedPane = new JTabbedPane();
+
     public static JFrame mainFrame = new JFrame("Console");
 
     /**
@@ -36,9 +38,6 @@ public class Console {
             //set the new print stream.
             System.setOut(new PrintStream(new ConsoleOutputStream(), true));
             System.setErr(new PrintStream(new ConsoleErrOutputStream(), true));
-
-            //init the tabbed pane
-            JTabbedPane tabbedPane = new JTabbedPane();
 
             //init all tab
             initTab(allTextPane);
@@ -96,51 +95,6 @@ public class Console {
             mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
     }
 
-
-    /**
-     * This add a basic System.out.print
-     * @param text
-     * @param color
-     */
-    private static void addErrCmd(String text, Color color) {
-        //get the StyledDoc
-        StyledDocument doc = errorTextPane.getStyledDocument();
-        //add a new Style for StyledDoc
-        Style style = errorTextPane.addStyle("Color Style", null);
-        //set the new Style
-        StyleConstants.setForeground(style, color);
-
-        try {
-            //insert string to TextPane
-            doc.insertString(doc.getLength(), text, style);
-        }
-        catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * This add a basic System.out.print
-     * @param text
-     * @param color
-     */
-    private static void addCmd(JTextPane pane, String text, Color color) {
-        //get the StyledDoc
-        StyledDocument doc = pane.getStyledDocument();
-        //add a new Style for StyledDoc
-        Style style = pane.addStyle("Color Style", null);
-        //set the new Style
-        StyleConstants.setForeground(style, color);
-
-        try {
-            //insert string to TextPane
-            doc.insertString(doc.getLength(), text, style);
-        }
-        catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * Use for add a info on the console, you cant chose the color
      * @param text
@@ -192,13 +146,37 @@ public class Console {
     }
 
     /**
+     * For update the scroll bar on the bottom.
+     */
+    private static void updateCurrentJScrollPane() {
+        ///get the current
+        JScrollPane scrollPane = (JScrollPane) tabbedPane.getSelectedComponent();
+        //get scroll bar
+        JScrollBar bar = scrollPane.getVerticalScrollBar();
+        //if scroll bar existing
+        if (bar != null) {
+            //set bar at se max value
+            bar.setValue(bar.getMaximum());
+        }
+    }
+
+    /**
      * The class to sync System.out.print to the console.
      */
     public static class ConsoleOutputStream extends OutputStream {
+
+        private StringBuilder builder = new StringBuilder();
+
         @Override
         public void write(int b) throws IOException {
-            addCmd(allTextPane, String.valueOf(Character.valueOf((char) b)), Color.WHITE);
-            addCmd(infoTextPane, String.valueOf(Character.valueOf((char) b)), Color.WHITE);
+            builder.append((char) b);
+
+            if(builder.toString().endsWith("\n")) {
+                addText(infoTextPane, builder.toString(), Color.WHITE);
+                addText(allTextPane, builder.toString(), Color.WHITE);
+                builder = new StringBuilder();
+                updateCurrentJScrollPane();
+            }
         }
     }
 
@@ -206,10 +184,19 @@ public class Console {
      * The class to sync System.out.print to the console.
      */
     public static class ConsoleErrOutputStream extends OutputStream {
+
+        private StringBuilder builder = new StringBuilder();
+
         @Override
         public void write(int b) throws IOException {
-            addErrCmd(String.valueOf(Character.valueOf((char) b)), Color.RED);
-            addCmd(allTextPane, String.valueOf(Character.valueOf((char) b)), Color.RED);
+            builder.append((char) b);
+
+            if(builder.toString().endsWith("\n")) {
+                addText(infoTextPane, builder.toString(), Color.RED);
+                addText(allTextPane, builder.toString(), Color.RED);
+                builder = new StringBuilder();
+                updateCurrentJScrollPane();
+            }
         }
     }
 
