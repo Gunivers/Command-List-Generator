@@ -4,12 +4,13 @@ import net.gunivers.cmdlg.api.PrimitiveGenerator;
 import net.gunivers.cmdlg.util.GeneratorType;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class InterpGenerator extends PrimitiveGenerator {
 
 	private GeneratorType type = GeneratorType.INTERP;
 	
-	/**Constructor
+	/**Constructor. Tag format: #Interp:<Double: Start>,<Double: End>,<Double: Curvature>,<Int (0 or 1): Invert Curvature>,<Int: Decimals Number>,<Int (0 or 1): No Extremes>#
 	 * 
 	 * @param command: the command to generate
 	 * @param args: arguments for this generator
@@ -33,10 +34,25 @@ public class InterpGenerator extends PrimitiveGenerator {
 		boolean revert = (boolean) getArgs()[3];
 		int nbreDecimales = (int) getArgs()[4];
 		int nbCommands = (int) getArgs()[5];
+		boolean noExt = (boolean) getArgs()[6];
 		
-		for(int i = 0; i < nbCommands; i++)
-			commands.add(String.valueOf(round(interp(start, end, nbCommands, i, power, revert), nbreDecimales)));
-        
+		int commandeD = 0;
+		int commandeF = nbCommands-1;
+		int step = 1;
+		
+		if(noExt) {
+			commandeD = 1;
+			nbCommands = nbCommands*2 +1;
+			commandeF = nbCommands-1;
+			step = 2;
+		}
+		
+		for(int i = commandeD; i <= commandeF; i += step)
+			if(nbreDecimales == 0)
+				commands.add(String.valueOf((int) Math.round(interp(start, end, nbCommands, i, power, revert))));
+			else
+				commands.add(String.valueOf(round(interp(start, end, nbCommands, i, power, revert), nbreDecimales)));		
+			
         return commands;
     }
     					
