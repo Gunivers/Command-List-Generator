@@ -3,7 +3,6 @@ package net.gunivers.cmdlg.generators.math;
 import net.gunivers.cmdlg.api.PrimitiveGenerator;
 import net.gunivers.cmdlg.util.GeneratorType;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class InterpScoreGenerator extends PrimitiveGenerator {
 
