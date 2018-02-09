@@ -38,7 +38,7 @@ jar {
         manifest {
             if (!configurations.compile.isEmpty()) {
                 attributes(
-                        'Main-Class': 'fr.gunivers.cmdlg.Main')
+                        'Main-Class': 'net.gunivers.cmdlg.Main')
             }
         }
     }
