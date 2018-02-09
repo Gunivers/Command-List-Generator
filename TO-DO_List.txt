@@ -1,7 +1,6 @@
 TO-DO:
 	Specific to users:
-		@Oromis: Finir la classe DichotomieGenerator() -> update sa JavaDoc
-		@AZ-0: Finir les MaterialID
+		@Oromis: Finir la classe DichotomieGenerator() -> package math
 		
 	Other:
-		
+		Do total check up of the project
