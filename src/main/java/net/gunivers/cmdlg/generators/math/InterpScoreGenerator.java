@@ -2,15 +2,13 @@ package net.gunivers.cmdlg.generators.math;
 
 import net.gunivers.cmdlg.api.PrimitiveGenerator;
 import net.gunivers.cmdlg.util.GeneratorType;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class InterpScoreGenerator extends PrimitiveGenerator {
 
 	private GeneratorType type = GeneratorType.INTERPSCORE;
 	
-	/**Constructor
+	/**Constructor. Tag format: #InterpScore:<Int: Start>,<Int: End>,<Double: Curvature>,<Int (0 or 1): Invert Curvature>,<String: Objective Name>#
 	 * 
 	 * @param command: the command to generate
 	 * @param args: arguments for this generator

@@ -4,7 +4,6 @@ import net.gunivers.cmdlg.util.GeneratorType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 
 public abstract class BasicGenerator {
 
