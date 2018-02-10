@@ -31,14 +31,14 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About Command List Generator" />
+            <MenuItem fx:id="ABOUT_MENU_ITEM" mnemonicParsing="false" text="About Command List Generator" />
           </items>
         </Menu>
       </menus>
     </MenuBar>
       <HBox prefHeight="65.0" prefWidth="640.0" VBox.vgrow="NEVER">
          <children>
-            <TextField prefHeight="25.0" prefWidth="315.0" promptText="Intsert your command here." HBox.hgrow="ALWAYS">
+            <TextField fx:id="COMMAND_TEXT_FIELD" prefHeight="25.0" prefWidth="315.0" promptText="Intsert your command here." HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="16.25" />
                </HBox.margin>

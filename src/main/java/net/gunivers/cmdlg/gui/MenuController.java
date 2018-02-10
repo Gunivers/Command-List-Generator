@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import net.gunivers.cmdlg.gui.console.Console;
+import net.gunivers.cmdlg.gui.handler.AboutHandler;
 import net.gunivers.cmdlg.gui.handler.QuitHandler;
 import net.gunivers.cmdlg.gui.handler.SelectThemeHandler;
 import net.gunivers.cmdlg.gui.theme.Theme;
@@ -21,7 +22,13 @@ public class MenuController implements Initializable
 	private MenuItem QUIT_MENU_ITEM;
 
 	@FXML
+	private MenuItem ABOUT_MENU_ITEM;
+
+	@FXML
 	private ListView<Label> GENERATOR_LIST;
+
+	@FXML
+	private TextField COMMAND_TEXT_FIELD;
 
 	/**
 	 *	This is the first method when the Menu.fxml file is initialized.
@@ -31,7 +38,8 @@ public class MenuController implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
-		Console.logDebug("Init Theme Menu");//Add All Theme to the menu
+		Console.logDebug("Init Theme Menu");
+		//Add All Theme to the menu
 		for (Theme t : Theme.values()) {
 			MenuItem item = new MenuItem(t.getName());
 			item.setOnAction(new SelectThemeHandler(item));
@@ -41,7 +49,11 @@ public class MenuController implements Initializable
 		Console.logDebug("Add handler for Quit Menu Item");
 		QUIT_MENU_ITEM.setOnAction(new QuitHandler()); //Set the action for terminate the screen
 
-		Console.logDebug("Add all Label for the Generator list");//Add all Generator to the display
+		Console.logDebug("Add handler for About Menu Item");
+		ABOUT_MENU_ITEM.setOnAction(new AboutHandler()); //Set the action for terminate the screen
+
+		Console.logDebug("Add all Label for the Generator list");
+		//Add all Generator to the display
 		for (GeneratorType type : GeneratorType.values()) {
 			GENERATOR_LIST.getItems().add(new Label(type.getName()));
 		}
