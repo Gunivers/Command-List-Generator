@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import net.gunivers.cmdlg.gui.console.Console;
+import net.gunivers.cmdlg.gui.theme.Theme;
 import net.gunivers.cmdlg.util.GeneratorType;
 import net.gunivers.cmdlg.util.Util;
 
@@ -17,6 +18,8 @@ import java.util.*;
 
 public class Main extends Application
 {
+
+	public static Stage MAIN_STAGE;
 
 	public static LinkedHashMap<String, GeneratorType> nameToGeneratorType = new LinkedHashMap<>();
 
@@ -45,14 +48,6 @@ public class Main extends Application
 
 	public static void main(String[] args)
 	{
-		double java_version = Double.parseDouble(System.getProperty("java.specification.version"));
-
-		if (java_version > 1.8 || java_version < 1.8)
-		{
-			JOptionPane.showMessageDialog(null, "Error cant be start: Please use java 1.8 !", "Error !", JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-
 		try
 		{
 			launch(args);
@@ -72,22 +67,24 @@ public class Main extends Application
 	@Override
 	public void start(Stage stage)
 	{
+		MAIN_STAGE = stage;
 		try
 		{
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Menu.fxml"));
 			loader.load();
 
 			Scene scene = new Scene(loader.getRoot());
+
 			stage.setScene(scene);
 			stage.setMinWidth(640);
 			stage.setMinHeight(400);
 			stage.getIcons().add(new Image("icon/menu.png"));
 
 			stage.show();
-
-
 			//set the console main frame visible
 			Console.mainFrame.setVisible(true);
+
+			loadTheme(Theme.CMDLG);
 
 			Console.logInfo("You are showing the main stage");
 
@@ -111,5 +108,20 @@ public class Main extends Application
 			}
 		}
 		return null;
+	}
+
+	private static Theme oldThem = Theme.JAVA_DEFAULT;
+
+	public static void loadTheme(Theme theme) {
+		if (oldThem != theme) {
+			if (MAIN_STAGE.getScene().getStylesheets().size() > 0 && MAIN_STAGE.getScene().getStylesheets().contains(oldThem.getCssUrl().toExternalForm())) {
+				MAIN_STAGE.getScene().getStylesheets().remove(oldThem.getCssUrl().toExternalForm());
+			}
+			try
+			{
+				MAIN_STAGE.getScene().getStylesheets().add(theme.getCssUrl().toExternalForm());
+			} catch (Exception e){}
+			oldThem = theme;
+		}
 	}
 }

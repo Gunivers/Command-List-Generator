@@ -1,12 +1,28 @@
 package net.gunivers.cmdlg.gui;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import net.gunivers.cmdlg.gui.console.Console;
+import net.gunivers.cmdlg.gui.handler.QuitHandler;
+import net.gunivers.cmdlg.gui.handler.SelectThemeHandler;
+import net.gunivers.cmdlg.gui.theme.Theme;
+import net.gunivers.cmdlg.util.GeneratorType;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable
 {
+	@FXML
+	private Menu MENU_THEME;
+
+	@FXML
+	private MenuItem QUIT_MENU_ITEM;
+
+	@FXML
+	private ListView<Label> GENERATOR_LIST;
+
 	/**
 	 *	This is the first method when the Menu.fxml file is initialized.
 	 * @param location location of FXML File
@@ -15,6 +31,19 @@ public class MenuController implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
+		Console.logDebug("Init Theme Menu");//Add All Theme to the menu
+		for (Theme t : Theme.values()) {
+			MenuItem item = new MenuItem(t.getName());
+			item.setOnAction(new SelectThemeHandler(item));
+			MENU_THEME.getItems().add(item);
+		}
 
+		Console.logDebug("Add handler for Quit Menu Item");
+		QUIT_MENU_ITEM.setOnAction(new QuitHandler()); //Set the action for terminate the screen
+
+		Console.logDebug("Add all Label for the Generator list");//Add all Generator to the display
+		for (GeneratorType type : GeneratorType.values()) {
+			GENERATOR_LIST.getItems().add(new Label(type.getName()));
+		}
 	}
 }
