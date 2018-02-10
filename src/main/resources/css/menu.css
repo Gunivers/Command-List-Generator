@@ -1,0 +1,146 @@
+/* VARIABLE DEFINITIONS: Only these 4 variables have to be adjusted */
+* {
+    -fx-primary-color: #111828;                  /* Change according to your needs */
+    -fx-secondary-color: #273c68;      /* Change according to your needs */
+    -fx-font-color: #FFFFFF;             /* Change according to your needs */
+    -fx-font-color-highlighted: #FFFFFF; /* Change according to your needs */
+    -fx-pompt-text-color: gray; /* Change according to your needs */
+}
+
+
+/*
+* === Button color color ===
+*/
+.button {
+    -fx-text-fill: -fx-font-color;
+    -fx-background-color: -fx-secondary-color;
+}
+
+.button:pressed {
+    -fx-background-color: -fx-primary-color;
+}
+
+/*
+* === List View color ===
+*/
+.list-view {
+    -fx-background-color: -fx-secondary-color;
+}
+.list-cell {
+    -fx-control-inner-background: -fx-secondary-color ;
+    -fx-control-inner-background-alt: derive(-fx-control-inner-background, 50%);
+}
+
+/*
+* === Label color ===
+*/
+.label {
+    -fx-font-size: 12;
+    -fx-text-fill: -fx-font-color;
+}
+
+/*
+* === Root color ===
+*/
+.root {
+    /* A bright blue for highlighting/accenting objects.  For example: selected
+     * text; selected items in menus, lists, trees, and tables; progress bars;
+     * default buttons.
+     */
+    -fx-accent: #6a81b7;
+
+    /* A bright blue for the focus indicator of objects. Typically used as the
+     * first color in -fx-background-color for the "focused" pseudo-class. Also
+     * typically used with insets of -1.4 to provide a glowing effect.
+     *
+     * TODO: should this be derived from -fx-accent?
+     */
+    -fx-focus-color: #6a81b7;
+
+    -fx-font-family: "Roboto";
+}
+/*
+* === All Menu Bar color ===
+*/
+.menu-bar {
+    -fx-background-color: -fx-primary-color;
+}
+
+.menu-bar > .container > .menu-button {
+    -fx-background-color: -fx-primary-color;
+}
+
+.menu-bar > .container > .menu-button > .label {
+    -fx-text-fill: -fx-font-color;
+}
+
+.menu-bar > .container > .menu-button > .label:disabled {
+    -fx-opacity: 1.0;
+}
+
+.menu-bar > .container > .menu-button:hover,
+.menu-bar > .container > .menu-button:focused,
+.menu-bar > .container > .menu-button:showing {
+    -fx-background-color: -fx-secondary-color;
+}
+
+.menu-bar > .container > .menu-button:hover > .label,
+.menu-bar > .container > .menu-button:focused > .label,
+.menu-bar > .container > .menu-button:showing > .label {
+    -fx-text-fill: -fx-font-color-highlighted;
+}
+  
+.menu-item {
+    -fx-background-color: -fx-primary-color; 
+}
+
+.menu-item .label {
+    -fx-text-fill: -fx-font-color;
+}
+
+.menu-item .label:disabled {
+    -fx-opacity: 1.0;
+}    
+
+.menu-item:focused, .menu-item:hovered {
+    -fx-background-color: -fx-secondary-color; 
+}
+
+.menu-item:focused .label, .menu-item:hovered .label {
+    -fx-text-fill: -fx-font-color-highlighted;
+}
+
+.context-menu {
+    -fx-background-color: -fx-primary-color; 
+}
+
+/*
+* === HBox Color (main backgroud color) ===
+*/
+.hbox {
+    -fx-background-color: -fx-primary-color;
+}
+
+/*
+* === Text Area Color ===
+*/
+
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent, transparent, transparent, transparent;
+}
+
+.text-area .content {
+    -fx-background-color: -fx-secondary-color, -fx-secondary-color, -fx-secondary-color, -fx-secondary-color;
+}
+
+/*
+* === Text Input Color ===
+*/
+.text-input {
+    -fx-background-color:  -fx-secondary-color;
+    -fx-faint-focus-color:  transparent;
+    -fx-focus-color:  -fx-secondary-color;
+    -fx-text-fill:  -fx-font-color;
+    -fx-prompt-text-fill:  -fx-pompt-text-color;
+}
