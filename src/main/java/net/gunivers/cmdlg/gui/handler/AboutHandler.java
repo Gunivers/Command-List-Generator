@@ -16,12 +16,13 @@ public class AboutHandler implements EventHandler<ActionEvent>
 	{
 		Stage stage = new Stage();
 		stage.initOwner(Main.MAIN_STAGE);
+		stage.setResizable(false);
 		WebView webView = new WebView();
 		webView.getEngine().load("https://gunivers.net/");
 		Pane pane = new Pane();
 		pane.getChildren().add(webView);
 		stage.setScene(new Scene(pane));
-		stage.initStyle(StageStyle.UNDECORATED);
+		stage.initStyle(StageStyle.UTILITY);
 		stage.show();
 	}
 }

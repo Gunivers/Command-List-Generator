@@ -89,15 +89,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="Remove Filter" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" text="Edit Filter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" text="Remove Filter" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" text="Generate" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="FILTER_REMOVE_BUTTON" mnemonicParsing="false" text="Remove Filter" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="EDIT_REMOVE_BUTTON" mnemonicParsing="false" text="Edit Filter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="ADD_REMOVE_BUTTON" mnemonicParsing="false" text="Add Filter" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="GENERATE_BUTTON" mnemonicParsing="false" text="Generate" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
       <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
-            <TextArea editable="false" prefHeight="92.0" prefWidth="643.0" promptText="Output" HBox.hgrow="ALWAYS">
+            <TextArea fx:id="OUTPUT_TEXT_AREA" editable="false" prefHeight="92.0" prefWidth="643.0" promptText="Output" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Roboto Medium" size="12.0" />
                </font>

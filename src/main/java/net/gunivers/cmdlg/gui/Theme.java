@@ -1,4 +1,4 @@
-package net.gunivers.cmdlg.gui.theme;
+package net.gunivers.cmdlg.gui;
 
 import java.net.URL;
 

@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import net.gunivers.cmdlg.gui.console.Console;
-import net.gunivers.cmdlg.gui.theme.Theme;
+import net.gunivers.cmdlg.gui.Theme;
 import net.gunivers.cmdlg.util.GeneratorType;
 import net.gunivers.cmdlg.util.Util;
 
@@ -111,15 +111,20 @@ public class Main extends Application
 
 	private static Theme oldThem = Theme.JAVA_DEFAULT;
 
-	public static void loadTheme(Theme theme) {
-		if (oldThem != theme) {
-			if (MAIN_STAGE.getScene().getStylesheets().size() > 0 && MAIN_STAGE.getScene().getStylesheets().contains(oldThem.getCssUrl().toExternalForm())) {
+	public static void loadTheme(Theme theme)
+	{
+		if (oldThem != theme)
+		{
+			if (MAIN_STAGE.getScene().getStylesheets().size() > 0 && MAIN_STAGE.getScene().getStylesheets().contains(oldThem.getCssUrl().toExternalForm()))
+			{
 				MAIN_STAGE.getScene().getStylesheets().remove(oldThem.getCssUrl().toExternalForm());
 			}
 			try
 			{
 				MAIN_STAGE.getScene().getStylesheets().add(theme.getCssUrl().toExternalForm());
-			} catch (Exception e){}
+			} catch (Exception e)
+			{
+			}
 			oldThem = theme;
 		}
 	}
