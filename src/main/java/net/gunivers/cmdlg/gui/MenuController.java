@@ -3,6 +3,8 @@ package net.gunivers.cmdlg.gui;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import net.gunivers.cmdlg.Main;
 import net.gunivers.cmdlg.gui.console.Console;
 import net.gunivers.cmdlg.gui.handler.AboutHandler;
 import net.gunivers.cmdlg.gui.handler.QuitHandler;
@@ -15,6 +17,9 @@ import java.util.ResourceBundle;
 
 public class MenuController implements Initializable
 {
+	/**
+	 * ALL MENU ITEM
+	 */
 	@FXML
 	private Menu MENU_THEME;
 
@@ -24,11 +29,26 @@ public class MenuController implements Initializable
 	@FXML
 	private MenuItem ABOUT_MENU_ITEM;
 
+	/**
+	 * ALL LIST VIEW ITEM
+	 */
 	@FXML
 	private ListView<Label> GENERATOR_LIST;
 
 	@FXML
+	private ListView<Label> FILTER_LIST;
+
+	/**
+	 * ALL TEXT FIELD ITEM
+	 */
+	@FXML
 	private TextField COMMAND_TEXT_FIELD;
+
+	/**
+	 * ALL TEXT AREA ITEM
+	 */
+	@FXML
+	private TextArea OUTPUT_TEXT_AREA;
 
 	/**
 	 *	This is the first method when the Menu.fxml file is initialized.
@@ -57,5 +77,6 @@ public class MenuController implements Initializable
 		for (GeneratorType type : GeneratorType.values()) {
 			GENERATOR_LIST.getItems().add(new Label(type.getName()));
 		}
+
 	}
 }

@@ -13,6 +13,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.WindowEvent;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -127,7 +128,7 @@ public class Console
 		try
 		{
 			//insert string to TextPane
-			doc.insertString(doc.getLength(), text, style);
+			doc.insertString(doc.getLength(), convertUTFToASCII(text), style);
 		} catch (BadLocationException e)
 		{
 			e.printStackTrace();
@@ -224,6 +225,23 @@ public class Console
 				builder = new StringBuilder();
 				updateCurrentJScrollPane();
 			}
+		}
+	}
+
+	private static String convertUTFToASCII(String text) {
+		StringBuilder sb = new StringBuilder(text.length());
+		for (int i = 0; i < text.length(); i++) {
+			char ch = text.charAt(i);
+			if (ch <= 0xFF) {
+				sb.append(ch);
+			}
+		}
+		try
+		{
+			return new String(sb.toString().getBytes("ISO-8859-1"));
+		} catch (UnsupportedEncodingException e)
+		{
+			return sb.toString();
 		}
 	}
 

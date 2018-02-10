@@ -74,7 +74,6 @@ public class Main extends Application
 			loader.load();
 
 			Scene scene = new Scene(loader.getRoot());
-
 			stage.setScene(scene);
 			stage.setMinWidth(640);
 			stage.setMinHeight(400);
