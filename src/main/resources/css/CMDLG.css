@@ -1,10 +1,10 @@
 /* VARIABLE DEFINITIONS: Only these 4 variables have to be adjusted */
 * {
-    -fx-primary-color: #111828;                  /* Change according to your needs */
-    -fx-secondary-color: #273c68;      /* Change according to your needs */
-    -fx-font-color: #FFFFFF;             /* Change according to your needs */
-    -fx-font-color-highlighted: #FFFFFF; /* Change according to your needs */
-    -fx-pompt-text-color: gray; /* Change according to your needs */
+    -fx-primary-color: #111828;             /* Change according to your needs */
+    -fx-secondary-color: #273c68;           /* Change according to your needs */
+    -fx-font-color: #FFFFFF;                /* Change according to your needs */
+    -fx-font-color-highlighted: #FFFFFF;    /* Change according to your needs */
+    -fx-pompt-text-color: gray;             /* Change according to your needs */
 }
 
 

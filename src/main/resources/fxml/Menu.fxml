@@ -90,8 +90,8 @@
         </rowConstraints>
          <children>
             <Button fx:id="FILTER_REMOVE_BUTTON" mnemonicParsing="false" text="Remove Filter" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="EDIT_REMOVE_BUTTON" mnemonicParsing="false" text="Edit Filter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="ADD_REMOVE_BUTTON" mnemonicParsing="false" text="Add Filter" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="FILTER_EDIT_BUTTON" mnemonicParsing="false" text="Edit Filter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="FILTER_ADD_BUTTON" mnemonicParsing="false" text="Add Filter" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <Button fx:id="GENERATE_BUTTON" mnemonicParsing="false" text="Generate" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>

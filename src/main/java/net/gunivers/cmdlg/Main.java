@@ -109,15 +109,15 @@ public class Main extends Application
 		return null;
 	}
 
-	private static Theme oldThem = Theme.JAVA_DEFAULT;
+	public static Theme CURRENT_THEME = Theme.JAVA_DEFAULT;
 
 	public static void loadTheme(Theme theme)
 	{
-		if (oldThem != theme)
+		if (CURRENT_THEME != theme)
 		{
-			if (MAIN_STAGE.getScene().getStylesheets().size() > 0 && MAIN_STAGE.getScene().getStylesheets().contains(oldThem.getCssUrl().toExternalForm()))
+			if (MAIN_STAGE.getScene().getStylesheets().size() > 0 && MAIN_STAGE.getScene().getStylesheets().contains(CURRENT_THEME.getCssUrl().toExternalForm()))
 			{
-				MAIN_STAGE.getScene().getStylesheets().remove(oldThem.getCssUrl().toExternalForm());
+				MAIN_STAGE.getScene().getStylesheets().remove(CURRENT_THEME.getCssUrl().toExternalForm());
 			}
 			try
 			{
@@ -125,7 +125,7 @@ public class Main extends Application
 			} catch (Exception e)
 			{
 			}
-			oldThem = theme;
+			CURRENT_THEME = theme;
 		}
 	}
 }
