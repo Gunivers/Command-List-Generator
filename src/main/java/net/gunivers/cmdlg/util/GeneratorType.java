@@ -1,13 +1,10 @@
 package net.gunivers.cmdlg.util;
 
 import net.gunivers.cmdlg.api.BasicGenerator;
-
 import net.gunivers.cmdlg.generators.material.*;
 import net.gunivers.cmdlg.generators.materialID.*;
-
 import net.gunivers.cmdlg.generators.math.InterpGenerator;
 import net.gunivers.cmdlg.generators.math.InterpScoreGenerator;
-
 import net.gunivers.cmdlg.generators.primitive.DoubleGenerator;
 import net.gunivers.cmdlg.generators.primitive.FloatGenerator;
 import net.gunivers.cmdlg.generators.primitive.IntGenerator;

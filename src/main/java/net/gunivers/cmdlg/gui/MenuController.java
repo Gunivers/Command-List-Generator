@@ -3,6 +3,7 @@ package net.gunivers.cmdlg.gui;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import net.gunivers.cmdlg.gui.console.Console;
 import net.gunivers.cmdlg.gui.handler.AboutHandler;
 import net.gunivers.cmdlg.gui.handler.GenerateHandler;
@@ -18,54 +19,44 @@ import java.util.ResourceBundle;
 
 public class MenuController implements Initializable
 {
+	public static Color MAIN_COLOR;
 	/**
 	 * ALL MENU ITEM
 	 */
 	@FXML
 	private Menu MENU_THEME;
-
 	@FXML
 	private MenuItem QUIT_MENU_ITEM;
-
 	@FXML
 	private MenuItem ABOUT_MENU_ITEM;
-
 	/**
 	 * ALL LIST VIEW ITEM
 	 */
 	@FXML
 	private ListView<Label> GENERATOR_LIST;
-
 	@FXML
 	private ListView<Label> FILTER_LIST;
-
 	/**
 	 * ALL TEXT FIELD ITEM
 	 */
 	@FXML
 	private TextField COMMAND_TEXT_FIELD;
-
 	/**
 	 * ALL TEXT AREA ITEM
 	 */
 	@FXML
 	private TextArea OUTPUT_TEXT_AREA;
-
 	/**
 	 * ALL BUTTON ITEM
 	 */
 	@FXML
 	private Button FILTER_REMOVE_BUTTON;
-
 	@FXML
 	private Button FILTER_EDIT_BUTTON;
-
 	@FXML
 	private Button FILTER_ADD_BUTTON;
-
 	@FXML
 	private Button GENERATE_BUTTON;
-
 
 	/**
 	 * This is the first method when the Menu.fxml file is initialized.

@@ -5,6 +5,7 @@ import java.net.URL;
 public enum Theme
 {
 	JAVA_DEFAULT("Java Default", null),
+	GUNIVERS("Gunivers", Theme.class.getResource("/css/Gunivers.css")),
 	CMDLG("CMDLG Default", Theme.class.getResource("/css/CMDLG.css"));
 
 	private URL CSS_URL;
@@ -16,6 +17,16 @@ public enum Theme
 		this.name = name;
 	}
 
+	public static Theme getThemeByName(String name)
+	{
+		for (Theme t : values())
+		{
+			if (t.getName().equalsIgnoreCase(name))
+				return t;
+		}
+		return null;
+	}
+
 	public URL getCssUrl()
 	{
 		return CSS_URL;
@@ -24,14 +35,5 @@ public enum Theme
 	public String getName()
 	{
 		return name;
-	}
-
-	public static Theme getThemeByName(String name)
-	{
-		for (Theme t : values()) {
-			if (t.getName().equalsIgnoreCase(name))
-				return t;
-		}
-		return null;
 	}
 }

@@ -8,9 +8,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import net.gunivers.cmdlg.Main;
+import net.gunivers.cmdlg.gui.console.Console;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,12 +36,14 @@ public class Dialog
 
 	public Dialog()
 	{
+		Console.logDebug("New Dialog");
 		fxmlURL = Main.class.getResource("/fxml/Dialog.fxml");
 		init();
 	}
 
 	public Dialog(URL fxmlURL)
 	{
+		Console.logDebug("New Dialog");
 		this.fxmlURL = fxmlURL;
 		init();
 	}
@@ -94,8 +97,8 @@ public class Dialog
 
 			StackPane back_pane_color = new StackPane();
 			back_pane_color.setOnMouseClicked(event -> showMenuStage());
-			back_pane_color.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-			back_pane_color.setOpacity(0.35);
+			back_pane_color.setStyle("-fx-background-color: -fx-primary-color");
+			back_pane_color.setOpacity(0.70);
 
 			StackPane pane = new StackPane(Main.MAIN_STAGE.getScene().getRoot(), back_pane_color, dialog_pane);
 

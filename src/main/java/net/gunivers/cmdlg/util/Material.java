@@ -476,9 +476,26 @@ public enum Material
 	RECORD_11(2266, 1),
 	RECORD_12(2267, 1),;
 
-	private final int id;
-	private static Material[] byId = new Material[383];
 	private final static Map<String, Material> BY_NAME = new HashMap<>();
+	private static Material[] byId = new Material[383];
+
+	static
+	{
+		for (Material material : values())
+		{
+			if (byId.length > material.id)
+			{
+				byId[material.id] = material;
+			} else
+			{
+				byId = Arrays.copyOfRange(byId, 0, material.id + 2);
+				byId[material.id] = material;
+			}
+			BY_NAME.put(material.name(), material);
+		}
+	}
+
+	private final int id;
 	private final int maxStack;
 	private final short durability;
 
@@ -497,6 +514,73 @@ public enum Material
 		this.id = id;
 		this.durability = (short) durability;
 		this.maxStack = stack;
+	}
+
+	/**
+	 * Attempts to get the MATERIAL with the given ID
+	 *
+	 * @param id ID of the material to get
+	 * @return MATERIAL if found, or null
+	 * @deprecated Magic value
+	 */
+	@Deprecated
+	public static Material getMaterial(final int id)
+	{
+		if (byId.length > id && id >= 0)
+		{
+			return byId[id];
+		} else
+		{
+			return null;
+		}
+	}
+
+	/**
+	 * Attempts to get the MATERIAL with the given name.
+	 * <p>
+	 * This is a normal lookup, names must be the precise name they are given
+	 * in the enum.
+	 *
+	 * @param name Name of the material to get
+	 * @return MATERIAL if found, or null
+	 */
+	public static Material getMaterial(final String name)
+	{
+		return BY_NAME.get(name);
+	}
+
+	/**
+	 * Attempts to match the MATERIAL with the given name.
+	 * <p>
+	 * This is a match lookup; names will be converted to uppercase, then
+	 * stripped of special characters in an attempt to format it like the
+	 * enum.
+	 * <p>
+	 * Using this for match by ID is deprecated.
+	 *
+	 * @param name Name of the material to get
+	 * @return MATERIAL if found, or null
+	 */
+	public static Material matchMaterial(final String name)
+	{
+		Material result = null;
+
+		try
+		{
+			result = getMaterial(Integer.parseInt(name));
+		} catch (NumberFormatException ex)
+		{
+		}
+
+		if (result == null)
+		{
+			String filtered = name.toUpperCase(java.util.Locale.ENGLISH);
+
+			filtered = filtered.replaceAll("\\s+", "_").replaceAll("\\W", "");
+			result = BY_NAME.get(filtered);
+		}
+
+		return result;
 	}
 
 	/**
@@ -583,89 +667,6 @@ public enum Material
 				return true;
 			default:
 				return false;
-		}
-	}
-
-	/**
-	 * Attempts to get the MATERIAL with the given ID
-	 *
-	 * @param id ID of the material to get
-	 * @return MATERIAL if found, or null
-	 * @deprecated Magic value
-	 */
-	@Deprecated
-	public static Material getMaterial(final int id)
-	{
-		if (byId.length > id && id >= 0)
-		{
-			return byId[id];
-		} else
-		{
-			return null;
-		}
-	}
-
-	/**
-	 * Attempts to get the MATERIAL with the given name.
-	 * <p>
-	 * This is a normal lookup, names must be the precise name they are given
-	 * in the enum.
-	 *
-	 * @param name Name of the material to get
-	 * @return MATERIAL if found, or null
-	 */
-	public static Material getMaterial(final String name)
-	{
-		return BY_NAME.get(name);
-	}
-
-	/**
-	 * Attempts to match the MATERIAL with the given name.
-	 * <p>
-	 * This is a match lookup; names will be converted to uppercase, then
-	 * stripped of special characters in an attempt to format it like the
-	 * enum.
-	 * <p>
-	 * Using this for match by ID is deprecated.
-	 *
-	 * @param name Name of the material to get
-	 * @return MATERIAL if found, or null
-	 */
-	public static Material matchMaterial(final String name)
-	{
-		Material result = null;
-
-		try
-		{
-			result = getMaterial(Integer.parseInt(name));
-		} catch (NumberFormatException ex)
-		{
-		}
-
-		if (result == null)
-		{
-			String filtered = name.toUpperCase(java.util.Locale.ENGLISH);
-
-			filtered = filtered.replaceAll("\\s+", "_").replaceAll("\\W", "");
-			result = BY_NAME.get(filtered);
-		}
-
-		return result;
-	}
-
-	static
-	{
-		for (Material material : values())
-		{
-			if (byId.length > material.id)
-			{
-				byId[material.id] = material;
-			} else
-			{
-				byId = Arrays.copyOfRange(byId, 0, material.id + 2);
-				byId[material.id] = material;
-			}
-			BY_NAME.put(material.name(), material);
 		}
 	}
 

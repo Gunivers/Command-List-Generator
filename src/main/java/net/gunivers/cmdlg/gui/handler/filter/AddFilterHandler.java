@@ -4,15 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-
 import net.gunivers.cmdlg.gui.Dialog;
+import net.gunivers.cmdlg.gui.console.Console;
 
 
 public class AddFilterHandler implements EventHandler<ActionEvent>
 {
-	public static ListView<Label> filter_list;
+	private static ListView<Label> filter_list;
 
-	public AddFilterHandler(ListView<Label> listView) {
+	public AddFilterHandler(ListView<Label> listView)
+	{
 		filter_list = listView;
 	}
 
@@ -20,12 +21,15 @@ public class AddFilterHandler implements EventHandler<ActionEvent>
 	public void handle(ActionEvent event)
 	{
 		Dialog dialog = new Dialog();
+		Console.logDebug("Set action of done button to: " + DialogHandler.class.toString());
 		dialog.getDoneButton().setOnAction(new DialogHandler(dialog));
+		Console.logDebug("Set action of done button to: event1 -> dialog.showMenuStage()");
 		dialog.getExitButton().setOnAction(event1 -> dialog.showMenuStage());
+		Console.logDebug("Showing new dialog");
 		dialog.show();
 	}
 
-	public class DialogHandler implements EventHandler<ActionEvent>
+	private class DialogHandler implements EventHandler<ActionEvent>
 	{
 		private Dialog dialog;
 
@@ -56,7 +60,7 @@ public class AddFilterHandler implements EventHandler<ActionEvent>
 
 			Label label = new Label(to + " \u2192 " + by);
 			label.setStyle("-fx-font-size: 12pt");
-			AddFilterHandler.filter_list.getItems().add(label);
+			filter_list.getItems().add(label);
 			getDialog().showMenuStage();
 		}
 	}

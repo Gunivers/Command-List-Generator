@@ -24,10 +24,8 @@ public class Console
 	private static final JTextPane infoTextPane = new JTextPane();
 	private static final JTextPane debugTextPane = new JTextPane();
 	private static final JTextPane errorTextPane = new JTextPane();
-
-	private static JTabbedPane tabbedPane = new JTabbedPane();
-
 	public static JFrame mainFrame = new JFrame("Console");
+	private static JTabbedPane tabbedPane = new JTabbedPane();
 
 	/**
 	 * Start console.
@@ -158,8 +156,7 @@ public class Console
 		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
 		StackTraceElement element = stackTrace[2];
 		String d = new SimpleDateFormat("HH:mm:ss").format(new Date());
-		String t = d + " <" + element.getClassName() + ":" + element.getLineNumber() + ":" + element.getMethodName() + ">";
-		t = t.endsWith(">>") ? t.replace(">>", ">") + " " : t + " ";
+		String t = d + " <" + element.getClassName() + ":" + element.getLineNumber() + ":" + element.getMethodName() + "> ";
 		addText(debugTextPane, t + " [DEBUG]: " + text, Color.MAGENTA);
 		addText(allTextPane, t + " [DEBUG]: " + text, Color.MAGENTA);
 	}
@@ -179,6 +176,38 @@ public class Console
 			//set bar at se max value
 			bar.setValue(bar.getMaximum());
 		}
+	}
+
+	private static String convertUTFToASCII(String text)
+	{
+		StringBuilder sb = new StringBuilder(text.length());
+		for (int i = 0; i < text.length(); i++)
+		{
+			char ch = text.charAt(i);
+			if (ch <= 0xFF)
+			{
+				sb.append(ch);
+			}
+		}
+		try
+		{
+			return new String(sb.toString().getBytes("ISO-8859-1"));
+		} catch (UnsupportedEncodingException e)
+		{
+			return sb.toString();
+		}
+	}
+
+	/**
+	 * init tab for custom display
+	 *
+	 * @param textPane
+	 */
+	private static void initTab(JTextPane textPane)
+	{
+		textPane.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+		textPane.setEditable(false);
+		textPane.setBackground(Color.BLACK);
 	}
 
 	/**
@@ -226,34 +255,5 @@ public class Console
 				updateCurrentJScrollPane();
 			}
 		}
-	}
-
-	private static String convertUTFToASCII(String text) {
-		StringBuilder sb = new StringBuilder(text.length());
-		for (int i = 0; i < text.length(); i++) {
-			char ch = text.charAt(i);
-			if (ch <= 0xFF) {
-				sb.append(ch);
-			}
-		}
-		try
-		{
-			return new String(sb.toString().getBytes("ISO-8859-1"));
-		} catch (UnsupportedEncodingException e)
-		{
-			return sb.toString();
-		}
-	}
-
-	/**
-	 * init tab for custom display
-	 *
-	 * @param textPane
-	 */
-	private static void initTab(JTextPane textPane)
-	{
-		textPane.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
-		textPane.setEditable(false);
-		textPane.setBackground(Color.BLACK);
 	}
 }
