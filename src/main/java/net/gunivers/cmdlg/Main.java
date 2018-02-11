@@ -37,6 +37,7 @@ public class Main extends Application
 		{
 			e.printStackTrace();
 		}
+
 		Console.start();
 
 		for (GeneratorType type : GeneratorType.values())
@@ -48,6 +49,13 @@ public class Main extends Application
 
 	public static void main(String[] args)
 	{
+		double java_version = Double.parseDouble(System.getProperty("java.specification.version"));
+
+		if (java_version < 1.8) {
+			JOptionPane.showMessageDialog(null, "Error cant be start: Please use java 1.8 minimum!", "Error !", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
 		try
 		{
 			launch(args);
@@ -76,7 +84,7 @@ public class Main extends Application
 			Scene scene = new Scene(loader.getRoot());
 			stage.setScene(scene);
 			stage.setMinWidth(640);
-			stage.setMinHeight(400);
+			stage.setMinHeight(420);
 			stage.getIcons().add(new Image("icon/menu.png"));
 
 			stage.show();

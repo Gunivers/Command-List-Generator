@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import net.gunivers.cmdlg.gui.console.Console;
 import net.gunivers.cmdlg.gui.handler.AboutHandler;
+import net.gunivers.cmdlg.gui.handler.GenerateHandler;
 import net.gunivers.cmdlg.gui.handler.QuitHandler;
 import net.gunivers.cmdlg.gui.handler.SelectThemeHandler;
 import net.gunivers.cmdlg.gui.handler.filter.AddFilterHandler;
@@ -83,6 +84,7 @@ public class MenuController implements Initializable
 			item.setOnAction(new SelectThemeHandler(item));
 			MENU_THEME.getItems().add(item);
 		}
+		Console.logInfo("Registering " + MENU_THEME.getItems().size() + " generators types");
 
 		Console.logDebug("Add handler for Quit Menu Item");
 		QUIT_MENU_ITEM.setOnAction(new QuitHandler()); //Set the action for terminate the screen
@@ -94,13 +96,20 @@ public class MenuController implements Initializable
 		//Add all Generator to the display
 		for (GeneratorType type : GeneratorType.values())
 		{
-			GENERATOR_LIST.getItems().add(new Label(type.getName()));
+			Label label = new Label(type.getName());
+			label.setStyle("-fx-font-size: 12pt");
+			GENERATOR_LIST.getItems().add(label);
 		}
+		Console.logInfo("Registering " + GENERATOR_LIST.getItems().size() + " generators types");
 
 		//Add action for filter button
 		Console.logDebug("Set action for filter button");
 		FILTER_REMOVE_BUTTON.setOnAction(new RemoveFilterHandler(FILTER_LIST));
 		FILTER_EDIT_BUTTON.setOnAction(new EditFilterHandler(FILTER_LIST));
 		FILTER_ADD_BUTTON.setOnAction(new AddFilterHandler(FILTER_LIST));
+
+		//Set the action for generator button
+		Console.logDebug("Set action for generate button");
+		GENERATE_BUTTON.setOnAction(new GenerateHandler(COMMAND_TEXT_FIELD));
 	}
 }

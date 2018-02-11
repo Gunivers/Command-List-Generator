@@ -2,33 +2,62 @@ package net.gunivers.cmdlg.gui.handler.filter;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import net.gunivers.cmdlg.gui.Dialog;
 
-import java.io.IOException;
-
 
 public class AddFilterHandler implements EventHandler<ActionEvent>
 {
-	private ListView<Label> filter_list;
+	public static ListView<Label> filter_list;
 
 	public AddFilterHandler(ListView<Label> listView) {
-		this.filter_list = listView;
+		filter_list = listView;
 	}
 
 	@Override
 	public void handle(ActionEvent event)
 	{
 		Dialog dialog = new Dialog();
-		try
+		dialog.getDoneButton().setOnAction(new DialogHandler(dialog));
+		dialog.getExitButton().setOnAction(event1 -> dialog.showMenuStage());
+		dialog.show();
+	}
+
+	public class DialogHandler implements EventHandler<ActionEvent>
+	{
+		private Dialog dialog;
+
+		public DialogHandler(Dialog dialog)
 		{
-			dialog.show();
-		} catch (IOException e)
+			this.dialog = dialog;
+		}
+
+		public Dialog getDialog()
 		{
-			e.printStackTrace();
+			return dialog;
+		}
+
+		@Override
+		public void handle(ActionEvent event)
+		{
+			if (getDialog().getTextFieldTo().getText().isEmpty() || dialog.getTextAreaBy().getText().isEmpty())
+			{
+				getDialog().showMenuStage();
+				return;
+			}
+
+			String by = getDialog().getTextAreaBy().getText();
+			String to = getDialog().getTextFieldTo().getText();
+
+			if (by.contains("\n"))
+				by = by.replaceAll("\n", "\u2759");
+
+			Label label = new Label(to + " \u2192 " + by);
+			label.setStyle("-fx-font-size: 12pt");
+			AddFilterHandler.filter_list.getItems().add(label);
+			getDialog().showMenuStage();
 		}
 	}
 }
