@@ -97,7 +97,13 @@ public class Dialog
 
 			StackPane back_pane_color = new StackPane();
 			back_pane_color.setOnMouseClicked(event -> showMenuStage());
-			back_pane_color.setStyle("-fx-background-color: -fx-primary-color");
+			if (Main.CURRENT_THEME == Theme.JAVA_DEFAULT)
+			{
+				back_pane_color.setStyle("-fx-background-color: white");
+			} else
+			{
+				back_pane_color.setStyle("-fx-background-color: -fx-primary-color");
+			}
 			back_pane_color.setOpacity(0.70);
 
 			StackPane pane = new StackPane(Main.MAIN_STAGE.getScene().getRoot(), back_pane_color, dialog_pane);
