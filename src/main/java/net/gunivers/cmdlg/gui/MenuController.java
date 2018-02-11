@@ -101,6 +101,6 @@ public class MenuController implements Initializable
 
 		//Set the action for generator button
 		Console.logDebug("Set action for generate button");
-		GENERATE_BUTTON.setOnAction(new GenerateHandler(COMMAND_TEXT_FIELD));
+		GENERATE_BUTTON.setOnAction(new GenerateHandler(COMMAND_TEXT_FIELD, GENERATOR_LIST));
 	}
 }
