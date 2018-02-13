@@ -149,7 +149,7 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Copy all command when click on the TextArea the outup text is not null
+     * Copy all command when click on the TextArea the output text is not null
      * @param event
      */
     @FXML
