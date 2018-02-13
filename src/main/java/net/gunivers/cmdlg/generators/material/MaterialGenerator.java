@@ -1,60 +1,67 @@
 package net.gunivers.cmdlg.generators.material;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import net.gunivers.cmdlg.api.BasicGenerator;
 import net.gunivers.cmdlg.util.GeneratorType;
 import net.gunivers.cmdlg.util.Material;
 
-public class MaterialGenerator extends BasicGenerator {
+import java.util.ArrayList;
+import java.util.Arrays;
 
-    private GeneratorType type = GeneratorType.MATERIAL;
+public class MaterialGenerator extends BasicGenerator
+{
 
-    public MaterialGenerator(String... commands) {
-        super(commands);
-    }
+	private GeneratorType type = GeneratorType.MATERIAL;
 
-    /**
-     * Generate Simple Material
-     *
-     * @return ArrayList<String> commands
-     */
-    @Override
-    public ArrayList<String> generate() {
-        ArrayList<String> commands = new ArrayList<>();
+	public MaterialGenerator(String... commands)
+	{
+		super(commands);
+	}
 
-        for (Material material : Material.values()) {
-            StringBuilder temp = new StringBuilder();
+	/**
+	 * Generate Simple Material
+	 *
+	 * @return ArrayList<String> commands
+	 */
+	@Override
+	public ArrayList<String> generate()
+	{
+		ArrayList<String> commands = new ArrayList<>();
 
-            for (int e = 0; e < getCommand().length - 1; e++) {
-                temp.append(getCommand()[e]).append(material.name());
+		for (Material material : Material.values())
+		{
+			StringBuilder temp = new StringBuilder();
 
-                if (e == getCommand().length - 2) temp.append(getCommand()[e + 1]);
-            }
+			for (int e = 0; e < getCommand().length - 1; e++)
+			{
+				temp.append(getCommand()[e]).append(material.name());
 
-            commands.add(temp.toString());
-        }
+				if (e == getCommand().length - 2) temp.append(getCommand()[e + 1]);
+			}
 
-        return commands;
-    }
+			commands.add(temp.toString());
+		}
 
-    /**
-     * Get the registered type
-     *
-     * @return GeneratorType type
-     */
-    @Override
-    public GeneratorType getType() {
-        return type;
-    }
+		return commands;
+	}
 
-    /**
-     * Get the Materials to be generated
-     *
-     * @return ArrayList<Material> materialList
-     */
-    public Iterable<? extends Material> getMaterialList() {
-        return Arrays.asList(Material.values());
-    }
+	/**
+	 * Get the registered type
+	 *
+	 * @return GeneratorType type
+	 */
+	@Override
+	public GeneratorType getType()
+	{
+		return type;
+	}
+
+	/**
+	 * Get the Materials to be generated
+	 *
+	 * @return ArrayList<Material> materialList
+	 */
+	public Iterable<? extends Material> getMaterialList()
+	{
+		return Arrays.asList(Material.values());
+	}
 }

@@ -1,16 +1,11 @@
 package net.gunivers.cmdlg;
 
-import com.jfoenix.controls.JFXDecorator;
-import com.jfoenix.svg.SVGGlyphLoader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import net.gunivers.cmdlg.gui.CmdlgDecorator;
-import net.gunivers.cmdlg.gui.DimensionGui;
-import net.gunivers.cmdlg.gui.MainController;
+import net.gunivers.cmdlg.gui.Theme;
 import net.gunivers.cmdlg.gui.console.Console;
 import net.gunivers.cmdlg.util.GeneratorType;
 import net.gunivers.cmdlg.util.Util;
@@ -19,183 +14,126 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
-import java.util.List;
+import java.util.LinkedHashMap;
 
-public class Main extends Application {
+public class Main extends Application
+{
 
-    public static LinkedHashMap<String, GeneratorType> nameToGeneratorType = new LinkedHashMap<>();
-    public static List<DimensionGui> dimensionGuis = new ArrayList<>();
+	public static Stage MAIN_STAGE;
 
-    public static DimensionGui SELECTED_DIMENTION_GUI = null;
+	public static LinkedHashMap<String, GeneratorType> nameToGeneratorType = new LinkedHashMap<>();
+	public static Theme CURRENT_THEME = Theme.JAVA_DEFAULT;
 
-    static {
-        try {
-            GraphicsEnvironment ge =
-                    GraphicsEnvironment.getLocalGraphicsEnvironment();
-            File tempFile = new File(System.getProperty("java.io.tmpdir") + "/CmdLgTemFontLoader.tmp");
-            Util.copyStream(tempFile, Main.class.getResourceAsStream("/fonts/Roboto-Regular.ttf"));
-            Font font = Font.createFont(Font.TRUETYPE_FONT, tempFile);
-            ge.registerFont(font);
-        } catch (IOException | FontFormatException e) {
-            e.printStackTrace();
-        }
-        Console.start();
+	static
+	{
+		try
+		{
+			GraphicsEnvironment ge =
+					GraphicsEnvironment.getLocalGraphicsEnvironment();
+			File tempFile = new File(System.getProperty("java.io.tmpdir") + "/CmdLgTemFontLoader.tmp");
+			Util.copyStream(tempFile, Main.class.getResourceAsStream("/fonts/Roboto-Regular.ttf"));
+			Font font = Font.createFont(Font.TRUETYPE_FONT, tempFile);
+			ge.registerFont(font);
+		} catch (IOException | FontFormatException e)
+		{
+			e.printStackTrace();
+		}
 
-        for (GeneratorType type : GeneratorType.values()) {
-            Console.logDebug("Register new Generator Type: " + type);
-            nameToGeneratorType.put(type.name(), type);
-        }
+		Console.start();
 
-        dimensionGuis.add(new DimensionGui(3840, 2160, 1200, 1700, "Main"));
-        dimensionGuis.add(new DimensionGui(1920, 1080, 800, 850, "Main"));
-        dimensionGuis.add(new DimensionGui(1280, 720, 500, 550, "Main"));
-    }
+		for (GeneratorType type : GeneratorType.values())
+		{
+			Console.logDebug("Register new Generator Type: " + type);
+			nameToGeneratorType.put(type.name(), type);
+		}
+	}
 
-    public static void main(String[] args) {
-        double java_version = Double.parseDouble(System.getProperty("java.specification.version"));
+	public static void main(String[] args)
+	{
+		double java_version = Double.parseDouble(System.getProperty("java.specification.version"));
 
-        if (java_version > 1.8 || java_version < 1.8) {
-            JOptionPane.showMessageDialog(null, "Error cant be start: Please use java 1.8 !", "Error !", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+		if (java_version < 1.8)
+		{
+			JOptionPane.showMessageDialog(null, "Error cant be start: Please use java 1.8 minimum!", "Error !", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 
-        try {
-            launch(args);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Console.mainFrame.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Error cant be start: \n" + e.fillInStackTrace(), "Error !", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+		try
+		{
+			launch(args);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			Console.mainFrame.setVisible(true);
+			JOptionPane.showMessageDialog(null, "Error cant be start: \n" + e.fillInStackTrace(), "Error !", JOptionPane.ERROR_MESSAGE);
+		}
+	}
 
-    private static DimensionGui getDimensionGui() {
-        HashMap<Integer, DimensionGui> dimensionGuiHashMap = new HashMap<>();
+	public static GeneratorType generatorTypeByDisplayName(String s)
+	{
+		Console.logDebug("s -> " + s);
+		for (GeneratorType type : nameToGeneratorType.values())
+		{
+			Console.logDebug("type -> " + type);
+			if (s.equalsIgnoreCase(type.getName()))
+			{
+				Console.logDebug("return -> " + type);
+				return type;
+			}
+		}
+		return null;
+	}
 
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+	public static void loadTheme(Theme theme)
+	{
+		if (CURRENT_THEME != theme)
+		{
+			if (MAIN_STAGE.getScene().getStylesheets().size() > 0 && MAIN_STAGE.getScene().getStylesheets().contains(CURRENT_THEME.getCssUrl().toExternalForm()))
+			{
+				MAIN_STAGE.getScene().getStylesheets().remove(CURRENT_THEME.getCssUrl().toExternalForm());
+			}
+			try
+			{
+				MAIN_STAGE.getScene().getStylesheets().add(theme.getCssUrl().toExternalForm());
+			} catch (Exception e)
+			{
+			}
+			CURRENT_THEME = theme;
+		}
+	}
 
-        for (DimensionGui gui : Main.dimensionGuis) {
-            dimensionGuiHashMap.put(gui.getHeight() + gui.getWidth(), gui);
-        }
+	/**
+	 * Init all class #bordel
+	 *
+	 * @param stage
+	 */
+	@Override
+	public void start(Stage stage)
+	{
+		MAIN_STAGE = stage;
+		try
+		{
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Menu.fxml"));
+			loader.load();
 
-        List<Integer> keys = new ArrayList<>(dimensionGuiHashMap.keySet());
+			Scene scene = new Scene(loader.getRoot());
+			stage.setScene(scene);
+			stage.setMinWidth(640);
+			stage.setMinHeight(420);
+			stage.getIcons().add(new Image("icon/menu.png"));
 
-        int index = closest((int) (screen.getHeight() + screen.getWidth()), keys);
+			stage.show();
+			//set the console main frame visible
+			Console.mainFrame.setVisible(true);
 
-        Console.logInfo("Index for DimensionGui: " + index);
+			loadTheme(Theme.CMDLG);
 
-        return dimensionGuiHashMap.get(index);
-    }
+			Console.logInfo("You are showing the main stage");
 
-    /**
-     * Init all class #bordel
-     *
-     * @param stage
-     */
-    @Override
-    public void start(Stage stage) {
-        Console.logInfo("Register icomoon.sgv");
-        new Thread(() -> {
-            try {
-                SVGGlyphLoader.loadGlyphsFont(Main.class.getResourceAsStream("/fonts/icomoon.svg"),
-                        "icomoon.svg");
-            } catch (IOException ioExc) {
-                ioExc.printStackTrace();
-            }
-        }).start();
-
-        try {
-            Console.logInfo("Getting DimensionGui");
-            DimensionGui dimensionGui = getDimensionGui();
-            Main.SELECTED_DIMENTION_GUI = dimensionGui;
-
-            Console.logInfo("DimensionGui selected: " + dimensionGui.toString());
-
-            Console.logInfo("Loading " + dimensionGui.toString() + ".fxml");
-            FXMLLoader loader = new FXMLLoader(Util.getFXMLURL(dimensionGui.toString()));
-            loader.setController(new MainController());
-            Console.logInfo("Set the controller of the FXML loader");
-
-            Console.logInfo("Init GUI");
-            StackPane pane = loader.load();
-            JFXDecorator decorator = new CmdlgDecorator(stage, pane);
-            decorator.setCustomMaximize(true);
-            decorator.setText("Command list generator");
-            stage.setTitle("Command list generator");
-            Scene scene = new Scene(decorator, dimensionGui.getPrefWidth(), dimensionGui.getPrefHeigt());
-            scene.getStylesheets().addAll(Main.class.getResource("/css/Main.css").toExternalForm());
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setMaxHeight(dimensionGui.getPrefHeigt());
-            stage.setMinHeight(dimensionGui.getPrefHeigt());
-
-            stage.setMaxWidth(dimensionGui.getPrefHeigt());
-            stage.setMinWidth(dimensionGui.getPrefWidth());
-
-            stage.getIcons().add(new Image("icon/menu.png"));
-
-            stage.show();
-
-
-            //set main frame visible
-            Console.mainFrame.setVisible(true);
-
-            Console.logInfo("You are showing " + dimensionGui.toString() + ".fxml");
-
-            stage.setOnHiding(event -> Console.stop());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static int closest(int value, Collection<Integer> in) {
-        Console.logDebug("value -> " + value);
-        Console.logDebug("in -> " + Arrays.toString(in.toArray()));
-
-        Integer[] a = in.toArray(new Integer[in.size()]);
-
-        Console.logDebug("a[] -> " + Arrays.toString(a));
-
-        int low = 0;
-        int high = a.length - 1;
-
-        if (high < 0)
-            throw new IllegalArgumentException("The array cannot be empty");
-
-        int test = 0;
-
-        while (low < high) {
-            int mid = (low + high) / 2;
-
-            Console.logDebug(test + ": mid -> " + mid);
-
-            Console.logDebug(test + ": assert(mid < high) -> " + (mid < high));
-            assert (mid < high);
-
-            Console.logDebug(test + ": d1 -> " + Math.abs(a[mid] - value));
-            int d1 = Math.abs(a[mid] - value);
-
-            Console.logDebug(test + ": d2 -> " + Math.abs(a[mid + 1] - value));
-            int d2 = Math.abs(a[mid + 1] - value);
-
-            if (d2 <= d1) {
-                low = mid + 1;
-            } else {
-                high = mid;
-            }
-        }
-        return a[high];
-    }
-
-    public static GeneratorType generatorTypeByDisplayName(String s) {
-        Console.logDebug("s -> " + s);
-        for (GeneratorType type : nameToGeneratorType.values()) {
-            Console.logDebug("type -> " + type);
-            if (s.equalsIgnoreCase(type.getName())) {
-                Console.logDebug("return -> " + type);
-                return type;
-            }
-        }
-        return null;
-    }
+			stage.setOnHiding(event -> Console.stop());
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
 }
