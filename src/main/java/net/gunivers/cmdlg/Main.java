@@ -19,121 +19,129 @@ import java.util.LinkedHashMap;
 public class Main extends Application
 {
 
-	public static Stage MAIN_STAGE;
+    public static Stage MAIN_STAGE;
+    public static boolean DEBUG = false;
 
-	public static LinkedHashMap<String, GeneratorType> nameToGeneratorType = new LinkedHashMap<>();
-	public static Theme CURRENT_THEME = Theme.JAVA_DEFAULT;
+    public static LinkedHashMap<String, GeneratorType> nameToGeneratorType = new LinkedHashMap<>();
+    public static Theme CURRENT_THEME = Theme.JAVA_DEFAULT;
 
-	static
-	{
-		try
-		{
-			GraphicsEnvironment ge =
-					GraphicsEnvironment.getLocalGraphicsEnvironment();
-			File tempFile = new File(System.getProperty("java.io.tmpdir") + "/CmdLgTemFontLoader.tmp");
-			Util.copyStream(tempFile, Main.class.getResourceAsStream("/fonts/Roboto-Regular.ttf"));
-			Font font = Font.createFont(Font.TRUETYPE_FONT, tempFile);
-			ge.registerFont(font);
-		} catch (IOException | FontFormatException e)
-		{
-			e.printStackTrace();
-		}
+    static
+    {
+        try
+        {
+            GraphicsEnvironment ge =
+                    GraphicsEnvironment.getLocalGraphicsEnvironment();
+            File tempFile = new File(System.getProperty("java.io.tmpdir") + "/CmdLgTemFontLoader.tmp");
+            Util.copyStream(tempFile, Main.class.getResourceAsStream("/fonts/Roboto-Regular.ttf"));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, tempFile);
+            ge.registerFont(font);
+        } catch (IOException | FontFormatException e)
+        {
+            e.printStackTrace();
+        }
 
-		Console.start();
+        Console.start();
 
-		for (GeneratorType type : GeneratorType.values())
-		{
-			Console.logDebug("Register new Generator Type: " + type);
-			nameToGeneratorType.put(type.name(), type);
-		}
-	}
+        for (GeneratorType type : GeneratorType.values())
+        {
+            Console.logDebug("Register new Generator Type: " + type);
+            nameToGeneratorType.put(type.name(), type);
+        }
+    }
 
-	public static void main(String[] args)
-	{
-		double java_version = Double.parseDouble(System.getProperty("java.specification.version"));
+    public static void main(String[] args)
+    {
+        for (String arg : args)
+        {
+            if (arg.equalsIgnoreCase("-debug"))
+                DEBUG = true;
+        }
 
-		if (java_version < 1.8)
-		{
-			JOptionPane.showMessageDialog(null, "Error cant be start: Please use java 1.8 minimum!", "Error !", JOptionPane.ERROR_MESSAGE);
-			return;
-		}
+        double java_version = Double.parseDouble(System.getProperty("java.specification.version"));
 
-		try
-		{
-			launch(args);
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-			Console.mainFrame.setVisible(true);
-			JOptionPane.showMessageDialog(null, "Error cant be start: \n" + e.fillInStackTrace(), "Error !", JOptionPane.ERROR_MESSAGE);
-		}
-	}
+        if (java_version < 1.8)
+        {
+            JOptionPane.showMessageDialog(null, "Error cant be start: Please use java 1.8 minimum!", "Error !", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-	public static GeneratorType generatorTypeByDisplayName(String s)
-	{
-		Console.logDebug("s -> " + s);
-		for (GeneratorType type : nameToGeneratorType.values())
-		{
-			Console.logDebug("type -> " + type);
-			if (s.equalsIgnoreCase(type.getName()))
-			{
-				Console.logDebug("return -> " + type);
-				return type;
-			}
-		}
-		return null;
-	}
+        try
+        {
+            launch(args);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            Console.mainFrame.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Error cant be start: \n" + e.fillInStackTrace(), "Error !", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
-	public static void loadTheme(Theme theme)
-	{
-		if (CURRENT_THEME != theme)
-		{
-			if (MAIN_STAGE.getScene().getStylesheets().size() > 0 && MAIN_STAGE.getScene().getStylesheets().contains(CURRENT_THEME.getCssUrl().toExternalForm()))
-			{
-				MAIN_STAGE.getScene().getStylesheets().remove(CURRENT_THEME.getCssUrl().toExternalForm());
-			}
-			try
-			{
-				MAIN_STAGE.getScene().getStylesheets().add(theme.getCssUrl().toExternalForm());
-			} catch (Exception e)
-			{
-			}
-			CURRENT_THEME = theme;
-		}
-	}
+    public static GeneratorType generatorTypeByDisplayName(String s)
+    {
+        Console.logDebug("s -> " + s);
+        for (GeneratorType type : nameToGeneratorType.values())
+        {
+            Console.logDebug("type -> " + type);
+            if (s.equalsIgnoreCase(type.getName()))
+            {
+                Console.logDebug("return -> " + type);
+                return type;
+            }
+        }
+        return null;
+    }
 
-	/**
-	 * Init all class #bordel
-	 *
-	 * @param stage
-	 */
-	@Override
-	public void start(Stage stage)
-	{
-		MAIN_STAGE = stage;
-		try
-		{
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Menu.fxml"));
-			loader.load();
+    public static void loadTheme(Theme theme)
+    {
+        if (CURRENT_THEME != theme)
+        {
+            if (MAIN_STAGE.getScene().getStylesheets().size() > 0 && MAIN_STAGE.getScene().getStylesheets().contains(CURRENT_THEME.getCssUrl().toExternalForm()))
+            {
+                MAIN_STAGE.getScene().getStylesheets().remove(CURRENT_THEME.getCssUrl().toExternalForm());
+            }
+            try
+            {
+                MAIN_STAGE.getScene().getStylesheets().add(theme.getCssUrl().toExternalForm());
+            } catch (Exception e)
+            {
+            }
+            CURRENT_THEME = theme;
+        }
+    }
 
-			Scene scene = new Scene(loader.getRoot());
-			stage.setScene(scene);
-			stage.setMinWidth(640);
-			stage.setMinHeight(420);
-			stage.getIcons().add(new Image("icon/menu.png"));
+    /**
+     * Init all class #bordel
+     *
+     * @param stage
+     */
+    @Override
+    public void start(Stage stage)
+    {
+        MAIN_STAGE = stage;
+        try
+        {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Menu.fxml"));
+            loader.load();
 
-			stage.show();
-			//set the console main frame visible
-			Console.mainFrame.setVisible(true);
+            Scene scene = new Scene(loader.getRoot());
+            stage.setScene(scene);
+            stage.setMinWidth(640);
+            stage.setMinHeight(420);
+            stage.getIcons().add(new Image("icon/menu.png"));
 
-			loadTheme(Theme.CMDLG);
+            stage.show();
+            //set the console main frame visible if debug is true
+            if (DEBUG)
+                Console.mainFrame.setVisible(true);
 
-			Console.logInfo("You are showing the main stage");
+            loadTheme(Theme.CMDLG);
 
-			stage.setOnHiding(event -> Console.stop());
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+            Console.logInfo("You are showing the main stage");
+
+            stage.setOnHiding(event -> Console.stop());
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

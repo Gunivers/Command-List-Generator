@@ -11,18 +11,18 @@ import net.gunivers.cmdlg.Main;
 
 public class AboutHandler implements EventHandler<ActionEvent>
 {
-	@Override
-	public void handle(ActionEvent event)
-	{
-		Stage stage = new Stage();
-		stage.initOwner(Main.MAIN_STAGE);
-		stage.setResizable(false);
-		WebView webView = new WebView();
-		webView.getEngine().load("https://gunivers.net/");
-		Pane pane = new Pane();
-		pane.getChildren().add(webView);
-		stage.setScene(new Scene(pane));
-		stage.initStyle(StageStyle.UTILITY);
-		stage.show();
-	}
+    @Override
+    public void handle(ActionEvent event)
+    {
+        Stage stage = new Stage();
+        stage.initOwner(Main.MAIN_STAGE);
+        stage.setResizable(false);
+        WebView webView = new WebView();
+        webView.getEngine().load("https://gunivers.net/");
+        Pane pane = new Pane();
+        pane.getChildren().add(webView);
+        stage.setScene(new Scene(pane));
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
+    }
 }

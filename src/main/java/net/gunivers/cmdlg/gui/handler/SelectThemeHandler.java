@@ -8,16 +8,16 @@ import net.gunivers.cmdlg.gui.Theme;
 
 public class SelectThemeHandler implements EventHandler<ActionEvent>
 {
-	private MenuItem menuItem;
+    private MenuItem menuItem;
 
-	public SelectThemeHandler(MenuItem item)
-	{
-		this.menuItem = item;
-	}
+    public SelectThemeHandler(MenuItem item)
+    {
+        this.menuItem = item;
+    }
 
-	@Override
-	public void handle(ActionEvent event)
-	{
-		Main.loadTheme(Theme.getThemeByName(menuItem.getText()));
-	}
+    @Override
+    public void handle(ActionEvent event)
+    {
+        Main.loadTheme(Theme.getThemeByName(menuItem.getText()));
+    }
 }

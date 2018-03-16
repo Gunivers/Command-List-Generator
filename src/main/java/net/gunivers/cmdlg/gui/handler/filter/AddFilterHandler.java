@@ -10,58 +10,58 @@ import net.gunivers.cmdlg.gui.console.Console;
 
 public class AddFilterHandler implements EventHandler<ActionEvent>
 {
-	private static ListView<Label> filter_list;
+    private static ListView<Label> filter_list;
 
-	public AddFilterHandler(ListView<Label> listView)
-	{
-		filter_list = listView;
-	}
+    public AddFilterHandler(ListView<Label> listView)
+    {
+        filter_list = listView;
+    }
 
-	@Override
-	public void handle(ActionEvent event)
-	{
-		Dialog dialog = new Dialog();
-		Console.logDebug("Set action of done button to: " + DialogHandler.class.toString());
-		dialog.getDoneButton().setOnAction(new DialogHandler(dialog));
-		Console.logDebug("Set action of done button to: event1 -> dialog.showMenuStage()");
-		dialog.getExitButton().setOnAction(event1 -> dialog.showMenuStage());
-		Console.logDebug("Showing new dialog");
-		dialog.show();
-	}
+    @Override
+    public void handle(ActionEvent event)
+    {
+        Dialog dialog = new Dialog();
+        Console.logDebug("Set action of done button to: " + DialogHandler.class.toString());
+        dialog.getDoneButton().setOnAction(new DialogHandler(dialog));
+        Console.logDebug("Set action of done button to: event1 -> dialog.showMenuStage()");
+        dialog.getExitButton().setOnAction(event1 -> dialog.showMenuStage());
+        Console.logDebug("Showing new dialog");
+        dialog.show();
+    }
 
-	private class DialogHandler implements EventHandler<ActionEvent>
-	{
-		private Dialog dialog;
+    private class DialogHandler implements EventHandler<ActionEvent>
+    {
+        private Dialog dialog;
 
-		public DialogHandler(Dialog dialog)
-		{
-			this.dialog = dialog;
-		}
+        public DialogHandler(Dialog dialog)
+        {
+            this.dialog = dialog;
+        }
 
-		public Dialog getDialog()
-		{
-			return dialog;
-		}
+        public Dialog getDialog()
+        {
+            return dialog;
+        }
 
-		@Override
-		public void handle(ActionEvent event)
-		{
-			if (getDialog().getTextFieldTo().getText().isEmpty() || dialog.getTextAreaBy().getText().isEmpty())
-			{
-				getDialog().showMenuStage();
-				return;
-			}
+        @Override
+        public void handle(ActionEvent event)
+        {
+            if (getDialog().getTextFieldTo().getText().isEmpty() || dialog.getTextAreaBy().getText().isEmpty())
+            {
+                getDialog().showMenuStage();
+                return;
+            }
 
-			String by = getDialog().getTextAreaBy().getText();
-			String to = getDialog().getTextFieldTo().getText();
+            String by = getDialog().getTextAreaBy().getText();
+            String to = getDialog().getTextFieldTo().getText();
 
-			if (by.contains("\n"))
-				by = by.replaceAll("\n", "\u2759");
+            if (by.contains("\n"))
+                by = by.replaceAll("\n", "\u2759");
 
-			Label label = new Label(to + " \u2192 " + by);
-			label.setStyle("-fx-font-size: 12pt");
-			filter_list.getItems().add(label);
-			getDialog().showMenuStage();
-		}
-	}
+            Label label = new Label(to + " \u2192 " + by);
+            label.setStyle("-fx-font-size: 12pt");
+            filter_list.getItems().add(label);
+            getDialog().showMenuStage();
+        }
+    }
 }

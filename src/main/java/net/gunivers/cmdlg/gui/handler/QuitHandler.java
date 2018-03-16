@@ -6,9 +6,9 @@ import net.gunivers.cmdlg.Main;
 
 public class QuitHandler implements EventHandler<ActionEvent>
 {
-	@Override
-	public void handle(ActionEvent event)
-	{
-		Main.MAIN_STAGE.close();
-	}
+    @Override
+    public void handle(ActionEvent event)
+    {
+        Main.MAIN_STAGE.close();
+    }
 }
