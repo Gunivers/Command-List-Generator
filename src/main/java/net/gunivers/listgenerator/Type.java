@@ -10,6 +10,7 @@ import net.gunivers.listgenerator.functionality.*;
 public enum Type {
 	
 	INCREMENTATION("Incrementation", Incrementation.getIncremente());
+	DOUBLE_INCREMENT("DoubleIncrement", DoubleIncrement.getIncrement());
 	
 	private String name;
 	private Method m;
