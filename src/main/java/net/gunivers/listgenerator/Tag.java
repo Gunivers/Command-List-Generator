@@ -1,5 +1,7 @@
 package net.gunivers.listgenerator;
 
+import net.gunivers.listgenerator.functionality.Functionality;
+
 /**
  * 
  * @author theo
@@ -8,7 +10,7 @@ package net.gunivers.listgenerator;
  */
 public class Tag<T> {
 	
-	private Type type;
+	private Functionality type;
 	private T parameters;
 	
 	/**
@@ -16,7 +18,7 @@ public class Tag<T> {
 	 * @param type the type of the tag
 	 * @param parameters the parameters of the tag
 	 */
-	Tag(Type type, T parameters) {
+	Tag(Functionality type, T parameters) {
 		this.type = type;
 		this.parameters = parameters;
 	}
@@ -24,7 +26,7 @@ public class Tag<T> {
 	/**
 	 * @return the type of the tag
 	 */
-	public Type getType() {
+	public Functionality getType() {
 		return type;
 	}
 
