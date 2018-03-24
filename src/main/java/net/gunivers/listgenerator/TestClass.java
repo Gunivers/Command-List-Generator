@@ -20,7 +20,7 @@ public class TestClass {
 		ArrayList<String> output = new ArrayList<String>();
 
 		try {
-			output = (ArrayList<String>) test.getType().getMethod().invoke(null, 0, 10, 10);
+			output = (ArrayList<String>) test.getType().getMethod().invoke(test.getType(), 0, 10, 10);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}

@@ -7,7 +7,7 @@ import net.gunivers.listgenerator.Call;
 public class Incrementation extends Functionality {
 
 	@Call
-	public static ArrayList<String> incremente(Integer initValue, Integer incr, Integer nbLoop) {
+	public ArrayList<String> incremente(Integer initValue, Integer incr, Integer nbLoop) {
 		ArrayList<String> save = new ArrayList<String>();
 		save.add(Integer.toString(initValue));
 		
