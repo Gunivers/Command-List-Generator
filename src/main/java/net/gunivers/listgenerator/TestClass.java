@@ -15,7 +15,7 @@ public class TestClass {
 
 	@SuppressWarnings("unchecked")
 	public static void test() {
-		Tag<Integer> test = new Tag<Integer>(Functionality.getFunctionnalities().get("Incrementation"), 10);
+		Tag<Integer> test = new Tag<Integer>(Functionality.getFunctionnalities().get("Incrémentation"), 10);
 
 		ArrayList<String> output = new ArrayList<String>();
 

@@ -19,7 +19,7 @@ public class Incrementation extends Functionality {
 
 	@Override
 	public String toString() {
-		return "Incrementation";
+		return "Incrémentation";
 	}
 	
 }
