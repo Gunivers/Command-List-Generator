@@ -1,4 +1,4 @@
-package net.gunivers.listgenerator.material;
+package net.gunivers.listgenerator.functionality.material;
 
 import java.util.ArrayList;
 
