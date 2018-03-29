@@ -1,6 +1,0 @@
-TO-DO:
-	Specific to users:
-		@Oromis: Finir la classe DichotomieGenerator() -> package math
-		
-	Other:
-		Do total check up of the project
