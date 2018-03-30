@@ -1,16 +1,15 @@
 package net.mgdk.core;
 
+import net.mgdk.plugin.PluginFinder;
+import net.mgdk.plugin.core.Plugin;
+
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MGDK
 {
 
-    private static File APP_LOC = null;             //Value for the main directory.
-    private static File PLUGIN_LOC = null;          //Value for the plugin directory.
-
-    private static List<File> FILES_IN_PLUGIN = new ArrayList<>();
+    private static File APP_DIR = null;             //Value for the main directory.
+    private static File PLUGIN_DIR = null;          //Value for the plugin directory.
 
 
     public static void main(String[] args)
@@ -24,6 +23,39 @@ public class MGDK
          * Init the plugin directory.
          */
         initPluginDirectory();
+
+        /**
+         * Find jar plugin with PluginFiner
+         */
+        PluginFinder finder = findJarPlugin();
+
+
+    }
+
+    /**
+     * Basic method to find all plugin
+     */
+    private static PluginFinder findJarPlugin()
+    {
+        if (PLUGIN_DIR != null && PLUGIN_DIR.listFiles().length > 0)
+        {
+            PluginFinder finder = new PluginFinder(PLUGIN_DIR);
+
+            if (finder.getValidPlugin().size() <= 0)
+            {
+                System.out.println("No valid plugin found !");
+                return null;
+            }
+
+            System.out.println("Find " + finder.getAllJar().size() + " jars, for " + finder.getValidPlugin().size() + " plugins.");
+
+            return finder;
+
+        } else
+        {
+            System.out.println("No plugin found.");
+            return null;
+        }
     }
 
     /**
@@ -39,13 +71,13 @@ public class MGDK
             path = path + "minecraft-gdk/";
         else path = path + "/minecraft-gdk/";
 
-        APP_LOC = new File(path);
+        APP_DIR = new File(path);
 
-        if (!APP_LOC.exists())
+        if (!APP_DIR.exists())
         {
-            boolean mkdir = APP_LOC.mkdir();
+            boolean mkdir = APP_DIR.mkdir();
             if (!mkdir)
-                throw new NullPointerException("Incorrect value for: " + APP_LOC);
+                throw new NullPointerException("Incorrect value for: " + APP_DIR);
         }
     }
 
@@ -54,14 +86,14 @@ public class MGDK
      */
     private static void initPluginDirectory()
     {
-        PLUGIN_LOC = new File(APP_LOC, "plugins");
+        PLUGIN_DIR = new File(APP_DIR, "plugins");
 
-        if (!PLUGIN_LOC.exists())
+        if (!PLUGIN_DIR.exists())
         {
-            boolean mkdir = PLUGIN_LOC.mkdir();
+            boolean mkdir = PLUGIN_DIR.mkdir();
 
             if (!mkdir)
-                throw new NullPointerException("Incorrect value for: " + PLUGIN_LOC);
+                throw new NullPointerException("Incorrect value for: " + PLUGIN_DIR);
         }
     }
 
@@ -70,6 +102,6 @@ public class MGDK
      */
     public static File getMainDirectory()
     {
-        return APP_LOC;
+        return APP_DIR;
     }
 }
