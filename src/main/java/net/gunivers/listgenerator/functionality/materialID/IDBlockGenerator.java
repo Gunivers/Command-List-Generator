@@ -1,6 +1,6 @@
 package net.gunivers.listgenerator.functionality.materialID;
 
-import net.gunivers.cmdlg.util.GeneratorType;
+
 import net.gunivers.cmdlg.util.Material;
 import net.gunivers.listgenerator.functionality.Functionality;
 import net.gunivers.listgenerator.util.Call;
