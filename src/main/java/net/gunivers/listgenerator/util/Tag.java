@@ -1,4 +1,4 @@
-package net.gunivers.listgenerator;
+package net.gunivers.listgenerator.util;
 
 import net.gunivers.listgenerator.functionality.Functionality;
 
@@ -18,7 +18,7 @@ public class Tag<T> {
 	 * @param type the type of the tag
 	 * @param parameters the parameters of the tag
 	 */
-	Tag(Functionality type, T parameters) {
+	public Tag(Functionality type, T parameters) {
 		this.type = type;
 		this.parameters = parameters;
 	}
@@ -36,7 +36,4 @@ public class Tag<T> {
 	public T getParameters() {
 		return parameters;
 	}
-	
-	
-
 }

@@ -4,6 +4,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import net.gunivers.listgenerator.functionality.*;
+import net.gunivers.listgenerator.functionality.increment.Incrementation;
+import net.gunivers.listgenerator.functionality.maths.Interpolation;
+import net.gunivers.listgenerator.util.Tag;
 
 public class TestClass {
 

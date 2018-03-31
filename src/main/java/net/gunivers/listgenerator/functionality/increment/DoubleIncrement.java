@@ -1,4 +1,4 @@
-package net.gunivers.listgenerator.functionality;
+package net.gunivers.listgenerator.functionality.increment;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

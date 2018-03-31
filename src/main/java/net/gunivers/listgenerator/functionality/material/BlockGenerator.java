@@ -1,8 +1,8 @@
 package net.gunivers.listgenerator.functionality.material;
 
 import net.gunivers.cmdlg.util.Material;
-import net.gunivers.listgenerator.Call;
 import net.gunivers.listgenerator.functionality.Functionality;
+import net.gunivers.listgenerator.util.Call;
 
 import java.util.ArrayList;
 

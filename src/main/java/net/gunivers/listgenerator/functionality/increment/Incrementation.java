@@ -1,8 +1,9 @@
-package net.gunivers.listgenerator.functionality;
+package net.gunivers.listgenerator.functionality.increment;
 
 import java.util.ArrayList;
 
-import net.gunivers.listgenerator.Call;
+import net.gunivers.listgenerator.functionality.Functionality;
+import net.gunivers.listgenerator.util.Call;
 
 public class Incrementation extends Functionality {
 

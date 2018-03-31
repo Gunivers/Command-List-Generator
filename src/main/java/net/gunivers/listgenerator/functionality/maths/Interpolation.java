@@ -1,8 +1,9 @@
-package net.gunivers.listgenerator.functionality;
+package net.gunivers.listgenerator.functionality.maths;
 
 import java.util.ArrayList;
 
-import net.gunivers.listgenerator.Call;
+import net.gunivers.listgenerator.functionality.Functionality;
+import net.gunivers.listgenerator.util.Call;
 
 public class Interpolation extends Functionality {
 

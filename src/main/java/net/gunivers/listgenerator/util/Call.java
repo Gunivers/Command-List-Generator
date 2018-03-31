@@ -1,4 +1,4 @@
-package net.gunivers.listgenerator;
+package net.gunivers.listgenerator.util;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

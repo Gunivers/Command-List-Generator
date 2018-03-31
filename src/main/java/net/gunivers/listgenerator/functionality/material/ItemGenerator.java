@@ -3,8 +3,8 @@ package net.gunivers.listgenerator.functionality.material;
 import java.util.ArrayList;
 
 import net.gunivers.cmdlg.util.Material;
-import net.gunivers.listgenerator.Call;
 import net.gunivers.listgenerator.functionality.Functionality;
+import net.gunivers.listgenerator.util.Call;
 
 public class ItemGenerator extends Functionality
 {
