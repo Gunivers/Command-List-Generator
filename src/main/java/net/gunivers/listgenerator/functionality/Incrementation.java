@@ -21,5 +21,4 @@ public class Incrementation extends Functionality {
 	public String toString() {
 		return "Incrémentation";
 	}
-	
 }
