@@ -36,7 +36,6 @@ public class IDBlockGenerator extends Functionality
     
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return "Block ID";
 	}
 }
