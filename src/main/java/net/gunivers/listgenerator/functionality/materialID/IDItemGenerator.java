@@ -12,7 +12,7 @@ public class IDItemGenerator extends Functionality
 {
 
     /**
-     * Generate Blocks ID
+     * Generate Items ID
      *
      * @return ArrayList<String> commands
      */
