@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import net.gunivers.listgenerator.functionality.Functionality;
 import net.gunivers.listgenerator.util.Call;
 
-public class Incrementation extends Functionality {
+public class Increment extends Functionality {
 
 	@Call
 	public ArrayList<String> incremente(Integer initValue, Integer incr, Integer nbLoop) {
@@ -20,6 +20,6 @@ public class Incrementation extends Functionality {
 
 	@Override
 	public String toString() {
-		return "Incrémentation";
+		return "Increment";
 	}
 }
