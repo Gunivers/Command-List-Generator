@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 import net.gunivers.listgenerator.functionality.*;
 import net.gunivers.listgenerator.functionality.increment.Incrementation;
-import net.gunivers.listgenerator.functionality.maths.Interpolation;
+import net.gunivers.listgenerator.functionality.maths.*;
+import net.gunivers.listgenerator.functionality.other.*;
 import net.gunivers.listgenerator.util.Tag;
 
 public class TestClass {
@@ -16,7 +17,7 @@ public class TestClass {
 		
 		System.out.print("\n\n\n");
 	
-		new Interpolation();
+		new Duplication();
 		test2();
 	}
 
@@ -38,12 +39,12 @@ public class TestClass {
 	
 	@SuppressWarnings("unchecked")
 	public static void test2() {
-		Tag<Integer> test = new Tag<Integer>(Functionality.getFunctionnalities().get("Interpolation"), 10);
+		Tag<Integer> test = new Tag<Integer>(Functionality.getFunctionnalities().get("Duplication"), 10);
 
 		ArrayList<String> output = new ArrayList<String>();
 
 		try {
-			output = (ArrayList<String>) test.getType().getMethod().invoke(test.getType(), 0, 100, 1.9, false, 0, false, 10);
+			output = (ArrayList<String>) test.getType().getMethod().invoke(test.getType(), "@", -1, 11, 10);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
