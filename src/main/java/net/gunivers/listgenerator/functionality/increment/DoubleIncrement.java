@@ -22,7 +22,7 @@ public class DoubleIncrement {
 		ArrayList<String> save = new ArrayList<String>();
 		save.add(Double.toString(init));
 		
-		for (int i = 0; i <=nbLoop; i++) save.add(Double.toString(init += increment));
+		for (int i = 0; i <=nbLoop; i++) save.add(Double.toString(init += increment) +"D");
 		
 		return save;
 	}
