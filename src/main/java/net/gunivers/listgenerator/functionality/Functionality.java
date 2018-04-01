@@ -12,7 +12,7 @@ public abstract class Functionality {
 	 */
 	private static HashMap<String, Functionality> functionalities = new HashMap<String, Functionality>();
 	
-	/*
+	/**
 	 * Save each instance of a functionality
 	 */
 	{
@@ -25,7 +25,7 @@ public abstract class Functionality {
 	 */
 	public abstract String toString();
 	
-	public static HashMap<String, Functionality> getFunctionnalities() {
+	public static HashMap<String, Functionality> getFunctionalities() {
 		return functionalities;
 	}
 	

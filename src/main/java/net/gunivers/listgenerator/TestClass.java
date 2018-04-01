@@ -3,15 +3,17 @@ package net.gunivers.listgenerator;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-import net.gunivers.listgenerator.functionality.*;
-import net.gunivers.listgenerator.functionality.increment.Incrementation;
-import net.gunivers.listgenerator.functionality.maths.Interpolation;
+import net.gunivers.listgenerator.functionality.increment.*;
+import net.gunivers.listgenerator.functionality.maths.*;
+import net.gunivers.listgenerator.functionality.material.*;
+import net.gunivers.listgenerator.functionality.materialID.*;
+import net.gunivers.listgenerator.functionality.Functionality;
 import net.gunivers.listgenerator.util.Tag;
 
 public class TestClass {
 
 	public static void main(String... args) {
-		new Incrementation();
+		new Increment();
 		test();
 		
 		System.out.print("\n\n\n");
@@ -22,7 +24,7 @@ public class TestClass {
 
 	@SuppressWarnings("unchecked")
 	public static void test() {
-		Tag<Integer> test = new Tag<Integer>(Functionality.getFunctionnalities().get("Incrémentation"), 10);
+		Tag<Integer> test = new Tag<Integer>(Functionality.getFunctionalities().get("Increment"), 10);
 
 		ArrayList<String> output = new ArrayList<String>();
 
@@ -38,7 +40,7 @@ public class TestClass {
 	
 	@SuppressWarnings("unchecked")
 	public static void test2() {
-		Tag<Integer> test = new Tag<Integer>(Functionality.getFunctionnalities().get("Interpolation"), 10);
+		Tag<Integer> test = new Tag<Integer>(Functionality.getFunctionalities().get("Interpolation"), 10);
 
 		ArrayList<String> output = new ArrayList<String>();
 
