@@ -18,7 +18,7 @@ public class DoubleIncrement {
 			return null;
 	}
 	
-	public static ArrayList<String> increment(Double init, Double increment, Integer nbLoop) {
+	public static ArrayList<String> generate(Double init, Double increment, Integer nbLoop) {
 		ArrayList<String> save = new ArrayList<String>();
 		save.add(Double.toString(init));
 		

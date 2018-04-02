@@ -38,5 +38,4 @@ public abstract class Functionality {
 				return method;
 		return null;
 	}
-	
 }
