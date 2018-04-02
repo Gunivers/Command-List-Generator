@@ -3,11 +3,9 @@ package net.gunivers.listgenerator;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-import net.gunivers.listgenerator.functionality.increment.*;
-import net.gunivers.listgenerator.functionality.maths.*;
-import net.gunivers.listgenerator.functionality.material.*;
-import net.gunivers.listgenerator.functionality.materialID.*;
 import net.gunivers.listgenerator.functionality.Functionality;
+import net.gunivers.listgenerator.functionality.increment.Increment;
+import net.gunivers.listgenerator.functionality.other.Duplication;
 import net.gunivers.listgenerator.util.Tag;
 
 public class TestClass {
@@ -18,7 +16,7 @@ public class TestClass {
 		
 		System.out.print("\n\n\n");
 	
-		new Interpolation();
+		new Duplication();
 		test2();
 	}
 
@@ -45,7 +43,7 @@ public class TestClass {
 		ArrayList<String> output = new ArrayList<String>();
 
 		try {
-			output = (ArrayList<String>) test.getType().getMethod().invoke(test.getType(), 0, 100, 1.9, false, 0, false, 10);
+			output = (ArrayList<String>) test.getType().getMethod().invoke(test.getType(), "@", -1, 11, 10);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
