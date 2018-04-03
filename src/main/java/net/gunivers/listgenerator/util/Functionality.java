@@ -3,10 +3,16 @@ package net.gunivers.listgenerator.util;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
+
+/**
+ * @author Oromis
+ * Abstract method representing a functionality of the Command List Generator
+ *
+ */
 public abstract class Functionality {
 	
 	/**
-	 * This Map stocks all functionalies
+	 * This Map stocks all functionalities
 	 */
 	private static HashMap<String, Functionality> functionalities = new HashMap<String, Functionality>();
 	

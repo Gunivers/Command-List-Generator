@@ -2,7 +2,7 @@ package net.gunivers.listgenerator.util;
 
 /**
  * 
- * @author theo
+ * @author Oromis
  * This object represent a tag that can be put in the mold 
  * @param <T> the type of the parameter(s)
  */

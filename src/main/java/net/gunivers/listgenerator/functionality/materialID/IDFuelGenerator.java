@@ -16,8 +16,7 @@ public class IDFuelGenerator extends Functionality
      *
      * @return ArrayList<String> commands
      */
-    @SuppressWarnings("deprecation")
-	@Call
+    @Call
     public ArrayList<String> generate()
     {
         ArrayList<String> commands = new ArrayList<>();

@@ -3,6 +3,11 @@ package net.gunivers.minecraft;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * 
+ * @author Oromis
+ * Represent the different properties of a block
+ */
 public enum MaterialType {
 
 	OCCLUDING("isOccluding"),
@@ -19,10 +24,18 @@ public enum MaterialType {
 	
 	StringBuilder method = new StringBuilder();
 	
+	/**
+	 * @param method a string corresponding at a name of a method
+	 */
 	MaterialType(String method) {
 		this.method.append(method);
 	}
 	
+	/**
+	 * @param material a Material
+	 * @param mt a MaterialType
+	 * @return the result of the method having for name mt of material
+	 */
 	public static boolean checkMaterial(Material material, MaterialType mt) {
 		try {
 			Method m = Material.class.getMethod(mt.method.toString());

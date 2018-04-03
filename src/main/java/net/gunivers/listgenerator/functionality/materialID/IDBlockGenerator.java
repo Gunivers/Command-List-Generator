@@ -16,7 +16,6 @@ public class IDBlockGenerator extends Functionality
      *
      * @return ArrayList<String> commands
      */
-	@SuppressWarnings("deprecation")
 	@Call
     public ArrayList<String> generate()
     {

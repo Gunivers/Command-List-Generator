@@ -1,11 +1,11 @@
 package net.gunivers.listgenerator.functionality.materialID;
 
 
+import java.util.ArrayList;
+
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.minecraft.Material;
-
-import java.util.ArrayList;
 
 
 public class IDTransparentGenerator extends Functionality
@@ -15,8 +15,7 @@ public class IDTransparentGenerator extends Functionality
      *
      * @return ArrayList<String> commands
      */
-    @SuppressWarnings("deprecation")
-	@Call
+    @Call
     public ArrayList<String> generate()
     {
         ArrayList<String> commands = new ArrayList<>();
