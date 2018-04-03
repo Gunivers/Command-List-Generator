@@ -1,4 +1,4 @@
-package net.gunivers.cmdlg.util;
+package net.gunivers.listgenerator.functionality.material;
 
 import java.util.Arrays;
 import java.util.HashMap;
