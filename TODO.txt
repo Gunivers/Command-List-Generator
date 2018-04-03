@@ -24,7 +24,7 @@ Functionnality:
 	
 	
 	
-Write your name after the feature if we decide to do this latter.
+Write your name after the feature if you decide to do this later.
 Possible states:
 - UNSTARTED
 - IN PROGRESS
