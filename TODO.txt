@@ -4,7 +4,7 @@ COMMAND LIST GENERATOR
 	
 Main:
 	- Interface structure																		- MrBretzel			IN PROGRESS
-	- Main method (linked with the interface)													- Oromis			WAITING Interface
+	- Main method (linked with the interface)													- Oromis			IN PROGRESS
 	- Update Functionality to take the possibility of a window to input parameters				- Oromis			WAITING Interface
 									
 Clear:

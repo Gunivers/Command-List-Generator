@@ -29,6 +29,9 @@ public abstract class Functionality {
 	 */
 	public abstract String toString();
 	
+	/**
+	 * @return a HashMap of all available functionnalities
+	 */
 	public static HashMap<String, Functionality> getFunctionalities() {
 		return functionalities;
 	}

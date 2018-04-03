@@ -24,6 +24,7 @@ public class TestClass {
 		test2();*/
 	}
 
+	/**
 	@SuppressWarnings("unchecked")
 	public static void test() {
 		Tag<Integer> test = new Tag<Integer>(Functionality.getFunctionalities().get("Increment"), 10);
@@ -55,4 +56,5 @@ public class TestClass {
 		for (String s : output)
 			System.out.println(s);
 	}
+	*/
 }
