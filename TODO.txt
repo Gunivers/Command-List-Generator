@@ -1,0 +1,31 @@
+TO-DO:
+	
+COMMAND LIST GENERATOR
+	
+Main:
+	- Interface structure																		- MrBretzel			
+	- Main method (linked with the interface)													- Oromis			WAITING Interface
+	- Update Functionality to take the possibility of a window to input parameters				- Oromis			WAITING Interface
+									
+Clear:
+	- Delete cmdlg package when all functionality were moved									-
+	- Clear increment package																	-
+
+Update:
+	- Update Material																			-
+	
+Functionnality:
+	- Entities generator (same system that block)												-
+	- Generator by list (specified by user)														-
+	- Generalize increment (enter equation which translate to increment state)					-
+	- Dichotomie																				-
+	
+	
+Write your name after the feature if we decide to do this latter.
+Possible states:
+- UNSTARTED
+- IN PROGRESS
+- WAITING [reason]
+- TEST PERIOD
+- DONE
+If the state of a feature is DONE, then wait some days before delete the line of the TODO list.
