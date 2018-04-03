@@ -521,9 +521,7 @@ public enum Material
      *
      * @param id ID of the material to get
      * @return MATERIAL if found, or null
-     * @deprecated Magic value
      */
-    @Deprecated
     public static Material getMaterial(final int id)
     {
         if (byId.length > id && id >= 0)
@@ -587,9 +585,7 @@ public enum Material
      * Gets the item ID or block ID of this MATERIAL
      *
      * @return ID of this material
-     * @deprecated Magic value
      */
-    @Deprecated
     public int getId()
     {
         return id;
