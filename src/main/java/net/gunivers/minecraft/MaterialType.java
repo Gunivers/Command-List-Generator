@@ -40,6 +40,7 @@ public enum MaterialType {
 		try {
 			Method m = Material.class.getMethod(mt.method.toString());
 			return (boolean) m.invoke(material, new Object[] {});
+			
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 			return false;

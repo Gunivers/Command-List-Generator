@@ -1,10 +1,5 @@
 package net.gunivers.listgenerator;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-
-import net.gunivers.listgenerator.util.Functionality;
-import net.gunivers.listgenerator.util.Tag;
 import net.gunivers.minecraft.Material;
 import net.gunivers.minecraft.MaterialType;
 
