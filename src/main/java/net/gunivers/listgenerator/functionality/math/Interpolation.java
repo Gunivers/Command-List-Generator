@@ -13,9 +13,9 @@ public class Interpolation extends Functionality {
 	}
 	
     /**
-     * Generate the commands
+     * Generate the strings
      *
-     * @return ArrayList<String> commands list
+     * @return ArrayList<String> strings list
      */
     @Call
     public ArrayList<String> interpolation(double start, double end, double power, boolean revert, int nbreDecimales, boolean noExt, int nbCommands)

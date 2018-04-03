@@ -13,20 +13,20 @@ public class ScoreInterpolation extends Functionality {
 	}
 	
     /**
-     * Generate the commands
+     * Generate the strings
      *
-     * @return ArrayList<String> commands list
+     * @return ArrayList<String> strings list
      */
     @Call
-    public ArrayList<String> scoreInterpolation(double start, double end, double power, boolean revert, String objective, int nbCommands)
+    public ArrayList<String> scoreInterpolation(double start, double end, double power, boolean revert, int nbCommands)
     {
 
         ArrayList<String> commands = new ArrayList<>();
 
         for (int i = 0; i < nbCommands; i++)
-            commands.add("score_" + objective + "_min="
-                    + (String.valueOf(Math.round(interp(start, end, nbCommands + 1, i, power, revert)) + ((i == 0) ? 0 : 1)))
-                    + ",score_" + objective + "="
+            commands.add(
+            		(String.valueOf(Math.round(interp(start, end, nbCommands + 1, i, power, revert)) + ((i == 0) ? 0 : 1)))
+                    + ".."
                     + (String.valueOf(Math.round(interp(start, end, nbCommands + 1, i + 1, power, revert)))));
 
         return commands;
