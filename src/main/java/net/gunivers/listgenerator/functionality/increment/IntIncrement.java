@@ -9,7 +9,7 @@ import net.gunivers.listgenerator.util.Functionality;
  * @author Oromis
  * A function to increment at each loop
  */
-public class Increment extends Functionality {
+public class IntIncrement extends Functionality {
 
 	/**
 	 * @param initValue first value of the loop
@@ -18,7 +18,7 @@ public class Increment extends Functionality {
 	 * @return an ArrayList<String> with all the value replacing the tag
 	 */
 	@Call
-	public ArrayList<String> incremente(Double initValue, Double incr, Integer nbLoop) {
+	public ArrayList<String> incremente(Integer initValue, Integer incr, Integer nbLoop) {
 		ArrayList<String> save = new ArrayList<String>();
 		save.add(Double.toString(initValue));
 		
