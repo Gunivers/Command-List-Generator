@@ -2,8 +2,6 @@ package net.gunivers.listgenerator.functionality.increment;
 
 import java.util.ArrayList;
 
-import javax.annotation.MatchesPattern;
-
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
 
@@ -21,7 +19,7 @@ public class Increment extends Functionality {
 	 */
 	@Call
 	public ArrayList<String> generate(Double initValue, Double increment, Integer nbLoop, boolean round, Class<? extends Number> type) {
-        char end = ' ';
+        char end = '\u0000';
         
         if (type.equals(Long.class)) 
             end = 'L';

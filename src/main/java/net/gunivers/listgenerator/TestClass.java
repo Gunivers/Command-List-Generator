@@ -9,7 +9,7 @@ public class TestClass {
 		
 		
 		System.out.println(MaterialType.checkMaterial(Material.STONE, MaterialType.OCCLUDING));
-		
+	
 		/*new Increment();
 		test();
 		
@@ -18,6 +18,7 @@ public class TestClass {
 		new Duplication();
 		test2();*/
 	}
+
 
 	/**
 	@SuppressWarnings("unchecked")
