@@ -3,13 +3,14 @@ TO-DO:
 COMMAND LIST GENERATOR
 	
 Main:
-	- Interface structure																		- MrBretzel			
+	- Interface structure																		- MrBretzel			IN PROGRESS
 	- Main method (linked with the interface)													- Oromis			WAITING Interface
 	- Update Functionality to take the possibility of a window to input parameters				- Oromis			WAITING Interface
 									
 Clear:
-	- Delete cmdlg package when all functionality were moved									-
+	- Delete cmdlg package when all functionalities were moved									-
 	- Clear increment package																	-
+	- Move minecraft package to structure API													-
 
 Update:
 	- Update Material																			-
@@ -19,6 +20,8 @@ Functionnality:
 	- Generator by list (specified by user)														-
 	- Generalize increment (enter equation which translate to increment state)					-
 	- Dichotomie																				-
+	
+	
 	
 	
 Write your name after the feature if we decide to do this latter.
