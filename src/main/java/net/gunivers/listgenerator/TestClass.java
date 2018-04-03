@@ -3,9 +3,9 @@ package net.gunivers.listgenerator;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-import net.gunivers.listgenerator.functionality.Functionality;
 import net.gunivers.listgenerator.functionality.increment.Increment;
 import net.gunivers.listgenerator.functionality.other.Duplication;
+import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
 
 public class TestClass {

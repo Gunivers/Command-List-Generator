@@ -1,9 +1,7 @@
-package net.gunivers.listgenerator.functionality;
+package net.gunivers.listgenerator.util;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
-
-import net.gunivers.listgenerator.util.Call;
 
 public abstract class Functionality {
 	

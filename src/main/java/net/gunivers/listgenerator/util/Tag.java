@@ -1,7 +1,5 @@
 package net.gunivers.listgenerator.util;
 
-import net.gunivers.listgenerator.functionality.Functionality;
-
 /**
  * 
  * @author theo

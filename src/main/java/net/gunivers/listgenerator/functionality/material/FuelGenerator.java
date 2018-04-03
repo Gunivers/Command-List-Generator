@@ -1,7 +1,7 @@
 package net.gunivers.listgenerator.functionality.material;
 
-import net.gunivers.listgenerator.functionality.Functionality;
 import net.gunivers.listgenerator.util.Call;
+import net.gunivers.listgenerator.util.Functionality;
 
 import java.util.ArrayList;
 
