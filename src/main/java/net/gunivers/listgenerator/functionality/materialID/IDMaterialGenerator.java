@@ -1,8 +1,8 @@
 package net.gunivers.listgenerator.functionality.materialID;
 
-import net.gunivers.listgenerator.functionality.material.Material;
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
+import net.gunivers.minecraft.Material;
 
 import java.util.ArrayList;
 

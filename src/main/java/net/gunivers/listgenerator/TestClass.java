@@ -3,21 +3,25 @@ package net.gunivers.listgenerator;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-import net.gunivers.listgenerator.functionality.increment.Increment;
-import net.gunivers.listgenerator.functionality.other.Duplication;
 import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
+import net.gunivers.minecraft.Material;
+import net.gunivers.minecraft.MaterialType;
 
 public class TestClass {
 
 	public static void main(String... args) {
-		new Increment();
+		
+		
+		System.out.println(MaterialType.checkMaterial(Material.STONE, MaterialType.OCCLUDING));
+		
+		/*new Increment();
 		test();
 		
 		System.out.print("\n\n\n");
 	
 		new Duplication();
-		test2();
+		test2();*/
 	}
 
 	@SuppressWarnings("unchecked")

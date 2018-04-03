@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
+import net.gunivers.minecraft.Material;
 
 public class ItemGenerator extends Functionality
 {

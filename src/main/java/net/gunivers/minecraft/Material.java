@@ -1,4 +1,4 @@
-package net.gunivers.listgenerator.functionality.material;
+package net.gunivers.minecraft;
 
 import java.util.Arrays;
 import java.util.HashMap;

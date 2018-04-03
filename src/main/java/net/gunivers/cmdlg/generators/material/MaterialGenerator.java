@@ -2,7 +2,7 @@ package net.gunivers.cmdlg.generators.material;
 
 import net.gunivers.cmdlg.api.BasicGenerator;
 import net.gunivers.cmdlg.util.GeneratorType;
-import net.gunivers.listgenerator.functionality.material.Material;
+import net.gunivers.minecraft.Material;
 
 import java.util.ArrayList;
 import java.util.Arrays;
