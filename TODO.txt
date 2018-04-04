@@ -8,16 +8,16 @@ Main:
 	- Update Functionality to take the possibility of a window to input parameters				- Oromis			WAITING Interface
 									
 Clear:
-	- Delete cmdlg package when all functionalities were moved									- A~Z				IN PROGRESS
-	- Clear increment package																	-
+	- Delete cmdlg package when all functionalities were moved									- A~Z				WAITING know if MrBretzel need gui!
+	- Clear increment package																	- A~Z				DONE
 	- Move minecraft package to structure API													-
 
 Update:
-	- Update Material																			-
+	- Update Material																			- A~Z				DONE
 	
 Functionnality:
-	- Entities generator (same system that block)												- A~Z				IN PROGRESS
-	- Generator by list (specified by user)														-
+	- Entities generator (same system that block)												-
+	- Generator by list (specified by user)														- A~Z				IN PROGRESS
 	- Generalize increment (enter equation which translate to increment state)					-
 	- Dichotomie																				-
 	
