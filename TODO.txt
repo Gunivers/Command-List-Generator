@@ -8,7 +8,7 @@ Main:
 	- Update Functionality to take the possibility of a window to input parameters				- Oromis			WAITING Interface
 									
 Clear:
-	- Delete cmdlg package when all functionalities were moved									- A~Z				WAITING know if MrBretzel need gui!
+	- Delete cmdlg package when all functionalities were moved									- A~Z				DONE
 	- Clear increment package																	- A~Z				DONE
 	- Move minecraft package to structure API													-
 
