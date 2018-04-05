@@ -4,7 +4,7 @@ COMMAND LIST GENERATOR
 	
 Main:
 	- Interface structure																		- MrBretzel			IN PROGRESS
-	- Main method (linked with the interface)													- Oromis			IN PROGRESS
+	- Main method (linked with the interface)													- Oromis			TEST PERIOD
 	- Update Functionality to take the possibility of a window to input parameters				- Oromis			WAITING Interface
 									
 Clear:
@@ -13,8 +13,7 @@ Clear:
 	- Move minecraft package to structure API													-
 
 Update:
-	- Update Material																			- A~Z				DONE
-	
+	- Update Material to 1.13 and clear it														- A~Z				IN PROGRESS	
 Functionnality:
 	- Entities generator (same system that block)												-
 	- Generator by list (specified by user)														- A~Z				IN PROGRESS
