@@ -14,14 +14,39 @@ import java.util.ArrayList;
  */
 public class MaterialGenerator extends Functionality
 {
+	MaterialType mt;
+	
+	/** <strong>Constructor</strong>
+	 * 
+	 * @param mt a MaterialType
+	 */
+	public MaterialGenerator(MaterialType mt) {
+		this.mt = mt;
+	}
+	
+	/**
+	 * Generate simple Material
+	 * @return ArrayList<String> generated Material names
+	 */
+	public ArrayList<String> generate() {
+		ArrayList<String> commands = new ArrayList<>();
 
+        for (Material material : Material.values())
+        {
+            if (MaterialType.checkMaterial(material, mt)) commands.add(material.name());
+        }
+
+        return commands;
+	}
+	
     /**
      * Generate Simple Material
      *
-     * @return ArrayList<String> generated material names
+     * @param mt a MaterialType
+     * @return ArrayList<String> generated Material names
      */
     @Call
-    public ArrayList<String> generate(MaterialType mt)
+    public static ArrayList<String> generate(MaterialType mt)
     {
         ArrayList<String> commands = new ArrayList<>();
 
@@ -38,7 +63,12 @@ public class MaterialGenerator extends Functionality
 		return "Material";
 	}
 	
-	public String toString(MaterialType mt) {
+	/**
+	 * 
+	 * @param mt a MaterialType
+	 * @return String name of mt
+	 */
+	public static String toString(MaterialType mt) {
 		return mt.toString();
 	}
 }
