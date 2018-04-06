@@ -7,6 +7,11 @@ import net.gunivers.minecraft.MaterialType;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author A~Z
+ * Generate Material values
+ */
 public class MaterialGenerator extends Functionality
 {
 
