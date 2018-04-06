@@ -1,4 +1,4 @@
-package net.gunivers.minecraft;
+package net.gunivers.core.minecraft;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,8 +7,7 @@ import java.util.Map;
 /**
  * An enum of all material IDs accepted by the official server and client
  */
-public enum Material
-{
+public enum Material {
     AIR(0, 0),
     STONE(1),
     GRASS(2),
@@ -479,15 +478,11 @@ public enum Material
     private final static Map<String, Material> BY_NAME = new HashMap<>();
     private static Material[] byId = new Material[383];
 
-    static
-    {
-        for (Material material : values())
-        {
-            if (byId.length > material.id)
-            {
+    static {
+        for (Material material : values()) {
+            if (byId.length > material.id) {
                 byId[material.id] = material;
-            } else
-            {
+            } else {
                 byId = Arrays.copyOfRange(byId, 0, material.id + 2);
                 byId[material.id] = material;
             }
@@ -499,18 +494,15 @@ public enum Material
     private final int maxStack;
     private final short durability;
 
-    private Material(final int id)
-    {
+    private Material(final int id) {
         this(id, 64);
     }
 
-    private Material(final int id, final int stack)
-    {
+    private Material(final int id, final int stack) {
         this(id, stack, 0);
     }
 
-    private Material(final int id, final int stack, final int durability)
-    {
+    private Material(final int id, final int stack, final int durability) {
         this.id = id;
         this.durability = (short) durability;
         this.maxStack = stack;
@@ -522,13 +514,10 @@ public enum Material
      * @param id ID of the material to get
      * @return MATERIAL if found, or null
      */
-    public static Material getMaterial(final int id)
-    {
-        if (byId.length > id && id >= 0)
-        {
+    public static Material getMaterial(final int id) {
+        if (byId.length > id && id >= 0) {
             return byId[id];
-        } else
-        {
+        } else {
             return null;
         }
     }
@@ -542,8 +531,7 @@ public enum Material
      * @param name Name of the material to get
      * @return MATERIAL if found, or null
      */
-    public static Material getMaterial(final String name)
-    {
+    public static Material getMaterial(final String name) {
         return BY_NAME.get(name);
     }
 
@@ -559,19 +547,15 @@ public enum Material
      * @param name Name of the material to get
      * @return MATERIAL if found, or null
      */
-    public static Material matchMaterial(final String name)
-    {
+    public static Material matchMaterial(final String name) {
         Material result = null;
 
-        try
-        {
+        try {
             result = getMaterial(Integer.parseInt(name));
-        } catch (NumberFormatException ex)
-        {
+        } catch (NumberFormatException ex) {
         }
 
-        if (result == null)
-        {
+        if (result == null) {
             String filtered = name.toUpperCase(java.util.Locale.ENGLISH);
 
             filtered = filtered.replaceAll("\\s+", "_").replaceAll("\\W", "");
@@ -586,8 +570,7 @@ public enum Material
      *
      * @return ID of this material
      */
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
@@ -596,8 +579,7 @@ public enum Material
      *
      * @return Maximum stack size for this material
      */
-    public int getMaxStackSize()
-    {
+    public int getMaxStackSize() {
         return maxStack;
     }
 
@@ -606,8 +588,7 @@ public enum Material
      *
      * @return Maximum durability for this material
      */
-    public short getMaxDurability()
-    {
+    public short getMaxDurability() {
         return durability;
     }
 
@@ -616,8 +597,7 @@ public enum Material
      *
      * @return true if this material is a block
      */
-    public boolean isBlock()
-    {
+    public boolean isBlock() {
         return id < 256;
     }
 
@@ -626,10 +606,8 @@ public enum Material
      *
      * @return true if this MATERIAL is edible.
      */
-    public boolean isEdible()
-    {
-        switch (this)
-        {
+    public boolean isEdible() {
+        switch (this) {
             case BREAD:
             case CARROT_ITEM:
             case BAKED_POTATO:
@@ -669,8 +647,7 @@ public enum Material
     /**
      * @return True if this material represents a playable music disk.
      */
-    public boolean isRecord()
-    {
+    public boolean isRecord() {
         return id >= GOLD_RECORD.id && id <= RECORD_12.id;
     }
 
@@ -679,14 +656,11 @@ public enum Material
      *
      * @return True if this material is a block and solid
      */
-    public boolean isSolid()
-    {
-        if (!isBlock() || id == 0)
-        {
+    public boolean isSolid() {
+        if (!isBlock() || id == 0) {
             return false;
         }
-        switch (this)
-        {
+        switch (this) {
             case STONE:
             case GRASS:
             case DIRT:
@@ -897,14 +871,11 @@ public enum Material
      *
      * @return True if this material is a block and does not block any light
      */
-    public boolean isTransparent()
-    {
-        if (!isBlock())
-        {
+    public boolean isTransparent() {
+        if (!isBlock()) {
             return false;
         }
-        switch (this)
-        {
+        switch (this) {
             case AIR:
             case SAPLING:
             case POWERED_RAIL:
@@ -966,14 +937,11 @@ public enum Material
      *
      * @return True if this material is a block and can catch fire
      */
-    public boolean isFlammable()
-    {
-        if (!isBlock())
-        {
+    public boolean isFlammable() {
+        if (!isBlock()) {
             return false;
         }
-        switch (this)
-        {
+        switch (this) {
             case WOOD:
             case LOG:
             case LEAVES:
@@ -1040,14 +1008,11 @@ public enum Material
      *
      * @return True if this material is a block and can burn away
      */
-    public boolean isBurnable()
-    {
-        if (!isBlock())
-        {
+    public boolean isBurnable() {
+        if (!isBlock()) {
             return false;
         }
-        switch (this)
-        {
+        switch (this) {
             case WOOD:
             case LOG:
             case LEAVES:
@@ -1096,10 +1061,8 @@ public enum Material
      *
      * @return true if this MATERIAL can be used as fuel.
      */
-    public boolean isFuel()
-    {
-        switch (this)
-        {
+    public boolean isFuel() {
+        switch (this) {
             case LAVA_BUCKET:
             case COAL_BLOCK:
             case BLAZE_ROD:
@@ -1176,14 +1139,11 @@ public enum Material
      *
      * @return True if this material is a block and completely blocks vision
      */
-    public boolean isOccluding()
-    {
-        if (!isBlock())
-        {
+    public boolean isOccluding() {
+        if (!isBlock()) {
             return false;
         }
-        switch (this)
-        {
+        switch (this) {
             case STONE:
             case GRASS:
             case DIRT:
@@ -1291,14 +1251,11 @@ public enum Material
     /**
      * @return True if this material is affected by gravity.
      */
-    public boolean hasGravity()
-    {
-        if (!isBlock())
-        {
+    public boolean hasGravity() {
+        if (!isBlock()) {
             return false;
         }
-        switch (this)
-        {
+        switch (this) {
             case SAND:
             case GRAVEL:
             case ANVIL:
@@ -1314,10 +1271,8 @@ public enum Material
      *
      * @return true if this material is an item
      */
-    public boolean isItem()
-    {
-        switch (this)
-        {
+    public boolean isItem() {
+        switch (this) {
             case ACACIA_DOOR:
             case BED_BLOCK:
             case BEETROOT_BLOCK:

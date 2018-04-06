@@ -1,50 +1,13 @@
 package net.gunivers.listgenerator.functionality.math;
 
-import java.util.ArrayList;
-
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
 
+import java.util.ArrayList;
+
 public class Interpolation extends Functionality {
 
-	@Override
-	public String toString() {
-		return "Interpolation";
-	}
-	
     /**
-     * Generate the strings
-     *
-     * @return ArrayList<String> strings list
-     */
-    @Call
-    public ArrayList<String> interpolation(double start, double end, double power, boolean revert, int nbreDecimales, boolean noExt, int nbCommands)
-    {
-
-        ArrayList<String> commands = new ArrayList<>();
-
-        int commandeD = 0;
-        int commandeF = nbCommands - 1;
-        int step = 1;
-
-        if (noExt)
-        {
-            commandeD = 1;
-            nbCommands = nbCommands * 2 + 1;
-            commandeF = nbCommands - 1;
-            step = 2;
-        }
-
-        for (int i = commandeD; i <= commandeF; i += step)
-            if (nbreDecimales == 0)
-                commands.add(String.valueOf((int) Math.round(interp(start, end, nbCommands, i, power, revert))));
-            else
-                commands.add(String.valueOf(round(interp(start, end, nbCommands, i, power, revert), nbreDecimales)));
-
-        return commands;
-    }
-	
-	   /**
      * Return value a alpha % of interval [start; end]
      *
      * @param start: start of interval
@@ -52,8 +15,7 @@ public class Interpolation extends Functionality {
      * @param alpha: percentage (0 to 1)
      * @return value alpha% of interval [start; end]
      */
-    private static double linearInterp(double start, double end, double alpha)
-    {
+    private static double linearInterp(double start, double end, double alpha) {
         return (end - start) * alpha + start;
     }
 
@@ -68,8 +30,7 @@ public class Interpolation extends Functionality {
      * @param revert:       reversion of the curve rise (fast then slow or slow then fast)
      * @return value
      */
-    private static double interp(double start, double end, int nbCommands, int commandRange, double power, boolean revert)
-    {
+    private static double interp(double start, double end, int nbCommands, int commandRange, double power, boolean revert) {
 
         double alpha;
         if (nbCommands > 1)
@@ -95,12 +56,46 @@ public class Interpolation extends Functionality {
      * @param precision: number of decimals
      * @return number rounded
      */
-    private static double round(double number, int precision)
-    {
+    private static double round(double number, int precision) {
 
         int power = (int) Math.pow(10, precision);
         number *= power;
         return ((double) Math.round(number)) / power;
     }
-	
+
+    @Override
+    public String toString() {
+        return "Interpolation";
+    }
+
+    /**
+     * Generate the strings
+     *
+     * @return ArrayList<String> strings list
+     */
+    @Call
+    public ArrayList<String> interpolation(double start, double end, double power, boolean revert, int nbreDecimales, boolean noExt, int nbCommands) {
+
+        ArrayList<String> commands = new ArrayList<>();
+
+        int commandeD = 0;
+        int commandeF = nbCommands - 1;
+        int step = 1;
+
+        if (noExt) {
+            commandeD = 1;
+            nbCommands = nbCommands * 2 + 1;
+            commandeF = nbCommands - 1;
+            step = 2;
+        }
+
+        for (int i = commandeD; i <= commandeF; i += step)
+            if (nbreDecimales == 0)
+                commands.add(String.valueOf((int) Math.round(interp(start, end, nbCommands, i, power, revert))));
+            else
+                commands.add(String.valueOf(round(interp(start, end, nbCommands, i, power, revert), nbreDecimales)));
+
+        return commands;
+    }
+
 }

@@ -1,10 +1,10 @@
 package net.gunivers.listgenerator.util;
 
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Retention(RUNTIME)
 @Target(METHOD)
@@ -12,4 +12,5 @@ import java.lang.annotation.Target;
  * @author Oromis
  * The method with this annotation can be run by the main function
  */
-public @interface Call {}
+public @interface Call {
+}
