@@ -1,4 +1,4 @@
-package net.gunivers.listgenerator.functionality.material;
+package net.gunivers.listgenerator.functionality.generators;
 
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
@@ -28,11 +28,12 @@ public class MaterialGenerator extends Functionality
         return commands;
     }
 
-    /**
-     * @return Material
-     */
 	@Override
 	public String toString() {
 		return "Material";
+	}
+	
+	public String toString(MaterialType mt) {
+		return mt.toString();
 	}
 }

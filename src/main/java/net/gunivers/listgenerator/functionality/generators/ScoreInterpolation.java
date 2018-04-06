@@ -1,15 +1,15 @@
-package net.gunivers.listgenerator.functionality.math;
+package net.gunivers.listgenerator.functionality.generators;
 
 import java.util.ArrayList;
 
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
 
-public class Interpolation extends Functionality {
+public class ScoreInterpolation extends Functionality {
 
 	@Override
 	public String toString() {
-		return "Interpolation";
+		return "ScoreInterpolation";
 	}
 	
     /**
@@ -18,30 +18,19 @@ public class Interpolation extends Functionality {
      * @return ArrayList<String> strings list
      */
     @Call
-    public ArrayList<String> interpolation(double start, double end, double power, boolean revert, int nbreDecimales, boolean noExt, int nbCommands)
+    public ArrayList<String> scoreInterpolation(double start, double end, double power, boolean revert, int nbCommands)
     {
 
         ArrayList<String> commands = new ArrayList<>();
 
-        int commandeD = 0;
-        int commandeF = nbCommands - 1;
-        int step = 1;
-
-        if (noExt)
-        {
-            commandeD = 1;
-            nbCommands = nbCommands * 2 + 1;
-            commandeF = nbCommands - 1;
-            step = 2;
-        }
-
-        for (int i = commandeD; i <= commandeF; i += step)
-            if (nbreDecimales == 0)
-                commands.add(String.valueOf((int) Math.round(interp(start, end, nbCommands, i, power, revert))));
-            else
-                commands.add(String.valueOf(round(interp(start, end, nbCommands, i, power, revert), nbreDecimales)));
+        for (int i = 0; i < nbCommands; i++)
+            commands.add(
+            		(String.valueOf(Math.round(interp(start, end, nbCommands + 1, i, power, revert)) + ((i == 0) ? 0 : 1)))
+                    + ".."
+                    + (String.valueOf(Math.round(interp(start, end, nbCommands + 1, i + 1, power, revert)))));
 
         return commands;
+        
     }
 	
 	   /**
@@ -86,21 +75,6 @@ public class Interpolation extends Functionality {
             alpha = 1 - alpha;
 
         return linearInterp(start, end, alpha);
-    }
-
-    /**
-     * Return the round by 10^-precision
-     *
-     * @param number:    the number
-     * @param precision: number of decimals
-     * @return number rounded
-     */
-    private static double round(double number, int precision)
-    {
-
-        int power = (int) Math.pow(10, precision);
-        number *= power;
-        return ((double) Math.round(number)) / power;
     }
 	
 }
