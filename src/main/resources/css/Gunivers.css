@@ -5,30 +5,101 @@
     -fx-font-color: #111111;                  /* Change according to your needs */
     -fx-font-color-highlighted: #F0F0F0;      /* Change according to your needs */
     -fx-pompt-text-color: rgb(128, 128, 128); /* Change according to your needs */
-    -fx-button-color: #FF7835;                /* Change according to your needs */       
-    -fx-root-color: -fx-button-color;           /* Change according to your needs */ 
+    -fx-button-color: #FF7835;                /* Change according to your needs */
+    -fx-root-color: -fx-button-color;           /* Change according to your needs */
 }
 
 
 /*
-* === Button color color ===
-*/
-.button {
-    -fx-text-fill: -fx-font-color-highlighted;
-    -fx-background-color: -fx-button-color;
+ *	Apply google Roboto font to all UI components
+ */
+
+.root {
+    -fx-accent: -fx-root-color;
+    -fx-focus-color: -fx-root-color;
+    -fx-font-family: "Roboto";
+    -fx-font-smoothing-type: gray;
 }
 
-.button:pressed {
+.side-menu {
+    -fx-padding: 20.0, 10.0;
+    -fx-font-size: 15.0;
+    -fx-font-weight: NORMAL;
+    -fx-text-fill: #444;
+}
+
+.title-label {
+    -fx-font-size: 16.0px;
+    -fx-padding: 14.0px;
+    -fx-text-fill: rgba(0.0, 0.0, 0.0, 0.87);
+}
+
+.radio-button-title-label {
+    -fx-font-size: 16.0px;
+    -fx-padding: 14.0 0.0 -20.0 0.0;
+    -fx-text-fill: rgba(0.0, 0.0, 0.0, 0.87);
+}
+
+
+/*******************************************************************************
+*                                                                              *
+* JFX Decorator                                                                *
+*                                                                              *
+*******************************************************************************/
+
+.jfx-decorator {
+    -fx-decorator-color: -fx-primary-color;
+}
+
+.jfx-decorator .jfx-decorator-buttons-container {
+    -fx-background-color: -fx-decorator-color;
+}
+
+.jfx-decorator .resize-border {
+    -fx-border-color: -fx-decorator-color;
+    -fx-border-width: 0 4 4 4;
+}
+
+.jfx-decorator .jfx-decorator-title-container .jfx-decorator-text {
+    -fx-fill: WHITE;
+    -fx-font-size: 16;
+}
+
+.jfx-decorator .jfx-decorator-title-container .jfx-svg-glyph {
+    -fx-shape: "M512 682c-128.024-99.309-255.626-199.040-384-298l384-298 384 298c-128.375 98.958-255.974 198.693-384 298zM512 792l314-246 70 54-384 298-384-298 70-54z";
+    -jfx-size: 15;
+    -fx-background-color: WHITE;
+}
+
+/*
+* === Label color ===
+*/
+.label {
+    -fx-font-size: 12;
+    -fx-text-fill: -fx-font-color-highlighted;
+}
+
+/*
+* === HBox and Vbox Color (main backgroud color) ===
+*/
+.hbox {
     -fx-background-color: -fx-primary-color;
+}
+
+.vbox {
+  -fx-background-color: -fx-primary-color;
 }
 
 /*
 * === List View color ===
 */
 .list-view {
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+    -fx-background-insets: 1;
     -fx-selection-bar: -fx-primary-color;
     -fx-selection-bar-non-focused: -fx-primary-color;
-    -fx-background-color: -fx-secondary-color;
+    -fx-background-color: derive(-fx-primary-color, 50%);
 }
 
 .list-cell:filled:selected:focused .label {
@@ -48,116 +119,49 @@
     -fx-background-color: -fx-secondary-color;
 }
 
-/*
-* === Label color ===
-*/
-.label {
-    -fx-font-size: 12;
-    -fx-text-fill: -fx-font-color;
+/*******************************************************************************
+*                                                                              *
+* JFX Textfield                                                                *
+*                                                                              *
+*******************************************************************************/
+
+.jfx-text-field, .jfx-password-field, .jfx-text-area {
+    -fx-background-color: transparent;
+    -fx-font-weight: BOLD;
+    -fx-alignment: center;
+    -jfx-focus-color: -fx-button-color;
+    -jfx-unfocus-color: derive(-fx-button-color, 10%);
 }
 
-/*
-* === Root color ===
-*/
-.root {
-    /* A bright blue for highlighting/accenting objects.  For example: selected
-     * text; selected items in menus, lists, trees, and tables; progress bars;
-     * default buttons.
-     */
-    -fx-accent: -fx-root-color;
-
-    /* A bright blue for the focus indicator of objects. Typically used as the
-     * first color in -fx-background-color for the "focused" pseudo-class. Also
-     * typically used with insets of -1.4 to provide a glowing effect.
-     *
-     * TODO: should this be derived from -fx-accent?
-     */
-    -fx-focus-color: -fx-root-color;
-
-    -fx-font-family: "Roboto";
-}
-/*
-* === All Menu Bar color ===
-*/
-.menu-bar {
-    -fx-background-color: -fx-primary-color;
-}
-
-.menu-bar > .container > .menu-button {
-    -fx-background-color: -fx-primary-color;
-}
-
-.menu-bar > .container > .menu-button > .label {
-    -fx-text-fill: -fx-font-color-highlighted;
-}
-
-.menu-bar > .container > .menu-button > .label:disabled {
-    -fx-opacity: 1.0;
-}
-
-.menu-bar > .container > .menu-button:hover,
-.menu-bar > .container > .menu-button:focused,
-.menu-bar > .container > .menu-button:showing {
-    -fx-background-color: -fx-secondary-color;
-}
-
-.menu-bar > .container > .menu-button:hover > .label,
-.menu-bar > .container > .menu-button:focused > .label,
-.menu-bar > .container > .menu-button:showing > .label {
-    -fx-text-fill: -fx-font-color;
-}
-  
-.menu-item {
-    -fx-background-color: -fx-primary-color; 
-}
-
-.menu-item .label {
-    -fx-text-fill: -fx-font-color-highlighted;
-}
-
-.menu-item .label:disabled {
-    -fx-opacity: 1.0;
-}    
-
-.menu-item:focused, .menu-item:hovered {
-    -fx-background-color: -fx-secondary-color; 
-}
-
-.menu-item:focused .label, .menu-item:hovered .label {
-    -fx-text-fill: -fx-font-color;
-}
-
-.context-menu {
-    -fx-background-color: -fx-primary-color; 
-}
-
-/*
-* === HBox Color (main backgroud color) ===
-*/
-.hbox {
-    -fx-background-color: -fx-primary-color;
-}
-
-/*
-* === Text Area Color ===
-*/
-
-.text-area {
-    -fx-background-insets: 0;
-    -fx-background-color: transparent, transparent, transparent, transparent;
-}
-
-.text-area .content {
-    -fx-background-color: -fx-secondary-color, -fx-secondary-color, -fx-secondary-color, -fx-secondary-color;
+.jfx-text-area .viewport {
+    -fx-background-color: derive(-fx-primary-color, 50%);
 }
 
 /*
 * === Text Input Color ===
 */
 .text-input {
-    -fx-background-color:  -fx-secondary-color;
+    -fx-background-color:  derive(-fx-primary-color, 50%);
     -fx-faint-focus-color:  transparent;
     -fx-focus-color:  -fx-secondary-color;
-    -fx-text-fill:  -fx-font-color;
+    -fx-text-fill:  -fx-secondary-color;
     -fx-prompt-text-fill:  -fx-pompt-text-color;
+}
+
+/*******************************************************************************
+*                                                                              *
+* JFX Button                                                                   *
+*                                                                              *
+*******************************************************************************/
+/*
+* === Button color color ===
+*/
+.button {
+    -fx-text-fill: -fx-font-color-highlighted;
+    -fx-background-color: -fx-button-color;
+}
+
+.jfx-decorator-button {
+  -fx-text-fill: -fx-font-color-highlighted;
+  -fx-background-color: -fx-primary-color;
 }

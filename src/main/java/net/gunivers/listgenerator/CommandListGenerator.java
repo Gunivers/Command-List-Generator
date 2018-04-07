@@ -19,7 +19,14 @@ public class CommandListGenerator extends Application {
 
         loader.load();
 
-        Scene scene = new Scene(new JFXDecorator(primaryStage, loader.getRoot()));
+        JFXDecorator decorator = new JFXDecorator(primaryStage, loader.getRoot(), false, true, true);
+
+        decorator.setText("Command List Generator");
+
+        Scene scene = new Scene(decorator);
+
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(getClass().getResource("/css/Gunivers.css").toExternalForm());
 
         primaryStage.setMinWidth(640);
         primaryStage.setMinHeight(400);
