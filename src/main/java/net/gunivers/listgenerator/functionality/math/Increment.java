@@ -9,7 +9,8 @@ import java.util.ArrayList;
  * @author Oromis
  * A function to increment at each loop
  */
-public class Increment extends Functionality {
+public class Increment extends Functionality
+{
 
     /**
      * @param initValue first value of the loop
@@ -18,7 +19,8 @@ public class Increment extends Functionality {
      * @return an ArrayList<String> with all the value replacing the tag
      */
     @Call
-    public ArrayList<String> generate(Double initValue, Double increment, Integer nbLoop, boolean round, Class<? extends Number> type) {
+    public ArrayList<String> generate(Double initValue, Double increment, Integer nbLoop, boolean round, Class<? extends Number> type)
+    {
         char end = '\u0000';
 
         if (type.equals(Long.class))
@@ -47,7 +49,8 @@ public class Increment extends Functionality {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Increment";
     }
 }

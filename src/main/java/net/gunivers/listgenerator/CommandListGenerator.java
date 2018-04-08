@@ -7,7 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 
-public class CommandListGenerator extends Application {
+public class CommandListGenerator extends Application
+{
 
     public static void main(String[] args)
     {
@@ -16,10 +17,12 @@ public class CommandListGenerator extends Application {
 
     /**
      * Starting of interface
+     *
      * @param primaryStage Default stage giving by JavaFX
      */
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception
+    {
         //Start of fxml load
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CommandListGenerator.fxml"));
 

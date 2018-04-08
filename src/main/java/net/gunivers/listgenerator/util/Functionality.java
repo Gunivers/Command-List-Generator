@@ -8,7 +8,8 @@ import java.util.HashMap;
  * @author Oromis
  * Abstract method representing a functionality of the Command List Generator
  */
-public abstract class Functionality {
+public abstract class Functionality
+{
 
     /**
      * This Map stocks all functionalities
@@ -17,14 +18,16 @@ public abstract class Functionality {
 
     /**
      * Save each instance of a functionality
-     */ {
+     */
+    {
         functionalities.put(this.toString(), this);
     }
 
     /**
      * @return a HashMap of all available functionnalities
      */
-    public static HashMap<String, Functionality> getFunctionalities() {
+    public static HashMap<String, Functionality> getFunctionalities()
+    {
         return functionalities;
     }
 
@@ -37,7 +40,8 @@ public abstract class Functionality {
     /**
      * @return the method to call to get the tag output
      */
-    public Method getMethod() {
+    public Method getMethod()
+    {
         for (final Method method : this.getClass().getMethods())
             if (method.isAnnotationPresent(Call.class))
                 return method;

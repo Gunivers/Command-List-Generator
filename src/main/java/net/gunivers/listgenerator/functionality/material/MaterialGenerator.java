@@ -1,13 +1,14 @@
 package net.gunivers.listgenerator.functionality.material;
 
-import net.gunivers.listgenerator.util.Call;
-import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.core.minecraft.Material;
 import net.gunivers.core.minecraft.MaterialType;
+import net.gunivers.listgenerator.util.Call;
+import net.gunivers.listgenerator.util.Functionality;
 
 import java.util.ArrayList;
 
-public class MaterialGenerator extends Functionality {
+public class MaterialGenerator extends Functionality
+{
 
     /**
      * Generate Simple Material
@@ -15,10 +16,12 @@ public class MaterialGenerator extends Functionality {
      * @return ArrayList<String> generated material names
      */
     @Call
-    public ArrayList<String> generate(MaterialType mt) {
+    public ArrayList<String> generate(MaterialType mt)
+    {
         ArrayList<String> commands = new ArrayList<>();
 
-        for (Material material : Material.values()) {
+        for (Material material : Material.values())
+        {
             if (MaterialType.checkMaterial(material, mt)) commands.add(material.name());
         }
 
@@ -29,7 +32,8 @@ public class MaterialGenerator extends Functionality {
      * @return Material
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Material";
     }
 }

@@ -5,7 +5,8 @@ import net.gunivers.listgenerator.util.Functionality;
 
 import java.util.ArrayList;
 
-public class Interpolation extends Functionality {
+public class Interpolation extends Functionality
+{
 
     /**
      * Return value a alpha % of interval [start; end]
@@ -15,7 +16,8 @@ public class Interpolation extends Functionality {
      * @param alpha: percentage (0 to 1)
      * @return value alpha% of interval [start; end]
      */
-    private static double linearInterp(double start, double end, double alpha) {
+    private static double linearInterp(double start, double end, double alpha)
+    {
         return (end - start) * alpha + start;
     }
 
@@ -30,7 +32,8 @@ public class Interpolation extends Functionality {
      * @param revert:       reversion of the curve rise (fast then slow or slow then fast)
      * @return value
      */
-    private static double interp(double start, double end, int nbCommands, int commandRange, double power, boolean revert) {
+    private static double interp(double start, double end, int nbCommands, int commandRange, double power, boolean revert)
+    {
 
         double alpha;
         if (nbCommands > 1)
@@ -56,7 +59,8 @@ public class Interpolation extends Functionality {
      * @param precision: number of decimals
      * @return number rounded
      */
-    private static double round(double number, int precision) {
+    private static double round(double number, int precision)
+    {
 
         int power = (int) Math.pow(10, precision);
         number *= power;
@@ -64,7 +68,8 @@ public class Interpolation extends Functionality {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Interpolation";
     }
 
@@ -74,7 +79,8 @@ public class Interpolation extends Functionality {
      * @return ArrayList<String> strings list
      */
     @Call
-    public ArrayList<String> interpolation(double start, double end, double power, boolean revert, int nbreDecimales, boolean noExt, int nbCommands) {
+    public ArrayList<String> interpolation(double start, double end, double power, boolean revert, int nbreDecimales, boolean noExt, int nbCommands)
+    {
 
         ArrayList<String> commands = new ArrayList<>();
 
@@ -82,7 +88,8 @@ public class Interpolation extends Functionality {
         int commandeF = nbCommands - 1;
         int step = 1;
 
-        if (noExt) {
+        if (noExt)
+        {
             commandeD = 1;
             nbCommands = nbCommands * 2 + 1;
             commandeF = nbCommands - 1;

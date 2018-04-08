@@ -7,7 +7,8 @@ import java.lang.reflect.Method;
  * @author Oromis
  * Represent the different properties of a block
  */
-public enum MaterialType {
+public enum MaterialType
+{
 
     OCCLUDING("isOccluding"),
     EDIBLE("isEdible"),
@@ -26,7 +27,8 @@ public enum MaterialType {
     /**
      * @param method a string corresponding at a name of a method
      */
-    MaterialType(String method) {
+    MaterialType(String method)
+    {
         this.method.append(method);
     }
 
@@ -35,12 +37,15 @@ public enum MaterialType {
      * @param mt       a MaterialType
      * @return the result of the method having for name mt of material
      */
-    public static boolean checkMaterial(Material material, MaterialType mt) {
-        try {
+    public static boolean checkMaterial(Material material, MaterialType mt)
+    {
+        try
+        {
             Method m = Material.class.getMethod(mt.method.toString());
             return (boolean) m.invoke(material, new Object[]{});
 
-        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+        {
             e.printStackTrace();
             return false;
         }

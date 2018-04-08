@@ -10,7 +10,8 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CommandListGeneratorController implements Initializable {
+public class CommandListGeneratorController implements Initializable
+{
 
     @FXML
     private JFXButton BUTTON_GENERATE;
@@ -31,7 +32,8 @@ public class CommandListGeneratorController implements Initializable {
     private JFXListView TYPE_LIST;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)
+    {
     }
 
 }

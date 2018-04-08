@@ -7,7 +7,8 @@ import java.util.ArrayList;
  * @author Oromis
  * This object represent a tag in the mold
  */
-public class Tag<T> {
+public class Tag<T>
+{
 
     private static ArrayList<Tag<?>> tags;
     private Functionality type;
@@ -21,7 +22,8 @@ public class Tag<T> {
      * @param parameters the parameters of the tag
      * @param id         the id of the tag
      */
-    public Tag(Functionality type, T parameters, String id) {
+    public Tag(Functionality type, T parameters, String id)
+    {
         this.type = type;
         this.parameters = parameters;
         this.id = id;
@@ -30,28 +32,32 @@ public class Tag<T> {
     /**
      * @return the list of all tags in the mold
      */
-    public static ArrayList<Tag<?>> getTags() {
+    public static ArrayList<Tag<?>> getTags()
+    {
         return tags;
     }
 
     /**
      * @return the id of the tag
      */
-    public String getId() {
+    public String getId()
+    {
         return id;
     }
 
     /**
      * @return the type of the tag
      */
-    public Functionality getType() {
+    public Functionality getType()
+    {
         return type;
     }
 
     /**
      * @return the parameters of the tag
      */
-    public T getParameters() {
+    public T getParameters()
+    {
         return parameters;
     }
 }

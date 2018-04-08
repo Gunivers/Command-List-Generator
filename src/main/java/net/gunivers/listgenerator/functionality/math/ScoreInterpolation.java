@@ -5,7 +5,8 @@ import net.gunivers.listgenerator.util.Functionality;
 
 import java.util.ArrayList;
 
-public class ScoreInterpolation extends Functionality {
+public class ScoreInterpolation extends Functionality
+{
 
     /**
      * Return value a alpha % of interval [start; end]
@@ -15,7 +16,8 @@ public class ScoreInterpolation extends Functionality {
      * @param alpha: percentage (0 to 1)
      * @return value alpha% of interval [start; end]
      */
-    private static double linearInterp(double start, double end, double alpha) {
+    private static double linearInterp(double start, double end, double alpha)
+    {
         return (end - start) * alpha + start;
     }
 
@@ -30,7 +32,8 @@ public class ScoreInterpolation extends Functionality {
      * @param revert:       reversion of the curve rise (fast then slow or slow then fast)
      * @return value
      */
-    private static double interp(double start, double end, int nbCommands, int commandRange, double power, boolean revert) {
+    private static double interp(double start, double end, int nbCommands, int commandRange, double power, boolean revert)
+    {
 
         double alpha;
         if (nbCommands > 1)
@@ -50,7 +53,8 @@ public class ScoreInterpolation extends Functionality {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "ScoreInterpolation";
     }
 
@@ -60,7 +64,8 @@ public class ScoreInterpolation extends Functionality {
      * @return ArrayList<String> strings list
      */
     @Call
-    public ArrayList<String> scoreInterpolation(double start, double end, double power, boolean revert, int nbCommands) {
+    public ArrayList<String> scoreInterpolation(double start, double end, double power, boolean revert, int nbCommands)
+    {
 
         ArrayList<String> commands = new ArrayList<>();
 

@@ -12,5 +12,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @author Oromis
  * The method with this annotation can be run by the main function
  */
-public @interface Call {
+public @interface Call
+{
 }
