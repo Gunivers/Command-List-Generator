@@ -16,9 +16,6 @@ configurations {
 }
 
 repositories {
-    flatDir {
-        dirs 'libs'
-    }
 
     mavenLocal()
     mavenCentral()
@@ -27,13 +24,19 @@ repositories {
 apply plugin: 'javafx-gradle-plugin'
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.10'
+    compile files('libs/jfoenix-8.0.1.jar')
+    extraLibs files('libs/jfoenix-8.0.1.jar')
+
+    configurations.compile.extendsFrom(configurations.extraLibs)
 }
 
 jar {
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+    }
     manifest {
         attributes(
-                'Main-Class': 'net.gunivers.cmdlg.Main'
+                'Main-Class': 'net.gunivers.listgenerator.CommandListGenerator'
         )
     }
 }
@@ -45,13 +48,12 @@ buildscript {
     repositories {
         mavenLocal()
         mavenCentral()
-
     }
 }
 
 jfx {
     // minimal requirement for jfxJar-task
-    mainClass = 'fr.gunivers.cmdlg.Main'
+    mainClass = 'net.gunivers.listgenerator.CommandListGenerator'
 
     // minimal requirement for jfxNative-task
     vendor = 'Gunivers'

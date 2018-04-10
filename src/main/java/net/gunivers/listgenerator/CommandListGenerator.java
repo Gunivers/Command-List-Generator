@@ -1,55 +1,60 @@
 package net.gunivers.listgenerator;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map.Entry;
+import com.jfoenix.controls.JFXDecorator;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 
-import javafx.fxml.FXML;
-import net.gunivers.listgenerator.util.Tag;
+public class CommandListGenerator extends Application
+{
 
-/**
- * 
- * @author Oromis
- * Main class of this program
- */
-public class CommandListGenerator {
+    public static void main(String[] args)
+    {
+        launch(args);
+    }
 
-	
-	@FXML
-	public int maxSize;
-	
-	@FXML
-	public String mold;
-	
-	/**
-	 * @return a list of commands based on the mold with all tag replaced by value
-	 */
-	@SuppressWarnings("unchecked")
-	@FXML	
-	public ArrayList<String> generateOutput() {
-		
-		HashMap<String, ArrayList<String>> replaceTag = new HashMap<String, ArrayList<String>>();
-		
-		for(Tag<?> t : Tag.getTags()) {
-			try {
-				ArrayList<String> list = (ArrayList<String>) t.getType().getMethod().invoke(t.getType(), t.getParameters());
-				if(list.size() < maxSize) maxSize = list.size();
-			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		ArrayList<String> commands = new ArrayList<String>();
-		
-		for(int i = 0; i < maxSize; i++) {
-			String command = mold;
-			for(Entry<String, ArrayList<String>> entry : replaceTag.entrySet()) {
-				command.replace(entry.getKey(), entry.getValue().get(i));
-			}
-			commands.add(command);
-		}
-		
-		return commands;
-	}
+    /**
+     * Starting of interface
+     *
+     * @param primaryStage Default stage giving by JavaFX
+     */
+    @Override
+    public void start(Stage primaryStage) throws Exception
+    {
+        //Start of fxml load
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CommandListGenerator.fxml"));
+
+        //Set the controller of loader
+        loader.setController(new CommandListGeneratorController());
+
+        //Load the loader
+        loader.load();
+
+        //Decorator of window
+        JFXDecorator decorator = new JFXDecorator(primaryStage, loader.getRoot(), false, true, true);
+
+        //Set the tittle of window
+        decorator.setText("Command List Generator");
+        primaryStage.setTitle("Command List Generator");
+
+        //Create new scene
+        Scene scene = new Scene(decorator);
+
+        //Clear all CSS option
+        scene.getStylesheets().clear();
+        //Add custom CSS value
+        scene.getStylesheets().add(getClass().getResource("/css/Gunivers.css").toExternalForm());
+
+        //Set the dimension of window
+        primaryStage.setMinWidth(640);
+        primaryStage.setMinHeight(400);
+
+        //Set the scene
+        primaryStage.setScene(scene);
+
+        //Show the scene
+        primaryStage.show();
+    }
 }

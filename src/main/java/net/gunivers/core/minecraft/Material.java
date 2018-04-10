@@ -1,4 +1,4 @@
-package net.gunivers.minecraft;
+package net.gunivers.core.minecraft;
 
 import java.util.Arrays;
 import java.util.HashMap;
