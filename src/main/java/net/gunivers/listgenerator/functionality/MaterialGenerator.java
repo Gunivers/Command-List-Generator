@@ -1,4 +1,4 @@
-package net.gunivers.listgenerator.functionality.generators;
+package net.gunivers.listgenerator.functionality;
 
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
