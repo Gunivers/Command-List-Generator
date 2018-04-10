@@ -2,6 +2,7 @@ package net.gunivers.listgenerator.gui.handlers.list;
 
 import javafx.scene.control.ListView;
 
+@SuppressWarnings({"rawtypes"})
 public class SyncListHandler
 {
     private ListView listView1, listView2;
