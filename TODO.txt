@@ -17,7 +17,7 @@ Functionnality:
 	- Entities generator (same system that block)												-
 	- Generator by list (specified by user)														- A~Z				IN PROGRESS
 	- Generalize increment (enter equation which translate to increment state)					-
-	- Dichotomie																				-
+	- Dichotomie																				- KubbyDev			DONE
 	
 	
 	
