@@ -1,48 +1,55 @@
 package net.gunivers.listgenerator.gui.handlers;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import net.gunivers.listgenerator.util.Tag;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import net.gunivers.listgenerator.util.Tag;
+public class ButtonGenerateHandler implements EventHandler<ActionEvent>
+{
 
-public class ButtonGenerateHandler implements EventHandler<ActionEvent> {
-	
-	
-	//TODO Output of length's box
-	public int maxSize;
-	
-	//TODO Input
-	public String mold;
 
-	@Override
-	public void handle(ActionEvent event) {
-		HashMap<String, ArrayList<String>> replaceTag = new HashMap<>();
+    //TODO Output of length's box
+    public int maxSize;
 
-		for (Tag<?> t : Tag.getTags()) {
-			try {
-				ArrayList<String> list = (ArrayList<String>) t.getType().getMethod().invoke(t.getType(), t.getParameters());
-				if (list.size() < maxSize)
-					maxSize = list.size();
-			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-				e.printStackTrace();
-			}
-		}
+    //TODO Input
+    public String mold;
 
-		ArrayList<String> commands = new ArrayList<>();
+    @Override
+    public void handle(ActionEvent event)
+    {
+        HashMap<String, ArrayList<String>> replaceTag = new HashMap<>();
 
-		for (int i = 0; i < maxSize; i++) {
-			String command = mold;
-			for (Entry<String, ArrayList<String>> entry : replaceTag.entrySet()) {
-				command.replace(entry.getKey(), entry.getValue().get(i));
-			}
-			commands.add(command);
-		}
+        for (Tag<?> t : Tag.getTags())
+        {
+            try
+            {
+                ArrayList<String> list = (ArrayList<String>) t.getType().getMethod().invoke(t.getType(), t.getParameters());
+                if (list.size() < maxSize)
+                    maxSize = list.size();
+            } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+            {
+                e.printStackTrace();
+            }
+        }
 
-		//TODO Disp in output
-		//return commands;
-	}
+        ArrayList<String> commands = new ArrayList<>();
+
+        for (int i = 0; i < maxSize; i++)
+        {
+            String command = mold;
+            for (Entry<String, ArrayList<String>> entry : replaceTag.entrySet())
+            {
+                command.replace(entry.getKey(), entry.getValue().get(i));
+            }
+            commands.add(command);
+        }
+
+        //TODO Disp in output
+        //return commands;
+    }
 }
