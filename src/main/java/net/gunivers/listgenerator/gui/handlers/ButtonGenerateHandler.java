@@ -17,11 +17,10 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent> {
 	
 	//TODO Input
 	public String mold;
-	
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public void handle(ActionEvent event) {
-		HashMap<String, ArrayList<String>> replaceTag = new HashMap<String, ArrayList<String>>();
+		HashMap<String, ArrayList<String>> replaceTag = new HashMap<>();
 
 		for (Tag<?> t : Tag.getTags()) {
 			try {
@@ -33,7 +32,7 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent> {
 			}
 		}
 
-		ArrayList<String> commands = new ArrayList<String>();
+		ArrayList<String> commands = new ArrayList<>();
 
 		for (int i = 0; i < maxSize; i++) {
 			String command = mold;

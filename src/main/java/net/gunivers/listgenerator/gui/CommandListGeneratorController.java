@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
+import net.gunivers.listgenerator.gui.handlers.CommandChangeHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 
 import java.net.URL;
@@ -40,21 +41,14 @@ public class CommandListGeneratorController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        syncListHandler = new SyncListHandler(TAG_LIST, TYPE_LIST);
+
         BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler());
 
-        BUTTON_EDIT.setOnAction(new ButtonEditHandler());
+        BUTTON_EDIT.setOnAction(new ButtonEditHandler(syncListHandler));
 
-        TAG_LIST.getItems().add(new Label("test"));
-        TAG_LIST.getItems().add(new Label("test"));
-        TAG_LIST.getItems().add(new Label("test"));
-        TAG_LIST.getItems().add(new Label("test"));
+        COMMAND_INPUT.setOnKeyTyped(new CommandChangeHandler());
 
-        TYPE_LIST.getItems().add(new Label("test"));
-        TYPE_LIST.getItems().add(new Label("test"));
-        TYPE_LIST.getItems().add(new Label("test"));
-        TYPE_LIST.getItems().add(new Label("test"));
-
-        syncListHandler = new SyncListHandler(TAG_LIST, TYPE_LIST);
 
     }
 
