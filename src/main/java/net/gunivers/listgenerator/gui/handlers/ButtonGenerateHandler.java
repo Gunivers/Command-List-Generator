@@ -32,7 +32,7 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent>
     {
         HashMap<String, ArrayList<String>> replaceTag = new HashMap<>();
 
-        for (Tag<?> t : Tag.getTags())
+        for (Tag t : Tag.tags.values())
         {
             try
             {
