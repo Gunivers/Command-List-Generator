@@ -1,14 +1,50 @@
-package net.gunivers.listgenerator.functionality.math;
+package net.gunivers.listgenerator.functionality;
+
+import java.util.ArrayList;
 
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
 
-import java.util.ArrayList;
+public class Interpolation extends Functionality {
 
-public class Interpolation extends Functionality
-{
-
+	@Override
+	public String toString() {
+		return "Interpolation";
+	}
+	
     /**
+     * Generate the strings
+     *
+     * @return ArrayList<String> strings list
+     */
+    @Call
+    public ArrayList<String> interpolation(double start, double end, double power, boolean revert, int nbreDecimales, boolean noExt, int nbCommands)
+    {
+
+        ArrayList<String> commands = new ArrayList<>();
+
+        int commandeD = 0;
+        int commandeF = nbCommands - 1;
+        int step = 1;
+
+        if (noExt)
+        {
+            commandeD = 1;
+            nbCommands = nbCommands * 2 + 1;
+            commandeF = nbCommands - 1;
+            step = 2;
+        }
+
+        for (int i = commandeD; i <= commandeF; i += step)
+            if (nbreDecimales == 0)
+                commands.add(String.valueOf((int) Math.round(interp(start, end, nbCommands, i, power, revert))));
+            else
+                commands.add(String.valueOf(round(interp(start, end, nbCommands, i, power, revert), nbreDecimales)));
+
+        return commands;
+    }
+	
+	   /**
      * Return value a alpha % of interval [start; end]
      *
      * @param start: start of interval
@@ -66,43 +102,5 @@ public class Interpolation extends Functionality
         number *= power;
         return ((double) Math.round(number)) / power;
     }
-
-    @Override
-    public String toString()
-    {
-        return "Interpolation";
-    }
-
-    /**
-     * Generate the strings
-     *
-     * @return ArrayList<String> strings list
-     */
-    @Call
-    public ArrayList<String> interpolation(double start, double end, double power, boolean revert, int nbreDecimales, boolean noExt, int nbCommands)
-    {
-
-        ArrayList<String> commands = new ArrayList<>();
-
-        int commandeD = 0;
-        int commandeF = nbCommands - 1;
-        int step = 1;
-
-        if (noExt)
-        {
-            commandeD = 1;
-            nbCommands = nbCommands * 2 + 1;
-            commandeF = nbCommands - 1;
-            step = 2;
-        }
-
-        for (int i = commandeD; i <= commandeF; i += step)
-            if (nbreDecimales == 0)
-                commands.add(String.valueOf((int) Math.round(interp(start, end, nbCommands, i, power, revert))));
-            else
-                commands.add(String.valueOf(round(interp(start, end, nbCommands, i, power, revert), nbreDecimales)));
-
-        return commands;
-    }
-
+	
 }

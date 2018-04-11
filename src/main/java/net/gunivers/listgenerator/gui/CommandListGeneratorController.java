@@ -15,6 +15,7 @@ import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@SuppressWarnings({"unchecked","rawtypes"})
 public class CommandListGeneratorController implements Initializable
 {
 

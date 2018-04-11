@@ -1,14 +1,39 @@
-package net.gunivers.listgenerator.functionality.math;
+package net.gunivers.listgenerator.functionality;
+
+import java.util.ArrayList;
 
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
 
-import java.util.ArrayList;
+public class ScoreInterpolation extends Functionality {
 
-public class ScoreInterpolation extends Functionality
-{
-
+	@Override
+	public String toString() {
+		return "ScoreInterpolation";
+	}
+	
     /**
+     * Generate the strings
+     *
+     * @return ArrayList<String> strings list
+     */
+    @Call
+    public ArrayList<String> scoreInterpolation(double start, double end, double power, boolean revert, int nbCommands)
+    {
+
+        ArrayList<String> commands = new ArrayList<>();
+
+        for (int i = 0; i < nbCommands; i++)
+            commands.add(
+            		(String.valueOf(Math.round(interp(start, end, nbCommands + 1, i, power, revert)) + ((i == 0) ? 0 : 1)))
+                    + ".."
+                    + (String.valueOf(Math.round(interp(start, end, nbCommands + 1, i + 1, power, revert)))));
+
+        return commands;
+        
+    }
+	
+	   /**
      * Return value a alpha % of interval [start; end]
      *
      * @param start: start of interval
@@ -51,32 +76,5 @@ public class ScoreInterpolation extends Functionality
 
         return linearInterp(start, end, alpha);
     }
-
-    @Override
-    public String toString()
-    {
-        return "ScoreInterpolation";
-    }
-
-    /**
-     * Generate the strings
-     *
-     * @return ArrayList<String> strings list
-     */
-    @Call
-    public ArrayList<String> scoreInterpolation(double start, double end, double power, boolean revert, int nbCommands)
-    {
-
-        ArrayList<String> commands = new ArrayList<>();
-
-        for (int i = 0; i < nbCommands; i++)
-            commands.add(
-                    (String.valueOf(Math.round(interp(start, end, nbCommands + 1, i, power, revert)) + ((i == 0) ? 0 : 1)))
-                            + ".."
-                            + (String.valueOf(Math.round(interp(start, end, nbCommands + 1, i + 1, power, revert)))));
-
-        return commands;
-
-    }
-
+	
 }
