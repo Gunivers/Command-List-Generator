@@ -23,13 +23,6 @@
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
-                    <bottom>
-                        <Label text="Output" BorderPane.alignment="CENTER">
-                            <BorderPane.margin>
-                                <Insets />
-                            </BorderPane.margin>
-                        </Label>
-                    </bottom>
                <left>
                         <JFXButton fx:id="BUTTON_GENERATE" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" text="Generate" BorderPane.alignment="CENTER">
                             <padding>
@@ -41,12 +34,15 @@
                         </JFXButton>
                </left>
                <right>
-                  <JFXTextField fx:id="MAX_COMMAND" alignment="CENTER" labelFloat="true" prefHeight="25.0" prefWidth="154.0" promptText="Maximum Size of command" BorderPane.alignment="CENTER" />
+                  <JFXTextField fx:id="MAX_COMMAND" alignment="CENTER" labelFloat="true" prefHeight="25.0" prefWidth="155.0" promptText="Maximum Size of command" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin></JFXTextField>
                </right>
                 </BorderPane>
-                <JFXTextArea fx:id="COMMAND_OUTPUT" editable="false" VBox.vgrow="ALWAYS">
+                <JFXTextArea fx:id="COMMAND_OUTPUT" editable="false" labelFloat="true" promptText="Output" VBox.vgrow="ALWAYS">
                     <VBox.margin>
-                        <Insets bottom="13.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
                     </VBox.margin>
                 </JFXTextArea>
             </children>

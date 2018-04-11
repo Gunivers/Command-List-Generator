@@ -2,15 +2,19 @@ package net.gunivers.listgenerator.gui.handlers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 
 public class ButtonEditHandler implements EventHandler<ActionEvent>
 {
     private SyncListHandler doubleListView;
 
-    public ButtonEditHandler(SyncListHandler syncListHandler)
+    private int maxSize;
+
+    public ButtonEditHandler(SyncListHandler syncListHandler, int maxSize)
     {
         this.doubleListView = syncListHandler;
+        this.maxSize = maxSize;
     }
 
     @Override

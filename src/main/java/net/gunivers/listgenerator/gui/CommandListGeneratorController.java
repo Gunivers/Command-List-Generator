@@ -4,8 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
@@ -16,7 +14,6 @@ import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-@SuppressWarnings({"unchecked", "rawtypes"})
 public class CommandListGeneratorController implements Initializable
 {
 
@@ -43,33 +40,41 @@ public class CommandListGeneratorController implements Initializable
 
     private SyncListHandler syncListHandler = null;
 
-    public static int maxSize = 0;
+    private static int MAX_SIZE = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
         syncListHandler = new SyncListHandler(TAG_LIST, TYPE_LIST);
 
-        BUTTON_EDIT.setOnAction(new ButtonEditHandler(syncListHandler));
-
-        MAX_COMMAND.textProperty().addListener(new ChangeListener<String>()
-        {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
+        MAX_COMMAND.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*"))
             {
-                if (!newValue.matches("\\d*")) {
-                    MAX_COMMAND.setText(newValue.replaceAll("[^\\d]", ""));
-                }
+                String msg = newValue.replaceAll("[^\\d]", "");
+                MAX_COMMAND.setText(msg);
             }
         });
 
         COMMAND_INPUT.setOnKeyTyped(new CommandChangeHandler());
 
-        BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, maxSize));
+        BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, getMaxSize()));
+
+        BUTTON_EDIT.setOnAction(new ButtonEditHandler(syncListHandler, getMaxSize()));
     }
 
     public SyncListHandler getSyncListHandler()
     {
         return syncListHandler;
+    }
+
+    public int getMaxSize()
+    {
+        try
+        {
+            return Integer.valueOf(MAX_COMMAND.getText());
+        } catch (Exception e)
+        {
+            return 0;
+        }
     }
 }
