@@ -8,6 +8,6 @@ public class CommandChangeHandler implements EventHandler<KeyEvent>
     @Override
     public void handle(KeyEvent event)
     {
-        
+
     }
 }

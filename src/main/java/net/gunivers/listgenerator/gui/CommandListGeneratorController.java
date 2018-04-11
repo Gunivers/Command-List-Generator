@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
 import net.gunivers.listgenerator.gui.handlers.CommandChangeHandler;
@@ -16,6 +18,13 @@ import java.util.ResourceBundle;
 
 public class CommandListGeneratorController implements Initializable
 {
+
+    private static int MAX_SIZE = 0;
+
+    public static StackPane MAIN_PANE;
+
+    @FXML
+    private StackPane PANE;
 
     @FXML
     private JFXButton BUTTON_GENERATE;
@@ -38,13 +47,14 @@ public class CommandListGeneratorController implements Initializable
     @FXML
     private JFXListView TYPE_LIST;
 
-    private SyncListHandler syncListHandler = null;
 
-    private static int MAX_SIZE = 0;
+    private SyncListHandler syncListHandler = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        MAIN_PANE = PANE;
+
         syncListHandler = new SyncListHandler(TAG_LIST, TYPE_LIST);
 
         MAX_COMMAND.textProperty().addListener((observable, oldValue, newValue) -> {

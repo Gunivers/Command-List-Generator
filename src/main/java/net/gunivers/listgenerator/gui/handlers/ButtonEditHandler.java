@@ -2,7 +2,6 @@ package net.gunivers.listgenerator.gui.handlers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 
 public class ButtonEditHandler implements EventHandler<ActionEvent>
