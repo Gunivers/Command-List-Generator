@@ -21,7 +21,7 @@ public class Duplication extends Functionality
         ArrayList<String> commands = new ArrayList<>();
 
         for (int i = 0; i < nbreCommands; i++)
-            commands.add(i, duplicate(txt, (int) Math.round((i + 1) * multiplier + add)));
+            commands.add(duplicate(txt, (int) Math.round((i + 1) * multiplier + add)));
 
         return commands;
     }
