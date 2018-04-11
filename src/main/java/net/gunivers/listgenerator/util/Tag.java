@@ -11,6 +11,7 @@ public class Tag<T>
 {
 
     private static ArrayList<Tag<?>> tags;
+    
     private Functionality type;
     private T parameters;
     private String id;
