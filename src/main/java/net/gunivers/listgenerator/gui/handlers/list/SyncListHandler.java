@@ -1,8 +1,8 @@
 package net.gunivers.listgenerator.gui.handlers.list;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 
-@SuppressWarnings({"rawtypes"})
 public class SyncListHandler
 {
     private ListView listView1, listView2;
@@ -48,5 +48,16 @@ public class SyncListHandler
     public ListView getListViewTwo()
     {
         return listView2;
+    }
+
+    public ObservableList getObjectInList(ListNumber number)
+    {
+        return number == ListNumber.ONE ? listView1.getItems() : listView2.getItems();
+    }
+
+    public enum ListNumber
+    {
+        ONE,
+        TWO
     }
 }

@@ -6,7 +6,6 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
 import net.gunivers.listgenerator.gui.handlers.CommandChangeHandler;
@@ -15,7 +14,7 @@ import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-@SuppressWarnings({"unchecked","rawtypes"})
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class CommandListGeneratorController implements Initializable
 {
 
@@ -44,13 +43,11 @@ public class CommandListGeneratorController implements Initializable
     {
         syncListHandler = new SyncListHandler(TAG_LIST, TYPE_LIST);
 
-        BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler());
-
         BUTTON_EDIT.setOnAction(new ButtonEditHandler(syncListHandler));
 
         COMMAND_INPUT.setOnKeyTyped(new CommandChangeHandler());
 
-
+        BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, 0));
     }
 
     public SyncListHandler getSyncListHandler()
