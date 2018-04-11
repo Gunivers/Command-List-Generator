@@ -23,9 +23,30 @@ public class SyncListHandler
         listView2.setOnMouseReleased(event -> sync(listView2.getSelectionModel().getSelectedIndex()));
     }
 
+    /**
+     * This method sync the two ListView.
+     *
+     * @param index is the index of list view.
+     */
     public void sync(int index)
     {
+        if (listView1.getItems().size() <= index)
+            throw new IndexOutOfBoundsException("The index " + index + " is out of bound, the max index is " + listView1.getItems().size());
+
+        if (listView2.getItems().size() <= index)
+            throw new IndexOutOfBoundsException("The index " + index + " is out of bound, the max index is " + listView1.getItems().size());
+
         listView1.getSelectionModel().clearAndSelect(index);
         listView2.getSelectionModel().clearAndSelect(index);
+    }
+
+    public ListView getListViewOne()
+    {
+        return listView1;
+    }
+
+    public ListView getListViewTwo()
+    {
+        return listView2;
     }
 }
