@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 
+import java.net.URL;
+
 public class CommandListGenerator extends Application
 {
 
@@ -24,12 +26,10 @@ public class CommandListGenerator extends Application
     public void start(Stage primaryStage) throws Exception
     {
         //Start of fxml load
-        FXMLLoader loader = new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader(new URL(getClass().getResource("/fxml/CommandListGenerator.fxml").toExternalForm()));
 
         //Set the controller of loader
         loader.setController(new CommandListGeneratorController());
-
-        loader.setLocation(getClass().getResource("/fxml/CommandListGenerator.fxml"));
 
         //Load the loader
         loader.load();
