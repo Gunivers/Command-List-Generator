@@ -12,7 +12,7 @@ public class Calculator {
 		this.text = text;
 	}
 
-	public  void read() {
+	public void read() {
 		lexeme = "";
 		lexemeType = "";
 		
@@ -51,7 +51,7 @@ public class Calculator {
 	}
 
 
-	public  int readNumber() {
+	public int readNumber() {
 		
 		if(!lexemeType.equals("NUMBER")) {
 			throw new UnsupportedOperationException("lexemeType should be a Number");

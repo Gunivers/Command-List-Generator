@@ -1,6 +1,6 @@
-TODO:
+#TODO#
 	
-COMMAND LIST GENERATOR
+|COMMAND LIST GENERATOR|
 	
 Main:
 	- Interface structure																		- MrBretzel			IN PROGRESS
@@ -16,12 +16,11 @@ Update:
 Functionnality:
 	- Entities generator (same system that block)												-
 	- Generator by list (specified by user)														- A~Z				DONE
-	- Generalize increment (enter equation which translate to increment state)					-
+	- Generalize increment (enter equation which translate to increment state)					- Oromis			TEST PERIOD
 	- Dichotomie																				- KubbyDev			DONE
 	
 	
-	
-	
+
 Write your name after the feature if you decide to do this later.
 Possible states:
 - UNSTARTED
