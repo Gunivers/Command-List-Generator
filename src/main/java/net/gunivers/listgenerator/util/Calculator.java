@@ -15,28 +15,21 @@ public class Calculator {
 	public  void read() {
 		lexeme = "";
 		lexemeType = "";
-		
 		while(index < text.length() && text.charAt(index) == ' ')
 			index++;
-		
-		
 		if(index >= text.length())
 			lexemeType = "EOL";
-		
 		else {
-			if(Character.toString(text.charAt(index)).matches("\\d")) {
-				
+			if(Character.toString(text.charAt(index)).matches("\\d(.\\d)?")) {
 				lexemeType = "NUMBER";
-				while(index < text.length() && Character.toString(text.charAt(index)).matches("\\d")) {
+				while(index < text.length() && Character.toString(text.charAt(index)).matches("[\\d\\.]")) {
 					lexeme += text.charAt(index);
 					index++;
 				}
-				
 			} else if(Character.toString(text.charAt(index)).matches("[\\(\\)\\-\\+\\*\\/\\%]")) {
 				lexemeType = "SYMBOL";
 				lexeme = Character.toString(text.charAt(index));
 				index++;
-				
 			} else throw new UnsupportedOperationException("Caractère invalide");
 		}
 	}
@@ -44,90 +37,73 @@ public class Calculator {
 	
 	public void disp() {
 		read();
-		
 		while(!lexemeType.equals("EOL")) {
 			read();
 		}
 	}
 
 
-	public  int readNumber() {
-		
+	public double readNumber() {
 		if(!lexemeType.equals("NUMBER")) {
-			throw new UnsupportedOperationException("lexemeType should be a Number");
+			throw new UnsupportedOperationException("Pas un nombre");
 		}
-		
-		int value = Integer.parseInt(lexeme);
+		double value = Double.parseDouble(lexeme);
 		read();
 		return value;
 	}
 	
-	public int readExpression() {
-		int value = readTerm();
-		
+	public double readExpression() {
+		double value = readTerm();
 		while(lexemeType.equals("SYMBOL") && (lexeme.equals("+") || lexeme.equals("-"))) {
 			String op = lexeme;
 			read();
-			
-			int value2 = readTerm();
-			
+			double value2 = readTerm();
 			if(op.equals("+"))
 				value += value2;
-			
 			if(op.equals("-"))
 				value -= value2;
 		}
 		return value;
 	}
 	
-	public int readFactor() {
-		int value;
-		
+	public double readFactor() {
+		double value;
 		if(lexemeType.equals("SYMBOL") && lexeme.equals("(")) {
 			read();
-			value = (int) readExpression();
-			
+			value = (double) readExpression();
 			if(lexemeType.equals("SYMBOL") && lexeme.equals(")"))
 				read();
-			
 		} else value = readNumber();
-		
 		return value;
 	}
 	
-	public int readTerm() {
-		int value = readFactor();
-		
+	public double readTerm() {
+		double value = readFactor();
 		while(lexemeType.equals("SYMBOL") && (lexeme.equals("*") || lexeme.equals("/") || lexeme.equals("%"))) {
 			String op = lexeme;
 			read();
-			int value2 = readFactor();
-			
+			double value2 = readFactor();
 			if(op.equals("*"))
 				value *= value2;
-			
 			if(op.equals("/"))
 				value /= value2;
-			
 			if(op.equals("%"))
 				value %= value2;
 		}
-		
 		return value;
 	}
 	
-	public int calculate() {
-		
-		while(true) {
-			
-			int value;
+	public double calculate() {
+			double value;
 			read();
 			if(!lexemeType.equals("EOL")) {
 				value = readExpression();
-				
 				if(lexemeType.equals("EOL"))
 					return value;
 			}
+			return 0;
 		}
-	}
+	
+	
+
 }
