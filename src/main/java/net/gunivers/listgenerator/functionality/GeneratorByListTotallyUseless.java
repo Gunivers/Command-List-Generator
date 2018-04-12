@@ -13,6 +13,7 @@ public class GeneratorByListTotallyUseless extends Functionality {
 
 	/**generate
 	 * Useless code !!
+	 * 
 	 * @param theListThatIsAlreadyCreated this name is obvious, don't ya think ?
 	 * @return THAT. It does not even modify it. It. Just. Return. It!
 	 */
@@ -22,6 +23,7 @@ public class GeneratorByListTotallyUseless extends Functionality {
 	
 	/**toString
 	 * This name means this name
+	 * 
 	 * @return List - it's my name and I'm proud of it
 	 */
 	@Override
