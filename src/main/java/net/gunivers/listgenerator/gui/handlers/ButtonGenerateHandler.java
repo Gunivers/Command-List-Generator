@@ -1,15 +1,16 @@
 package net.gunivers.listgenerator.gui.handlers;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import net.gunivers.listgenerator.util.Tag;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import net.gunivers.listgenerator.util.Tag;
 
 public class ButtonGenerateHandler implements EventHandler<ActionEvent>
 {
@@ -18,13 +19,15 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent>
     public String mold;
     private Button button;
     private TextField commandTextField;
+    private TextArea output;
 
-    public ButtonGenerateHandler(Button button, TextField textField, int maxSize)
+    public ButtonGenerateHandler(Button button, TextField textField, TextArea output, int maxSize)
     {
         this.mold = textField.getText();
         this.button = button;
         this.commandTextField = textField;
         this.maxSize = maxSize;
+        this.output = output;
     }
 
     @Override
@@ -36,7 +39,8 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent>
         {
             try
             {
-                ArrayList<String> list = (ArrayList<String>) t.getType().getMethod().invoke(t.getType(), t.getParameters());
+                @SuppressWarnings("unchecked")
+				ArrayList<String> list = (ArrayList<String>) t.getType().getMethod().invoke(t.getType(), t.getParameters());
                 if (list.size() < getMaxSize())
                     maxSize = list.size();
             } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
@@ -46,6 +50,7 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent>
         }
 
         ArrayList<String> commands = new ArrayList<>();
+        String commandsList = "";
 
         for (int i = 0; i < getMaxSize(); i++)
         {
@@ -55,10 +60,12 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent>
                 command.replace(entry.getKey(), entry.getValue().get(i));
             }
             commands.add(command);
+            commandsList += command;
+            if(i < getMaxSize() - 1)
+            	commandsList += "\n";
         }
 
-        //TODO Disp in output
-        //return commands;
+        output.setText(commandsList);
     }
 
     public Button getButton()
