@@ -53,6 +53,7 @@ public class Calculator {
 		if(!lexemeType.equals("NUMBER")) {
 			throw new UnsupportedOperationException("lexemeType should be a Number");
 		}
+		
 		double value = Double.parseDouble(lexeme);
 		read();
 		return value;
@@ -60,24 +61,29 @@ public class Calculator {
 
 	public double readExpression() {
 		double value = readTerm();
+		
 		while(lexemeType.equals("SYMBOL") && (lexeme.equals("+") || lexeme.equals("-"))) {
 			String op = lexeme;
 			read();
 			double value2 = readTerm();
+			
 			if(op.equals("+"))
 				value += value2;
 			
 			if(op.equals("-"))
 				value -= value2;
 		}
+		
 		return value;
 	}
 	
 	public double readFactor() {
 		double value;
+		
 		if(lexemeType.equals("SYMBOL") && lexeme.equals("(")) {
 			read();
 			value = (double) readExpression();
+			
 			if(lexemeType.equals("SYMBOL") && lexeme.equals(")"))
 				read();
 			
@@ -88,10 +94,12 @@ public class Calculator {
 	
 	public double readTerm() {
 		double value = readFactor();
+		
 		while(lexemeType.equals("SYMBOL") && (lexeme.equals("*") || lexeme.equals("/") || lexeme.equals("%"))) {
 			String op = lexeme;
 			read();
 			double value2 = readFactor();
+			
 			if(op.equals("*"))
 				value *= value2;
 			
@@ -106,14 +114,16 @@ public class Calculator {
 	}
 	
 	public double calculate() {
-			double value;
-			read();
-			if(!lexemeType.equals("EOL")) {
-				value = readExpression();
+		double value;
+		read();
+			
+		if(!lexemeType.equals("EOL")) {
+			value = readExpression();
 				
-				if(lexemeType.equals("EOL"))
-					return value;
-			}
-			return 0;
+			if(lexemeType.equals("EOL"))
+				return value;
 		}
+			
+		return 0;
+	}
 }
