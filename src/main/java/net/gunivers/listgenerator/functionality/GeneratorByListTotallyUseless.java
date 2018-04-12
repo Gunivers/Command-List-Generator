@@ -6,17 +6,18 @@ import net.gunivers.listgenerator.util.Functionality;
 
 public class GeneratorByListTotallyUseless extends Functionality {
 
-	/**
+	/**generate
 	 * Useless code !!
-	 * @param parameters
-	 * @return
+	 * @param theListThatIsAlreadyCreated this name is obvious, don't ya think ?
+	 * @return THAT. It does not even modify it. It. Just. Return. It!
 	 */
-	public ArrayList<String> generate(ArrayList<String> parameters) {
-		return parameters;
+	public ArrayList<String> generate(ArrayList<String> theListThatIsAlreadyCreated) {
+		return theListThatIsAlreadyCreated;
 	}
 	
-	/**
+	/**toString
 	 * This name means this name
+	 * @return List - it's my name and I'm proud of it
 	 */
 	@Override
 	public String toString() {
