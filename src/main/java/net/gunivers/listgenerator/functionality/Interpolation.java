@@ -105,4 +105,10 @@ public class Interpolation extends Functionality
         return commands;
     }
 
+	@Override
+	public ArrayList<Object> callParameterOverlay() {
+		// TODO
+		return null;
+	}
+
 }

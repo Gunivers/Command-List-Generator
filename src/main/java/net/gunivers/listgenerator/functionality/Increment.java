@@ -1,9 +1,11 @@
 package net.gunivers.listgenerator.functionality;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
+import net.gunivers.listgenerator.util.Calculator;
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
-
-import java.util.ArrayList;
 
 /**
  * @author Oromis
@@ -19,32 +21,44 @@ public class Increment extends Functionality
      * @return an ArrayList<String> with all the value replacing the tag
      */
     @Call
-    public ArrayList<String> generate(Double initValue, Double increment, Integer nbLoop, boolean round, Class<? extends Number> type)
+    public ArrayList<String> generate(Double initValue, String operation, Integer nbLoop, int round, Class<? extends Number> type)
     {
-        char end = '\u0000';
+        String end = "";
 
-        if (type.equals(Long.class))
-            end = 'L';
+		if (type != null) {
+			if (type.equals(Long.class))
+				end = "L";
 
-        else if (type.equals(Float.class))
-            end = 'F';
+			else if (type.equals(Float.class))
+				end = "F";
 
-        else if (type.equals(Double.class))
-            end = 'D';
+			else if (type.equals(Double.class))
+				end = "D";
 
-        else if (type.equals(Short.class))
-            end = 's';
+			else if (type.equals(Short.class))
+				end = "s";
 
-        else if (type.equals(Byte.class))
-            end = 'b';
+			else if (type.equals(Byte.class))
+				end = "b";
+			if (round == 0 && (end == "D" || end == "D"))
+				end = ".0" + end;
+		}	
+
 
         ArrayList<String> save = new ArrayList<String>();
-        save.add(initValue.toString());
-
-        for (int i = 0; i < nbLoop; i++)
-            if (round) save.add(((Long) Math.round(initValue += increment)).toString() + end);
-            else save.add((initValue += increment).toString() + end);
-
+        
+        BigDecimal bd = new BigDecimal(initValue);
+		bd = bd.setScale(round, BigDecimal.ROUND_HALF_UP);
+        save.add(bd.toString());
+        
+        for (int i = 0; i < nbLoop; i++) {
+        	
+            Calculator calc = new Calculator(operation.replaceAll("[uU]", Double.toString(initValue)));
+            initValue = calc.calculate();
+            BigDecimal bd2 = new BigDecimal(initValue);
+    		bd2 = bd2.setScale(round,BigDecimal.ROUND_HALF_UP);
+            save.add(bd2.toString() + end);
+        }
         return save;
     }
 
@@ -53,4 +67,10 @@ public class Increment extends Functionality
     {
         return "Increment";
     }
+    
+    @Override
+	public ArrayList<Object> callParameterOverlay() {
+		// TODO
+		return null;
+	}
 }

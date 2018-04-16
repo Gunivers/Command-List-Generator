@@ -14,7 +14,7 @@ public class Tag
     public static HashMap<String, Tag> tags = new HashMap<String, Tag>();
     
     private Functionality type;
-    private ArrayList<String> parameters;
+    private ArrayList<Object> parameters;
     private String id;
 
     /**
@@ -36,7 +36,7 @@ public class Tag
     /**
      * @param parameters the parameters of the tag
      */
-	public void setParameters(ArrayList<String> parameters) {
+	public void setParameters(ArrayList<Object> parameters) {
 		this.parameters = parameters;
 	}
 
@@ -59,7 +59,7 @@ public class Tag
     /**
      * @return the parameters of the tag
      */
-    public ArrayList<String> getParameters()
+    public ArrayList<Object> getParameters()
     {
         return parameters;
     }

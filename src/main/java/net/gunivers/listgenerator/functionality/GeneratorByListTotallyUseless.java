@@ -31,6 +31,10 @@ public class GeneratorByListTotallyUseless extends Functionality {
 		return "List";
 	}
 
-	
+	@Override
+	public ArrayList<Object> callParameterOverlay() {
+		// TODO
+		return null;
+	}
 	
 }

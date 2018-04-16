@@ -75,4 +75,10 @@ public class MaterialGenerator extends Functionality
     {
         return "Material";
     }
+
+	@Override
+	public ArrayList<Object> callParameterOverlay() {
+		// TODO
+		return null;
+	}
 }

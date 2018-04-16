@@ -78,5 +78,11 @@ public class ScoreInterpolation extends Functionality
         return commands;
 
     }
+    
+    @Override
+	public ArrayList<Object> callParameterOverlay() {
+		// TODO
+		return null;
+	}
 
 }

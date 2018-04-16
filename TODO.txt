@@ -11,13 +11,11 @@ Clear:
 	- Move minecraft package to structure API													-
 
 Update:
-	- Update Material to 1.13 and clear it														- 
+	- Update Material to 1.13 and clear it														- Oromis			WAITING Spigot 1.13
 
 Functionnality:
-	- Entities generator (same system that block)												-
-	- Generator by list (specified by user)														- A~Z				DONE
+	- Generalisation of generator by list to allow to load Enum and custom the preset list		-														- 
 	- Generalize increment (enter equation which translate to increment state)					- Oromis			TEST PERIOD
-	- Dichotomie																				- KubbyDev			DONE
 	
 	
 
