@@ -15,16 +15,16 @@ public class Dichotomy extends Functionality
     }
 
     @Call
-    public ArrayList<String> dichotomy(int value)
+    public ArrayList<String> dichotomy(int min, int max)
     {
 
         ArrayList<String> commands = new ArrayList<>();
 
         long l = 1;
 
-        while (l < value)
+        while (l < max)
         {
-            commands.add(String.valueOf(l));
+            commands.add(String.valueOf(l + min));
             l = 2 * l;
         }
 
