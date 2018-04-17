@@ -11,14 +11,20 @@ import net.gunivers.listgenerator.util.Functionality;
  */
 public class GeneratorByListTotallyUseless extends Functionality {
 
+	ArrayList<String> theListThatIsAlreadyCreated;
+	
+	public GeneratorByListTotallyUseless(ArrayList<String> theListThatIsAlreadyCreated) {
+		this.theListThatIsAlreadyCreated = theListThatIsAlreadyCreated;
+	}
+	
 	/**generate
 	 * Useless code !!
 	 * 
 	 * @param theListThatIsAlreadyCreated this name is obvious, don't ya think ?
 	 * @return THAT. It does not even modify it. It. Just. Return. It!
 	 */
-	public ArrayList<String> generate(ArrayList<String> theListThatIsAlreadyCreated) {
-		return theListThatIsAlreadyCreated;
+	public ArrayList<String> generate() {
+		return this.theListThatIsAlreadyCreated;
 	}
 	
 	/**toString
@@ -37,4 +43,16 @@ public class GeneratorByListTotallyUseless extends Functionality {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param newList
+	 * @return currentList
+	 */
+	public ArrayList<String> setList(ArrayList<String> newList) {
+		return this.theListThatIsAlreadyCreated = newList;
+	}
+	
+	public ArrayList<String> getList() {
+		return this.theListThatIsAlreadyCreated;
+	}
 }
