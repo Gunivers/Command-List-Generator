@@ -45,13 +45,17 @@ public class GeneratorByListTotallyUseless extends Functionality {
 	
 	/**
 	 * 
-	 * @param newList
-	 * @return currentList
+	 * @param newList to set instead of current
+	 * @return new current list
 	 */
 	public ArrayList<String> setList(ArrayList<String> newList) {
 		return this.theListThatIsAlreadyCreated = newList;
 	}
 	
+	/**
+	 * 
+	 * @return current list
+	 */
 	public ArrayList<String> getList() {
 		return this.theListThatIsAlreadyCreated;
 	}
