@@ -61,8 +61,10 @@ public class CommandListGeneratorController implements Initializable
 
         MAX_COMMAND.textProperty().addListener(new OnlyIntChangeListener(MAX_COMMAND));
 
-        COMMAND_INPUT.setOnKeyTyped(new TextFieldCommandChangeHandler(COMMAND_INPUT));
-        COMMAND_INPUT.setOnKeyReleased(new TextFieldCommandChangeHandler(COMMAND_INPUT));
+        TextFieldCommandChangeHandler handler = new TextFieldCommandChangeHandler(COMMAND_INPUT);
+
+        COMMAND_INPUT.setOnKeyTyped(handler);
+        COMMAND_INPUT.setOnKeyReleased(handler);
 
         BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, getMaxSize()));
 
@@ -83,7 +85,6 @@ public class CommandListGeneratorController implements Initializable
             if (!tag.isEmpty())
             {
                 Label label = new Label(tag);
-                label.setPrefSize(50, 25);
                 TAG_LIST.getItems().add(label);
             }
         }
