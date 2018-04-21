@@ -1,13 +1,17 @@
 package net.gunivers.listgenerator.gui.handlers;
 
 import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXSnackbar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 import net.gunivers.listgenerator.util.Functionality;
+
+import java.io.IOException;
 
 public class ButtonNextHandler implements EventHandler<ActionEvent>
 {
@@ -29,7 +33,21 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
         if (listView.getSelectionModel().getSelectedItems().size() > 0)
         {
             Functionality functionality = Functionality.getFunctionalitie(listView.getSelectionModel().getSelectedItems().get(0).getText());
+            JFXDialog newDialog = new JFXDialog();
+            JFXDialogLayout layout = null;
 
+            try
+            {
+                layout = FXMLLoader.load(getClass().getResource("/fxml/functionality/" + functionality.toString() + ".fxml"));
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+
+            newDialog.setContent(layout);
+
+            dialog.close();
+            newDialog.show(CommandListGeneratorController.MAIN_PANE);
         } else
         {
             dialog.close();
