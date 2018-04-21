@@ -5,6 +5,7 @@ import net.gunivers.core.minecraft.MaterialType;
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -80,6 +81,12 @@ public class MaterialGenerator extends Functionality
     public ArrayList<Object> callParameterOverlay()
     {
         // TODO
+        return null;
+    }
+
+    @Override
+    public URL getFXML()
+    {
         return null;
     }
 }

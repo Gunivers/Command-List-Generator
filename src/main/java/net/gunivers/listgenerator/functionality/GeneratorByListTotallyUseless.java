@@ -2,6 +2,7 @@ package net.gunivers.listgenerator.functionality;
 
 import net.gunivers.listgenerator.util.Functionality;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +23,7 @@ public class GeneratorByListTotallyUseless extends Functionality
      * generate
      * Useless code !!
      *
-     * @param theListThatIsAlreadyCreated this name is obvious, don't ya think ?
+     * theListThatIsAlreadyCreated this name is obvious, don't ya think ?
      * @return THAT. It does not even modify it. It. Just. Return. It!
      */
     public ArrayList<String> generate()
@@ -46,6 +47,12 @@ public class GeneratorByListTotallyUseless extends Functionality
     public ArrayList<Object> callParameterOverlay()
     {
         // TODO: The method callParameterOverlay
+        return null;
+    }
+
+    @Override
+    public URL getFXML()
+    {
         return null;
     }
 
