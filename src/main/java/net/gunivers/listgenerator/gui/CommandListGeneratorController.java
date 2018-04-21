@@ -82,7 +82,8 @@ public class CommandListGeneratorController implements Initializable
             listASupprimé.add(l.getText());
 
         List<String> list = new ArrayList<>();
-        Collections.copy(listASupprimé, list);
+        for (String s : listASupprimé)
+            list.add(s);
 
         listASupprimé.removeAll(tags);
 
@@ -90,8 +91,12 @@ public class CommandListGeneratorController implements Initializable
 
         if (!listASupprimé.isEmpty() || !tags.isEmpty())
         {
-            if (TAG_LIST.getItems().size() > 0)
-                for (Label label : TAG_LIST.getItems())
+            ArrayList<Label> bgj = new ArrayList<>();
+            for (Label s : TAG_LIST.getItems())
+                bgj.add(s);
+
+            if (bgj.size() > 0)
+                for (Label label : bgj)
                     for (String str : listASupprimé)
                         if (label.getText().equalsIgnoreCase(str))
                             TAG_LIST.getItems().remove(label);
