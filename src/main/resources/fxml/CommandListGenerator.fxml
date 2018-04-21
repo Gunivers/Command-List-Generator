@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <StackPane fx:id="PANE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="400.0" prefWidth="640.0" styleClass="hbox">
@@ -80,26 +79,22 @@
                       </HBox>
                       <HBox styleClass=".hbox" VBox.vgrow="ALWAYS">
                           <children>
-                              <HBox HBox.hgrow="ALWAYS">
-                                  <children>
-                                      <JFXListView fx:id="TAG_LIST" HBox.hgrow="ALWAYS">
-                                          <HBox.margin>
-                                              <Insets bottom="5.0" left="5.0" top="5.0" />
-                                          </HBox.margin>
-                                      </JFXListView>
-                                      <JFXListView fx:id="TYPE_LIST" HBox.hgrow="ALWAYS">
-                                          <HBox.margin>
-                                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                          </HBox.margin>
-                                      </JFXListView>
-                                  </children>
-                              </HBox>
+                                <JFXListView fx:id="TAG_LIST" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                                    </HBox.margin>
+                                </JFXListView>
+                                <JFXListView fx:id="TYPE_LIST" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </HBox.margin>
+                                </JFXListView>
                           </children>
                           <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                           </VBox.margin>
                       </HBox>
-                      <BorderPane maxHeight="45.0" prefHeight="42.0" VBox.vgrow="NEVER">
+                      <BorderPane maxHeight="20.0" VBox.vgrow="NEVER">
                           <center>
                               <JFXButton fx:id="BUTTON_EDIT" buttonType="RAISED" text="Edit" BorderPane.alignment="CENTER">
                                   <padding>

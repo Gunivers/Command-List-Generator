@@ -18,9 +18,9 @@ public class SyncListHandler
             listView2.getSelectionModel().clearAndSelect(0);
         }
 
-        listView1.setOnMouseReleased(event -> sync(listView1.getSelectionModel().getSelectedIndex()));
+        listView1.setOnMousePressed(event -> sync(listView1.getSelectionModel().getSelectedIndex()));
 
-        listView2.setOnMouseReleased(event -> sync(listView2.getSelectionModel().getSelectedIndex()));
+        listView2.setOnMousePressed(event -> sync(listView2.getSelectionModel().getSelectedIndex()));
     }
 
     /**

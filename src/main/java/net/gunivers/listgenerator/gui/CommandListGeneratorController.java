@@ -6,7 +6,7 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
@@ -42,10 +42,10 @@ public class CommandListGeneratorController implements Initializable
     private JFXTextField MAX_COMMAND;
 
     @FXML
-    private JFXListView TAG_LIST;
+    private JFXListView<Label> TAG_LIST;
 
     @FXML
-    private JFXListView TYPE_LIST;
+    private JFXListView<Label> TYPE_LIST;
 
 
     private SyncListHandler syncListHandler = null;
@@ -64,6 +64,16 @@ public class CommandListGeneratorController implements Initializable
                 MAX_COMMAND.setText(msg);
             }
         });
+
+        TAG_LIST.getItems().add(new Label("test"));
+        TAG_LIST.getItems().add(new Label("test"));
+        TAG_LIST.getItems().add(new Label("test"));
+        TAG_LIST.getItems().add(new Label("test"));
+
+        TYPE_LIST.getItems().add(new Label("test"));
+        TYPE_LIST.getItems().add(new Label("test"));
+        TYPE_LIST.getItems().add(new Label("test"));
+        TYPE_LIST.getItems().add(new Label("test"));
 
         COMMAND_INPUT.setOnKeyTyped(new CommandChangeHandler());
 

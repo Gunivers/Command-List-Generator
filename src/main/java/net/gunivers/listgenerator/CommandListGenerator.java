@@ -45,9 +45,9 @@ public class CommandListGenerator extends Application
         Scene scene = new Scene(decorator);
 
         //Clear all CSS option
-        //scene.getStylesheets().clear();
+        scene.getStylesheets().clear();
         //Add custom CSS value
-        //scene.getStylesheets().add(getClass().getResource("/css/Gunivers.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/css/Gunivers.css").toExternalForm());
 
         //Set the dimension of window
         primaryStage.setMinWidth(640);
