@@ -2,6 +2,7 @@ package net.gunivers.listgenerator.functionality;
 
 import net.gunivers.listgenerator.util.Functionality;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -65,4 +66,10 @@ public class GeneratorByListTotallyUseless extends Functionality
     {
         return this.theListThatIsAlreadyCreated;
     }
+
+	@Override
+	public URL getFXML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

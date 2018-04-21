@@ -3,6 +3,7 @@ package net.gunivers.listgenerator.functionality;
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 public class ScoreInterpolation extends Functionality
@@ -85,5 +86,11 @@ public class ScoreInterpolation extends Functionality
         // TODO
         return null;
     }
+
+	@Override
+	public URL getFXML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

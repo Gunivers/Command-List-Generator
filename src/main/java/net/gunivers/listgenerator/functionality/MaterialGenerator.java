@@ -5,6 +5,7 @@ import net.gunivers.core.minecraft.MaterialType;
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -82,4 +83,10 @@ public class MaterialGenerator extends Functionality
         // TODO
         return null;
     }
+
+	@Override
+	public URL getFXML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

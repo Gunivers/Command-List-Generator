@@ -5,6 +5,7 @@ import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
 
 import java.math.BigDecimal;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -76,4 +77,10 @@ public class Increment extends Functionality
         // TODO
         return null;
     }
+
+	@Override
+	public URL getFXML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
