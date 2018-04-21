@@ -1,13 +1,20 @@
 package net.gunivers.listgenerator;
 
+import java.net.URL;
+
 import com.jfoenix.controls.JFXDecorator;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.gunivers.listgenerator.functionality.Dichotomy;
+import net.gunivers.listgenerator.functionality.Duplication;
+import net.gunivers.listgenerator.functionality.GeneratorByList;
+import net.gunivers.listgenerator.functionality.Increment;
+import net.gunivers.listgenerator.functionality.Interpolation;
+import net.gunivers.listgenerator.functionality.ScoreInterpolation;
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
-
-import java.net.URL;
 
 public class CommandListGenerator extends Application
 {
@@ -25,6 +32,14 @@ public class CommandListGenerator extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+    	
+    	new Dichotomy();
+    	new Duplication();
+    	new GeneratorByList();
+    	new Increment();
+    	new Interpolation();
+    	new ScoreInterpolation();
+    	
         //Start of fxml load
         FXMLLoader loader = new FXMLLoader(new URL(getClass().getResource("/fxml/CommandListGenerator.fxml").toExternalForm()));
 

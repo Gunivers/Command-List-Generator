@@ -1,9 +1,8 @@
 package net.gunivers.listgenerator.functionality;
 
-import net.gunivers.listgenerator.util.Functionality;
-
-import java.net.URL;
 import java.util.ArrayList;
+
+import net.gunivers.listgenerator.util.Functionality;
 
 /**
  * @author A~Z

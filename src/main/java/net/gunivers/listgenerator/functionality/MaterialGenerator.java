@@ -1,12 +1,11 @@
 package net.gunivers.listgenerator.functionality;
 
+import java.util.ArrayList;
+
 import net.gunivers.core.minecraft.Material;
 import net.gunivers.core.minecraft.MaterialType;
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
-
-import java.net.URL;
-import java.util.ArrayList;
 
 /**
  * @author A~Z
