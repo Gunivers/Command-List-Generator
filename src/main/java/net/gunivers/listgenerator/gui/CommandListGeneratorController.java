@@ -13,6 +13,7 @@ import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
 import net.gunivers.listgenerator.gui.handlers.TextFieldCommandChangeHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
+import net.gunivers.listgenerator.util.Tag;
 
 import java.net.URL;
 import java.util.*;
@@ -63,7 +64,6 @@ public class CommandListGeneratorController implements Initializable
         TextFieldCommandChangeHandler handler = new TextFieldCommandChangeHandler(COMMAND_INPUT);
 
         COMMAND_INPUT.setOnKeyTyped(handler);
-        COMMAND_INPUT.setOnKeyReleased(handler);
 
         BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, getMaxSize()));
 
@@ -77,7 +77,7 @@ public class CommandListGeneratorController implements Initializable
 
     public void checksTag(Set<String> tags)
     {
-        List<String> listASupprimé = new ArrayList<>();
+       List<String> listASupprimé = new ArrayList<>();
         for (Label l : TAG_LIST.getItems())
             listASupprimé.add(l.getText());
 
@@ -89,8 +89,9 @@ public class CommandListGeneratorController implements Initializable
 
         tags.removeAll(list);
 
-        if (!listASupprimé.isEmpty() || !tags.isEmpty())
+       if (!listASupprimé.isEmpty() || !tags.isEmpty())
         {
+        	System.out.println("aa\n");
             ArrayList<Label> bgj = new ArrayList<>();
             for (Label s : TAG_LIST.getItems())
                 bgj.add(s);
