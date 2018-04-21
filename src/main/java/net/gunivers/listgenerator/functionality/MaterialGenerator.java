@@ -84,9 +84,17 @@ public class MaterialGenerator extends Functionality
         return null;
     }
 
+<<<<<<< HEAD
     @Override
     public URL getFXML()
     {
         return null;
     }
+=======
+	@Override
+	public URL getFXML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+>>>>>>> 38fc4c186ffb5a55956bd18e15c78c6b0ebe5202
 }
