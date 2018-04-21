@@ -1,12 +1,11 @@
 package net.gunivers.listgenerator.functionality;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
 import net.gunivers.listgenerator.util.Calculator;
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
-
-import java.math.BigDecimal;
-import java.net.URL;
-import java.util.ArrayList;
 
 /**
  * @author Oromis
