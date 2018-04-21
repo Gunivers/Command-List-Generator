@@ -15,8 +15,7 @@ import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
 
 import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 
 public class CommandListGeneratorController implements Initializable
 {
@@ -78,15 +77,28 @@ public class CommandListGeneratorController implements Initializable
 
     public void checksTag(Set<String> tags)
     {
-        TAG_LIST.getItems().removeAll(TAG_LIST.getItems());
+        List<String> listASupprimé = new ArrayList<>();
+        for (Label l : TAG_LIST.getItems())
+            listASupprimé.add(l.getText());
 
-        for (String tag : tags)
+        List<String> list = new ArrayList<>();
+        Collections.copy(listASupprimé, list);
+
+        listASupprimé.removeAll(tags);
+
+        tags.removeAll(list);
+
+        if (!listASupprimé.isEmpty() || !tags.isEmpty())
         {
-            if (!tag.isEmpty())
-            {
-                Label label = new Label(tag);
-                TAG_LIST.getItems().add(label);
-            }
+            if (TAG_LIST.getItems().size() > 0)
+                for (Label label : TAG_LIST.getItems())
+                    for (String str : listASupprimé)
+                        if (label.getText().equalsIgnoreCase(str))
+                            TAG_LIST.getItems().remove(label);
+
+
+            for (String str : tags)
+                TAG_LIST.getItems().add(new Label(str));
         }
     }
 
