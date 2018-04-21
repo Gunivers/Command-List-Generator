@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import net.gunivers.listgenerator.util.Functionality;
 
 /**
- * 
  * @author A~Z
  * I'm choosed to do do such an useless task. Sure it is my fate :/
  */
