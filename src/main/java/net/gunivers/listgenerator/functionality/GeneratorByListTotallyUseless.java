@@ -66,10 +66,4 @@ public class GeneratorByListTotallyUseless extends Functionality
     {
         return this.theListThatIsAlreadyCreated;
     }
-
-    @Override
-    public URL getFXML()
-    {
-        return null;
-    }
 }

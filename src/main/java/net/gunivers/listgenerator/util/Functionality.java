@@ -51,10 +51,4 @@ public abstract class Functionality
                 return method;
         return null;
     }
-
-
-    /**
-      * @return Return to ther interface
-     */
-    public abstract URL getFXML();
 }

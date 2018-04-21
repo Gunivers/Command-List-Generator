@@ -44,11 +44,4 @@ public class Duplication extends Functionality
         // TODO
         return null;
     }
-
-    @Override
-    public URL getFXML()
-    {
-        return null;
-    }
-
 }
