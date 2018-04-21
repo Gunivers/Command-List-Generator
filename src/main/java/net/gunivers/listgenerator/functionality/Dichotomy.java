@@ -38,10 +38,4 @@ public class Dichotomy extends Functionality
         // TODO
         return null;
     }
-
-    @Override
-    public URL getFXML()
-    {
-        return null;
-    }
 }

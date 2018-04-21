@@ -83,10 +83,4 @@ public class MaterialGenerator extends Functionality
         // TODO
         return null;
     }
-
-    @Override
-    public URL getFXML()
-    {
-        return null;
-    }
 }

@@ -34,11 +34,4 @@ public class GeneratorByList extends Functionality
         // TODO
         return null;
     }
-
-    @Override
-    public URL getFXML()
-    {
-        return null;
-    }
-
 }
