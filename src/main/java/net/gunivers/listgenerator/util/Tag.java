@@ -1,43 +1,46 @@
 package net.gunivers.listgenerator.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @param <T> the type of the parameter(s)
  * @author Oromis
  * This object represent a tag in the mold
  */
-public class Tag<T>
+public class Tag
 {
 
-    private static ArrayList<Tag<?>> tags;
+    public static HashMap<String, Tag> tags = new HashMap<String, Tag>();
+    
     private Functionality type;
-    private T parameters;
+    private ArrayList<Object> parameters;
     private String id;
 
     /**
      * Constructor of Tag
-     *
-     * @param type       the type of the tag
-     * @param parameters the parameters of the tag
      * @param id         the id of the tag
      */
-    public Tag(Functionality type, T parameters, String id)
+    public Tag(String id)
     {
-        this.type = type;
-        this.parameters = parameters;
         this.id = id;
     }
 
     /**
-     * @return the list of all tags in the mold
+     * @param type the type of the tag
      */
-    public static ArrayList<Tag<?>> getTags()
-    {
-        return tags;
-    }
+    public void setType(Functionality type) {
+		this.type = type;
+	}
 
     /**
+     * @param parameters the parameters of the tag
+     */
+	public void setParameters(ArrayList<Object> parameters) {
+		this.parameters = parameters;
+	}
+
+	/**
      * @return the id of the tag
      */
     public String getId()
@@ -56,7 +59,7 @@ public class Tag<T>
     /**
      * @return the parameters of the tag
      */
-    public T getParameters()
+    public ArrayList<Object> getParameters()
     {
         return parameters;
     }

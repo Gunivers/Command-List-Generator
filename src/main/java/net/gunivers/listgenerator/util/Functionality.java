@@ -1,6 +1,7 @@
 package net.gunivers.listgenerator.util;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -36,6 +37,8 @@ public abstract class Functionality
      * @see java.lang.Object#toString()
      */
     public abstract String toString();
+    
+    public abstract ArrayList<Object> callParameterOverlay();
 
     /**
      * @return the method to call to get the tag output

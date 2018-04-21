@@ -1,27 +1,24 @@
-TODO:
-	
-COMMAND LIST GENERATOR
-	
+#TODO#
+
+|COMMAND LIST GENERATOR|
+
 Main:
 	- Interface structure																		- MrBretzel			IN PROGRESS
 	- Main method (linked with the interface)													- Oromis			TEST PERIOD
 	- Update Functionality to take the possibility of a window to input parameters				- Oromis			WAITING Interface
-									
+
 Clear:
 	- Move minecraft package to structure API													-
 
 Update:
-	- Update Material to 1.13 and clear it														- 
+	- Update Material to 1.13 and clear it														- Oromis			WAITING Spigot 1.13
 
 Functionnality:
-	- Entities generator (same system that block)												-
-	- Generator by list (specified by user)														- A~Z				IN PROGRESS
-	- Generalize increment (enter equation which translate to increment state)					-
-	- Dichotomie																				- KubbyDev			DONE
-	
-	
-	
-	
+	- Generalisation of generator by list to allow to load Enum and custom the preset list		-
+	- Generalize increment (enter equation which translate to increment state)					- Oromis			TEST PERIOD
+
+
+
 Write your name after the feature if you decide to do this later.
 Possible states:
 - UNSTARTED

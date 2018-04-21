@@ -36,5 +36,11 @@ public class Duplication extends Functionality
 
         return ret.toString();
     }
+    
+    @Override
+	public ArrayList<Object> callParameterOverlay() {
+		// TODO
+		return null;
+	}
 
 }

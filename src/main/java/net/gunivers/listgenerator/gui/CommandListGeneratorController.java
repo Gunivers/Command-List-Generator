@@ -1,9 +1,13 @@
 package net.gunivers.listgenerator.gui;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -13,13 +17,9 @@ import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
 import net.gunivers.listgenerator.gui.handlers.CommandChangeHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class CommandListGeneratorController implements Initializable
 {
 
-    private static int MAX_SIZE = 0;
 
     public static StackPane MAIN_PANE;
 
@@ -75,9 +75,10 @@ public class CommandListGeneratorController implements Initializable
         TYPE_LIST.getItems().add(new Label("test"));
         TYPE_LIST.getItems().add(new Label("test"));
 
-        COMMAND_INPUT.setOnKeyTyped(new CommandChangeHandler());
+        COMMAND_INPUT.setOnKeyTyped(new CommandChangeHandler(COMMAND_INPUT));
+        COMMAND_INPUT.setOnKeyReleased(new CommandChangeHandler(COMMAND_INPUT));
 
-        BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, getMaxSize()));
+        BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, getMaxSize()));
 
         BUTTON_EDIT.setOnAction(new ButtonEditHandler(syncListHandler, getMaxSize()));
     }
