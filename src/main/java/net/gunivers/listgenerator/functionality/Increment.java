@@ -1,11 +1,11 @@
 package net.gunivers.listgenerator.functionality;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-
 import net.gunivers.listgenerator.util.Calculator;
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  * @author Oromis
@@ -25,38 +25,40 @@ public class Increment extends Functionality
     {
         String end = "";
 
-		if (type != null) {
-			if (type.equals(Long.class))
-				end = "L";
+        if (type != null)
+        {
+            if (type.equals(Long.class))
+                end = "L";
 
-			else if (type.equals(Float.class))
-				end = "F";
+            else if (type.equals(Float.class))
+                end = "F";
 
-			else if (type.equals(Double.class))
-				end = "D";
+            else if (type.equals(Double.class))
+                end = "D";
 
-			else if (type.equals(Short.class))
-				end = "s";
+            else if (type.equals(Short.class))
+                end = "s";
 
-			else if (type.equals(Byte.class))
-				end = "b";
-			if (round == 0 && (end == "D" || end == "D"))
-				end = ".0" + end;
-		}	
+            else if (type.equals(Byte.class))
+                end = "b";
+            if (round == 0 && (end == "D" || end == "D"))
+                end = ".0" + end;
+        }
 
 
         ArrayList<String> save = new ArrayList<String>();
-        
+
         BigDecimal bd = new BigDecimal(initValue);
-		bd = bd.setScale(round, BigDecimal.ROUND_HALF_UP);
+        bd = bd.setScale(round, BigDecimal.ROUND_HALF_UP);
         save.add(bd.toString());
-        
-        for (int i = 0; i < nbLoop; i++) {
-        	
+
+        for (int i = 0; i < nbLoop; i++)
+        {
+
             Calculator calc = new Calculator(operation.replaceAll("[uU]", Double.toString(initValue)));
             initValue = calc.calculate();
             BigDecimal bd2 = new BigDecimal(initValue);
-    		bd2 = bd2.setScale(round,BigDecimal.ROUND_HALF_UP);
+            bd2 = bd2.setScale(round, BigDecimal.ROUND_HALF_UP);
             save.add(bd2.toString() + end);
         }
         return save;
@@ -67,10 +69,11 @@ public class Increment extends Functionality
     {
         return "Increment";
     }
-    
+
     @Override
-	public ArrayList<Object> callParameterOverlay() {
-		// TODO
-		return null;
-	}
+    public ArrayList<Object> callParameterOverlay()
+    {
+        // TODO
+        return null;
+    }
 }

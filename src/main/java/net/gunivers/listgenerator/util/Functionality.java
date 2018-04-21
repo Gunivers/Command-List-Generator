@@ -1,6 +1,7 @@
 package net.gunivers.listgenerator.util;
 
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,7 +38,7 @@ public abstract class Functionality
      * @see java.lang.Object#toString()
      */
     public abstract String toString();
-    
+
     public abstract ArrayList<Object> callParameterOverlay();
 
     /**
@@ -50,4 +51,10 @@ public abstract class Functionality
                 return method;
         return null;
     }
+
+
+    /**
+      * @return Return to ther interface
+     */
+    public abstract URL getFXML();
 }

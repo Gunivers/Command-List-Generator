@@ -30,11 +30,12 @@ public class Dichotomy extends Functionality
 
         return commands;
     }
-    
+
     @Override
-	public ArrayList<Object> callParameterOverlay() {
-		// TODO
-		return null;
-	}
+    public ArrayList<Object> callParameterOverlay()
+    {
+        // TODO
+        return null;
+    }
 
 }

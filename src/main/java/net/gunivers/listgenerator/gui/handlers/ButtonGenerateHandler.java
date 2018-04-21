@@ -1,16 +1,16 @@
 package net.gunivers.listgenerator.gui.handlers;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map.Entry;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import net.gunivers.listgenerator.util.Tag;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class ButtonGenerateHandler implements EventHandler<ActionEvent>
 {
@@ -40,7 +40,7 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent>
             try
             {
                 @SuppressWarnings("unchecked")
-				ArrayList<Object> list = (ArrayList<Object>) t.getType().getMethod().invoke(t.getType(), t.getParameters());
+                ArrayList<Object> list = (ArrayList<Object>) t.getType().getMethod().invoke(t.getType(), t.getParameters());
                 if (list.size() < getMaxSize())
                     maxSize = list.size();
             } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
@@ -61,8 +61,8 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent>
             }
             commands.add(command);
             commandsList += command;
-            if(i < getMaxSize() - 1)
-            	commandsList += "\n";
+            if (i < getMaxSize() - 1)
+                commandsList += "\n";
         }
 
         output.setText(commandsList);

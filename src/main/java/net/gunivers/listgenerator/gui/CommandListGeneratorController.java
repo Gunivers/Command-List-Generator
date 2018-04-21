@@ -1,13 +1,9 @@
 package net.gunivers.listgenerator.gui;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -16,6 +12,9 @@ import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
 import net.gunivers.listgenerator.gui.handlers.CommandChangeHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class CommandListGeneratorController implements Initializable
 {
