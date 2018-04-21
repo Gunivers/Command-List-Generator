@@ -54,9 +54,9 @@ public class Tag
     /**
      * @return the parameters of the tag
      */
-    public ArrayList<Object> getParameters()
+    public Object[] getParameters()
     {
-        return parameters;
+        return parameters.toArray(new Object[parameters.size()]);
     }
 
     /**
