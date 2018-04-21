@@ -39,12 +39,7 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent>
         {
             try
             {
-<<<<<<< HEAD
-                ArrayList<Object> list = (ArrayList<Object>) t.getType().getMethod().invoke(t.getType(), t.getParameters());
-=======
-                @SuppressWarnings("unchecked")
                 ArrayList<String> list = (ArrayList<String>) t.getType().getMethod().invoke(t.getType(), t.getParameters());
->>>>>>> 4bb9c396e4eaa2e64c466edd22872e687daa093c
                 if (list.size() < getMaxSize())
                     maxSize = list.size();
             } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
