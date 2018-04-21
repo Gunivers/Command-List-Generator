@@ -79,12 +79,12 @@
                       </HBox>
                       <HBox styleClass=".hbox" VBox.vgrow="ALWAYS">
                           <children>
-                                <JFXListView fx:id="TAG_LIST" HBox.hgrow="ALWAYS">
+                                <JFXListView fx:id="TAG_LIST" minHeight="315.0" minWidth="160.0" HBox.hgrow="ALWAYS">
                                     <HBox.margin>
                                         <Insets bottom="5.0" left="5.0" top="5.0" />
                                     </HBox.margin>
                                 </JFXListView>
-                                <JFXListView fx:id="TYPE_LIST" HBox.hgrow="ALWAYS">
+                                <JFXListView fx:id="TYPE_LIST" minHeight="315.0" minWidth="160.0" HBox.hgrow="ALWAYS">
                                     <HBox.margin>
                                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </HBox.margin>

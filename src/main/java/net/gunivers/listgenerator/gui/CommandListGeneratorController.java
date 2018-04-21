@@ -1,26 +1,26 @@
 package net.gunivers.listgenerator.gui;
 
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
-import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
-import net.gunivers.listgenerator.gui.handlers.CommandChangeHandler;
+import net.gunivers.listgenerator.gui.handlers.TextFieldCommandChangeHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
-import net.gunivers.listgenerator.util.Functionality;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class CommandListGeneratorController implements Initializable
 {
-
+    public static CommandListGeneratorController CONTROLLER;
 
     public static StackPane MAIN_PANE;
 
@@ -54,14 +54,15 @@ public class CommandListGeneratorController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        CONTROLLER = this;
         MAIN_PANE = PANE;
 
         syncListHandler = new SyncListHandler(TAG_LIST, TYPE_LIST);
 
         MAX_COMMAND.textProperty().addListener(new OnlyIntChangeListener(MAX_COMMAND));
 
-        COMMAND_INPUT.setOnKeyTyped(new CommandChangeHandler(COMMAND_INPUT));
-        COMMAND_INPUT.setOnKeyReleased(new CommandChangeHandler(COMMAND_INPUT));
+        COMMAND_INPUT.setOnKeyTyped(new TextFieldCommandChangeHandler(COMMAND_INPUT));
+        COMMAND_INPUT.setOnKeyReleased(new TextFieldCommandChangeHandler(COMMAND_INPUT));
 
         BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, getMaxSize()));
 
@@ -71,6 +72,21 @@ public class CommandListGeneratorController implements Initializable
     public SyncListHandler getSyncListHandler()
     {
         return syncListHandler;
+    }
+
+    public void checksTag(Set<String> tags)
+    {
+        TAG_LIST.getItems().removeAll(TAG_LIST.getItems());
+
+        for (String tag : tags)
+        {
+            if (!tag.isEmpty())
+            {
+                Label label = new Label(tag);
+                label.setPrefSize(50, 25);
+                TAG_LIST.getItems().add(label);
+            }
+        }
     }
 
     public int getMaxSize()

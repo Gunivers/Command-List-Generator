@@ -3,19 +3,19 @@ package net.gunivers.listgenerator.gui.handlers;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 import net.gunivers.listgenerator.util.Tag;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CommandChangeHandler implements EventHandler<KeyEvent>
+public class TextFieldCommandChangeHandler implements EventHandler<KeyEvent>
 {
 
     private TextField commandTextField;
 
-
-    public CommandChangeHandler(TextField input)
+    public TextFieldCommandChangeHandler(TextField input)
     {
         this.commandTextField = input;
     }
@@ -60,10 +60,7 @@ public class CommandChangeHandler implements EventHandler<KeyEvent>
             for (String t : toRemove)
                 Tag.tags.remove(t);
 
-
-            //Affichage Test
-            Tag.tags.keySet().forEach(System.out::println);
-            System.out.println("\n\n\n");
+            CommandListGeneratorController.CONTROLLER.checksTag(Tag.tags.keySet());
         }
     }
 }
