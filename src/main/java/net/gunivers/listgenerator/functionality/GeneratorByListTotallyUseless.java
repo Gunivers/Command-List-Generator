@@ -50,12 +50,6 @@ public class GeneratorByListTotallyUseless extends Functionality
         return null;
     }
 
-    @Override
-    public URL getFXML()
-    {
-        return null;
-    }
-
     /**
      * @param newList to set instead of current
      * @return new current list
@@ -73,9 +67,9 @@ public class GeneratorByListTotallyUseless extends Functionality
         return this.theListThatIsAlreadyCreated;
     }
 
-	@Override
-	public URL getFXML() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public URL getFXML()
+    {
+        return null;
+    }
 }

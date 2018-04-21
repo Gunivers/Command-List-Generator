@@ -87,10 +87,9 @@ public class ScoreInterpolation extends Functionality
         return null;
     }
 
-	@Override
-	public URL getFXML() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    @Override
+    public URL getFXML()
+    {
+        return null;
+    }
 }
