@@ -39,6 +39,18 @@
     -fx-padding: 14.0 0.0 -20.0 0.0;
     -fx-text-fill: rgba(0.0, 0.0, 0.0, 0.87);
 }
+/*******************************************************************************
+*                                                                              *
+* JFX Dialog                                                                   *
+*                                                                              *
+*******************************************************************************/
+.jfx-dialog-overlay-pane .jfx-layout-body .jfx-layout-heading .jfx-layout-actions {
+    -fx-background-color: -fx-primary-color;
+}
+
+.jfx-dialog {
+    -fx-background-color: rgba(17, 17, 17, 0.75);
+}
 
 
 /*******************************************************************************
@@ -47,16 +59,12 @@
 *                                                                              *
 *******************************************************************************/
 
-.jfx-decorator {
-    -fx-decorator-color: -fx-primary-color;
-}
-
 .jfx-decorator .jfx-decorator-buttons-container {
-    -fx-background-color: -fx-decorator-color;
+    -fx-background-color: -fx-primary-color;
 }
 
 .jfx-decorator .resize-border {
-    -fx-border-color: -fx-decorator-color;
+    -fx-border-color: -fx-primary-color;
     -fx-border-width: 0 4 4 4;
 }
 
