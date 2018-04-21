@@ -11,6 +11,7 @@ import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.CommandChangeHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
+import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
 import net.gunivers.listgenerator.util.Functionality;
 
 import java.io.IOException;
@@ -57,13 +58,7 @@ public class CommandListGeneratorController implements Initializable
 
         syncListHandler = new SyncListHandler(TAG_LIST, TYPE_LIST);
 
-        MAX_COMMAND.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*"))
-            {
-                String msg = newValue.replaceAll("[^\\d]", "");
-                MAX_COMMAND.setText(msg);
-            }
-        });
+        MAX_COMMAND.textProperty().addListener(new OnlyIntChangeListener(MAX_COMMAND));
 
         COMMAND_INPUT.setOnKeyTyped(new CommandChangeHandler(COMMAND_INPUT));
         COMMAND_INPUT.setOnKeyReleased(new CommandChangeHandler(COMMAND_INPUT));

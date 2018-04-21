@@ -1,9 +1,6 @@
 package net.gunivers.listgenerator.gui.handlers;
 
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXSnackbar;
+import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +16,9 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
 
     private JFXSnackbar bar = new JFXSnackbar(CommandListGeneratorController.MAIN_PANE);
 
-    private JFXDialog dialog;
+    public static JFXDialog dialog;
+
+    public static JFXDialog newDialog;
 
     public ButtonNextHandler(JFXListView listView, JFXDialog dialog)
     {
@@ -33,7 +32,7 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
         if (listView.getSelectionModel().getSelectedItems().size() > 0)
         {
             Functionality functionality = Functionality.getFunctionalitie(listView.getSelectionModel().getSelectedItems().get(0).getText());
-            JFXDialog newDialog = new JFXDialog();
+            newDialog = new JFXDialog();
             JFXDialogLayout layout = null;
 
             try
