@@ -19,6 +19,8 @@ import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 public class CommandListGenerator extends Application
 {
 
+    public static Stage MAIN_STAGE;
+
     public static void main(String[] args)
     {
         launch(args);
@@ -32,7 +34,8 @@ public class CommandListGenerator extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-    	
+    	this.MAIN_STAGE = primaryStage;
+
     	new Dichotomy();
     	new Duplication();
     	new GeneratorByList();

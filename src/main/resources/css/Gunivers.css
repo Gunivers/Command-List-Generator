@@ -44,7 +44,8 @@
 * JFX Dialog                                                                   *
 *                                                                              *
 *******************************************************************************/
-.jfx-dialog-overlay-pane .jfx-layout-body .jfx-layout-heading .jfx-layout-actions {
+
+.jfx-dialog-overlay-pane > StackPane {
     -fx-background-color: -fx-primary-color;
 }
 

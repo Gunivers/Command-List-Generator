@@ -32,6 +32,14 @@ public abstract class Functionality
         return functionalities;
     }
 
+    /**
+     * @return To the functionality
+     */
+    public static Functionality getFunctionalitie(String name)
+    {
+        return functionalities.get(name);
+    }
+
     /*
      * (non-Javadoc)
      * @see java.lang.Object#toString()

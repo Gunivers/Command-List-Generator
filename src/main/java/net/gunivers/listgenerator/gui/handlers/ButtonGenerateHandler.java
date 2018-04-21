@@ -39,7 +39,6 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent>
         {
             try
             {
-                @SuppressWarnings("unchecked")
                 ArrayList<Object> list = (ArrayList<Object>) t.getType().getMethod().invoke(t.getType(), t.getParameters());
                 if (list.size() < getMaxSize())
                     maxSize = list.size();

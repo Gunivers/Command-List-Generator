@@ -2,14 +2,18 @@ package net.gunivers.listgenerator.gui;
 
 import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
+import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.CommandChangeHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.util.Functionality;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -66,19 +70,7 @@ public class CommandListGeneratorController implements Initializable
 
         BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, getMaxSize()));
 
-        JFXDialog dialog = new JFXDialog();
-        JFXDialogLayout layout = new JFXDialogLayout();
-
-        JFXListView<Label> list = new JFXListView<>();
-
-        for (Functionality func : Functionality.getFunctionalities().values())
-            list.getItems().add(new Label(func.toString()));
-
-        layout.setHeading(new Label("Select Your Generator Type"));
-        layout.setBody(list);
-        dialog.setContent(layout);
-
-        BUTTON_EDIT.setOnAction(event -> dialog.show(MAIN_PANE));
+        BUTTON_EDIT.setOnAction(new ButtonEditHandler());
     }
 
     public SyncListHandler getSyncListHandler()
