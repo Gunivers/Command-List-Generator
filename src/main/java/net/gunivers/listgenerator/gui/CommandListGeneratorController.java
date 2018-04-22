@@ -15,7 +15,9 @@ import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.Set;
 
 public class CommandListGeneratorController implements Initializable
 {
@@ -60,10 +62,7 @@ public class CommandListGeneratorController implements Initializable
 
         MAX_COMMAND.textProperty().addListener(new OnlyIntChangeListener(MAX_COMMAND));
 
-        TextFieldCommandChangeHandler handler = new TextFieldCommandChangeHandler(COMMAND_INPUT);
-
-        COMMAND_INPUT.setOnKeyTyped(handler);
-        COMMAND_INPUT.setOnKeyReleased(handler);
+        COMMAND_INPUT.setOnKeyTyped(new TextFieldCommandChangeHandler(COMMAND_INPUT));
 
         BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, getMaxSize()));
 
@@ -77,34 +76,34 @@ public class CommandListGeneratorController implements Initializable
 
     public void checksTag(Set<String> tags)
     {
-        List<String> listASupprimé = new ArrayList<>();
+        ArrayList<String> displayed = new ArrayList<>();
         for (Label l : TAG_LIST.getItems())
-            listASupprimé.add(l.getText());
+            displayed.add(l.getText());
 
-        List<String> list = new ArrayList<>();
-        for (String s : listASupprimé)
-            list.add(s);
+        ArrayList<Label> needRemoveTag = new ArrayList<>();
 
-        listASupprimé.removeAll(tags);
+        ArrayList<String> needAddedTag = new ArrayList<>();
 
-        tags.removeAll(list);
-
-        if (!listASupprimé.isEmpty() || !tags.isEmpty())
+        for (String tag : tags)
         {
-            ArrayList<Label> bgj = new ArrayList<>();
-            for (Label s : TAG_LIST.getItems())
-                bgj.add(s);
-
-            if (bgj.size() > 0)
-                for (Label label : bgj)
-                    for (String str : listASupprimé)
-                        if (label.getText().equalsIgnoreCase(str))
-                            TAG_LIST.getItems().remove(label);
-
-
-            for (String str : tags)
-                TAG_LIST.getItems().add(new Label(str));
+            if (!displayed.contains(tag))
+            {
+                needAddedTag.add(tag);
+            }
         }
+
+        for (Label label : TAG_LIST.getItems())
+        {
+            if (!tags.contains(label.getText()))
+                needRemoveTag.add(label);
+
+        }
+
+        for (Label label : needRemoveTag)
+            TAG_LIST.getItems().remove(label);
+
+        for (String str : needAddedTag)
+            TAG_LIST.getItems().add(new Label(str));
     }
 
     public int getMaxSize()
