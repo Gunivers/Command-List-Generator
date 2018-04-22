@@ -32,10 +32,10 @@ public class SyncListHandler
      */
     public void sync(int index)
     {
-        if (listView1.getItems().size() <= index)
+        if (listView1.getItems().size() >= index)
             listView1.getSelectionModel().clearAndSelect(index);
 
-        if (listView2.getItems().size() <= index)
+        if (listView2.getItems().size() >= index)
             listView2.getSelectionModel().clearAndSelect(index);
     }
 
