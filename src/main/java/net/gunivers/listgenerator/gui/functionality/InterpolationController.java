@@ -9,6 +9,7 @@ import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.FunctionalityController;
+import net.gunivers.listgenerator.gui.util.OnlyDoubleChangeListener;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,7 +17,10 @@ import java.util.ResourceBundle;
 public class InterpolationController extends FunctionalityController implements Initializable
 {
     @FXML
-    private JFXCheckBox CHECK_BOX;
+    private JFXCheckBox CHECK_BOX_1;
+
+    @FXML
+    private JFXCheckBox CHECK_BOX_2;
 
     @FXML
     private JFXTextField TEXT_FIELD_1;
@@ -27,13 +31,14 @@ public class InterpolationController extends FunctionalityController implements 
     @FXML
     private JFXTextField TEXT_FIELD_3;
 
-    @FXML
-    private JFXTextField TEXT_FIELD_4;
-
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
         getDoneButton().setOnAction(event -> saveAll());
+
+        TEXT_FIELD_1.textProperty().addListener(new OnlyDoubleChangeListener(TEXT_FIELD_1));
+        TEXT_FIELD_2.textProperty().addListener(new OnlyDoubleChangeListener(TEXT_FIELD_2));
+        TEXT_FIELD_3.textProperty().addListener(new OnlyDoubleChangeListener(TEXT_FIELD_3));
     }
 
     @Override
