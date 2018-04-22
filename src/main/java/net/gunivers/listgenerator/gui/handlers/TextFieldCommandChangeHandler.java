@@ -36,18 +36,14 @@ public class TextFieldCommandChangeHandler implements EventHandler<KeyEvent>
             {
                 String tag = m.group().replaceAll("#", "");
                 if (!Tag.tags.containsKey(tag))
-                {
                     Tag.tags.put(tag, new Tag(tag));
-                    currentTag.add(tag);
-                }
+                currentTag.add(tag);
             }
         }
-
 
         if (Tag.tags.size() > 0)
         {
             ArrayList<String> toRemove = new ArrayList<String>();
-
             loop:
             for (String t : Tag.tags.keySet())
             {
