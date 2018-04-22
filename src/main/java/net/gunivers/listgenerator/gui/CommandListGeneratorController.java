@@ -50,7 +50,7 @@ public class CommandListGeneratorController implements Initializable
     private JFXListView<Label> TYPE_LIST;
 
 
-    private SyncListHandler syncListHandler = null;
+    public static SyncListHandler SYNC_LIST_HANDLER = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -58,7 +58,7 @@ public class CommandListGeneratorController implements Initializable
         CONTROLLER = this;
         MAIN_PANE = PANE;
 
-        syncListHandler = new SyncListHandler(TAG_LIST, TYPE_LIST);
+        SYNC_LIST_HANDLER = new SyncListHandler(TAG_LIST, TYPE_LIST);
 
         MAX_COMMAND.textProperty().addListener(new OnlyIntChangeListener(MAX_COMMAND));
 
@@ -71,7 +71,7 @@ public class CommandListGeneratorController implements Initializable
 
     public SyncListHandler getSyncListHandler()
     {
-        return syncListHandler;
+        return SYNC_LIST_HANDLER;
     }
 
     public void checksTag(Set<String> tags)
@@ -113,5 +113,15 @@ public class CommandListGeneratorController implements Initializable
         {
             return 0;
         }
+    }
+
+    public JFXListView<Label> getTagList()
+    {
+        return TAG_LIST;
+    }
+
+    public JFXListView<Label> getTypeList()
+    {
+        return TYPE_LIST;
     }
 }

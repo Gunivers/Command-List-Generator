@@ -1,5 +1,6 @@
 package net.gunivers.listgenerator.gui.functionality;
 
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,25 +9,30 @@ import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.FunctionalityController;
-import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DichotomyController extends FunctionalityController implements Initializable
+public class InterpolationController extends FunctionalityController implements Initializable
 {
     @FXML
-    private JFXTextField TOP_TEXT;
+    private JFXCheckBox CHECK_BOX;
 
     @FXML
-    private JFXTextField BOTTOM_TEXT;
+    private JFXTextField TEXT_FIELD_1;
+
+    @FXML
+    private JFXTextField TEXT_FIELD_2;
+
+    @FXML
+    private JFXTextField TEXT_FIELD_3;
+
+    @FXML
+    private JFXTextField TEXT_FIELD_4;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        TOP_TEXT.textProperty().addListener(new OnlyIntChangeListener(TOP_TEXT));
-        BOTTOM_TEXT.textProperty().addListener(new OnlyIntChangeListener(BOTTOM_TEXT));
-
         getDoneButton().setOnAction(event -> saveAll());
     }
 
@@ -35,7 +41,7 @@ public class DichotomyController extends FunctionalityController implements Init
     {
         ButtonNextHandler.newDialog.close();
         int index = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
-        Label label = new Label("Dichotomy");
-        CommandListGeneratorController.SYNC_LIST_HANDLER.putIn(SyncListHandler.ListNumber.TWO, label, index);
+        Label label = new Label("Interpolation");
+        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, index);
     }
 }

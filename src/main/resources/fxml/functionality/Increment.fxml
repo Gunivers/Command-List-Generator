@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<JFXDialogLayout maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.gunivers.listgenerator.gui.functionality.DichotomyController">
+<JFXDialogLayout maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.gunivers.listgenerator.gui.functionality.IncrementController">
    <children>
       <VBox>
          <children>
-            <JFXTextField fx:id="TOP_TEXT" labelFloat="true" promptText="Maximum" VBox.vgrow="ALWAYS">
+            <JFXTextField fx:id="TOP_TEXT" labelFloat="true" promptText="Je Sais Pas se qu'il faut mettre" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXTextField fx:id="BOTTOM_TEXT" labelFloat="true" promptText="Minimum" VBox.vgrow="ALWAYS">
+            <JFXTextField fx:id="BOTTOM_TEXT" labelFloat="true" promptText="Init" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                </VBox.margin>
