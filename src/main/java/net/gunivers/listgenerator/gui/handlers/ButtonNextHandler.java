@@ -14,8 +14,6 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
 {
     private JFXListView<Label> listView;
 
-    private JFXSnackbar bar = new JFXSnackbar(CommandListGeneratorController.MAIN_PANE);
-
     public static JFXDialog dialog;
 
     public static JFXDialog newDialog;
@@ -29,8 +27,6 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
     @Override
     public void handle(ActionEvent event)
     {
-        if (listView.getSelectionModel().getSelectedItems().size() > 0)
-        {
             Functionality functionality = Functionality.getFunctionalitie(listView.getSelectionModel().getSelectedItems().get(0).getText());
             newDialog = new JFXDialog();
             JFXDialogLayout layout = null;
@@ -47,10 +43,6 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
 
             dialog.close();
             newDialog.show(CommandListGeneratorController.MAIN_PANE);
-        } else
-        {
-            dialog.close();
-            bar.show("Please select a functionality !", 3 * 1000);
-        }
+
     }
 }

@@ -2,25 +2,20 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDialogLayout?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<JFXDialogLayout maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.gunivers.listgenerator.gui.functionality.DichotomyController">
+<JFXDialogLayout maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.gunivers.listgenerator.gui.functionality.ListController">
    <children>
       <VBox>
          <children>
-            <JFXTextField fx:id="TOP_TEXT" labelFloat="true" promptText="Maximum" VBox.vgrow="ALWAYS">
+            <JFXTextArea fx:id="TEXT_AREA" labelFloat="true" promptText="JFXTextArea Car c bn" VBox.vgrow="ALWAYS">
                <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="17.0" />
                </VBox.margin>
-            </JFXTextField>
-            <JFXTextField fx:id="BOTTOM_TEXT" labelFloat="true" promptText="Minimum" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
-               </VBox.margin>
-            </JFXTextField>
+            </JFXTextArea>
             <BorderPane>
                <bottom>
                   <JFXButton fx:id="DONE" prefHeight="25.0" prefWidth="55.0" text="Done" BorderPane.alignment="CENTER_LEFT">

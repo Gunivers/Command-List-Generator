@@ -19,89 +19,109 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public class CommandListGeneratorController implements Initializable {
-	public static CommandListGeneratorController CONTROLLER;
+public class CommandListGeneratorController implements Initializable
+{
+    public static CommandListGeneratorController CONTROLLER;
 
-	public static StackPane MAIN_PANE;
+    public static StackPane MAIN_PANE;
 
-	@FXML
-	private StackPane PANE;
+    @FXML
+    private StackPane PANE;
 
-	@FXML
-	private JFXButton BUTTON_GENERATE;
+    @FXML
+    private JFXButton BUTTON_GENERATE;
 
-	@FXML
-	private JFXButton BUTTON_EDIT;
+    @FXML
+    private JFXButton BUTTON_EDIT;
 
-	@FXML
-	private JFXTextArea COMMAND_OUTPUT;
+    @FXML
+    private JFXTextArea COMMAND_OUTPUT;
 
-	@FXML
-	private JFXTextField COMMAND_INPUT;
+    @FXML
+    private JFXTextField COMMAND_INPUT;
 
-	@FXML
-	private JFXTextField MAX_COMMAND;
+    @FXML
+    private JFXTextField MAX_COMMAND;
 
-	@FXML
-	private JFXListView<Label> TAG_LIST;
+    @FXML
+    private JFXListView<Label> TAG_LIST;
 
-	@FXML
-	private JFXListView<Label> TYPE_LIST;
+    @FXML
+    private JFXListView<Label> TYPE_LIST;
 
-	private SyncListHandler syncListHandler = null;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		CONTROLLER = this;
-		MAIN_PANE = PANE;
+    public static SyncListHandler SYNC_LIST_HANDLER = null;
 
-		syncListHandler = new SyncListHandler(TAG_LIST, TYPE_LIST);
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        CONTROLLER = this;
+        MAIN_PANE = PANE;
 
-		MAX_COMMAND.textProperty().addListener(new OnlyIntChangeListener(MAX_COMMAND));
+        SYNC_LIST_HANDLER = new SyncListHandler(TAG_LIST, TYPE_LIST);
 
-		COMMAND_INPUT.setOnKeyTyped(new TextFieldCommandChangeHandler(COMMAND_INPUT));
+        MAX_COMMAND.textProperty().addListener(new OnlyIntChangeListener(MAX_COMMAND));
 
-		BUTTON_GENERATE
-				.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, getMaxSize()));
+        COMMAND_INPUT.setOnKeyTyped(new TextFieldCommandChangeHandler(COMMAND_INPUT));
 
-		BUTTON_EDIT.setOnAction(new ButtonEditHandler());
-	}
+        BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, getMaxSize()));
 
-	public SyncListHandler getSyncListHandler() {
-		return syncListHandler;
-	}
+        BUTTON_EDIT.setOnAction(new ButtonEditHandler());
+    }
 
-	public void checksTag(Set<String> tags) {
-		ArrayList<String> displayed = new ArrayList<>();
-		for (Label l : TAG_LIST.getItems())
-			displayed.add(l.getText());
+    public SyncListHandler getSyncListHandler()
+    {
+        return SYNC_LIST_HANDLER;
+    }
 
-		ArrayList<Label> needRemoveTag = new ArrayList<>();
+    public void checksTag(Set<String> tags)
+    {
+        ArrayList<String> displayed = new ArrayList<>();
+        for (Label l : TAG_LIST.getItems())
+            displayed.add(l.getText());
 
-		ArrayList<Label> needAddedTag = new ArrayList<>();
+        ArrayList<Label> needRemoveTag = new ArrayList<>();
 
-		for (String tag : tags) {
-			if (!displayed.contains(tag)) {
-				needAddedTag.add(new Label(tag));
-			}
-		}
+        ArrayList<Label> needAddedTag = new ArrayList<>();
 
-		for (Label label : TAG_LIST.getItems()) {
-			if (!tags.contains(label.getText()))
-				needRemoveTag.add(label);
+        for (String tag : tags)
+        {
+            if (!displayed.contains(tag))
+            {
+                needAddedTag.add(new Label(tag));
+            }
+        }
 
-		}
+        for (Label label : TAG_LIST.getItems())
+        {
+            if (!tags.contains(label.getText()))
+                needRemoveTag.add(label);
 
-		TAG_LIST.getItems().removeAll(needRemoveTag);
+        }
 
-		TAG_LIST.getItems().addAll(needAddedTag);
-	}
+        TAG_LIST.getItems().removeAll(needRemoveTag);
 
-	public int getMaxSize() {
-		try {
-			return Integer.valueOf(MAX_COMMAND.getText());
-		} catch (Exception e) {
-			return 0;
-		}
-	}
+        TAG_LIST.getItems().addAll(needAddedTag);
+    }
+
+    public int getMaxSize()
+    {
+        try
+        {
+            return Integer.valueOf(MAX_COMMAND.getText());
+        } catch (Exception e)
+        {
+            return 0;
+        }
+    }
+
+    public JFXListView<Label> getTagList()
+    {
+        return TAG_LIST;
+    }
+
+    public JFXListView<Label> getTypeList()
+    {
+        return TYPE_LIST;
+    }
 }

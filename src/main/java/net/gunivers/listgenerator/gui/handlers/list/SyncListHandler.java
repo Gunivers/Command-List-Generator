@@ -1,6 +1,8 @@
 package net.gunivers.listgenerator.gui.handlers.list;
 
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 public class SyncListHandler
@@ -30,14 +32,11 @@ public class SyncListHandler
      */
     public void sync(int index)
     {
-        if (listView1.getItems().size() <= index)
-            throw new IndexOutOfBoundsException("The index " + index + " is out of bound, the max index is " + listView1.getItems().size());
+        if (listView1.getItems().size() >= index)
+            listView1.getSelectionModel().clearAndSelect(index);
 
-        if (listView2.getItems().size() <= index)
-            throw new IndexOutOfBoundsException("The index " + index + " is out of bound, the max index is " + listView1.getItems().size());
-
-        listView1.getSelectionModel().clearAndSelect(index);
-        listView2.getSelectionModel().clearAndSelect(index);
+        if (listView2.getItems().size() >= index)
+            listView2.getSelectionModel().clearAndSelect(index);
     }
 
     public ListView getListViewOne()
@@ -53,6 +52,32 @@ public class SyncListHandler
     public ObservableList getObjectInList(ListNumber number)
     {
         return number == ListNumber.ONE ? listView1.getItems() : listView2.getItems();
+    }
+
+    public ListView getListView(ListNumber listNumber)
+    {
+        return listNumber == ListNumber.ONE ? getListViewOne() : getListViewTwo();
+    }
+
+    public void putInAndSelect(ListNumber listNumber, Node value, int index)
+    {
+        this.putIn(listNumber, value, index);
+        getListView(listNumber).getSelectionModel().clearAndSelect(index);
+    }
+
+    public void putIn(ListNumber listNumber, Node value, int index)
+    {
+        ListView listView = getListView(listNumber);
+
+        if (listView.getItems().size() <= index)
+        {
+            for (int i = listView.getItems().size(); i < index; i++)
+            {
+                listView.getItems().add(new Label());
+            }
+        }
+
+        listView.getItems().add(index, value);
     }
 
     public enum ListNumber
