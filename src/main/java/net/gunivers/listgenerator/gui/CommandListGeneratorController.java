@@ -82,13 +82,13 @@ public class CommandListGeneratorController implements Initializable
 
         ArrayList<Label> needRemoveTag = new ArrayList<>();
 
-        ArrayList<String> needAddedTag = new ArrayList<>();
+        ArrayList<Label> needAddedTag = new ArrayList<>();
 
         for (String tag : tags)
         {
             if (!displayed.contains(tag))
             {
-                needAddedTag.add(tag);
+                needAddedTag.add(new Label(tag));
             }
         }
 
@@ -99,11 +99,9 @@ public class CommandListGeneratorController implements Initializable
 
         }
 
-        for (Label label : needRemoveTag)
-            TAG_LIST.getItems().remove(label);
+        TAG_LIST.getItems().removeAll(needRemoveTag);
 
-        for (String str : needAddedTag)
-            TAG_LIST.getItems().add(new Label(str));
+        TAG_LIST.getItems().addAll(needAddedTag);
     }
 
     public int getMaxSize()
