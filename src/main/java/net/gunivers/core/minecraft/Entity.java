@@ -93,7 +93,21 @@ public enum Entity {
 	zombie_pigman,
 	zombie_villager;
 	
-	public boolean hasNaturalSpawn() {
+	public boolean isMinecart() {
+		switch(this) {
+			case chest_minecart:
+			case commandblock_minecart:
+			case furnace_minecart:
+			case hopper_minecart:
+			case minecart:
+			case spawner_minecart:
+			case tnt_minecart: return true;
+			
+			default: return false;
+		}
+	}
+	
+ 	public boolean hasNaturalSpawn() {
 		switch(this) {
 			case bat:
 			case blaze:
