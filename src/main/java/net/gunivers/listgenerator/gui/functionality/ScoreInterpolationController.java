@@ -14,13 +14,10 @@ import net.gunivers.listgenerator.gui.util.OnlyDoubleChangeListener;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class InterpolationController extends FunctionalityController implements Initializable
+public class ScoreInterpolationController extends FunctionalityController implements Initializable
 {
     @FXML
-    private JFXCheckBox CHECK_BOX_1;
-
-    @FXML
-    private JFXCheckBox CHECK_BOX_2;
+    private JFXCheckBox CHECK_BOX;
 
     @FXML
     private JFXTextField TEXT_FIELD_1;
@@ -46,7 +43,7 @@ public class InterpolationController extends FunctionalityController implements 
     {
         ButtonNextHandler.newDialog.close();
         int index = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
-        Label label = new Label("Interpolation");
+        Label label = new Label("ScoreInterpolation");
         CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, index);
     }
 }

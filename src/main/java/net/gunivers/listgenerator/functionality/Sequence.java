@@ -3,6 +3,7 @@ package net.gunivers.listgenerator.functionality;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import net.gunivers.core.minecraft.Material;
 import net.gunivers.listgenerator.util.Calculator;
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
@@ -11,7 +12,7 @@ import net.gunivers.listgenerator.util.Functionality;
  * @author Oromis
  * A function to increment at each loop
  */
-public class Increment extends Functionality
+public class Sequence extends Functionality
 {
 
     /**
@@ -54,7 +55,6 @@ public class Increment extends Functionality
 
         for (int i = 0; i < nbLoop; i++)
         {
-
             Calculator calc = new Calculator(operation.replaceAll("[uU]", Double.toString(initValue)));
             initValue = calc.calculate();
             BigDecimal bd2 = new BigDecimal(initValue);
@@ -67,7 +67,7 @@ public class Increment extends Functionality
     @Override
     public String toString()
     {
-        return "Increment";
+        return "Sequence";
     }
 
     @Override
@@ -76,4 +76,10 @@ public class Increment extends Functionality
         // TODO
         return null;
     }
+    public <T extends Enum<T>> void test(Class<?> test) {
+    	test.getEnumConstants();
+    }
+    
+    
+    
 }

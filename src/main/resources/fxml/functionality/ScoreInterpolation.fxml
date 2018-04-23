@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<JFXDialogLayout maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.gunivers.listgenerator.gui.functionality.InterpolationController">
+<JFXDialogLayout maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.gunivers.listgenerator.gui.functionality.ScoreInterpolationController">
    <children>
       <VBox>
          <children>
@@ -27,7 +27,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="17.0" />
                </VBox.margin>
             </JFXTextField>
-            <BorderPane VBox.vgrow="ALWAYS">
+            <BorderPane>
                <bottom>
                   <JFXButton fx:id="DONE" prefHeight="25.0" prefWidth="55.0" text="Done" BorderPane.alignment="CENTER_LEFT">
                      <BorderPane.margin>
@@ -35,20 +35,13 @@
                      </BorderPane.margin>
                   </JFXButton>
                </bottom>
-               <left>
-                  <JFXCheckBox fx:id="CHECK_BOX_1" alignment="CENTER" checkedColor="#ff7835" text="Le nom" BorderPane.alignment="CENTER">
+               <top>
+                  <JFXCheckBox fx:id="CHECK_BOX" checkedColor="#ff7835" text="Le nom" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
                      </BorderPane.margin>
                   </JFXCheckBox>
-               </left>
-               <right>
-                  <JFXCheckBox fx:id="CHECK_BOX_2" checkedColor="#ff7835" text="Le nom 2" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </BorderPane.margin>
-                  </JFXCheckBox>
-               </right>
+               </top>
             </BorderPane>
          </children>
       </VBox>
