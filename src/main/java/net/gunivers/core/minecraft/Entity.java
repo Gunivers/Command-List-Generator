@@ -123,6 +123,7 @@ public enum Entity {
 			case zombie:
 			case zombie_pigman:
 			case zombie_villager: return true;
+			
 			default: return false;
 		}
 	}
