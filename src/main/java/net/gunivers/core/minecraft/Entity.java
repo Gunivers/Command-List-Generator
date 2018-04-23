@@ -80,7 +80,7 @@ public enum Entity {
 	vex,
 	villager,
 	villager_golem,
-	vindiction_illager,
+	vindication_illager,
 	witch,
 	wither,
 	wither_skeleton,
@@ -92,6 +92,149 @@ public enum Entity {
 	zombie_horse,
 	zombie_pigman,
 	zombie_villager;
+	
+	public boolean hasNaturalSpawn() {
+		switch(this) {
+			case bat:
+			case blaze:
+			case cave_spider:
+			case chicken:
+			case cod_mob:
+			case cow:
+			case creeper:
+			case donkey:
+			case elder_guardian:
+			case ender_dragon:
+			case enderman:
+			case endermite:
+			case evocation_illager:
+			case ghast:
+			case guardian:
+			case horse:
+			case husk:
+			case illusion_illager:
+			case lightning_bolt:
+			case llama:
+			case magma_cube:
+			case mooshroom:
+			case mule:
+			case ocelot:
+			case parrot:
+			case phantom:
+			case pig:
+			case polar_bear:
+			case rabbit:
+			case salmon_mob:
+			case sheep:
+			case shulker:
+			case skeleton:
+			case slime:
+			case snowman:
+			case spider:
+			case squid:
+			case stray:
+			case tropical_fish:
+			case turtle:
+			case villager:
+			case villager_golem:
+			case vindication_illager:
+			case witch:
+			case wither_skeleton:
+			case wolf:
+			case zombie:
+			case zombie_pigman: return true;
+					
+			default: return false;
+		}
+	}
+	
+	public boolean hasNoLife() {
+		switch(this) {
+			case area_effect_cloud:
+			case armor_stand:
+			case arrow:
+			case boat:
+			case dragon_fireball:
+			case egg:
+			case ender_crystal:
+			case ender_pearl:
+			case evocation_fangs:
+			case falling_block:
+			case fireball:
+			case fireworks_rocket:
+			case item:
+			case item_frame:
+			case leash_knot:
+			case lightning_bolt:
+			case llama_spit:
+			case painting:
+			case potion:
+			case shulker_bullet:
+			case snowball:
+			case spectral_arrow:
+			case trident:
+			case wither_skull:
+			case xp_bottle:
+			case xp_orb: return true;
+			
+			default: return false;
+		}
+	}
+	
+	public boolean canFly() {
+		switch(this) {
+			case bat:
+			case blaze:
+			case eye_of_ender_signal:
+			case fireworks_rocket:
+			case ghast:
+			case shulker_bullet:
+			case wither:
+			case xp_orb: return true;
+			
+			default: return false;
+		}
+	}
+	
+	public boolean isVillager() {
+		switch(this) {
+			case evocation_illager:
+			case illusion_illager:
+			case villager:
+			case vindication_illager:
+			case witch:
+			case zombie_villager: return true;
+			
+			default: return false;
+		}
+	}
+	
+	public boolean isAnimal() {
+		switch(this) {
+			case bat:
+			case chicken:
+			case cod_mob:
+			case cow:
+			case donkey:
+			case horse:
+			case llama:
+			case mooshroom:
+			case mule:
+			case ocelot:
+			case parrot:
+			case pig:
+			case polar_bear:
+			case rabbit:
+			case salmon_mob:
+			case sheep:
+			case squid:
+			case tropical_fish:
+			case turtle:
+			case villager_golem: return true;
+					
+			default: return false;
+		}
+	}
 	
 	public boolean isMonster() {
 		switch(this) {
@@ -117,6 +260,8 @@ public enum Entity {
 			case snowman:
 			case spider:
 			case stray:
+			case vex:
+			case vindication_illager:
 			case witch:
 			case wither:
 			case wither_skeleton:
