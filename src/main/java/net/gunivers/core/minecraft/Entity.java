@@ -248,6 +248,10 @@ public enum Entity {
 		}
 	}
 	
+ 	public boolean hasLife() {
+ 		return !this.hasNoLife();
+ 	}
+ 	
 	public boolean hasNoLife() {
 		switch(this) {
 			case area_effect_cloud:
