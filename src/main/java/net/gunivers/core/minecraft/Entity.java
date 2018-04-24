@@ -93,6 +93,92 @@ public enum Entity {
 	zombie_pigman,
 	zombie_villager;
 	
+	public boolean hasSpawnEnder() {
+		switch(this) {
+			case area_effect_cloud:
+			case dragon_fireball:
+			case ender_crystal:
+			case ender_dragon:
+			case enderman:
+			case endermite:
+			case shulker:
+			case shulker_bullet: return true;
+			
+			default: return false;
+		}
+ 	}
+	
+	public boolean hasSpawnOverworld() {
+		switch(this) {
+			case arrow:
+			case bat:
+			case cave_spider:
+			case chicken:
+			case cod_mob:
+			case cow:
+			case creeper:
+			case donkey:
+			case elder_guardian:
+			case enderman:
+			case endermite:
+			case evocation_fangs:
+			case evocation_illager:
+			case guardian:
+			case horse:
+			case illusion_illager:
+			case lightning_bolt:
+			case llama:
+			case llama_spit:
+			case mooshroom:
+			case mule:
+			case ocelot:
+			case parrot:
+			case phantom:
+			case pig:
+			case polar_bear:
+			case puffer_fish:
+			case rabbit:
+			case salmon_mob:
+			case sheep:
+			case silverfish:
+			case skeleton:
+			case skeleton_horse:
+			case slime:
+			case spider:
+			case squid:
+			case stray:
+			case tropical_fish:
+			case turtle:
+			case vex:
+			case villager:
+			case villager_golem:
+			case vindication_illager:
+			case witch:
+			case wolf:
+			case xp_orb:
+			case zombie:
+			case zombie_villager: return true;
+			
+			default: return false;
+		}
+	}
+	
+	public boolean hasSpawnNether() {
+		switch(this) {
+			case blaze:
+			case fireball:
+			case ghast:
+			case magma_cube:
+			case wither:
+			case wither_skeleton:
+			case wither_skull:
+			case xp_orb:
+			case zombie_pigman: return true;
+			
+			default: return false;
+		}
+	}
+	
 	public boolean isMinecart() {
 		switch(this) {
 			case chest_minecart:
