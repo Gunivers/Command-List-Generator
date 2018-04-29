@@ -95,7 +95,11 @@ public class Calculator
         if (lexemeType.equals("SYMBOL") && lexeme.equals("("))
         {
             read();
-            value = (double) readExpression();
+            if(lexemeType.equals("SYMBOL") && (lexeme.equals("+") || lexeme.equals("-"))) {          	
+            	read();
+            	value = (lexeme.equals("-")) ? -(double) readExpression() : (double) readExpression();
+            } else
+            	value = (double) readExpression();
 
             if (lexemeType.equals("SYMBOL") && lexeme.equals(")"))
                 read();
