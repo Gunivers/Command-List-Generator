@@ -6,9 +6,9 @@ public class IntValue extends IValue<Integer>
 {
     private int val = 0;
 
-    public IntValue(Tag key)
+    public IntValue(Integer val)
     {
-        super(key);
+        set(val);
     }
 
     @Override

@@ -9,6 +9,8 @@ import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.FunctionalityController;
 import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
+import net.gunivers.listgenerator.util.Tag;
+import net.gunivers.listgenerator.util.value.ValueManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,9 +38,20 @@ public class DuplicationController extends FunctionalityController implements In
     @Override
     public void saveAll()
     {
-        ButtonNextHandler.newDialog.close();
         int index = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
+
         Label label = new Label("Duplication");
+        Label tag = (Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(index);
+
+        try
+        {
+            ValueManager.register(Tag.tags.get(tag.getText()), TOP_TEXT.getText(), Integer.valueOf(MIDDLE_TEXT.getText()), Integer.valueOf(BOTTOM_TEXT.getText()));
+        } catch (Exception e)
+        {
+            return;
+        }
+
         CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, index);
+        ButtonNextHandler.newDialog.close();
     }
 }

@@ -6,9 +6,9 @@ public class DoubleValue extends IValue<Double>
 {
     private Double val = 0.0D;
 
-    public DoubleValue(Tag key)
+    public DoubleValue(Double val)
     {
-        super(key);
+        set(val);
     }
 
     @Override

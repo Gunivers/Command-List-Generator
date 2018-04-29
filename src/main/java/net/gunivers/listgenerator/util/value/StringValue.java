@@ -6,9 +6,9 @@ public class StringValue extends IValue<String>
 {
     private String val;
 
-    public StringValue(Tag key)
+    public StringValue(String val)
     {
-        super(key);
+        set(val);
     }
 
     @Override
