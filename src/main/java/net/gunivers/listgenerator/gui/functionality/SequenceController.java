@@ -5,12 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
+import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.FunctionalityController;
 import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
 import net.gunivers.listgenerator.util.Tag;
-import net.gunivers.listgenerator.util.value.ValueManager;
+import net.gunivers.listgenerator.util.value.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,18 +29,27 @@ public class SequenceController extends FunctionalityController implements Initi
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        setDialog(ButtonNextHandler.newDialog);
+
         getDoneButton().setOnAction(event -> saveAll());
 
         BOTTOM_TEXT.textProperty().addListener(new OnlyIntChangeListener(BOTTOM_TEXT));
+
+        if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null &&
+                !CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
+        {
+            setDialog(ButtonEditHandler.dialog);
+            IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());
+            TOP_TEXT.setText(((StringValue) values[0]).get());
+            BOTTOM_TEXT.setText(((IntValue) values[1]).get() + "");
+        }
     }
 
     @Override
     public void saveAll()
     {
-        int index = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
-
         Label label = new Label("Sequence");
-        Label tag = (Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(index);
+        Label tag = (Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX);
 
         try
         {
@@ -49,7 +59,7 @@ public class SequenceController extends FunctionalityController implements Initi
             return;
         }
 
-        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, index);
-        ButtonNextHandler.newDialog.close();
+        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, INDEX);
+        getDialog().close();
     }
 }

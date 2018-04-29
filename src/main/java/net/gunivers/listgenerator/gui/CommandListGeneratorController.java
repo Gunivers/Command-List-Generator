@@ -13,6 +13,7 @@ import net.gunivers.listgenerator.gui.handlers.ButtonGenerateHandler;
 import net.gunivers.listgenerator.gui.handlers.TextFieldCommandChangeHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
+import net.gunivers.listgenerator.util.value.ValueManager;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -99,9 +100,25 @@ public class CommandListGeneratorController implements Initializable
 
         }
 
-        TAG_LIST.getItems().removeAll(needRemoveTag);
+        for (Label label : needRemoveTag)
+        {
+            int index = TAG_LIST.getItems().indexOf(label);
 
-        TAG_LIST.getItems().addAll(needAddedTag);
+            if (!TYPE_LIST.getItems().get(index).getText().isEmpty())
+                ValueManager.removeValues(TAG_LIST.getItems().get(index).getText());
+
+            TAG_LIST.getItems().remove(index);
+            TYPE_LIST.getItems().remove(index);
+        }
+
+        for (Label label : needAddedTag)
+        {
+            TAG_LIST.getItems().add(label);
+            TYPE_LIST.getItems().add(new Label());
+        }
+
+        TAG_LIST.refresh();
+        TYPE_LIST.refresh();
     }
 
     public int getMaxSize()

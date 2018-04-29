@@ -38,7 +38,8 @@ public class DichotomyController extends FunctionalityController implements Init
 
         getDoneButton().setOnAction(event -> saveAll());
 
-        if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null)
+        if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null &&
+                !CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
         {
             setDialog(ButtonEditHandler.dialog);
             IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());

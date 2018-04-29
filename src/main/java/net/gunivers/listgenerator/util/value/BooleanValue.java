@@ -19,6 +19,6 @@ public class BooleanValue extends IValue<Boolean>
     @Override
     public Boolean get()
     {
-        return null;
+        return val;
     }
 }

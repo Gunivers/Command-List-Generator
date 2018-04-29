@@ -5,10 +5,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
+import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.FunctionalityController;
 import net.gunivers.listgenerator.util.Tag;
+import net.gunivers.listgenerator.util.value.IValue;
+import net.gunivers.listgenerator.util.value.IntValue;
+import net.gunivers.listgenerator.util.value.StringValue;
 import net.gunivers.listgenerator.util.value.ValueManager;
 
 import java.net.URL;
@@ -24,26 +28,34 @@ public class ListController extends FunctionalityController implements Initializ
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        setDialog(ButtonNextHandler.newDialog);
+
         getDoneButton().setOnAction(event -> saveAll());
+
+        if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null &&
+                !CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
+        {
+            setDialog(ButtonEditHandler.dialog);
+            IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());
+            TEXT_AREA.setText(((StringValue) values[0]).get() + "");
+        }
     }
 
     @Override
     public void saveAll()
     {
-        int index = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
-
         Label label = new Label("List");
-        Label tag = (Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(index);
+        Label tag = (Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX);
 
         try
         {
-            ValueManager.register(Tag.tags.get(tag.getText()), TEXT_AREA.getText().split("\n"));
+            ValueManager.register(Tag.tags.get(tag.getText()), TEXT_AREA.getText());
         } catch (Exception e)
         {
             return;
         }
 
-        ButtonNextHandler.newDialog.close();
-        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, index);
+        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, INDEX);
+        getDialog().close();
     }
 }

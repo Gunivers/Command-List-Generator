@@ -52,4 +52,15 @@ public class ValueManager
 
         return null;
     }
+
+    public static void removeValues(String tag)
+    {
+        removeValues(Tag.tags.get(tag));
+    }
+
+    public static void removeValues(Tag tag)
+    {
+        if (tagValues.get(tag) != null)
+            tagValues.remove(tag);
+    }
 }
