@@ -55,17 +55,34 @@ public class SyncListHandler<E>
         return number == ListNumber.ONE ? listView1.getItems() : listView2.getItems();
     }
 
+    /**
+     * get list view by number
+     * @param listNumber
+     * @return
+     */
     public ListView getListView(ListNumber listNumber)
     {
         return listNumber == ListNumber.ONE ? getListViewOne() : getListViewTwo();
     }
 
+    /**
+     * Put in the custom javafx ListView and select the index
+     * @param listNumber
+     * @param value
+     * @param index
+     */
     public void putInAndSelect(ListNumber listNumber, Node value, int index)
     {
         this.putIn(listNumber, value, index);
         getListView(listNumber).getSelectionModel().clearAndSelect(index);
     }
 
+    /**
+     * Put in the custom javafx ListView
+     * @param listNumber
+     * @param value
+     * @param index
+     */
     public void putIn(ListNumber listNumber, Node value, int index)
     {
         ListView listView = getListView(listNumber);

@@ -8,6 +8,11 @@ public class ValueManager
 {
     private static HashMap<Tag, IValue[]> tagValues = new HashMap<>();
 
+    /**
+     * For registering a value for a tag
+     * @param tag
+     * @param objects
+     */
     public static void register(Tag tag, Object... objects)
     {
         IValue[] value = new IValue[objects.length];
@@ -38,11 +43,21 @@ public class ValueManager
         tagValues.put(tag, value);
     }
 
+    /**
+     * get all parameters of a tag
+     * @param key
+     * @return
+     */
     public static IValue[] getValues(String key)
     {
         return getValues(Tag.tags.get(key));
     }
 
+    /**
+     * get all parameters of a tag
+     * @param key
+     * @return
+     */
     public static IValue[] getValues(Tag key)
     {
         if (tagValues.get(key) != null)
@@ -53,11 +68,19 @@ public class ValueManager
         return null;
     }
 
+    /**
+     * remove all data for a tag
+     * @param tag
+     */
     public static void removeValues(String tag)
     {
         removeValues(Tag.tags.get(tag));
     }
 
+    /**
+     * same
+     * @param tag
+     */
     public static void removeValues(Tag tag)
     {
         if (tagValues.get(tag) != null)
