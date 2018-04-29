@@ -9,6 +9,7 @@ import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.FunctionalityController;
+import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
 import net.gunivers.listgenerator.util.value.IValue;
 import net.gunivers.listgenerator.util.value.IntValue;
@@ -44,18 +45,18 @@ public class ListController extends FunctionalityController implements Initializ
     @Override
     public void saveAll()
     {
-        Label label = new Label("List");
-        Label tag = (Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX);
+        Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
+        tag.setType(Functionality.getFunctionalitie("List"));
 
         try
         {
-            ValueManager.register(Tag.tags.get(tag.getText()), TEXT_AREA.getText());
+            ValueManager.register(tag, TEXT_AREA.getText());
         } catch (Exception e)
         {
             return;
         }
 
-        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, INDEX);
+        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
         getDialog().close();
     }
 }

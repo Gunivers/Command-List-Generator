@@ -11,6 +11,7 @@ import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.FunctionalityController;
 import net.gunivers.listgenerator.gui.util.OnlyDoubleChangeListener;
+import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
 import net.gunivers.listgenerator.util.value.*;
 
@@ -58,18 +59,18 @@ public class ScoreInterpolationController extends FunctionalityController implem
     @Override
     public void saveAll()
     {
-        Label label = new Label("ScoreInterpolation");
-        Label tag = (Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX);
+        Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
+        tag.setType(Functionality.getFunctionalitie("ScoreInterpolation"));
 
         try
         {
-            ValueManager.register(Tag.tags.get(tag.getText()), Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected());
+            ValueManager.register(tag, Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected());
         } catch (Exception e)
         {
             return;
         }
 
-        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, INDEX);
+        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
         getDialog().close();
     }
 }

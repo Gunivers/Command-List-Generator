@@ -10,6 +10,7 @@ import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.FunctionalityController;
 import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
+import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
 import net.gunivers.listgenerator.util.value.IValue;
 import net.gunivers.listgenerator.util.value.IntValue;
@@ -51,18 +52,18 @@ public class DichotomyController extends FunctionalityController implements Init
     @Override
     public void saveAll()
     {
-        Label label = new Label("Dichotomy");
-        Label tag = (Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX);
+        Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
+        tag.setType(Functionality.getFunctionalitie("Dichotomy"));
 
         try
         {
-            ValueManager.register(Tag.tags.get(tag.getText()), Integer.valueOf(TOP_TEXT.getText()), Integer.valueOf(BOTTOM_TEXT.getText()));
+            ValueManager.register(tag, Integer.valueOf(TOP_TEXT.getText()), Integer.valueOf(BOTTOM_TEXT.getText()));
         } catch (Exception e)
         {
             return;
         }
 
-        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, INDEX);
+        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
         getDialog().close();
     }
 }

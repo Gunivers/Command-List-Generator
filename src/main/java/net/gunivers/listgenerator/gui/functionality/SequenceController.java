@@ -10,6 +10,7 @@ import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.FunctionalityController;
 import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
+import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
 import net.gunivers.listgenerator.util.value.*;
 
@@ -48,18 +49,18 @@ public class SequenceController extends FunctionalityController implements Initi
     @Override
     public void saveAll()
     {
-        Label label = new Label("Sequence");
-        Label tag = (Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX);
+        Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
+        tag.setType(Functionality.getFunctionalitie("Sequence"));
 
         try
         {
-            ValueManager.register(Tag.tags.get(tag.getText()), TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()));
+            ValueManager.register(tag, TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()));
         } catch (Exception e)
         {
             return;
         }
 
-        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, INDEX);
+        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
         getDialog().close();
     }
 }
