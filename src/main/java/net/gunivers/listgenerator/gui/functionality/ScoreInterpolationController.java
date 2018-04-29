@@ -44,6 +44,9 @@ public class ScoreInterpolationController extends FunctionalityController implem
         ButtonNextHandler.newDialog.close();
         int index = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
         Label label = new Label("ScoreInterpolation");
+
+
+
         CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, label, index);
     }
 }

@@ -50,7 +50,7 @@ public class CommandListGeneratorController implements Initializable
     private JFXListView<Label> TYPE_LIST;
 
 
-    public static SyncListHandler SYNC_LIST_HANDLER = null;
+    public static SyncListHandler<Label> SYNC_LIST_HANDLER = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)

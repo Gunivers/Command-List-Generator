@@ -5,11 +5,12 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-public class SyncListHandler
+public class SyncListHandler<E>
 {
-    private ListView listView1, listView2;
+    private ListView<? super E> listView1;
+    private ListView listView2;
 
-    public SyncListHandler(ListView listView1, ListView listView2)
+    public SyncListHandler(ListView<? super E> listView1, ListView listView2)
     {
         this.listView1 = listView1;
         this.listView2 = listView2;
@@ -39,7 +40,7 @@ public class SyncListHandler
             listView2.getSelectionModel().clearAndSelect(index);
     }
 
-    public ListView getListViewOne()
+    public ListView<? super E> getListViewOne()
     {
         return listView1;
     }
