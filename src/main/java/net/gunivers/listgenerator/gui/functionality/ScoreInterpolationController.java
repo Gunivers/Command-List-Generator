@@ -30,6 +30,8 @@ public class ScoreInterpolationController extends FunctionalityController implem
     @FXML
     private JFXTextField TEXT_FIELD_3;
 
+    private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
+
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {

@@ -1,11 +1,14 @@
 package net.gunivers.listgenerator.gui.util;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
 import javafx.fxml.FXML;
 import net.gunivers.listgenerator.util.value.IValue;
 
 public abstract class FunctionalityController
 {
+    private JFXDialog dialog;
+
     @FXML
     private JFXButton DONE;
 
@@ -15,4 +18,14 @@ public abstract class FunctionalityController
     }
 
     public abstract void saveAll();
+
+    public JFXDialog getDialog()
+    {
+        return dialog;
+    }
+
+    public void setDialog(JFXDialog dialog)
+    {
+        this.dialog = dialog;
+    }
 }

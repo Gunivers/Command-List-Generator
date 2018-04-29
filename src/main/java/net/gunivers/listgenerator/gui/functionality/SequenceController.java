@@ -23,6 +23,8 @@ public class SequenceController extends FunctionalityController implements Initi
     @FXML
     private JFXTextField BOTTOM_TEXT;
 
+    private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
+
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {

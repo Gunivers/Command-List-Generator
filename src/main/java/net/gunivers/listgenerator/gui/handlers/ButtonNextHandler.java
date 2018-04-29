@@ -27,7 +27,9 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
     @Override
     public void handle(ActionEvent event)
     {
-            Functionality functionality = Functionality.getFunctionalitie(listView.getSelectionModel().getSelectedItems().get(0).getText());
+        if (listView.getSelectionModel().getSelectedItem() != null)
+        {
+            Functionality functionality = Functionality.getFunctionalitie(listView.getSelectionModel().getSelectedItem().getText());
             newDialog = new JFXDialog();
             JFXDialogLayout layout = null;
 
@@ -43,6 +45,6 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
 
             dialog.close();
             newDialog.show(CommandListGeneratorController.MAIN_PANE);
-
+        }
     }
 }

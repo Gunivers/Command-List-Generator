@@ -26,6 +26,8 @@ public class DuplicationController extends FunctionalityController implements In
     @FXML
     private JFXTextField BOTTOM_TEXT;
 
+    private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
+
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {

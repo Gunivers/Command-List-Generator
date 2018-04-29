@@ -78,6 +78,9 @@ public class SyncListHandler<E>
             }
         }
 
+        if (!listView.getItems().isEmpty() && listView.getItems().get(index) != null)
+            listView.getItems().remove(index);
+
         listView.getItems().add(index, value);
     }
 

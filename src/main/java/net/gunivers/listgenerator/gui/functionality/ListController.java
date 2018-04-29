@@ -19,6 +19,8 @@ public class ListController extends FunctionalityController implements Initializ
     @FXML
     JFXTextArea TEXT_AREA;
 
+    private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
+
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {

@@ -23,11 +23,19 @@ public class ValueManager
             } else if (objects[i] instanceof Integer)
             {
                 value[i] = new IntValue((Integer) objects[i]);
+            } else if (objects[i] instanceof Boolean)
+            {
+                value[i] = new BooleanValue((Boolean) objects[i]);
             } else
             {
                 System.out.println("Cannot recognised value: " + objects[i]);
             }
         }
+
+        if (tagValues.get(tag) != null)
+            tagValues.remove(tag);
+
+        tagValues.put(tag, value);
     }
 
     public static IValue[] getValues(String key)
@@ -42,6 +50,6 @@ public class ValueManager
             return tagValues.get(key);
         }
 
-        return new IValue[]{};
+        return null;
     }
 }
