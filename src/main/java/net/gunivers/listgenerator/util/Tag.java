@@ -1,5 +1,7 @@
 package net.gunivers.listgenerator.util;
 
+import net.gunivers.listgenerator.util.value.IValue;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,7 +16,7 @@ public class Tag
     public static HashMap<String, Tag> tags = new HashMap<String, Tag>();
 
     private Functionality type;
-    private ArrayList<Object> parameters;
+    private IValue[] parameters;
     private String id;
 
     /**
@@ -54,15 +56,15 @@ public class Tag
     /**
      * @return the parameters of the tag
      */
-    public Object[] getParameters()
+    public IValue[] getParameters()
     {
-        return parameters.toArray(new Object[parameters.size()]);
+        return parameters;
     }
 
     /**
      * @param parameters the parameters of the tag
      */
-    public void setParameters(ArrayList<Object> parameters)
+    public void setParameters(IValue[] parameters)
     {
         this.parameters = parameters;
     }
