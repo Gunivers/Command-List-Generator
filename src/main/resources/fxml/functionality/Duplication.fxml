@@ -11,17 +11,17 @@
    <children>
       <VBox>
          <children>
-            <JFXTextField fx:id="TOP_TEXT" labelFloat="true" promptText="Chaine A Recup" VBox.vgrow="ALWAYS">
+            <JFXTextField fx:id="TOP_TEXT" labelFloat="true" promptText="String" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXTextField fx:id="MIDDLE_TEXT" labelFloat="true" promptText="Nombre A Multiple" VBox.vgrow="ALWAYS">
+            <JFXTextField fx:id="MIDDLE_TEXT" labelFloat="true" promptText="Multiplier" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXTextField fx:id="BOTTOM_TEXT" labelFloat="true" promptText="Personne sais a quoi sa sert" VBox.vgrow="ALWAYS">
+            <JFXTextField fx:id="BOTTOM_TEXT" labelFloat="true" promptText="Add" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                </VBox.margin>

@@ -11,7 +11,7 @@
    <children>
       <VBox>
          <children>
-            <JFXTextArea fx:id="TEXT_AREA" labelFloat="true" promptText="JFXTextArea Car c bn" VBox.vgrow="ALWAYS">
+            <JFXTextArea fx:id="TEXT_AREA" labelFloat="true" promptText="List of elements (enter to separate the elements)" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="17.0" />
                </VBox.margin>
