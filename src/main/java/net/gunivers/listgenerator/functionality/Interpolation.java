@@ -32,7 +32,7 @@ public class Interpolation extends Functionality
      * @param revert:       reversion of the curve rise (fast then slow or slow then fast)
      * @return value
      */
-    private static double interp(double start, double end, int nbCommands, int commandRange, double power, boolean revert)
+    private static double interp(double start, double end, int commandRange, double power, boolean revert, int nbCommands)
     {
 
         double alpha;
@@ -98,9 +98,9 @@ public class Interpolation extends Functionality
 
         for (int i = commandeD; i <= commandeF; i += step)
             if (nbreDecimales == 0)
-                commands.add(String.valueOf((int) Math.round(interp(start, end, nbCommands, i, power, revert))));
+                commands.add(String.valueOf((int) Math.round(interp(start, end, i, power, revert, nbCommands))));
             else
-                commands.add(String.valueOf(round(interp(start, end, nbCommands, i, power, revert), nbreDecimales)));
+                commands.add(String.valueOf(round(interp(start, end, i, power, revert, nbCommands), nbreDecimales)));
 
         return commands;
     }

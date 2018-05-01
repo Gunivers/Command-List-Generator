@@ -12,12 +12,12 @@
    <children>
       <VBox>
          <children>
-            <JFXTextField fx:id="TEXT_FIELD_1" labelFloat="true" promptText="1" VBox.vgrow="ALWAYS">
+            <JFXTextField fx:id="TEXT_FIELD_1" labelFloat="true" promptText="Start value" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="17.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXTextField fx:id="TEXT_FIELD_2" labelFloat="true" promptText="2" VBox.vgrow="ALWAYS">
+            <JFXTextField fx:id="TEXT_FIELD_2" labelFloat="true" promptText="End value" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="17.0" />
                </VBox.margin>
