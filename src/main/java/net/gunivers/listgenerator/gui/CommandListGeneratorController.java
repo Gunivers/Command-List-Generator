@@ -65,7 +65,7 @@ public class CommandListGeneratorController implements Initializable
 
         COMMAND_INPUT.setOnKeyTyped(new TextFieldCommandChangeHandler(COMMAND_INPUT));
 
-        BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, getMaxSize()));
+        BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, getMaxCommand()));
 
         BUTTON_EDIT.setOnAction(new ButtonEditHandler());
     }
@@ -121,7 +121,7 @@ public class CommandListGeneratorController implements Initializable
         TYPE_LIST.refresh();
     }
 
-    public int getMaxSize()
+    public int getMaxCommand()
     {
         try
         {
