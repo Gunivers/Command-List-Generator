@@ -1,5 +1,7 @@
 package net.gunivers.listgenerator.util.node;
 
+import net.gunivers.core.minecraft.Entity;
+
 @SuppressWarnings("rawtypes")
 public enum SelectorFields {
 	ADVANCEMENTS(AdvancementParser.class, true),
