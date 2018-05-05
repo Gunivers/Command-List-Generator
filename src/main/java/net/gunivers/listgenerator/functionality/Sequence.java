@@ -3,7 +3,6 @@ package net.gunivers.listgenerator.functionality;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import net.gunivers.core.minecraft.Material;
 import net.gunivers.listgenerator.util.Calculator;
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
@@ -22,7 +21,7 @@ public class Sequence extends Functionality
      * @return an ArrayList<String> with all the value replacing the tag
      */
     @Call
-    public ArrayList<String> generate(Double initValue, String operation, Integer nbLoop, int round, Class<? extends Number> type)
+    public ArrayList<String> generate(Double initValue, String operation, int round, Class<? extends Number> type, Integer nbLoop)
     {
         String end = "";
 

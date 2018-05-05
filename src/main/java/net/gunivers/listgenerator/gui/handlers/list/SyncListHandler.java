@@ -5,11 +5,12 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-public class SyncListHandler
+public class SyncListHandler<E>
 {
-    private ListView listView1, listView2;
+    private ListView<? super E> listView1;
+    private ListView listView2;
 
-    public SyncListHandler(ListView listView1, ListView listView2)
+    public SyncListHandler(ListView<? super E> listView1, ListView listView2)
     {
         this.listView1 = listView1;
         this.listView2 = listView2;
@@ -39,7 +40,7 @@ public class SyncListHandler
             listView2.getSelectionModel().clearAndSelect(index);
     }
 
-    public ListView getListViewOne()
+    public ListView<? super E> getListViewOne()
     {
         return listView1;
     }
@@ -54,17 +55,34 @@ public class SyncListHandler
         return number == ListNumber.ONE ? listView1.getItems() : listView2.getItems();
     }
 
+    /**
+     * get list view by number
+     * @param listNumber
+     * @return
+     */
     public ListView getListView(ListNumber listNumber)
     {
         return listNumber == ListNumber.ONE ? getListViewOne() : getListViewTwo();
     }
 
+    /**
+     * Put in the custom javafx ListView and select the index
+     * @param listNumber
+     * @param value
+     * @param index
+     */
     public void putInAndSelect(ListNumber listNumber, Node value, int index)
     {
         this.putIn(listNumber, value, index);
         getListView(listNumber).getSelectionModel().clearAndSelect(index);
     }
 
+    /**
+     * Put in the custom javafx ListView
+     * @param listNumber
+     * @param value
+     * @param index
+     */
     public void putIn(ListNumber listNumber, Node value, int index)
     {
         ListView listView = getListView(listNumber);
@@ -76,6 +94,9 @@ public class SyncListHandler
                 listView.getItems().add(new Label());
             }
         }
+
+        if (!listView.getItems().isEmpty() && listView.getItems().get(index) != null)
+            listView.getItems().remove(index);
 
         listView.getItems().add(index, value);
     }

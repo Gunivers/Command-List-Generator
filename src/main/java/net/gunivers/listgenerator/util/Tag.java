@@ -1,20 +1,20 @@
 package net.gunivers.listgenerator.util;
 
-import java.util.ArrayList;
+import net.gunivers.listgenerator.util.value.IValue;
+import net.gunivers.listgenerator.util.value.ValueManager;
+
 import java.util.HashMap;
 
 /**
- * @param <T> the type of the parameter(s)
  * @author Oromis
  * This object represent a tag in the mold
  */
 public class Tag
 {
 
-    public static HashMap<String, Tag> tags = new HashMap<String, Tag>();
+    public static HashMap<String, Tag> tags = new HashMap<>();
 
     private Functionality type;
-    private ArrayList<Object> parameters;
     private String id;
 
     /**
@@ -54,16 +54,8 @@ public class Tag
     /**
      * @return the parameters of the tag
      */
-    public Object[] getParameters()
+    public IValue[] getParameters()
     {
-        return parameters.toArray(new Object[parameters.size()]);
-    }
-
-    /**
-     * @param parameters the parameters of the tag
-     */
-    public void setParameters(ArrayList<Object> parameters)
-    {
-        this.parameters = parameters;
+        return ValueManager.getValues(this);
     }
 }

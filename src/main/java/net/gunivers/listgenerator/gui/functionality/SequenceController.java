@@ -1,17 +1,15 @@
 package net.gunivers.listgenerator.gui.functionality;
 
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.listgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.listgenerator.gui.util.FunctionalityController;
-import net.gunivers.listgenerator.gui.util.OnlyDoubleChangeListener;
+import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
 import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
 import net.gunivers.listgenerator.util.value.*;
@@ -19,22 +17,13 @@ import net.gunivers.listgenerator.util.value.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class InterpolationController extends FunctionalityController implements Initializable
+public class SequenceController extends FunctionalityController implements Initializable
 {
     @FXML
-    private JFXCheckBox CHECK_BOX_1;
+    private JFXTextField TOP_TEXT;
 
     @FXML
-    private JFXCheckBox CHECK_BOX_2;
-
-    @FXML
-    private JFXTextField TEXT_FIELD_1;
-
-    @FXML
-    private JFXTextField TEXT_FIELD_2;
-
-    @FXML
-    private JFXTextField TEXT_FIELD_3;
+    private JFXTextField BOTTOM_TEXT;
 
     private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
 
@@ -45,20 +34,15 @@ public class InterpolationController extends FunctionalityController implements 
 
         getDoneButton().setOnAction(event -> saveAll());
 
-        TEXT_FIELD_1.textProperty().addListener(new OnlyDoubleChangeListener(TEXT_FIELD_1));
-        TEXT_FIELD_2.textProperty().addListener(new OnlyDoubleChangeListener(TEXT_FIELD_2));
-        TEXT_FIELD_3.textProperty().addListener(new OnlyDoubleChangeListener(TEXT_FIELD_3));
+        BOTTOM_TEXT.textProperty().addListener(new OnlyIntChangeListener(BOTTOM_TEXT));
 
         if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null &&
                 !CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
         {
             setDialog(ButtonEditHandler.dialog);
             IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());
-            TEXT_FIELD_1.setText(((DoubleValue) values[0]).get() + "");
-            TEXT_FIELD_2.setText(((DoubleValue) values[1]).get() + "");
-            TEXT_FIELD_3.setText(((DoubleValue) values[2]).get() + "");
-            CHECK_BOX_1.setSelected(((BooleanValue) values[3]).get());
-            CHECK_BOX_2.setSelected(((BooleanValue) values[4]).get());
+            TOP_TEXT.setText(((StringValue) values[0]).get());
+            BOTTOM_TEXT.setText(((IntValue) values[1]).get() + "");
         }
     }
 
@@ -66,11 +50,11 @@ public class InterpolationController extends FunctionalityController implements 
     public void saveAll()
     {
         Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
-        tag.setType(Functionality.getFunctionalitie("Interpolation"));
+        tag.setType(Functionality.getFunctionalitie("Sequence"));
 
         try
         {
-            ValueManager.register(tag, Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX_1.isSelected(), CHECK_BOX_2.isSelected());
+            ValueManager.register(tag, TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()));
         } catch (Exception e)
         {
             return;
