@@ -20,6 +20,17 @@ public class Node {
 	public boolean addChild(Node child) {
 		return children.add(child);
 	}
+	
+	public Node getChild(String tag) {
+		for (Node child : children) {
+			if (child.getTag().equals(tag)) return child;
+		}
+		return null;
+	}
+
+	public boolean removeChild(Node child) {
+		return children.remove(child);
+	}
 
 	public ArrayList<Node> getChildren() {
 		return children;
