@@ -12,7 +12,6 @@ import net.gunivers.listgenerator.gui.util.FunctionalityController;
 import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
 import net.gunivers.listgenerator.util.value.IValue;
-import net.gunivers.listgenerator.util.value.IntValue;
 import net.gunivers.listgenerator.util.value.StringValue;
 import net.gunivers.listgenerator.util.value.ValueManager;
 
@@ -50,7 +49,7 @@ public class ListController extends FunctionalityController implements Initializ
 
         try
         {
-            ValueManager.register(tag, TEXT_AREA.getText());
+            ValueManager.register(tag, TEXT_AREA.getText(), CommandListGeneratorController.CONTROLLER.getMaxCommand());
         } catch (Exception e)
         {
             return;

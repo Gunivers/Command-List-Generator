@@ -57,7 +57,7 @@ public class DichotomyController extends FunctionalityController implements Init
 
         try
         {
-            ValueManager.register(tag, Integer.valueOf(TOP_TEXT.getText()), Integer.valueOf(BOTTOM_TEXT.getText()));
+            ValueManager.register(tag, Integer.valueOf(TOP_TEXT.getText()), Integer.valueOf(BOTTOM_TEXT.getText()), CommandListGeneratorController.CONTROLLER.getMaxCommand());
         } catch (Exception e)
         {
             return;

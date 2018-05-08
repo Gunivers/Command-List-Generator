@@ -12,7 +12,10 @@ import net.gunivers.listgenerator.gui.util.FunctionalityController;
 import net.gunivers.listgenerator.gui.util.OnlyIntChangeListener;
 import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
-import net.gunivers.listgenerator.util.value.*;
+import net.gunivers.listgenerator.util.value.IValue;
+import net.gunivers.listgenerator.util.value.IntValue;
+import net.gunivers.listgenerator.util.value.StringValue;
+import net.gunivers.listgenerator.util.value.ValueManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,7 +57,7 @@ public class SequenceController extends FunctionalityController implements Initi
 
         try
         {
-            ValueManager.register(tag, TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()));
+            ValueManager.register(tag, TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()), CommandListGeneratorController.CONTROLLER.getMaxCommand());
         } catch (Exception e)
         {
             return;

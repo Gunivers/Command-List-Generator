@@ -1,6 +1,8 @@
 package net.gunivers.listgenerator.gui.handlers;
 
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXListView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;

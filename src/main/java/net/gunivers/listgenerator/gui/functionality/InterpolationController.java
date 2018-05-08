@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 import net.gunivers.listgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.listgenerator.gui.handlers.ButtonNextHandler;
@@ -14,7 +13,10 @@ import net.gunivers.listgenerator.gui.util.FunctionalityController;
 import net.gunivers.listgenerator.gui.util.OnlyDoubleChangeListener;
 import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
-import net.gunivers.listgenerator.util.value.*;
+import net.gunivers.listgenerator.util.value.BooleanValue;
+import net.gunivers.listgenerator.util.value.DoubleValue;
+import net.gunivers.listgenerator.util.value.IValue;
+import net.gunivers.listgenerator.util.value.ValueManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;

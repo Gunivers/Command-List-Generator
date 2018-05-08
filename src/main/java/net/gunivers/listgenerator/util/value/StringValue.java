@@ -1,7 +1,5 @@
 package net.gunivers.listgenerator.util.value;
 
-import net.gunivers.listgenerator.util.Tag;
-
 public class StringValue extends IValue<String>
 {
     private String val;

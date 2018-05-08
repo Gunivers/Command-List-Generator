@@ -1,9 +1,9 @@
 package net.gunivers.listgenerator.functionality;
 
+import net.gunivers.listgenerator.util.Functionality;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import net.gunivers.listgenerator.util.Functionality;
 
 /**
  * @authors A~Z, Oromis
