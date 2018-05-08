@@ -21,10 +21,6 @@ public class Node {
 		return children.add(child);
 	}
 
-	public boolean removeChild(Node child) {
-		return children.remove(child);
-	}
-
 	public ArrayList<Node> getChildren() {
 		return children;
 	}
