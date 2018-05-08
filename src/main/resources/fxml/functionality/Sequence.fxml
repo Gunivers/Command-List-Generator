@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDialogLayout?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.*?>
 <JFXDialogLayout maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.gunivers.listgenerator.gui.functionality.SequenceController">
@@ -10,6 +8,11 @@
       <VBox>
          <children>
             <JFXTextField fx:id="TOP_TEXT" labelFloat="true" promptText="Operation (put 'U' to use U(n-1))" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="15.0"/>
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="MIDDLE_TEXT" labelFloat="true" promptText="Le truc Qui Manque" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                </VBox.margin>
