@@ -1,9 +1,9 @@
 package net.gunivers.listgenerator.util.node.commands;
 
-import net.gunivers.listgenerator.util.node.CommandNode;
+import net.gunivers.listgenerator.util.node.Command;
 import net.gunivers.listgenerator.util.node.Node;
 
-class CommandTime extends CommandNode {
+class CommandTime extends Command {
 
 	public CommandTime() {
 		super("time");
