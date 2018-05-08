@@ -26,6 +26,9 @@ public class SequenceController extends FunctionalityController implements Initi
     private JFXTextField TOP_TEXT;
 
     @FXML
+    private JFXTextField MIDDLE_TEXT;
+
+    @FXML
     private JFXTextField BOTTOM_TEXT;
 
     private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
@@ -38,6 +41,7 @@ public class SequenceController extends FunctionalityController implements Initi
         getDoneButton().setOnAction(event -> saveAll());
 
         BOTTOM_TEXT.textProperty().addListener(new OnlyIntChangeListener(BOTTOM_TEXT));
+        MIDDLE_TEXT.textProperty().addListener(new OnlyIntChangeListener(MIDDLE_TEXT));
 
         if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null &&
                 !CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
@@ -45,7 +49,8 @@ public class SequenceController extends FunctionalityController implements Initi
             setDialog(ButtonEditHandler.dialog);
             IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());
             TOP_TEXT.setText(((StringValue) values[0]).get());
-            BOTTOM_TEXT.setText(((IntValue) values[1]).get() + "");
+            MIDDLE_TEXT.setText(((IntValue) values[1]).get() + "");
+            BOTTOM_TEXT.setText(((IntValue) values[2]).get() + "");
         }
     }
 
@@ -57,7 +62,7 @@ public class SequenceController extends FunctionalityController implements Initi
 
         try
         {
-            ValueManager.register(tag, TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()), CommandListGeneratorController.CONTROLLER.getMaxCommand());
+            ValueManager.register(tag, TOP_TEXT.getText(), Integer.valueOf(MIDDLE_TEXT.getText()), Integer.valueOf(BOTTOM_TEXT.getText()), CommandListGeneratorController.CONTROLLER.getMaxCommand());
         } catch (Exception e)
         {
             return;
