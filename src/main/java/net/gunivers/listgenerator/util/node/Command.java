@@ -1,8 +1,10 @@
 package net.gunivers.listgenerator.util.node;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
-public abstract class Command extends Node {
+public abstract class Command extends CommandNode {
 
 	public static ArrayList<Command> instances = new ArrayList<Command>();
 	
@@ -15,28 +17,27 @@ public abstract class Command extends Node {
 	}
 	
 	
-	public Command(String tag, Node... children) {
+	public Command(String tag, CommandNode... children) {
 		super(tag, children);
 		Command.instances.add(this);
 	}
 
 
-	/*public int hasCorrectSyntax(String command) {
-		
-		String[] cmd = command.split(" ");
-		
-		Command current = Command.getCommand(cmd[0]);
-		
-		if (current == null) return 0;
-		
-		for (int i = 1; i < cmd.length; i++) {
-			if (current.hasChild(cmd[i])) {
-				current = (Command) current.getChild(cmd[i]);
-			}
-			
-			else return i;
+	public int hasCorrectSyntax(String command) {
+		String[] cmd = (command + " $").split(" ");
+		int value = browseAndCompare(cmd, this);
+		return value == -1 ? -1 : value - 1;
+	}
+	
+	private int browseAndCompare(String[] cmd, CommandNode node) {
+		if(cmd.length == 1 && node.matches(cmd[0])) return -1;
+		else if(cmd.length == 1) return 1;
+		else if(!node.matches(cmd[0])) return 1;
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(Node child : node.getChildren()) {
+			int i = browseAndCompare(Arrays.copyOfRange(cmd, 1, cmd.length), (CommandNode)child);
+			list.add((i == -1) ? -1 : i + 1);
 		}
-		
-		return -1;
-	}*/
+		return (list.contains(-1)) ? -1 : Collections.max(list);
+	}
 }

@@ -1,14 +1,16 @@
 package net.gunivers;
 
-import net.gunivers.listgenerator.functionality.Sequence;
+import net.gunivers.listgenerator.util.node.commands.CommandWeather;
 
 public class ClassTest
 {
 
     public static void main(String[] args)
     {
-        Sequence i = new Sequence();
-        System.out.println(i.generate((double) 10, "(U + 1 * 2) / 4", 3, null, 10));
+    	
+        CommandWeather cw = new CommandWeather();
+        String test = "weather thunder 10";
+        System.out.println(cw.hasCorrectSyntax(test));
 
     }
 
