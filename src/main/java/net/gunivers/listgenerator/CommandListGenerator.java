@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXDecorator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import net.gunivers.listgenerator.functionality.*;
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
@@ -55,6 +56,10 @@ public class CommandListGenerator extends Application
 
         //Create new scene
         Scene scene = new Scene(decorator);
+
+        //Make sure font is loaded
+        Font.loadFont(CommandListGenerator.class.getResource("/css/font/Roboto-Regular.ttf").toExternalForm(), 10D);
+        Font.loadFont(CommandListGenerator.class.getResource("/css/font/Roboto-Bold.ttf").toExternalForm(), 10D);
 
         //Clear all CSS option
         scene.getStylesheets().clear();

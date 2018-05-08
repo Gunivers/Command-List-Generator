@@ -14,6 +14,16 @@
  *	Apply google Roboto font to all UI components
  */
 
+@font-face {
+    font-family: 'Roboto Regular';
+    src: url('/font/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto Bold';
+    src: url('/font/Roboto-Bold.ttf');
+}
+
 .root {
     -fx-accent: -fx-root-color;
     -fx-focus-color: -fx-root-color;
@@ -21,6 +31,9 @@
     -fx-font-smoothing-type: gray;
 }
 
+/*
+ *	Side Menu
+ */
 .side-menu {
     -fx-padding: 20.0, 10.0;
     -fx-font-size: 15.0;
@@ -28,12 +41,18 @@
     -fx-text-fill: #444;
 }
 
+/*
+ *	Title
+ */
 .title-label {
     -fx-font-size: 16.0px;
     -fx-padding: 14.0px;
     -fx-text-fill: rgba(0.0, 0.0, 0.0, 0.87);
 }
 
+/*
+ *	Radio Button
+ */
 .radio-button-title-label {
     -fx-font-size: 16.0px;
     -fx-padding: 14.0 0.0 -20.0 0.0;
@@ -46,10 +65,12 @@
 *******************************************************************************/
 
 .jfx-dialog-overlay-pane > StackPane {
+    -fx-font-family: "Roboto";
     -fx-background-color: -fx-primary-color;
 }
 
 .jfx-dialog {
+    -fx-font-family: "Roboto";
     -fx-background-color: rgba(17, 17, 17, 0.75);
 }
 
@@ -149,6 +170,7 @@
 .jfx-text-field, .jfx-password-field, .jfx-text-area {
     -fx-background-color: transparent;
     -fx-font-weight: BOLD;
+    -fx-font-family: "Roboto";
     -fx-alignment: center;
     -jfx-focus-color: -fx-button-color;
     -jfx-unfocus-color: derive(-fx-button-color, 10%);
@@ -166,6 +188,7 @@
     -fx-faint-focus-color:  transparent;
     -fx-focus-color:  -fx-secondary-color;
     -fx-text-fill:  -fx-secondary-color;
+    -fx-font-family: "Roboto";
     -fx-prompt-text-fill:  -fx-pompt-text-color;
 }
 
