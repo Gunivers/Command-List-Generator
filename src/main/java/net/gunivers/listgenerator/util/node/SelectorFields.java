@@ -4,7 +4,7 @@ import net.gunivers.core.minecraft.Entity;
 
 @SuppressWarnings("rawtypes")
 public enum SelectorFields {
-	ADVANCEMENTS(AdvancementParser.class, true),
+	//ADVANCEMENTS(AdvancementParser.class, true),
 	DISTANCE(Double.class, true),
 	DX(Double.class, true),
 	DY(Double.class, true),
@@ -13,8 +13,8 @@ public enum SelectorFields {
 	LEVEL(Integer.class),
 	LIMIT(Integer.class, true),
 	NAME(String.class),
-	NBT(NbtParser.class, true),
-	SCORES(ScoreParser.class, true),
+	//NBT(NbtParser.class, true),
+	//SCORES(ScoreParser.class, true),
 	SORT(String.class, true),
 	TAG(String.class),
 	TEAM(String.class),
