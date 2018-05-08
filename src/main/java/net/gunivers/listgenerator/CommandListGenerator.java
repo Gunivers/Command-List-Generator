@@ -1,20 +1,14 @@
 package net.gunivers.listgenerator;
 
-import java.net.URL;
-
 import com.jfoenix.controls.JFXDecorator;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import net.gunivers.listgenerator.functionality.Dichotomy;
-import net.gunivers.listgenerator.functionality.Duplication;
-import net.gunivers.listgenerator.functionality.GeneratorByList;
-import net.gunivers.listgenerator.functionality.Interpolation;
-import net.gunivers.listgenerator.functionality.ScoreInterpolation;
-import net.gunivers.listgenerator.functionality.Sequence;
+import net.gunivers.listgenerator.functionality.*;
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
+
+import java.net.URL;
 
 public class CommandListGenerator extends Application
 {

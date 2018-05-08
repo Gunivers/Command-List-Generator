@@ -13,7 +13,10 @@ import net.gunivers.listgenerator.gui.util.FunctionalityController;
 import net.gunivers.listgenerator.gui.util.OnlyDoubleChangeListener;
 import net.gunivers.listgenerator.util.Functionality;
 import net.gunivers.listgenerator.util.Tag;
-import net.gunivers.listgenerator.util.value.*;
+import net.gunivers.listgenerator.util.value.BooleanValue;
+import net.gunivers.listgenerator.util.value.DoubleValue;
+import net.gunivers.listgenerator.util.value.IValue;
+import net.gunivers.listgenerator.util.value.ValueManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -64,7 +67,7 @@ public class ScoreInterpolationController extends FunctionalityController implem
 
         try
         {
-            ValueManager.register(tag, Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected());
+            ValueManager.register(tag, Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected(), CommandListGeneratorController.CONTROLLER.getMaxCommand());
         } catch (Exception e)
         {
             return;

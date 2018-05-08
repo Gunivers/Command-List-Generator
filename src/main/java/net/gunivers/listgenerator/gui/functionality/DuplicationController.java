@@ -62,7 +62,7 @@ public class DuplicationController extends FunctionalityController implements In
 
         try
         {
-            ValueManager.register(tag, TOP_TEXT.getText(), Integer.valueOf(MIDDLE_TEXT.getText()), Integer.valueOf(BOTTOM_TEXT.getText()));
+            ValueManager.register(tag, TOP_TEXT.getText(), Integer.valueOf(MIDDLE_TEXT.getText()), Integer.valueOf(BOTTOM_TEXT.getText()), CommandListGeneratorController.CONTROLLER.getMaxCommand());
         } catch (Exception e)
         {
             return;
