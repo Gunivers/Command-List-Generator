@@ -1,16 +1,16 @@
 package net.gunivers;
 
-import net.gunivers.commandparser.commands.CommandWeather;
-
 public class ClassTest
 {
 
     public static void main(String[] args)
     {
     	
-        CommandWeather cw = new CommandWeather();
-        String test = "weather thunder 10";
-        System.out.println(cw.hasCorrectSyntax(test));
+    	String doubleT = "([0-9]+(\\.[0-9]+)?)";
+    	String noMinOrLim = "(" + doubleT + "?" + "(\\.\\." + doubleT + "){1})"; 
+    	String noMax = "(" + doubleT + "\\.\\.)";
+    	
+        System.out.println("..5".matches(noMax + "|" + noMinOrLim + "|" + doubleT));
 
     }
 

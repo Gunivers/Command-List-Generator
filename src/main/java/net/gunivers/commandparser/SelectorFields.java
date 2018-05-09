@@ -1,40 +1,37 @@
 package net.gunivers.commandparser;
 
-import net.gunivers.core.minecraft.Entity;
-
-@SuppressWarnings("rawtypes")
 public enum SelectorFields {
 	//ADVANCEMENTS(AdvancementParser.class, true),
-	DISTANCE(Double.class, true),
-	DX(Double.class, true),
-	DY(Double.class, true),
-	DZ(Double.class, true),
-	GAMEMODE(Integer.class),
-	LEVEL(Integer.class),
-	LIMIT(Integer.class, true),
-	NAME(String.class),
+	DISTANCE("[0-9]+(\\.[0-9]+)?", true),
+	DX("[0-9]+(\\.[0-9]+)?", true),
+	DY("[0-9]+(\\.[0-9]+)?", true),
+	DZ("[0-9]+(\\.[0-9]+)?", true),
+	GAMEMODE(""),
+	LEVEL("[0-9]+"),
+	LIMIT("[0-9]+", true),
+	NAME("\\w"),
 	//NBT(NbtParser.class, true),
 	//SCORES(ScoreParser.class, true),
-	SORT(String.class, true),
-	TAG(String.class),
-	TEAM(String.class),
-	TYPE(Entity.class),
-	X(Double.class),
-	X_ROTATION(Double.class),
-	Y(Double.class),
-	Y_ROTATION(Double.class),
-	Z(Double.class);
+	SORT("\\w", true),
+	TAG("\\w"),
+	TEAM("\\w"),
+	//TYPE(Entity.class),
+	X("[0-9]+(\\.[0-9]+)?", true),
+	X_ROTATION("[0-9]+(\\.[0-9]+)?", true),
+	Y("[0-9]+(\\.[0-9]+)?", true),
+	Y_ROTATION("[0-9]+(\\.[0-9]+)?", true),
+	Z("[0-9]+(\\.[0-9]+)?", true);
 	
 	
-	Class clazz;
+	String match;
 	boolean singleton = false;
 	
-	private SelectorFields(Class parameter) {
-		this.clazz = parameter;
+	private SelectorFields(String match) {
+		this.match = match;
 	}
 	
-	private SelectorFields(Class parameter, boolean singleton) {
-		this.clazz = parameter;
+	private SelectorFields(String match, boolean singleton) {
+		this.match = match;
 		this.singleton = singleton;
 	}
 	
@@ -42,7 +39,7 @@ public enum SelectorFields {
 		return this.name().toLowerCase();
 	}
 	
-	public Class getParameter() {
-		return this.clazz;
+	public String getParameter() {
+		return this.match;
 	};
 }
