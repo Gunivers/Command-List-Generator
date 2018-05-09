@@ -1,4 +1,4 @@
-package net.gunivers.commandparser;
+package net.gunivers.commandparser.selector;
 
 public enum SelectorFields {
 	//ADVANCEMENTS(AdvancementParser.class, true),
