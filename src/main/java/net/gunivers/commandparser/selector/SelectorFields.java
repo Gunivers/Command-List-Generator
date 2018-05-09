@@ -4,35 +4,35 @@ import net.gunivers.commandparser.selector.FieldType;
 
 public enum SelectorFields {
 	//ADVANCEMENTS(AdvancementParser.class, true),
-	DISTANCE(FieldType.DOUBLE_BOUNDED.getMatch(), true),
-	DX(FieldType.DOUBLE_BOUNDED.getMatch(), true),
-	DY(FieldType.DOUBLE_BOUNDED.getMatch(), true),
-	DZ(FieldType.DOUBLE_BOUNDED.getMatch(), true),
-	GAMEMODE(""),
-	LEVEL(FieldType.INT.getMatch()),
-	LIMIT(FieldType.INT.getMatch(), true),
-	NAME(FieldType.STRING.getMatch()),
+	DISTANCE(((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())), true),
+	DX((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch()), true),
+	DY((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch()), true),
+	DZ((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch()), true),
+	GAMEMODE((String s) -> s.matches(FieldType.GAMEMODE.getMatch())),
+	LEVEL((String s) -> s.matches(FieldType.INT.getMatch())),
+	LIMIT((String s) -> s.matches(FieldType.INT.getMatch()), true),
+	NAME((String s) -> s.matches(FieldType.STRING.getMatch())),
 	//NBT(NbtParser.class, true),
 	//SCORES(ScoreParser.class, true),
-	SORT(FieldType.STRING.getMatch(), true),
-	TAG(FieldType.STRING.getMatch()),
-	TEAM(FieldType.STRING.getMatch()),
+	SORT((String s) -> s.matches("nearest|furthest|random|arbitrary"), true),
+	TAG((String s) -> s.matches(FieldType.STRING.getMatch())),
+	TEAM((String s) -> s.matches(FieldType.STRING.getMatch())),
 	//TYPE(Entity.class),
-	X(FieldType.DOUBLE.getMatch(), true),
-	X_ROTATION(FieldType.DOUBLE.getMatch(), true),
-	Y(FieldType.DOUBLE.getMatch(), true),
-	Y_ROTATION(FieldType.DOUBLE.getMatch(), true),
-	Z(FieldType.DOUBLE.getMatch(), true);
+	X((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true),
+	X_ROTATION((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true),
+	Y((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true),
+	Y_ROTATION((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true),
+	Z((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true);
 	
 	
-	String match;
+	SelectorMatcher match;
 	boolean singleton = false;
 	
-	private SelectorFields(String match) {
+	private SelectorFields(SelectorMatcher match) {
 		this.match = match;
 	}
 	
-	private SelectorFields(String match, boolean singleton) {
+	private SelectorFields(SelectorMatcher match, boolean singleton) {
 		this.match = match;
 		this.singleton = singleton;
 	}
@@ -40,10 +40,6 @@ public enum SelectorFields {
 	public String toString() {
 		return this.name().toLowerCase();
 	}
-	
-	public String getParameter() {
-		return this.match;
-	};
 	
 	//TODO
 	public boolean matches(String value) {return true;}
