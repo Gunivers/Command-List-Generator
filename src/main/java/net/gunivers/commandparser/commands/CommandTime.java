@@ -1,7 +1,7 @@
 package net.gunivers.commandparser.commands;
 
 import net.gunivers.commandparser.Command;
-import net.gunivers.commandparser.Node;
+import net.gunivers.commandparser.node.Node;
 
 class CommandTime extends Command {
 

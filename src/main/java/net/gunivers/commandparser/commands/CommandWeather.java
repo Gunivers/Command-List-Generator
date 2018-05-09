@@ -1,8 +1,8 @@
 package net.gunivers.commandparser.commands;
 
 import net.gunivers.commandparser.Command;
-import net.gunivers.commandparser.CommandNode;
-import net.gunivers.commandparser.EndNode;
+import net.gunivers.commandparser.node.CommandNode;
+import net.gunivers.commandparser.node.EndNode;
 
 public class CommandWeather extends Command {
 

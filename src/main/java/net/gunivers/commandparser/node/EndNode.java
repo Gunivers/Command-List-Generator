@@ -1,4 +1,4 @@
-package net.gunivers.commandparser;
+package net.gunivers.commandparser.node;
 
 public class EndNode extends CommandNode {
 

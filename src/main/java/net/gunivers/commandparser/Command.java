@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import net.gunivers.commandparser.node.CommandNode;
+import net.gunivers.commandparser.node.Node;
+
 public abstract class Command extends CommandNode {
 
 	public static ArrayList<Command> instances = new ArrayList<Command>();

@@ -1,4 +1,4 @@
-package net.gunivers.commandparser;
+package net.gunivers.commandparser.node;
 
 import java.util.ArrayList;
 import java.util.Arrays;

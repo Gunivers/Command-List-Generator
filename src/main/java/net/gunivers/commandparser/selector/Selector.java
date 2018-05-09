@@ -1,6 +1,6 @@
 package net.gunivers.commandparser.selector;
 
-import net.gunivers.commandparser.Node;
+import net.gunivers.commandparser.node.Node;
 
 public class Selector extends Node {
 
