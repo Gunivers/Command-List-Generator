@@ -42,4 +42,7 @@ public enum SelectorFields {
 	public String getParameter() {
 		return this.match;
 	};
+	
+	//TODO
+	public boolean matches(String value) {return true;}
 }

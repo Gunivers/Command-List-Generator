@@ -1,26 +1,58 @@
 package net.gunivers.commandparser.selector;
 
-import net.gunivers.commandparser.node.Node;
+public class Selector {
 
-public class Selector extends Node {
-
-	public Selector(String tag, Node ... children) {
-		super(tag, children);
+	private String selector;
+	
+	public Selector(String selector) {
+		this.selector = selector;
 	}
 	
-	/*@Override
-	public boolean matches(String selector) {
-		selector = selector.substring(2, selector.length() - 2);
+	public boolean matches() {
+		selector = selector.substring(2, selector.length()-1);
+
+		StringBuilder key = new StringBuilder();
+		StringBuilder value = new StringBuilder();
 		
-		String[] fields = selector.split(",");
+		boolean getKey = true;
+		int levelOfCompound = 0;
 		
-		for (String field : fields) {
-			SelectorFields value = SelectorFields.valueOf(field.split("=")[0]);
-			if (value == null) return false;
+		for (char letter : selector.toCharArray()) {
+			if (getKey) {
+				if (letter == '=') {
+					getKey = false;
+					continue;
+				}
+				
+				key.append(letter);
+			}
 			
-			Class clazz = value.getParameter();
+			else {
+				if (letter == ',' && levelOfCompound == 0) {
+					getKey = true;
+					if (!SelectorFields.valueOf(key.toString()).matches(value.toString())) return false;
+					continue;
+				}
+				
+				value.append(letter);
+				
+				switch(letter) {
+					case '[':
+					case '{':
+					case '(':
+						levelOfCompound++;
+						break;
+					
+					case ')':
+					case '}':
+					case ']':
+						levelOfCompound--;
+				}
+				
+				if (levelOfCompound < 0) return false;
+			}
 		}
 		
 		return false;
-	}*/
+	}
 }
