@@ -1,8 +1,8 @@
-package net.gunivers.listgenerator.util.node.commands;
+package net.gunivers.commandparser.commands;
 
-import net.gunivers.listgenerator.util.node.Command;
-import net.gunivers.listgenerator.util.node.CommandNode;
-import net.gunivers.listgenerator.util.node.EndNode;
+import net.gunivers.commandparser.Command;
+import net.gunivers.commandparser.CommandNode;
+import net.gunivers.commandparser.EndNode;
 
 public class CommandWeather extends Command {
 

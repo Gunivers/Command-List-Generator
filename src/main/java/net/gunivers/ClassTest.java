@@ -1,6 +1,6 @@
 package net.gunivers;
 
-import net.gunivers.listgenerator.util.node.commands.CommandWeather;
+import net.gunivers.commandparser.commands.CommandWeather;
 
 public class ClassTest
 {

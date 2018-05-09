@@ -1,4 +1,4 @@
-package net.gunivers.listgenerator.util.node;
+package net.gunivers.commandparser;
 
 import net.gunivers.core.minecraft.Entity;
 

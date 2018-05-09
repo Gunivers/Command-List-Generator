@@ -1,7 +1,7 @@
-package net.gunivers.listgenerator.util.node.commands;
+package net.gunivers.commandparser.commands;
 
-import net.gunivers.listgenerator.util.node.Command;
-import net.gunivers.listgenerator.util.node.Node;
+import net.gunivers.commandparser.Command;
+import net.gunivers.commandparser.Node;
 
 class CommandTime extends Command {
 
