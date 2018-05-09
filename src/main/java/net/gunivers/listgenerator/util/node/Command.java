@@ -26,13 +26,13 @@ public abstract class Command extends CommandNode {
 	public int hasCorrectSyntax(String command) {
 		String[] cmd = (command + " $").split(" ");
 		int value = browseAndCompare(cmd, this);
-		return value == -1 ? -1 : value - 1;
+		return value;
 	}
 	
 	private int browseAndCompare(String[] cmd, CommandNode node) {
 		if(cmd.length == 1 && node.matches(cmd[0])) return -1;
-		else if(cmd.length == 1) return 1;
-		else if(!node.matches(cmd[0])) return 1;
+		else if(cmd.length == 1) return 0;
+		else if(!node.matches(cmd[0])) return 0;
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for(Node child : node.getChildren()) {
 			int i = browseAndCompare(Arrays.copyOfRange(cmd, 1, cmd.length), (CommandNode)child);
