@@ -33,9 +33,10 @@ public abstract class Command extends CommandNode {
 		if(cmd.length == 1 && node.matches(cmd[0])) return -1;
 		else if(cmd.length == 1) return 0;
 		else if(!node.matches(cmd[0])) return 0;
+		int range = node.isSilent() ? 0 : 1;
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for(Node child : node.getChildren()) {
-			int i = browseAndCompare(Arrays.copyOfRange(cmd, 1, cmd.length), (CommandNode)child);
+			int i = browseAndCompare(Arrays.copyOfRange(cmd, range, cmd.length), (CommandNode)child);
 			list.add((i == -1) ? -1 : i + 1);
 		}
 		return (list.contains(-1)) ? -1 : Collections.max(list);
