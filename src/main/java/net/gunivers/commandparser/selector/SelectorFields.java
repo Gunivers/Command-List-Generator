@@ -1,26 +1,28 @@
 package net.gunivers.commandparser.selector;
 
+import net.gunivers.commandparser.selector.FieldType;
+
 public enum SelectorFields {
 	//ADVANCEMENTS(AdvancementParser.class, true),
-	DISTANCE("[0-9]+(\\.[0-9]+)?", true),
-	DX("[0-9]+(\\.[0-9]+)?", true),
-	DY("[0-9]+(\\.[0-9]+)?", true),
-	DZ("[0-9]+(\\.[0-9]+)?", true),
+	DISTANCE(FieldType.DOUBLE_BOUNDED.getMatch(), true),
+	DX(FieldType.DOUBLE_BOUNDED.getMatch(), true),
+	DY(FieldType.DOUBLE_BOUNDED.getMatch(), true),
+	DZ(FieldType.DOUBLE_BOUNDED.getMatch(), true),
 	GAMEMODE(""),
-	LEVEL("[0-9]+"),
-	LIMIT("[0-9]+", true),
-	NAME("\\w"),
+	LEVEL(FieldType.INT.getMatch()),
+	LIMIT(FieldType.INT.getMatch(), true),
+	NAME(FieldType.STRING.getMatch()),
 	//NBT(NbtParser.class, true),
 	//SCORES(ScoreParser.class, true),
-	SORT("\\w", true),
-	TAG("\\w"),
-	TEAM("\\w"),
+	SORT(FieldType.STRING.getMatch(), true),
+	TAG(FieldType.STRING.getMatch()),
+	TEAM(FieldType.STRING.getMatch()),
 	//TYPE(Entity.class),
-	X("[0-9]+(\\.[0-9]+)?", true),
-	X_ROTATION("[0-9]+(\\.[0-9]+)?", true),
-	Y("[0-9]+(\\.[0-9]+)?", true),
-	Y_ROTATION("[0-9]+(\\.[0-9]+)?", true),
-	Z("[0-9]+(\\.[0-9]+)?", true);
+	X(FieldType.DOUBLE.getMatch(), true),
+	X_ROTATION(FieldType.DOUBLE.getMatch(), true),
+	Y(FieldType.DOUBLE.getMatch(), true),
+	Y_ROTATION(FieldType.DOUBLE.getMatch(), true),
+	Z(FieldType.DOUBLE.getMatch(), true);
 	
 	
 	String match;
