@@ -17,14 +17,8 @@ Functionnality:
 	- Generalisation of generator by list to allow to load Enum and custom the preset list		-
 	- Generalize increment (enter equation which translate to increment state)					- Oromis			TEST PERIOD
 
-Node:
-(1)	- AdvancementParser																			-
-(2)	- NbtParser																					-
-(3)	- ScoreParser																				-
-	- SelectorNode																				- AZ				WAITING (1); (2); (3)
-	- Node																						- AZ				DONE
-	- CommandNode																				- AZ				DONE
-
+CommandParser:
+	- 
 
 
 Write your name after the feature if you decide to do this later.
