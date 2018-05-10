@@ -6,16 +6,17 @@ public enum FieldType {
 	DOUBLE_BOUNDED("(([0-9]+(\\.[0-9]+)?)\\.\\.)|(([0-9]+(\\.[0-9]+)?)?(\\.\\.([0-9]+(\\.[0-9]+)?)))|([0-9]+(\\.[0-9]+)?)"),
 	STRING("\\w+"),
 	INT("[0-9]+"),
+	INT_BOUNDED("[0-9]+(..[0-9]*)?"),
 	GAMEMODE("survival|creative|spectator|adventure");
 	
-	private String match;
+	private String regex;
 	
-	FieldType(String match) {
-		this.match = match;
+	FieldType(String regex) {
+		this.regex = regex;
 	}
 	
 	public String getMatch() {
-		return match;
+		return regex;
 	}
 	
 }
