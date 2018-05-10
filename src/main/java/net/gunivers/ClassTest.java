@@ -10,7 +10,8 @@ public class ClassTest
     	String noMinOrLim = "(" + doubleT + "?" + "(\\.\\." + doubleT + "){1})"; 
     	String noMax = "(" + doubleT + "\\.\\.)";
     	
-        System.out.println("..5".matches(noMax + "|" + noMinOrLim + "|" + doubleT));
+    	System.out.println();
+        System.out.println("..5".matches("(([0-9]+(\\.[0-9]+)?)\\.\\.)|(([0-9]+(\\.[0-9]+)?)?(\\.\\.([0-9]+(\\.[0-9]+)?)))|([0-9]+(\\.[0-9]+)?)"));
 
     }
 

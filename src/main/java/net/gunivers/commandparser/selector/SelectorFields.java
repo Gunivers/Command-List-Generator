@@ -1,26 +1,28 @@
 package net.gunivers.commandparser.selector;
 
+import net.gunivers.commandparser.selector.FieldType;
+
 public enum SelectorFields {
 	//ADVANCEMENTS(AdvancementParser.class, true),
-	DISTANCE(((String s) -> true), true),
-	DX(((String s) -> true), true),
-	DY(((String s) -> true), true),
-	DZ(((String s) -> true), true),
-	GAMEMODE(((String s) -> true)),
-	LEVEL(((String s) -> true)),
-	LIMIT(((String s) -> true), true),
-	NAME(((String s) -> true)),
+	DISTANCE(((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())), true),
+	DX((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch()), true),
+	DY((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch()), true),
+	DZ((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch()), true),
+	GAMEMODE((String s) -> s.matches(FieldType.GAMEMODE.getMatch())),
+	LEVEL((String s) -> s.matches(FieldType.INT.getMatch())),
+	LIMIT((String s) -> s.matches(FieldType.INT.getMatch()), true),
+	NAME((String s) -> s.matches(FieldType.STRING.getMatch())),
 	//NBT(NbtParser.class, true),
 	//SCORES(ScoreParser.class, true),
-	SORT(((String s) -> true), true),
-	TAG(((String s) -> true)),
-	TEAM(((String s) -> true)),
+	SORT((String s) -> s.matches("nearest|furthest|random|arbitrary"), true),
+	TAG((String s) -> s.matches(FieldType.STRING.getMatch())),
+	TEAM((String s) -> s.matches(FieldType.STRING.getMatch())),
 	//TYPE(Entity.class),
-	X(((String s) -> true), true),
-	X_ROTATION(((String s) -> true), true),
-	Y(((String s) -> true), true),
-	Y_ROTATION(((String s) -> true), true),
-	Z(((String s) -> true), true);
+	X((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true),
+	X_ROTATION((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true),
+	Y((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true),
+	Y_ROTATION((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true),
+	Z((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true);
 	
 	
 	SelectorMatcher match;
@@ -39,5 +41,6 @@ public enum SelectorFields {
 		return this.name().toLowerCase();
 	}
 	
-	public boolean matches(String value) {return this.match.matches(value);}
+	//TODO
+	public boolean matches(String value) {return true;}
 }
