@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import net.gunivers.core.language.Language;
+import net.gunivers.core.language.Locale;
 import net.gunivers.listgenerator.functionality.*;
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 
@@ -15,6 +17,8 @@ public class CommandListGenerator extends Application
 {
 
     public static Stage MAIN_STAGE;
+
+	public static Language language = Language.getLanguage(Locale.ENGLISH);
 
     public static void main(String[] args)
     {
@@ -51,8 +55,8 @@ public class CommandListGenerator extends Application
         JFXDecorator decorator = new JFXDecorator(primaryStage, loader.getRoot(), false, true, true);
 
         //Set the tittle of window
-        decorator.setText("Command List Generator");
-        primaryStage.setTitle("Command List Generator");
+		decorator.setText(language.get("gui.listgenerator.title"));
+		primaryStage.setTitle(language.get("gui.listgenerator.title"));
 
         //Create new scene
         Scene scene = new Scene(decorator);
