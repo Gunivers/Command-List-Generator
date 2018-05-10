@@ -11,14 +11,23 @@ public class SelectorParser {
 			String[] score = scores[i].split("=");
 			
 			if (score.length != 2) return false;
-			if (!score[0].matches("\\w")) return false;
+			if (!score[0].matches("\\w+")) return false;
 			if (!score[1].matches(FieldType.DOUBLE_BOUNDED.getMatch())) return false;
 		}
 		
 		return true;
 	}
 	
-	public static boolean parseAchievement(String value) {
+	public static boolean parseAdvancement(String value) {
+		String[] advancements = value.substring(1, value.length() -2).split(",");
+		
+		for(int i = 0; i < advancements.length; i++) {
+			String[] advancement = advancements[i].split("=");
+			
+			if (advancement.length != 2) return false;
+			if (!advancement[0].matches("(minecraft:)?(\\w|/\\w)+")) return false;
+			if (!advancement[1].matches("true|false")) return false;
+		}
 		
 		return true;
 	}
