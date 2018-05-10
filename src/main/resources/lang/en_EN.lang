@@ -1,2 +1,5 @@
-#Main Window
+##############################
+#          Main Window       #
+##############################
+
 gui.listgenerator.title=Command List Generator
