@@ -1,21 +1,24 @@
 package net.gunivers.commandparser.selector;
 
-public enum FieldType {
+public enum FieldType
+{
 
 	DOUBLE("([0-9]+(\\.[0-9]+)?)"),
 	DOUBLE_BOUNDED("(([0-9]+(\\.[0-9]+)?)\\.\\.)|(([0-9]+(\\.[0-9]+)?)?(\\.\\.([0-9]+(\\.[0-9]+)?)))|([0-9]+(\\.[0-9]+)?)"),
 	STRING("\\w+"),
 	INT("[0-9]+"),
 	GAMEMODE("survival|creative|spectator|adventure");
-	
+
 	private String match;
-	
-	FieldType(String match) {
+
+	FieldType(String match)
+	{
 		this.match = match;
 	}
-	
-	public String getMatch() {
+
+	public String getMatch()
+	{
 		return match;
 	}
-	
+
 }

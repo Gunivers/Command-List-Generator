@@ -1,6 +1,7 @@
 package net.gunivers.core.minecraft;
 
-public enum Entity {
+public enum Entity
+{
 	area_effect_cloud,
 	armor_stand,
 	arrow,
@@ -92,9 +93,11 @@ public enum Entity {
 	zombie_horse,
 	zombie_pigman,
 	zombie_villager;
-	
-	public boolean hasSpawnEnder() {
-		switch(this) {
+
+	public boolean hasSpawnEnder()
+	{
+		switch (this)
+		{
 			case area_effect_cloud:
 			case dragon_fireball:
 			case ender_crystal:
@@ -102,14 +105,18 @@ public enum Entity {
 			case enderman:
 			case endermite:
 			case shulker:
-			case shulker_bullet: return true;
-			
-			default: return false;
+			case shulker_bullet:
+				return true;
+
+			default:
+				return false;
 		}
- 	}
-	
-	public boolean hasSpawnOverworld() {
-		switch(this) {
+	}
+
+	public boolean hasSpawnOverworld()
+	{
+		switch (this)
+		{
 			case arrow:
 			case bat:
 			case cave_spider:
@@ -157,14 +164,18 @@ public enum Entity {
 			case wolf:
 			case xp_orb:
 			case zombie:
-			case zombie_villager: return true;
-			
-			default: return false;
+			case zombie_villager:
+				return true;
+
+			default:
+				return false;
 		}
 	}
-	
-	public boolean hasSpawnNether() {
-		switch(this) {
+
+	public boolean hasSpawnNether()
+	{
+		switch (this)
+		{
 			case blaze:
 			case fireball:
 			case ghast:
@@ -173,28 +184,36 @@ public enum Entity {
 			case wither_skeleton:
 			case wither_skull:
 			case xp_orb:
-			case zombie_pigman: return true;
-			
-			default: return false;
+			case zombie_pigman:
+				return true;
+
+			default:
+				return false;
 		}
 	}
-	
-	public boolean isMinecart() {
-		switch(this) {
+
+	public boolean isMinecart()
+	{
+		switch (this)
+		{
 			case chest_minecart:
 			case commandblock_minecart:
 			case furnace_minecart:
 			case hopper_minecart:
 			case minecart:
 			case spawner_minecart:
-			case tnt_minecart: return true;
-			
-			default: return false;
+			case tnt_minecart:
+				return true;
+
+			default:
+				return false;
 		}
 	}
-	
- 	public boolean hasNaturalSpawn() {
-		switch(this) {
+
+	public boolean hasNaturalSpawn()
+	{
+		switch (this)
+		{
 			case bat:
 			case blaze:
 			case cave_spider:
@@ -242,18 +261,23 @@ public enum Entity {
 			case wither_skeleton:
 			case wolf:
 			case zombie:
-			case zombie_pigman: return true;
-					
-			default: return false;
+			case zombie_pigman:
+				return true;
+
+			default:
+				return false;
 		}
 	}
-	
- 	public boolean hasLife() {
- 		return !this.hasNoLife();
- 	}
- 	
-	public boolean hasNoLife() {
-		switch(this) {
+
+	public boolean hasLife()
+	{
+		return !this.hasNoLife();
+	}
+
+	public boolean hasNoLife()
+	{
+		switch (this)
+		{
 			case area_effect_cloud:
 			case armor_stand:
 			case arrow:
@@ -279,14 +303,18 @@ public enum Entity {
 			case trident:
 			case wither_skull:
 			case xp_bottle:
-			case xp_orb: return true;
-			
-			default: return false;
+			case xp_orb:
+				return true;
+
+			default:
+				return false;
 		}
 	}
-	
-	public boolean canFly() {
-		switch(this) {
+
+	public boolean canFly()
+	{
+		switch (this)
+		{
 			case bat:
 			case blaze:
 			case eye_of_ender_signal:
@@ -294,27 +322,35 @@ public enum Entity {
 			case ghast:
 			case shulker_bullet:
 			case wither:
-			case xp_orb: return true;
-			
-			default: return false;
+			case xp_orb:
+				return true;
+
+			default:
+				return false;
 		}
 	}
-	
-	public boolean isVillager() {
-		switch(this) {
+
+	public boolean isVillager()
+	{
+		switch (this)
+		{
 			case evocation_illager:
 			case illusion_illager:
 			case villager:
 			case vindication_illager:
 			case witch:
-			case zombie_villager: return true;
-			
-			default: return false;
+			case zombie_villager:
+				return true;
+
+			default:
+				return false;
 		}
 	}
-	
-	public boolean isAnimal() {
-		switch(this) {
+
+	public boolean isAnimal()
+	{
+		switch (this)
+		{
 			case bat:
 			case chicken:
 			case cod_mob:
@@ -334,14 +370,18 @@ public enum Entity {
 			case squid:
 			case tropical_fish:
 			case turtle:
-			case villager_golem: return true;
-					
-			default: return false;
+			case villager_golem:
+				return true;
+
+			default:
+				return false;
 		}
 	}
-	
-	public boolean isMonster() {
-		switch(this) {
+
+	public boolean isMonster()
+	{
+		switch (this)
+		{
 			case blaze:
 			case cave_spider:
 			case creeper:
@@ -371,9 +411,11 @@ public enum Entity {
 			case wither_skeleton:
 			case zombie:
 			case zombie_pigman:
-			case zombie_villager: return true;
-			
-			default: return false;
+			case zombie_villager:
+				return true;
+
+			default:
+				return false;
 		}
 	}
 }

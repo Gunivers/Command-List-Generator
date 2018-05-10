@@ -13,73 +13,73 @@ import java.util.ArrayList;
  */
 public class EntityGenerator extends Functionality
 {
-    EntityType et;
+	EntityType et;
 
-    /**
-     * <strong>Constructor</strong>
-     *
-     * @param et a EntityType
-     */
-    public EntityGenerator(EntityType et)
-    {
-        this.et = et;
-    }
+	/**
+	 * <strong>Constructor</strong>
+	 *
+	 * @param et a EntityType
+	 */
+	public EntityGenerator(EntityType et)
+	{
+		this.et = et;
+	}
 
-    /**
-     * Generate Simple Entity
-     *
-     * @param et a EntityType
-     * @return ArrayList<String> generated Entity names
-     */
-    @Call
-    public static ArrayList<String> generate(EntityType et)
-    {
-        ArrayList<String> commands = new ArrayList<>();
+	/**
+	 * Generate Simple Entity
+	 *
+	 * @param et a EntityType
+	 * @return ArrayList<String> generated Entity names
+	 */
+	@Call
+	public static ArrayList<String> generate(EntityType et)
+	{
+		ArrayList<String> commands = new ArrayList<>();
 
-        for (Entity entity : Entity.values())
-        {
-            if (EntityType.checkEntity(entity, et)) commands.add(entity.name());
-        }
+		for (Entity entity : Entity.values())
+		{
+			if (EntityType.checkEntity(entity, et)) commands.add(entity.name());
+		}
 
-        return commands;
-    }
+		return commands;
+	}
 
-    /**
-     * @param et a EntityType
-     * @return String name of et
-     */
-    public static String toString(EntityType et)
-    {
-        return et.toString();
-    }
+	/**
+	 * @param et a EntityType
+	 * @return String name of et
+	 */
+	public static String toString(EntityType et)
+	{
+		return et.toString();
+	}
 
-    /**
-     * Generate simple Entity
-     *
-     * @return ArrayList<String> generated Entity names
-     */
-    public ArrayList<String> generate()
-    {
-        ArrayList<String> commands = new ArrayList<>();
+	/**
+	 * Generate simple Entity
+	 *
+	 * @return ArrayList<String> generated Entity names
+	 */
+	public ArrayList<String> generate()
+	{
+		ArrayList<String> commands = new ArrayList<>();
 
-        for (Entity entity : Entity.values())
-        {
-            if (EntityType.checkEntity(entity, et)) commands.add(entity.name());
-        }
+		for (Entity entity : Entity.values())
+		{
+			if (EntityType.checkEntity(entity, et)) commands.add(entity.name());
+		}
 
-        return commands;
-    }
+		return commands;
+	}
 
-    @Override
-    public String toString()
-    {
-        return "Entity";
-    }
+	@Override
+	public String toString()
+	{
+		return "Entity";
+	}
 
-    @Override
-    public ArrayList<Object> callParameterOverlay()
-    {
-        // TODO
-        return null;
-    }
+	@Override
+	public ArrayList<Object> callParameterOverlay()
+	{
+		// TODO
+		return null;
+	}
 }

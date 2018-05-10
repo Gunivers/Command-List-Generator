@@ -21,49 +21,49 @@ import java.util.ResourceBundle;
 
 public class DichotomyController extends FunctionalityController implements Initializable
 {
-    @FXML
-    private JFXTextField TOP_TEXT;
+	@FXML
+	private JFXTextField TOP_TEXT;
 
-    @FXML
-    private JFXTextField BOTTOM_TEXT;
+	@FXML
+	private JFXTextField BOTTOM_TEXT;
 
-    private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
+	private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
-        setDialog(ButtonNextHandler.newDialog);
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		setDialog(ButtonNextHandler.newDialog);
 
-        TOP_TEXT.textProperty().addListener(new OnlyIntChangeListener(TOP_TEXT));
-        BOTTOM_TEXT.textProperty().addListener(new OnlyIntChangeListener(BOTTOM_TEXT));
+		TOP_TEXT.textProperty().addListener(new OnlyIntChangeListener(TOP_TEXT));
+		BOTTOM_TEXT.textProperty().addListener(new OnlyIntChangeListener(BOTTOM_TEXT));
 
-        getDoneButton().setOnAction(event -> saveAll());
+		getDoneButton().setOnAction(event -> saveAll());
 
-        if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null &&
-                !CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
-        {
-            setDialog(ButtonEditHandler.dialog);
-            IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());
-            TOP_TEXT.setText(((IntValue) values[0]).get() + "");
-            BOTTOM_TEXT.setText(((IntValue) values[1]).get() + "");
-        }
-    }
+		if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null &&
+				!CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
+		{
+			setDialog(ButtonEditHandler.dialog);
+			IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());
+			TOP_TEXT.setText(((IntValue) values[0]).get() + "");
+			BOTTOM_TEXT.setText(((IntValue) values[1]).get() + "");
+		}
+	}
 
-    @Override
-    public void saveAll()
-    {
-        Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
-        tag.setType(Functionality.getFunctionalitie("Dichotomy"));
+	@Override
+	public void saveAll()
+	{
+		Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
+		tag.setType(Functionality.getFunctionalitie("Dichotomy"));
 
-        try
-        {
-            ValueManager.register(tag, Integer.valueOf(TOP_TEXT.getText()), Integer.valueOf(BOTTOM_TEXT.getText()), CommandListGeneratorController.CONTROLLER.getMaxCommand());
-        } catch (Exception e)
-        {
-            return;
-        }
+		try
+		{
+			ValueManager.register(tag, Integer.valueOf(TOP_TEXT.getText()), Integer.valueOf(BOTTOM_TEXT.getText()), CommandListGeneratorController.CONTROLLER.getMaxCommand());
+		} catch (Exception e)
+		{
+			return;
+		}
 
-        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
-        getDialog().close();
-    }
+		CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
+		getDialog().close();
+	}
 }

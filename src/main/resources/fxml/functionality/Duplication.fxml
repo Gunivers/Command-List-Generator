@@ -3,35 +3,38 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.*?>
-<JFXDialogLayout maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.gunivers.listgenerator.gui.functionality.DuplicationController">
-   <children>
-      <VBox>
-         <children>
-            <JFXTextField fx:id="TOP_TEXT" labelFloat="true" promptText="String" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <JFXTextField fx:id="MIDDLE_TEXT" labelFloat="true" promptText="Multiplier" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <JFXTextField fx:id="BOTTOM_TEXT" labelFloat="true" promptText="Add" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <BorderPane>
-               <bottom>
-                  <JFXButton fx:id="DONE" prefHeight="25.0" prefWidth="55.0" text="Done" BorderPane.alignment="CENTER_LEFT">
-                     <BorderPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </BorderPane.margin>
-                  </JFXButton>
-               </bottom>
-            </BorderPane>
-         </children>
-      </VBox>
-   </children>
+<JFXDialogLayout maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                 xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
+                 fx:controller="net.gunivers.listgenerator.gui.functionality.DuplicationController">
+    <children>
+        <VBox>
+            <children>
+                <JFXTextField fx:id="TOP_TEXT" labelFloat="true" promptText="String" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="15.0"/>
+                    </VBox.margin>
+                </JFXTextField>
+                <JFXTextField fx:id="MIDDLE_TEXT" labelFloat="true" promptText="Multiplier" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="15.0"/>
+                    </VBox.margin>
+                </JFXTextField>
+                <JFXTextField fx:id="BOTTOM_TEXT" labelFloat="true" promptText="Add" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="15.0"/>
+                    </VBox.margin>
+                </JFXTextField>
+                <BorderPane>
+                    <bottom>
+                        <JFXButton fx:id="DONE" prefHeight="25.0" prefWidth="55.0" text="Done"
+                                   BorderPane.alignment="CENTER_LEFT">
+                            <BorderPane.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </BorderPane.margin>
+                        </JFXButton>
+                    </bottom>
+                </BorderPane>
+            </children>
+        </VBox>
+    </children>
 </JFXDialogLayout>

@@ -1,8 +1,7 @@
 package net.gunivers.commandparser.selector;
 
-import net.gunivers.commandparser.selector.FieldType;
-
-public enum SelectorFields {
+public enum SelectorFields
+{
 	//ADVANCEMENTS(AdvancementParser.class, true),
 	DISTANCE(((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())), true),
 	DX((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch()), true),
@@ -23,24 +22,30 @@ public enum SelectorFields {
 	Y((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true),
 	Y_ROTATION((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true),
 	Z((String s) -> s.matches(FieldType.DOUBLE.getMatch()), true);
-	
-	
+
+
 	SelectorMatcher match;
 	boolean singleton = false;
-	
-	private SelectorFields(SelectorMatcher match) {
+
+	private SelectorFields(SelectorMatcher match)
+	{
 		this.match = match;
 	}
-	
-	private SelectorFields(SelectorMatcher match, boolean singleton) {
+
+	private SelectorFields(SelectorMatcher match, boolean singleton)
+	{
 		this.match = match;
 		this.singleton = singleton;
 	}
-	
-	public String toString() {
+
+	public String toString()
+	{
 		return this.name().toLowerCase();
 	}
-	
+
 	//TODO
-	public boolean matches(String value) {return true;}
+	public boolean matches(String value)
+	{
+		return true;
+	}
 }
