@@ -8,33 +8,33 @@ import java.util.ArrayList;
 public class Dichotomy extends Functionality
 {
 
-    @Override
-    public String toString()
-    {
-        return "Dichotomy";
-    }
+	@Override
+	public String toString()
+	{
+		return "Dichotomy";
+	}
 
-    @Call
-    public ArrayList<String> dichotomy(int min, int max)
-    {
+	@Call
+	public ArrayList<String> dichotomy(int min, int max)
+	{
 
-        ArrayList<String> commands = new ArrayList<>();
+		ArrayList<String> commands = new ArrayList<>();
 
-        long l = 1;
+		long l = 1;
 
-        while (l < max)
-        {
-            commands.add(String.valueOf(l + min));
-            l = 2 * l;
-        }
+		while (l < max)
+		{
+			commands.add(String.valueOf(l + min));
+			l = 2 * l;
+		}
 
-        return commands;
-    }
+		return commands;
+	}
 
-    @Override
-    public ArrayList<Object> callParameterOverlay()
-    {
-        // TODO
-        return null;
-    }
+	@Override
+	public ArrayList<Object> callParameterOverlay()
+	{
+		// TODO
+		return null;
+	}
 }

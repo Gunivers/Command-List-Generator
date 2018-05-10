@@ -1,8 +1,10 @@
 package net.gunivers.commandparser.node;
 
-public class EndNode extends CommandNode {
+public class EndNode extends CommandNode
+{
 
-	public EndNode() {
+	public EndNode()
+	{
 		super("end", "\\$");
 	}
 

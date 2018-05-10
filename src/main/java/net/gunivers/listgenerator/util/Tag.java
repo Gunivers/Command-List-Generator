@@ -12,50 +12,50 @@ import java.util.HashMap;
 public class Tag
 {
 
-    public static HashMap<String, Tag> tags = new HashMap<>();
+	public static HashMap<String, Tag> tags = new HashMap<>();
 
-    private Functionality type;
-    private String id;
+	private Functionality type;
+	private String id;
 
-    /**
-     * Constructor of Tag
-     *
-     * @param id the id of the tag
-     */
-    public Tag(String id)
-    {
-        this.id = id;
-    }
+	/**
+	 * Constructor of Tag
+	 *
+	 * @param id the id of the tag
+	 */
+	public Tag(String id)
+	{
+		this.id = id;
+	}
 
-    /**
-     * @return the id of the tag
-     */
-    public String getId()
-    {
-        return id;
-    }
+	/**
+	 * @return the id of the tag
+	 */
+	public String getId()
+	{
+		return id;
+	}
 
-    /**
-     * @return the type of the tag
-     */
-    public Functionality getType()
-    {
-        return type;
-    }
+	/**
+	 * @return the type of the tag
+	 */
+	public Functionality getType()
+	{
+		return type;
+	}
 
-    /**
-     * @param type the type of the tag
-     */
-    public void setType(Functionality type)
-    {
-        this.type = type;
-    }
+	/**
+	 * @param type the type of the tag
+	 */
+	public void setType(Functionality type)
+	{
+		this.type = type;
+	}
 
-    /**
-     * @return the parameters of the tag
-     */
-    public IValue[] getParameters()
-    {
-        return ValueManager.getValues(this);
-    }
+	/**
+	 * @return the parameters of the tag
+	 */
+	public IValue[] getParameters()
+	{
+		return ValueManager.getValues(this);
+	}
 }

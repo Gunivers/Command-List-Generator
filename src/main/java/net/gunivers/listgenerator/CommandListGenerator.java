@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import net.gunivers.core.language.Language;
+import net.gunivers.core.language.Locale;
 import net.gunivers.listgenerator.functionality.*;
 import net.gunivers.listgenerator.gui.CommandListGeneratorController;
 
@@ -14,66 +16,68 @@ import java.net.URL;
 public class CommandListGenerator extends Application
 {
 
-    public static Stage MAIN_STAGE;
+	public static Stage MAIN_STAGE;
 
-    public static void main(String[] args)
-    {
-        launch(args);
-    }
+	public static Language language = Language.getLanguage(Locale.ENGLISH);
 
-    /**
-     * Starting of interface
-     *
-     * @param primaryStage Default stage giving by JavaFX
-     */
-    @Override
-    public void start(Stage primaryStage) throws Exception
-    {
-    	this.MAIN_STAGE = primaryStage;
+	public static void main(String[] args)
+	{
+		launch(args);
+	}
 
-    	new Dichotomy();
-    	new Duplication();
-    	new GeneratorByList();
-    	new Sequence();
-    	new Interpolation();
-    	new ScoreInterpolation();
-    	
-        //Start of fxml load
-        FXMLLoader loader = new FXMLLoader(new URL(getClass().getResource("/fxml/CommandListGenerator.fxml").toExternalForm()));
+	/**
+	 * Starting of interface
+	 *
+	 * @param primaryStage Default stage giving by JavaFX
+	 */
+	@Override
+	public void start(Stage primaryStage) throws Exception
+	{
+		this.MAIN_STAGE = primaryStage;
 
-        //Set the controller of loader
-        loader.setController(new CommandListGeneratorController());
+		new Dichotomy();
+		new Duplication();
+		new GeneratorByList();
+		new Sequence();
+		new Interpolation();
+		new ScoreInterpolation();
 
-        //Load the loader
-        loader.load();
+		//Start of fxml load
+		FXMLLoader loader = new FXMLLoader(new URL(getClass().getResource("/fxml/CommandListGenerator.fxml").toExternalForm()));
 
-        //Decorator of window
-        JFXDecorator decorator = new JFXDecorator(primaryStage, loader.getRoot(), false, true, true);
+		//Set the controller of loader
+		loader.setController(new CommandListGeneratorController());
 
-        //Set the tittle of window
-        decorator.setText("Command List Generator");
-        primaryStage.setTitle("Command List Generator");
+		//Load the loader
+		loader.load();
 
-        //Create new scene
-        Scene scene = new Scene(decorator);
+		//Decorator of window
+		JFXDecorator decorator = new JFXDecorator(primaryStage, loader.getRoot(), false, true, true);
 
-        //Make sure font is loaded
-        Font.loadFont(CommandListGenerator.class.getResource("/css/font/Roboto-Regular.ttf").toExternalForm(), 10D);
-        Font.loadFont(CommandListGenerator.class.getResource("/css/font/Roboto-Bold.ttf").toExternalForm(), 10D);
+		//Set the tittle of window
+		decorator.setText(language.get("gui.listgenerator.title"));
+		primaryStage.setTitle(language.get("gui.listgenerator.title"));
 
-        //Clear all CSS option
-        scene.getStylesheets().clear();
-        //Add custom CSS value
-        scene.getStylesheets().add(getClass().getResource("/css/Gunivers.css").toExternalForm());
+		//Create new scene
+		Scene scene = new Scene(decorator);
 
-        //Set the dimension of window
-        primaryStage.setMinWidth(640);
-        primaryStage.setMinHeight(400);
+		//Make sure font is loaded
+		Font.loadFont(CommandListGenerator.class.getResource("/css/font/Roboto-Regular.ttf").toExternalForm(), 10D);
+		Font.loadFont(CommandListGenerator.class.getResource("/css/font/Roboto-Bold.ttf").toExternalForm(), 10D);
 
-        //Set the scene
-        primaryStage.setScene(scene);
+		//Clear all CSS option
+		scene.getStylesheets().clear();
+		//Add custom CSS value
+		scene.getStylesheets().add(getClass().getResource("/css/Gunivers.css").toExternalForm());
 
-        //Show the scene
-        primaryStage.show();
-    }
+		//Set the dimension of window
+		primaryStage.setMinWidth(640);
+		primaryStage.setMinHeight(400);
+
+		//Set the scene
+		primaryStage.setScene(scene);
+
+		//Show the scene
+		primaryStage.show();
+	}
 }

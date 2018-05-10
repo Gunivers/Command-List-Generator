@@ -6,25 +6,25 @@ import javafx.fxml.FXML;
 
 public abstract class FunctionalityController
 {
-    private JFXDialog dialog;
+	private JFXDialog dialog;
 
-    @FXML
-    private JFXButton DONE;
+	@FXML
+	private JFXButton DONE;
 
-    public JFXButton getDoneButton()
-    {
-        return DONE;
-    }
+	public JFXButton getDoneButton()
+	{
+		return DONE;
+	}
 
-    public abstract void saveAll();
+	public abstract void saveAll();
 
-    public JFXDialog getDialog()
-    {
-        return dialog;
-    }
+	public JFXDialog getDialog()
+	{
+		return dialog;
+	}
 
-    public void setDialog(JFXDialog dialog)
-    {
-        this.dialog = dialog;
-    }
+	public void setDialog(JFXDialog dialog)
+	{
+		this.dialog = dialog;
+	}
 }

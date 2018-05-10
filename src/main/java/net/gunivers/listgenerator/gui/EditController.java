@@ -18,28 +18,28 @@ import java.util.ResourceBundle;
 
 public class EditController implements Initializable
 {
-    public static StackPane MAIN_PANE = CommandListGeneratorController.MAIN_PANE;
+	public static StackPane MAIN_PANE = CommandListGeneratorController.MAIN_PANE;
 
-    @FXML
-    private JFXDialog dialog;
+	@FXML
+	private JFXDialog dialog;
 
-    @FXML
-    private JFXDialogLayout layout;
+	@FXML
+	private JFXDialogLayout layout;
 
-    @FXML
-    private JFXButton NEXT_BUTTON;
+	@FXML
+	private JFXButton NEXT_BUTTON;
 
-    @FXML
-    private JFXListView<Label> FUNCTIONALITY_LIST;
+	@FXML
+	private JFXListView<Label> FUNCTIONALITY_LIST;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
-        layout.setPrefSize(CommandListGenerator.MAIN_STAGE.getWidth() / 1.25, CommandListGenerator.MAIN_STAGE.getHeight() / 1.25);
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		layout.setPrefSize(CommandListGenerator.MAIN_STAGE.getWidth() / 1.25, CommandListGenerator.MAIN_STAGE.getHeight() / 1.25);
 
-        for (Functionality functionality : Functionality.getFunctionalities().values())
-            FUNCTIONALITY_LIST.getItems().add(new Label(functionality.toString()));
+		for (Functionality functionality : Functionality.getFunctionalities().values())
+			FUNCTIONALITY_LIST.getItems().add(new Label(functionality.toString()));
 
-        NEXT_BUTTON.setOnAction(new ButtonNextHandler(FUNCTIONALITY_LIST, ButtonEditHandler.dialog));
-    }
+		NEXT_BUTTON.setOnAction(new ButtonNextHandler(FUNCTIONALITY_LIST, ButtonEditHandler.dialog));
+	}
 }

@@ -20,42 +20,42 @@ import java.util.ResourceBundle;
 
 public class ListController extends FunctionalityController implements Initializable
 {
-    @FXML
-    JFXTextArea TEXT_AREA;
+	@FXML
+	JFXTextArea TEXT_AREA;
 
-    private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
+	private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel().getSelectedIndex();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
-        setDialog(ButtonNextHandler.newDialog);
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		setDialog(ButtonNextHandler.newDialog);
 
-        getDoneButton().setOnAction(event -> saveAll());
+		getDoneButton().setOnAction(event -> saveAll());
 
-        if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null &&
-                !CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
-        {
-            setDialog(ButtonEditHandler.dialog);
-            IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());
-            TEXT_AREA.setText(((StringValue) values[0]).get() + "");
-        }
-    }
+		if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null &&
+				!CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
+		{
+			setDialog(ButtonEditHandler.dialog);
+			IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());
+			TEXT_AREA.setText(((StringValue) values[0]).get() + "");
+		}
+	}
 
-    @Override
-    public void saveAll()
-    {
-        Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
-        tag.setType(Functionality.getFunctionalitie("List"));
+	@Override
+	public void saveAll()
+	{
+		Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
+		tag.setType(Functionality.getFunctionalitie("List"));
 
-        try
-        {
-            ValueManager.register(tag, TEXT_AREA.getText(), CommandListGeneratorController.CONTROLLER.getMaxCommand());
-        } catch (Exception e)
-        {
-            return;
-        }
+		try
+		{
+			ValueManager.register(tag, TEXT_AREA.getText(), CommandListGeneratorController.CONTROLLER.getMaxCommand());
+		} catch (Exception e)
+		{
+			return;
+		}
 
-        CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
-        getDialog().close();
-    }
+		CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
+		getDialog().close();
+	}
 }

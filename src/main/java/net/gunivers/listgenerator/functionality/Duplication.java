@@ -1,46 +1,46 @@
 package net.gunivers.listgenerator.functionality;
 
-import java.util.ArrayList;
-
 import net.gunivers.listgenerator.util.Call;
 import net.gunivers.listgenerator.util.Functionality;
+
+import java.util.ArrayList;
 
 public class Duplication extends Functionality
 {
 
-    @Override
-    public String toString()
-    {
-        return "Duplication";
-    }
+	@Override
+	public String toString()
+	{
+		return "Duplication";
+	}
 
-    @Call
-    public ArrayList<String> duplication(String txt, double multiplier, double add, int nbreCommands)
-    {
+	@Call
+	public ArrayList<String> duplication(String txt, double multiplier, double add, int nbreCommands)
+	{
 
-        ArrayList<String> commands = new ArrayList<>();
+		ArrayList<String> commands = new ArrayList<>();
 
-        for (int i = 0; i < nbreCommands; i++)
-            commands.add(duplicate(txt, (int) Math.round((i + 1) * multiplier + add)));
+		for (int i = 0; i < nbreCommands; i++)
+			commands.add(duplicate(txt, (int) Math.round((i + 1) * multiplier + add)));
 
-        return commands;
-    }
+		return commands;
+	}
 
-    private String duplicate(String txt, int times)
-    {
+	private String duplicate(String txt, int times)
+	{
 
-        StringBuilder ret = new StringBuilder();
+		StringBuilder ret = new StringBuilder();
 
-        for (int i = 0; i < times; i++)
-            ret.append(txt);
+		for (int i = 0; i < times; i++)
+			ret.append(txt);
 
-        return ret.toString();
-    }
+		return ret.toString();
+	}
 
-    @Override
-    public ArrayList<Object> callParameterOverlay()
-    {
-        // TODO
-        return null;
-    }
+	@Override
+	public ArrayList<Object> callParameterOverlay()
+	{
+		// TODO
+		return null;
+	}
 }

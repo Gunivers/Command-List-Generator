@@ -15,55 +15,55 @@ import java.io.IOException;
 public class ButtonEditHandler implements EventHandler<ActionEvent>
 {
 
-    private JFXSnackbar bar = new JFXSnackbar(CommandListGeneratorController.MAIN_PANE);
+	private JFXSnackbar bar = new JFXSnackbar(CommandListGeneratorController.MAIN_PANE);
 
-    public static JFXDialog dialog;
+	public static JFXDialog dialog;
 
-    @Override
-    public void handle(ActionEvent event)
-    {
-        if (CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem() != null)
-        {
-            String tagName = CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText();
+	@Override
+	public void handle(ActionEvent event)
+	{
+		if (CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem() != null)
+		{
+			String tagName = CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText();
 
-            if (ValueManager.getValues(tagName) == null)
-            {
-                dialog = new JFXDialog();
+			if (ValueManager.getValues(tagName) == null)
+			{
+				dialog = new JFXDialog();
 
-                JFXDialogLayout layout = null;
+				JFXDialogLayout layout = null;
 
-                try
-                {
-                    layout = FXMLLoader.load(getClass().getResource("/fxml/ButtonEdit.fxml"));
-                } catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
+				try
+				{
+					layout = FXMLLoader.load(getClass().getResource("/fxml/ButtonEdit.fxml"));
+				} catch (IOException e)
+				{
+					e.printStackTrace();
+				}
 
-                dialog.setContent(layout);
-                dialog.show(CommandListGeneratorController.MAIN_PANE);
-            } else
-            {
-                dialog = new JFXDialog();
+				dialog.setContent(layout);
+				dialog.show(CommandListGeneratorController.MAIN_PANE);
+			} else
+			{
+				dialog = new JFXDialog();
 
-                Functionality functionality = Functionality.getFunctionalitie(CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText());
+				Functionality functionality = Functionality.getFunctionalitie(CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText());
 
-                JFXDialogLayout layout = null;
+				JFXDialogLayout layout = null;
 
-                try
-                {
-                    layout = FXMLLoader.load(getClass().getResource("/fxml/functionality/" + functionality.toString() + ".fxml"));
-                } catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
+				try
+				{
+					layout = FXMLLoader.load(getClass().getResource("/fxml/functionality/" + functionality.toString() + ".fxml"));
+				} catch (IOException e)
+				{
+					e.printStackTrace();
+				}
 
-                dialog.setContent(layout);
-                dialog.show(CommandListGeneratorController.MAIN_PANE);
-            }
-        } else
-        {
-            bar.show("Please select a TAG !", 3 * 1000);
-        }
-    }
+				dialog.setContent(layout);
+				dialog.show(CommandListGeneratorController.MAIN_PANE);
+			}
+		} else
+		{
+			bar.show("Please select a TAG !", 3 * 1000);
+		}
+	}
 }

@@ -12,50 +12,50 @@ import java.util.HashMap;
 public abstract class Functionality
 {
 
-    /**
-     * This Map stocks all functionalities
-     */
-    private static HashMap<String, Functionality> functionalities = new HashMap<String, Functionality>();
+	/**
+	 * This Map stocks all functionalities
+	 */
+	private static HashMap<String, Functionality> functionalities = new HashMap<String, Functionality>();
 
-    /**
-     * Save each instance of a functionality
-     */
-    {
-        functionalities.put(this.toString(), this);
-    }
+	/**
+	 * Save each instance of a functionality
+	 */
+	{
+		functionalities.put(this.toString(), this);
+	}
 
-    /**
-     * @return a HashMap of all available functionnalities
-     */
-    public static HashMap<String, Functionality> getFunctionalities()
-    {
-        return functionalities;
-    }
+	/**
+	 * @return a HashMap of all available functionnalities
+	 */
+	public static HashMap<String, Functionality> getFunctionalities()
+	{
+		return functionalities;
+	}
 
-    /**
-     * @return To the functionality
-     */
-    public static Functionality getFunctionalitie(String name)
-    {
-        return functionalities.get(name);
-    }
+	/**
+	 * @return To the functionality
+	 */
+	public static Functionality getFunctionalitie(String name)
+	{
+		return functionalities.get(name);
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    public abstract String toString();
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	public abstract String toString();
 
-    public abstract ArrayList<Object> callParameterOverlay();
+	public abstract ArrayList<Object> callParameterOverlay();
 
-    /**
-     * @return the method to call to get the tag output
-     */
-    public Method getMethod()
-    {
-        for (final Method method : this.getClass().getMethods())
-            if (method.isAnnotationPresent(Call.class))
-                return method;
-        return null;
-    }
+	/**
+	 * @return the method to call to get the tag output
+	 */
+	public Method getMethod()
+	{
+		for (final Method method : this.getClass().getMethods())
+			if (method.isAnnotationPresent(Call.class))
+				return method;
+		return null;
+	}
 }
