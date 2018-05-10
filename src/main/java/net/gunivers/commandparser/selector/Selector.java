@@ -9,7 +9,7 @@ public class Selector {
 	}
 	
 	public boolean matches() {
-		selector = selector.substring(2, selector.length()-1);
+		selector = selector.substring(3, selector.length()-2);
 
 		StringBuilder key = new StringBuilder();
 		StringBuilder value = new StringBuilder();

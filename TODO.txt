@@ -18,10 +18,9 @@ Functionnality:
 	- Generalize increment (enter equation which translate to increment state)					- Oromis			TEST PERIOD
 
 CommandParser:
-	- AdvancementParser																			-
-	- NbtParser																					-
-	- ScoreParser																				- AZ				IN PROGRESS
-	- Use lambdas in SelectorFields																-
+	- Method parseAchievement in SelectorParser													- AZ				IN PROGRESS
+	- Method parseNbt in SelectorParser															-
+	- Method parseScore in SelectorParser														- AZ				TEST PERIOD
 
 
 Write your name after the feature if you decide to do this later.
