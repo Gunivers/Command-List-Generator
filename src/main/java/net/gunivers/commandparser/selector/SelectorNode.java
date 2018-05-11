@@ -1,12 +1,15 @@
 package net.gunivers.commandparser.selector;
 
-public class Selector
+import net.gunivers.commandparser.node.CommandNode;
+
+public class SelectorNode extends CommandNode
 {
 
 	private String selector;
 
-	public Selector(String selector)
+	public SelectorNode(String selector)
 	{
+		super(selector);
 		this.selector = selector;
 	}
 
