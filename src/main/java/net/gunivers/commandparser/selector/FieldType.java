@@ -6,8 +6,7 @@ public enum FieldType {
 	DOUBLE_BOUNDED("(([0-9]+(\\.[0-9]+)?)\\.\\.)|(([0-9]+(\\.[0-9]+)?)?(\\.\\.([0-9]+(\\.[0-9]+)?)))|([0-9]+(\\.[0-9]+)?)"),
 	STRING("\\w+"),
 	INT("[0-9]+"),
-	INT_BOUNDED("[0-9]+(..[0-9]*)?"),
-	GAMEMODE("survival|creative|spectator|adventure");
+	INT_BOUNDED("[0-9]+(..[0-9]*)?");
 	
 	private String regex;
 	

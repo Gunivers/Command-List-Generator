@@ -11,7 +11,7 @@ public enum SelectorFields {
 	DY((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
 	DZ((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
 	
-	GAMEMODE((String s) -> s.matches(FieldType.GAMEMODE.getMatch())),
+	GAMEMODE((String s) -> s.matches("spectator|adventure|survival|creative")),
 	LEVEL((String s) -> s.matches(FieldType.INT_BOUNDED.getMatch())),
 	LIMIT((String s) -> s.matches(FieldType.INT.getMatch())),
 	NAME((String s) -> s.matches(FieldType.STRING.getMatch())),
@@ -40,5 +40,7 @@ public enum SelectorFields {
 	}
 	
 	//TODO
-	public boolean matches(String value) {return true;}
+	public boolean matches(String value) {
+		return match.matches(value);
+	}
 }
