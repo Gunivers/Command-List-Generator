@@ -1,51 +1,54 @@
 package net.gunivers.commandparser;
 
-import net.gunivers.commandparser.node.CommandNode;
-import net.gunivers.commandparser.node.Node;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public abstract class Command extends CommandNode
-{
+import net.gunivers.commandparser.node.CommandNode;
+import net.gunivers.commandparser.node.Node;
 
-	public static ArrayList<Command> instances = new ArrayList<Command>();
+public class Command extends CommandNode {
+	
+	private static Command commandTree;
 
-	public static Command getCommand(String label)
-	{
-		for (Command cmd : instances)
-		{
-			if (cmd.getTag().equals(label)) return cmd;
-		}
-
-		return null;
+	static {
+		commandTree = new Command("command");
+		commandTree.setSilent(true);
 	}
 
+	public static Command getCommand(String label) {
+		return (Command) commandTree.getChild(label);
+	}
 
-	public Command(String tag, CommandNode... children)
-	{
+	public static CommandNode getTree() {
+		return commandTree;
+	}
+
+	public Command(String tag, CommandNode... children) {
 		super(tag, children);
-		Command.instances.add(this);
+		commandTree.addChild(this);
+	}
+	
+	public static int validSyntax(String command) {
+		return ((Command)commandTree).hasCorrectSyntax(command);
 	}
 
-
-	public int hasCorrectSyntax(String command)
-	{
+	public int hasCorrectSyntax(String command) {
 		String[] cmd = (command + " $").split(" ");
 		int value = browseAndCompare(cmd, this);
 		return value;
 	}
 
-	private int browseAndCompare(String[] cmd, CommandNode node)
-	{
+	private int browseAndCompare(String[] cmd, CommandNode node) {
 		int range = node.isSilent() ? 0 : 1;
-		if (cmd.length == 1 && node.matches(cmd[0])) return -1;
-		else if (cmd.length == 1) return 0;
-		else if (range > 0 && !node.matches(cmd[0])) return 0;
+		if (cmd.length == 1 && node.matches(cmd[0]))
+			return -1;
+		else if (cmd.length == 1)
+			return 0;
+		else if (range > 0 && !node.matches(cmd[0]))
+			return 0;
 		ArrayList<Integer> list = new ArrayList<Integer>();
-		for (Node child : node.getChildren())
-		{
+		for (Node child : node.getChildren()) {
 			int i = browseAndCompare(Arrays.copyOfRange(cmd, range, cmd.length), (CommandNode) child);
 			list.add((i == -1) ? -1 : (range > 0 ? i + 1 : i));
 		}
