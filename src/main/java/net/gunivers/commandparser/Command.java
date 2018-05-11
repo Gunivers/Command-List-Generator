@@ -31,13 +31,6 @@ public class Command extends CommandNode {
 			commandTree.addChild(this);
 	}
 	
-	/*private Command(String tag) {
-		super(tag, new CommandNode[0]);
-		System.out.println("b");
-		commandTree = new Command("command");
-		commandTree.setSilent(true);
-	}*/
-	
 	public static int validSyntax(String command) {
 		return ((Command)commandTree).hasCorrectSyntax(command);
 	}

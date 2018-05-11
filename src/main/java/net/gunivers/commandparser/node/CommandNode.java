@@ -32,6 +32,10 @@ public class CommandNode extends Node
 	{
 		return value.matches(match);
 	}
+	
+	public void setMatch(String value) {
+		match = value;
+	}
 
 	public boolean isSilent()
 	{

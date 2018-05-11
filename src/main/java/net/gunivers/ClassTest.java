@@ -1,8 +1,8 @@
 package net.gunivers;
 
 import net.gunivers.commandparser.Command;
-import net.gunivers.commandparser.commands.CommandExecute;
-import net.gunivers.commandparser.commands.CommandGameMode;
+import net.gunivers.commandparser.commands.CommandDatapack;
+import net.gunivers.commandparser.commands.CommandGamemode;
 import net.gunivers.commandparser.commands.CommandTag;
 
 public class ClassTest
@@ -11,11 +11,11 @@ public class ClassTest
 	public static void main(String[] args)
 	{
 
-		new CommandGameMode();
+		new CommandGamemode();
 		new CommandTag();
-		new CommandExecute();
+		new CommandDatapack();
 		
-		String commandTest = "tag selector add test";
+		String commandTest = "datapack list available";
 		
 		int result = Command.validSyntax(commandTest);
 
