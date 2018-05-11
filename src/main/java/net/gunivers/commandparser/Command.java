@@ -10,11 +10,7 @@ import net.gunivers.commandparser.node.Node;
 public class Command extends CommandNode {
 	
 	private static Command commandTree;
-
-	static {
-		commandTree = new Command("command");
-		commandTree.setSilent(true);
-	}
+	private static boolean treeIsDefined = false;
 
 	public static Command getCommand(String label) {
 		return (Command) commandTree.getChild(label);
@@ -26,8 +22,21 @@ public class Command extends CommandNode {
 
 	public Command(String tag, CommandNode... children) {
 		super(tag, children);
-		commandTree.addChild(this);
+		if(!treeIsDefined) {
+			treeIsDefined = true;
+			commandTree = new Command("command");
+			commandTree.setSilent(true);
+		}
+		if(!tag.equals("command"))
+			commandTree.addChild(this);
 	}
+	
+	/*private Command(String tag) {
+		super(tag, new CommandNode[0]);
+		System.out.println("b");
+		commandTree = new Command("command");
+		commandTree.setSilent(true);
+	}*/
 	
 	public static int validSyntax(String command) {
 		return ((Command)commandTree).hasCorrectSyntax(command);
