@@ -1,25 +1,46 @@
 package net.gunivers;
 
-import net.gunivers.commandparser.Command;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import net.gunivers.commandparser.commands.CommandDatapack;
-import net.gunivers.commandparser.commands.CommandGamemode;
 import net.gunivers.commandparser.commands.CommandTag;
+import net.gunivers.commandparser.selector.SelectorFields;
 
 public class ClassTest
 {
+	
 
 	public static void main(String[] args)
 	{
 
-		new CommandGamemode();
+		System.out.println(SelectorFields.valueOf("aa".toUpperCase()));		
+		
+		
 		new CommandTag();
 		new CommandDatapack();
 		
-		String commandTest = "datapack list available";
-		
-		int result = Command.validSyntax(commandTest);
+		ArrayList<String> entries = new ArrayList<String>();
 
-		System.out.println(result);
+		String a = "[^\\[\\],{}]+=(?:[^\\[\\],{}]+|(?=\\{)(?:(?=.*?\\{(?!.*?\\1)(.*\\}(?!.*\\2).*))(?=.*?\\}(?!.*?\\2)(.*)).)+?.*?(?=\\1)[^{]*(?=\\2$))";
+		String b = "[potato=carrot,test=12b,apple=peer,tree={oak=1,birch={value=3,test={test=b}}},foo=bar]";
+		
+		Pattern p = Pattern.compile(a);
+		Matcher m = p.matcher(b);
+		while(m.find())
+			System.out.println(m.group());
+				
+		
+		/*for(String entry : entries) {
+			System.out.println("Entrée :");
+			System.out.println(entry + '\n');
+			System.out.println("Sortie :");
+			System.out.println(Command.validSyntax(entry));
+			System.out.println("\n");
+		}*/
+
 		
 	}
 

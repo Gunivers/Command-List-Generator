@@ -3,6 +3,7 @@ package net.gunivers.commandparser;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.stream.Stream;
 
 import net.gunivers.commandparser.node.CommandNode;
 import net.gunivers.commandparser.node.Node;
@@ -31,8 +32,18 @@ public class Command extends CommandNode {
 			commandTree.addChild(this);
 	}
 	
-	public static int validSyntax(String command) {
-		return ((Command)commandTree).hasCorrectSyntax(command);
+	public static String validSyntax(String command) {
+		int result = ((Command)commandTree).hasCorrectSyntax(command);
+		StringBuilder msg = new StringBuilder();
+		if(result == -1)
+			msg.append("Aucune erreur n'a été détectée.");
+		else {
+			msg.append("Une erreur a été détectée à la position " + result);
+			msg.append('\n' + command + '\n');
+			Stream.generate(() -> ' ').limit(result).forEach(msg::append);
+			msg.append('^');
+		}
+		return msg.toString();
 	}
 
 	public int hasCorrectSyntax(String command) {
@@ -43,16 +54,17 @@ public class Command extends CommandNode {
 
 	private int browseAndCompare(String[] cmd, CommandNode node) {
 		int range = node.isSilent() ? 0 : 1;
-		if (cmd.length == 1 && node.matches(cmd[0]))
+		int match = node.matches(cmd[0]);
+		if (cmd.length == 1 && match == 1)
 			return -1;
 		else if (cmd.length == 1)
 			return 0;
-		else if (range > 0 && !node.matches(cmd[0]))
+		else if (range > 0 && match == 0)
 			return 0;
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for (Node child : node.getChildren()) {
 			int i = browseAndCompare(Arrays.copyOfRange(cmd, range, cmd.length), (CommandNode) child);
-			list.add((i == -1) ? -1 : (range > 0 ? i + 1 : i));
+			list.add((i == -1) ? -1 : (range > 0 ? i + cmd[0].length() + (i <= 1 ? 1 : i) : i));
 		}
 		return (list.contains(-1)) ? -1 : Collections.max(list);
 	}

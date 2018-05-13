@@ -28,9 +28,9 @@ public class CommandNode extends Node
 	}
 
 	@Override
-	public boolean matches(String value)
+	public int matches(String value)
 	{
-		return value.matches(match);
+		return value.matches(match) ? 1 : 0;
 	}
 	
 	public void setMatch(String value) {

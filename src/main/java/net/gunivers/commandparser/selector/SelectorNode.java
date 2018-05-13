@@ -1,68 +1,49 @@
 package net.gunivers.commandparser.selector;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import net.gunivers.commandparser.node.CommandNode;
 
-public class SelectorNode extends CommandNode
-{
+public class SelectorNode extends CommandNode {
 
-	private String selector;
 
-	public SelectorNode(String selector)
-	{
+	public SelectorNode(String selector) {
 		super(selector);
-		this.selector = selector;
 	}
 
-	public boolean matches()
-	{
-		selector = selector.substring(3, selector.length() - 2);
-
-		StringBuilder key = new StringBuilder();
-		StringBuilder value = new StringBuilder();
-
-		boolean getKey = true;
-		int levelOfCompound = 0;
-
-		for (char letter : selector.toCharArray())
-		{
-			if (getKey)
-			{
-				if (letter == '=')
-				{
-					getKey = false;
-					continue;
-				}
-
-				key.append(letter);
-			} else
-			{
-				if (letter == ',' && levelOfCompound == 0)
-				{
-					getKey = true;
-					if (!SelectorFields.valueOf(key.toString()).matches(value.toString())) return false;
-					continue;
-				}
-
-				value.append(letter);
-
-				switch (letter)
-				{
-					case '[':
-					case '{':
-					case '(':
-						levelOfCompound++;
-						break;
-
-					case ')':
-					case '}':
-					case ']':
-						levelOfCompound--;
-				}
-
-				if (levelOfCompound < 0) return false;
+	@Override
+	public int matches(String value) {
+		if(value.length() == 2 && value.matches("@a|@e|@p|@r|@s"))
+			return 1;
+		else if(value.matches("[0-9a-zA-Z_-]+"))
+			return 1;
+		else if(!(value.length() > 3 && value.substring(0, 2).matches("(@a|@e|@p|@r|@s)\\[")))
+			return 0;
+		else {
+			Pattern p = Pattern.compile("[^\\[\\],{}]+=(?:[^\\[\\],{}]+|(?=\\{)(?:(?=.*?\\{(?!.*?\\1)(.*\\}(?!.*\\2).*))(?=.*?\\}(?!.*?\\2)(.*)).)+?.*?(?=\\1)[^{]*(?=\\2$))");
+			Matcher m = p.matcher(value);
+			ArrayList<String> values = new ArrayList<String>();
+			while(m.find())
+				values.add(m.group());
+			return check(values.toArray(new String[values.size()]));
+		}
+	}
+	
+	private int check(String[] value) {
+		HashMap<String, Integer> reference = new HashMap<String, Integer>();
+		int index = 3;
+		for(int i = 0; i < value.length; i++) {
+			String[] map = value[i].split("=");
+			try {
+				SelectorFields arg = SelectorFields.valueOf(map[0]);
+				index += map[i].length() + 1;
+				arg.matches(value[i]);
+			} catch(IllegalArgumentException e) {
+				return index;
 			}
 		}
-
-		return false;
 	}
 }

@@ -15,16 +15,16 @@ public class CommandWeather extends Command
 		CommandNode duration = new CommandNode("duration", end)
 		{
 			@Override
-			public boolean matches(String value)
+			public int matches(String value)
 			{
 				try
 				{
 					int val = Integer.parseInt(value);
-					if (val > 0 && val < 1000000) return true;
+					if (val > 0 && val < 1000000) return 1;
 				} catch (NumberFormatException e)
 				{
 				}
-				return false;
+				return 0;
 			}
 		};
 
