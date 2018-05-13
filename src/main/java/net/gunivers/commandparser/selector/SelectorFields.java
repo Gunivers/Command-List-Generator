@@ -34,7 +34,7 @@ public enum SelectorFields {
 	
 	private SelectorFields(SelectorMatcher match) {
 		this.match = match;
-		canBeRepeated = 0;
+		this.canBeRepeated = 0;
 	}
 	
 	/**
@@ -53,5 +53,9 @@ public enum SelectorFields {
 	//TODO
 	public boolean matches(String value) {
 		return match.matches(value);
+	}
+
+	public int canBeRepeated() {
+		return canBeRepeated;
 	}
 }

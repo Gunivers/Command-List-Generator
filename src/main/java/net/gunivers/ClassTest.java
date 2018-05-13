@@ -16,7 +16,15 @@ public class ClassTest
 	public static void main(String[] args)
 	{
 
-		System.out.println(SelectorFields.valueOf("aa".toUpperCase()));		
+		int[] test = new int[]{1, 2};	
+		int i = 0;
+		try {
+			i++;
+			System.out.println(test[3]);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println(i);
+		}
+		
 		
 		
 		new CommandTag();
