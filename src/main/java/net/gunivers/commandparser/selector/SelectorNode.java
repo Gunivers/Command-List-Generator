@@ -9,8 +9,8 @@ import net.gunivers.commandparser.node.CommandNode;
 
 public class SelectorNode extends CommandNode {
 
-	public SelectorNode(String selector) {
-		super(selector);
+	public SelectorNode(String name, CommandNode... children) {
+		super(name, children);
 	}
 
 	@Override
@@ -19,12 +19,12 @@ public class SelectorNode extends CommandNode {
 			return 1;
 		else if (value.matches("[0-9a-zA-Z_-]+"))
 			return 1;
-		else if (!(value.length() > 3 && value.substring(0, 2).matches("(@a|@e|@p|@r|@s)\\[")))
+		else if (!(value.length() > 3 || value.substring(0, 3).matches("(@a|@e|@p|@r|@s\\[)")))
 			return 0;
 		else {
 			Pattern p = Pattern.compile(
-					"[^\\[\\],{}]+=(?:[^\\[\\],{}]+|(?=\\{)(?:(?=.*?\\{(?!.*?\\1)(.*\\}(?!.*\\2).*))(?=.*?\\}(?!.*?\\2)(.*)).)+?.*?(?=\\1)[^{]*(?=\\2$))");
-			Matcher m = p.matcher(value);
+					"[^\\[\\],{}]+(?:[^\\[\\],{}]+|(?=\\{)(?:(?=.*?\\{(?!.*?\\1)(.*\\}(?!.*\\2).*))(?=.*?\\}(?!.*?\\2)(.*)).)+?.*?(?=\\1)[^{]*(?=\\2$))");
+			Matcher m = p.matcher(value.substring(2));
 			ArrayList<String> values = new ArrayList<String>();
 			while (m.find())
 				values.add(m.group());
@@ -38,20 +38,21 @@ public class SelectorNode extends CommandNode {
 		for (int i = 0; i < value.length; i++) {
 			String[] map = value[i].split("=");
 			try {
-				SelectorFields arg = SelectorFields.valueOf(map[0]);
-				index += map[0].length() + 1;
-				if (arg.matches(map[0])) {
+				SelectorFields arg = SelectorFields.valueOf(map[0].toUpperCase());
+				if (arg.matches(map[1])) {
 					if (map[1].startsWith("!") && reference.containsKey('!' + map[0]) && arg.canBeRepeated() == 0)
 						return index;
-					if(!map[1].startsWith("!") && reference.containsKey(map[0]) && (arg.canBeRepeated() >= 0 || arg.canBeRepeated() <= 1))
+					if(!map[1].startsWith("!") && reference.containsKey(map[0]) && (arg.canBeRepeated() >= 0 && arg.canBeRepeated() <= 1))
 						return index;
+					index += map[0].length() + 1;
 					if(map[1].startsWith("!"))
 						reference.put('!' + map[0], reference.containsKey('!' + map[0]) ? reference.get('!' + map[0]) + 1 : 1);
 					else
 						reference.put(map[0], reference.containsKey(map[0]) ? reference.get(map[0]) + 1 : 1);
+					index += map[1].length() + 1;
 				} else
 					return index;
-			} catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
+			} catch (IllegalArgumentException e) {
 				return index;
 			}
 		}

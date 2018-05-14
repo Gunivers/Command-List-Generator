@@ -10,7 +10,7 @@ public enum SelectorFields {
 	DX((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
 	DY((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
 	DZ((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
-	
+	TEST((String s) -> s.matches(".*")),
 	GAMEMODE((String s) -> s.matches("spectator|adventure|survival|creative"), 1),
 	LEVEL((String s) -> s.matches(FieldType.INT_BOUNDED.getMatch())),
 	LIMIT((String s) -> s.matches(FieldType.INT.getMatch())),

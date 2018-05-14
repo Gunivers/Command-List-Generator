@@ -36,12 +36,12 @@ public class Command extends CommandNode {
 		int result = ((Command)commandTree).hasCorrectSyntax(command);
 		StringBuilder msg = new StringBuilder();
 		if(result == -1)
-			msg.append("Aucune erreur n'a été détectée.");
+			msg.append("Aucune erreur n'a été détectée.\n");
 		else {
 			msg.append("Une erreur a été détectée à la position " + result);
 			msg.append('\n' + command + '\n');
 			Stream.generate(() -> ' ').limit(result).forEach(msg::append);
-			msg.append('^');
+			msg.append("^");
 		}
 		return msg.toString();
 	}
@@ -61,10 +61,12 @@ public class Command extends CommandNode {
 			return 0;
 		else if (range > 0 && match == 0)
 			return 0;
+		else if (range > 0 && match > 1)
+			return match;
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for (Node child : node.getChildren()) {
 			int i = browseAndCompare(Arrays.copyOfRange(cmd, range, cmd.length), (CommandNode) child);
-			list.add((i == -1) ? -1 : (range > 0 ? i + cmd[0].length() + (i <= 1 ? 1 : i) : i));
+			list.add((i == -1) ? -1 : (range > 0 ? i + cmd[0].length() + 1 : i));
 		}
 		return (list.contains(-1)) ? -1 : Collections.max(list);
 	}
