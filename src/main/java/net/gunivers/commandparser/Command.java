@@ -3,10 +3,12 @@ package net.gunivers.commandparser;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.stream.Stream;
 
 import net.gunivers.commandparser.node.CommandNode;
 import net.gunivers.commandparser.node.Node;
+import net.gunivers.core.language.Tuple;
 
 public class Command extends CommandNode {
 	
@@ -33,41 +35,51 @@ public class Command extends CommandNode {
 	}
 	
 	public static String validSyntax(String command) {
-		int result = ((Command)commandTree).hasCorrectSyntax(command);
+		Tuple<Integer, String> result = ((Command)commandTree).hasCorrectSyntax(command);
 		StringBuilder msg = new StringBuilder();
-		if(result == -1)
-			msg.append("Aucune erreur n'a été détectée.\n");
+		if(result._1() == -1)
+			msg.append(result._2());
 		else {
-			msg.append("Une erreur a été détectée à la position " + result);
+			msg.append("Une erreur a été détectée à la position " + result._1());
 			msg.append('\n' + command + '\n');
-			Stream.generate(() -> ' ').limit(result).forEach(msg::append);
-			msg.append("^");
+			Stream.generate(() -> ' ').limit(result._1()).forEach(msg::append);
+			msg.append("^  ");
+			msg.append(result._2());
 		}
 		return msg.toString();
 	}
 
-	public int hasCorrectSyntax(String command) {
+	public Tuple<Integer, String> hasCorrectSyntax(String command) {
 		String[] cmd = (command + " $").split(" ");
-		int value = browseAndCompare(cmd, this);
+		Tuple<Integer, String> value = browseAndCompare(cmd, this);
 		return value;
 	}
 
-	private int browseAndCompare(String[] cmd, CommandNode node) {
+	private Tuple<Integer, String> browseAndCompare(String[] cmd, CommandNode node) {
 		int range = node.isSilent() ? 0 : 1;
-		int match = node.matches(cmd[0]);
-		if (cmd.length == 1 && match == 1)
-			return -1;
+		Tuple<Integer, String> match = node.matches(cmd[0]);
+		if (cmd.length == 1 && match._1() == 1)
+			return new Tuple<Integer, String>(-1, "Aucune erreur n'a été détectée.");
 		else if (cmd.length == 1)
-			return 0;
-		else if (range > 0 && match == 0)
-			return 0;
-		else if (range > 0 && match > 1)
+			return new Tuple<Integer, String>(0, "Argument incorrecte.");
+		else if (range > 0 && match._1() == 0)
 			return match;
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		else if (range > 0 && match._1() > 1)
+			return match;
+		ArrayList<Tuple<Integer, String>> list = new ArrayList<Tuple<Integer, String>>();
 		for (Node child : node.getChildren()) {
-			int i = browseAndCompare(Arrays.copyOfRange(cmd, range, cmd.length), (CommandNode) child);
-			list.add((i == -1) ? -1 : (range > 0 ? i + cmd[0].length() + 1 : i));
+			Tuple<Integer, String> i = browseAndCompare(Arrays.copyOfRange(cmd, range, cmd.length), (CommandNode) child);
+			list.add((i._1() == -1) ? i : (range > 0 ? new Tuple<Integer, String>(i._1() + cmd[0].length() + 1, i._2()) : i));
 		}
-		return (list.contains(-1)) ? -1 : Collections.max(list);
+		for(Tuple<Integer, String> t : list)
+			if(t._1() == -1)
+				return t;
+		
+		return Collections.max(list, new Comparator<Tuple<Integer, String>>() {
+			@Override
+			public int compare(Tuple<Integer, String> a, Tuple<Integer, String> b) {
+				return Integer.compare(a._1(), b._1());
+			}
+		});
 	}
 }

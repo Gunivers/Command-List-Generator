@@ -49,9 +49,9 @@ public class Node
 		return tag;
 	}
 	
-	public int matches(String tag)
+	/*public int matches(String tag)
 	{
 		return this.tag == tag ? 1 : 0;
-	}
+	}*/
 
 }

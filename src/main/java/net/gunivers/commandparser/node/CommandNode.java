@@ -1,5 +1,7 @@
 package net.gunivers.commandparser.node;
 
+import net.gunivers.core.language.Tuple;
+
 public class CommandNode extends Node
 {
 
@@ -27,10 +29,9 @@ public class CommandNode extends Node
 		this.silent = silent;
 	}
 
-	@Override
-	public int matches(String value)
+	public Tuple<Integer, String> matches(String value)
 	{
-		return value.matches(match) ? 1 : 0;
+		return value.matches(match) ? new Tuple<Integer, String>(1, null) : new Tuple<Integer, String>(0, "Argument invalide.");
 	}
 	
 	public void setMatch(String value) {
