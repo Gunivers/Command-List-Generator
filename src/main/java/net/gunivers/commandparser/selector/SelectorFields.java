@@ -4,7 +4,7 @@ import net.gunivers.commandparser.selector.FieldType;
 import net.gunivers.commandparser.selector.parser.SelectorParser;
 
 public enum SelectorFields {
-	ADVANCEMENTS(((String s) -> SelectorParser.parseAdvancement(s))),
+	ADVANCEMENTS(((String s) -> SelectorParser.ADVANCEMENT.parse(s))),
 	DISTANCE(((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch()))),
 	
 	DX((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
@@ -16,7 +16,7 @@ public enum SelectorFields {
 	LIMIT((String s) -> s.matches(FieldType.INT.getMatch())),
 	NAME((String s) -> s.matches(FieldType.STRING.getMatch()), 1),
 	//NBT(NbtParser.class),
-	SCORES(((String s) -> SelectorParser.parseScore(s))),
+	SCORES(((String s) -> SelectorParser.SCORE.parse(s))),
 	SORT((String s) -> s.matches("nearest|furthest|random|arbitrary")),
 	
 	TAG((String s) -> s.matches(FieldType.STRING.getMatch()), 2),
