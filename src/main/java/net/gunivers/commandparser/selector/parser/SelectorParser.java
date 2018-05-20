@@ -1,40 +1,59 @@
 package net.gunivers.commandparser.selector.parser;
 
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+
 import net.gunivers.commandparser.selector.FieldType;
 
-public enum SelectorParser
-{
-	SCORE("\\w+", FieldType.DOUBLE_BOUNDED.getMatch()),
+public enum SelectorParser {
+	NBTS,
+	SCORE("\\w+", FieldType.INT_BOUNDED.getMatch()),
 	ADVANCEMENT("(minecraft:)?\\w(/\\w)*", "(minecraft:)?\\w(/\\w)*");
-	
-	private String key;
-	private String value;
-	
+
+	private String key = null;
+	private String value = null;
+
+	private static JsonParser jparse = new JsonParser();
+
 	private SelectorParser(String key, String value) {
 		this.key = key;
 		this.value = value;
 	}
-	
+
+	private SelectorParser() {
+	}
+
 	public boolean parse(String compound) {
+
+		if (key == null || value == null) {
+			try {
+				jparse.parse(compound);
+				return true;
+			} catch (JsonParseException e) {
+				return false;
+			}
+		}
 
 		String[] parts = compound.substring(1, value.length() - 2).split(",");
 
-		for (int i = 0; i < parts.length; i++)
-		{
+		for (int i = 0; i < parts.length; i++) {
 			String[] part = parts[i].split("=");
 
-			if (part.length != 2) return false;
-			if (!part[0].matches(this.key)) return false;
-			if (!part[1].matches(this.value)) return false;
+			if (part.length != 2)
+				return false;
+			if (!part[0].matches(this.key))
+				return false;
+			if (!part[1].matches(this.value))
+				return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	public String getKey() {
 		return key;
 	}
-	
+
 	public String getValue() {
 		return value;
 	}

@@ -10,13 +10,18 @@ public enum SelectorFields {
 	DX((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
 	DY((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
 	DZ((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
+	
+	//TODO Remove field TEST
 	TEST((String s) -> s.matches(".*")),
 	GAMEMODE((String s) -> s.matches("spectator|adventure|survival|creative"), 1),
 	LEVEL((String s) -> s.matches(FieldType.INT_BOUNDED.getMatch())),
+	
 	LIMIT((String s) -> s.matches(FieldType.INT.getMatch())),
 	NAME((String s) -> s.matches(FieldType.STRING.getMatch()), 1),
-	//NBT(NbtParser.class),
+	
+	NBT((String s) -> SelectorParser.NBTS.parse(s)),
 	SCORES(((String s) -> SelectorParser.SCORE.parse(s))),
+	
 	SORT((String s) -> s.matches("nearest|furthest|random|arbitrary")),
 	
 	TAG((String s) -> s.matches(FieldType.STRING.getMatch()), 2),
