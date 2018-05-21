@@ -38,6 +38,7 @@ public class ClassTest
 		
 		switch (TEST_NUMBER)
 		{
+		//PROGRAM: Commands
 			case 0:
 				System.out.println(" - Running program #0: Commands");
 				
@@ -62,7 +63,8 @@ public class ClassTest
 					System.out.println("\n");
 				}
 				break;
-			
+		
+		//PROGRAM: Selectors
 			case 1:
 				System.out.println(" - Running program #1: Selectors");
 				
@@ -84,6 +86,7 @@ public class ClassTest
 				
 				break;
 				
+		//PROGRAM: Type#Double
 			case 2:
 				System.out.println(" - Running program #2: Type#Double");
 				

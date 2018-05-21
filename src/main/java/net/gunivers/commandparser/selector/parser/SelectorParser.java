@@ -7,7 +7,7 @@ public class SelectorParser
 
 	public static boolean parseScore(String value)
 	{
-		String[] scores = value.substring(1, value.length() - 2).split(",");
+		String[] scores = value.substring(1, value.length()).split(",");
 
 		for (int i = 0; i < scores.length; i++)
 		{
@@ -15,7 +15,7 @@ public class SelectorParser
 
 			if (score.length != 2) return false;
 			if (!score[0].matches("\\w+")) return false;
-			if (!score[1].matches(FieldType.DOUBLE_BOUNDED.getMatch())) return false;
+			if (!score[1].matches(FieldType.INT_BOUNDED.getMatch())) return false;
 		}
 
 		return true;
