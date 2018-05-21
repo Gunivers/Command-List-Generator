@@ -17,6 +17,7 @@ import net.gunivers.commandlistgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.commandlistgenerator.gui.util.FunctionalityController;
 import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
+import net.gunivers.core.gui.ShakeEffect;
 import net.gunivers.core.language.tuple.Tuple;
 import net.gunivers.core.language.tuple.Tuple4;
 
@@ -41,6 +42,8 @@ public class ScoreInterpolationController extends FunctionalityController implem
 	{
 		setDialog(ButtonNextHandler.newDialog);
 		getDoneButton().setOnAction(event -> saveAll());
+		getDoneButton().setDefaultButton(true);
+
 
 		TEXT_FIELD_1.textProperty().addListener(new OnlyDoublePosChangeListener(TEXT_FIELD_1));
 		TEXT_FIELD_2.textProperty().addListener(new OnlyDoublePosChangeListener(TEXT_FIELD_2));
@@ -62,12 +65,14 @@ public class ScoreInterpolationController extends FunctionalityController implem
 	@Override
 	public void saveAll()
 	{
-		Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
-		tag.setType(Functionality.getFunctionalities("ScoreInterpolation"));
-
-			tag.setParameters(Tuple.newTuple(Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected()));
-
-		CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
-		getDialog().close();
+		if(ShakeEffect.isFullOrElseShake(TEXT_FIELD_1, TEXT_FIELD_2, TEXT_FIELD_3)) {
+			Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
+			tag.setType(Functionality.getFunctionalities("ScoreInterpolation"));
+	
+				tag.setParameters(Tuple.newTuple(Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected()));
+	
+			CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
+			getDialog().close();
+		}
 	}
 }

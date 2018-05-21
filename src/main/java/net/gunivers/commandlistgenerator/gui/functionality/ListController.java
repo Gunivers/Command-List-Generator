@@ -31,6 +31,7 @@ public class ListController extends FunctionalityController implements Initializ
 		setDialog(ButtonNextHandler.newDialog);
 
 		getDoneButton().setOnAction(event -> saveAll());
+		getDoneButton().setDefaultButton(true);
 
 		if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null &&
 				!CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())

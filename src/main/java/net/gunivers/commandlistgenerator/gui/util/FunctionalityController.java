@@ -2,6 +2,7 @@ package net.gunivers.commandlistgenerator.gui.util;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
+
 import javafx.fxml.FXML;
 
 public abstract class FunctionalityController

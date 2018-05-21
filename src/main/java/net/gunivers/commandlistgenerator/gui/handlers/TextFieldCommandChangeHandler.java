@@ -27,14 +27,14 @@ public class TextFieldCommandChangeHandler implements EventHandler<KeyEvent>
 
 		ArrayList<String> currentTag = new ArrayList<String>();
 
-		Pattern p = Pattern.compile("#\\w+#");
+		Pattern p = Pattern.compile(Tag.tagDelimiter + "\\w+" + Tag.tagDelimiter);
 		Matcher m = p.matcher(text);
 
 		while (m.find())
 		{
 			if ((m.start() == 0 || (m.start() > 0 && text.charAt(m.start() - 1) != '\\')) && text.charAt(m.end() - 1) != '\\')
 			{
-				String tag = m.group().replaceAll("#", "");
+				String tag = m.group().replaceAll(Character.toString(Tag.tagDelimiter), "");
 				if (!Tag.tags.containsKey(tag))
 					Tag.tags.put(tag, new Tag(tag));
 				currentTag.add(tag);

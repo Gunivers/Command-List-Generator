@@ -8,9 +8,12 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXListView;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.commandlistgenerator.functionality.Functionality;
@@ -38,6 +41,15 @@ public class EditController implements Initializable
 	{
 		layout.setPrefSize(CommandListGenerator.MAIN_STAGE.getWidth() / 1.25, CommandListGenerator.MAIN_STAGE.getHeight() / 1.25);
 
+		FUNCTIONALITY_LIST.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			 @Override
+			    public void handle(MouseEvent mouseEvent) {
+			        if(mouseEvent.getButton().equals(MouseButton.PRIMARY))
+			            if(mouseEvent.getClickCount() == 2)
+			            	NEXT_BUTTON.fire();	            
+			 }
+		});
+		
 		for (Functionality functionality : Functionality.getFunctionalities().values())
 			FUNCTIONALITY_LIST.getItems().add(new Label(functionality.toString()));
 

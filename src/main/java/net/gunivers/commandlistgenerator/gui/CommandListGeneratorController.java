@@ -10,9 +10,12 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import net.gunivers.commandlistgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.commandlistgenerator.gui.handlers.ButtonGenerateHandler;
@@ -64,9 +67,23 @@ public class CommandListGeneratorController implements Initializable {
 		COMMAND_INPUT.setOnKeyReleased(new TextFieldCommandChangeHandler(COMMAND_INPUT));
 
 		BUTTON_GENERATE.setOnAction(
-				new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT));
+				new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, MAX_COMMAND));
 
 		BUTTON_EDIT.setOnAction(new ButtonEditHandler());
+		BUTTON_GENERATE.setDefaultButton(true);
+		
+		EventHandler<MouseEvent> event = new EventHandler<MouseEvent>() {
+			 @Override
+			    public void handle(MouseEvent mouseEvent) {
+			        if(mouseEvent.getButton().equals(MouseButton.PRIMARY))
+			            if(mouseEvent.getClickCount() == 2)
+			            	BUTTON_EDIT.fire();	            
+			 }
+		};
+		
+		
+		TAG_LIST.setOnMouseClicked(event);
+		TYPE_LIST.setOnMouseClicked(event);
 	}
 
 	public SyncListHandler<Label> getSyncListHandler() {

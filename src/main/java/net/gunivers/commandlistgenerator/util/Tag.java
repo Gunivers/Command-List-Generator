@@ -11,7 +11,7 @@ import net.gunivers.core.language.tuple.Tuple;
 public class Tag {
 
 	public static HashMap<String, Tag> tags = new HashMap<>();
-	public static final char tagDelimiter = '#';	
+	public static final char tagDelimiter = '&';	
 	private Functionality type;
 	private String id;
 	private Tuple parameters;

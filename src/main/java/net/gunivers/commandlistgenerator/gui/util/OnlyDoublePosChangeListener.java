@@ -16,9 +16,9 @@ public class OnlyDoublePosChangeListener implements ChangeListener<String>
 	@Override
 	public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
 	{
-		if (!newValue.matches("\\dDd.*"))
+		if (!newValue.matches("\\d.*"))
 		{
-			String msg = newValue.replaceAll("[^\\dDd.]", "");
+			String msg = newValue.replaceAll("[^\\d.]", "");
 			textField.setText(msg);
 		}
 	}

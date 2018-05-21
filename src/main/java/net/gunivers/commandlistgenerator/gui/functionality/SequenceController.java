@@ -20,6 +20,7 @@ import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.gui.util.OnlyIntPosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.commandlistgenerator.util.Type;
+import net.gunivers.core.gui.ShakeEffect;
 import net.gunivers.core.language.tuple.Tuple;
 import net.gunivers.core.language.tuple.Tuple4;
 
@@ -48,6 +49,8 @@ public class SequenceController extends FunctionalityController implements Initi
 		setDialog(ButtonNextHandler.newDialog);
 
 		getDoneButton().setOnAction(event -> saveAll());
+		getDoneButton().setDefaultButton(true);
+		
 		COMBO_BOX.getItems().setAll(Arrays.stream(Type.values()).map(name -> name.toString()).toArray(String[]::new));
 		MIDDLE_TEXT.textProperty().addListener(new OnlyDoublePosChangeListener(MIDDLE_TEXT));
 		BOTTOM_TEXT.textProperty().addListener(new OnlyIntPosChangeListener(BOTTOM_TEXT));
@@ -68,15 +71,18 @@ public class SequenceController extends FunctionalityController implements Initi
 
 	@Override
 	public void saveAll() {
-		Tag tag = Tag.tags
-				.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX))
-						.getText());
-		tag.setType(Functionality.getFunctionalities("Sequence"));
-
-		tag.setParameters(Tuple.newTuple(Double.valueOf(MIDDLE_TEXT.getText()), TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()), Type.valueOf(COMBO_BOX.getValue().toUpperCase())));
-
-		CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO,
-				new Label(tag.getType().toString()), INDEX);
-		getDialog().close();
+		//TODO ComboBox
+		if(ShakeEffect.isFullOrElseShake(TOP_TEXT, MIDDLE_TEXT, BOTTOM_TEXT)) {
+			Tag tag = Tag.tags
+					.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX))
+							.getText());
+			tag.setType(Functionality.getFunctionalities("Sequence"));
+	
+			tag.setParameters(Tuple.newTuple(Double.valueOf(MIDDLE_TEXT.getText()), TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()), Type.valueOf(COMBO_BOX.getValue().toUpperCase())));
+	
+			CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO,
+					new Label(tag.getType().toString()), INDEX);
+			getDialog().close();
+		}
 	}
 }

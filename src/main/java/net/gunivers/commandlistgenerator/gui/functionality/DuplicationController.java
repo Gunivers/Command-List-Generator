@@ -17,6 +17,7 @@ import net.gunivers.commandlistgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.commandlistgenerator.gui.util.FunctionalityController;
 import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
+import net.gunivers.core.gui.ShakeEffect;
 import net.gunivers.core.language.tuple.Tuple;
 import net.gunivers.core.language.tuple.Tuple3;
 
@@ -45,7 +46,7 @@ public class DuplicationController extends FunctionalityController implements In
 
 		getDoneButton().setOnAction(event -> saveAll());
 		getDoneButton().setDefaultButton(true);
-
+		
 		MIDDLE_TEXT.textProperty().addListener(new OnlyDoublePosChangeListener(MIDDLE_TEXT));
 		BOTTOM_TEXT.textProperty().addListener(new OnlyDoublePosChangeListener(BOTTOM_TEXT));
 
@@ -65,15 +66,17 @@ public class DuplicationController extends FunctionalityController implements In
 
 	@Override
 	public void saveAll() {
-		Tag tag = Tag.tags
-				.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX))
-						.getText());
-		tag.setType(Functionality.getFunctionalities("Duplication"));
-		tag.setParameters(Tuple.newTuple(TOP_TEXT.getText(), Double.valueOf(MIDDLE_TEXT.getText()),
-				Double.valueOf(BOTTOM_TEXT.getText())));
-
-		CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO,
-				new Label(tag.getType().toString()), INDEX);
-		getDialog().close();
+		if(ShakeEffect.isFullOrElseShake(TOP_TEXT, MIDDLE_TEXT, BOTTOM_TEXT)) {
+			Tag tag = Tag.tags
+					.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX))
+							.getText());
+			tag.setType(Functionality.getFunctionalities("Duplication"));
+			tag.setParameters(Tuple.newTuple(TOP_TEXT.getText(), Double.valueOf(MIDDLE_TEXT.getText()),
+					Double.valueOf(BOTTOM_TEXT.getText())));
+	
+			CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO,
+					new Label(tag.getType().toString()), INDEX);
+			getDialog().close();
+		}
 	}
 }
