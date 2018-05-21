@@ -21,9 +21,9 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
 
 	public static JFXDialog newDialog;
 
-	public ButtonNextHandler(JFXListView listView, JFXDialog dialog)
+	public ButtonNextHandler(JFXListView<Label> listView, JFXDialog dialog)
 	{
-		this.dialog = dialog;
+		ButtonNextHandler.dialog = dialog;
 		this.listView = listView;
 	}
 

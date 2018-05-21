@@ -1,56 +1,51 @@
 package net.gunivers.commandlistgenerator.functionality;
 
-import net.gunivers.core.minecraft.Material;
-import net.gunivers.core.minecraft.MaterialType;
-import net.gunivers.listgenerator.util.Call;
-import net.gunivers.listgenerator.util.Functionality;
-
 import java.util.ArrayList;
 
+import net.gunivers.core.minecraft.Material;
+import net.gunivers.core.minecraft.MaterialType;
+
 /**
- * @author A~Z
- * Generate Material values
+ * @author A~Z Generate Material values
  */
 @Deprecated
-public class MaterialGenerator extends Functionality
-{
+public class MaterialGenerator {
 	MaterialType mt;
 
 	/**
 	 * <strong>Constructor</strong>
 	 *
-	 * @param mt a MaterialType
+	 * @param mt
+	 *            a MaterialType
 	 */
-	public MaterialGenerator(MaterialType mt)
-	{
+	public MaterialGenerator(MaterialType mt) {
 		this.mt = mt;
 	}
 
 	/**
 	 * Generate Simple Material
 	 *
-	 * @param mt a MaterialType
+	 * @param mt
+	 *            a MaterialType
 	 * @return ArrayList<String> generated Material names
 	 */
-	@Call
-	public static ArrayList<String> generate(MaterialType mt)
-	{
+	public static ArrayList<String> generate(MaterialType mt) {
 		ArrayList<String> commands = new ArrayList<>();
 
-		for (Material material : Material.values())
-		{
-			if (MaterialType.checkMaterial(material, mt)) commands.add(material.name());
+		for (Material material : Material.values()) {
+			if (MaterialType.checkMaterial(material, mt))
+				commands.add(material.name());
 		}
 
 		return commands;
 	}
 
 	/**
-	 * @param mt a MaterialType
+	 * @param mt
+	 *            a MaterialType
 	 * @return String name of mt
 	 */
-	public static String toString(MaterialType mt)
-	{
+	public static String toString(MaterialType mt) {
 		return mt.toString();
 	}
 
@@ -59,28 +54,19 @@ public class MaterialGenerator extends Functionality
 	 *
 	 * @return ArrayList<String> generated Material names
 	 */
-	public ArrayList<String> generate()
-	{
+	public ArrayList<String> generate() {
 		ArrayList<String> commands = new ArrayList<>();
 
-		for (Material material : Material.values())
-		{
-			if (MaterialType.checkMaterial(material, mt)) commands.add(material.name());
+		for (Material material : Material.values()) {
+			if (MaterialType.checkMaterial(material, mt))
+				commands.add(material.name());
 		}
 
 		return commands;
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return "Material";
-	}
-
-	@Override
-	public ArrayList<Object> callParameterOverlay()
-	{
-		// TODO
-		return null;
 	}
 }

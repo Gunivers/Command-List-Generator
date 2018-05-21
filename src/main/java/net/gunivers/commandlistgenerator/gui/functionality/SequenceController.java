@@ -1,8 +1,10 @@
 package net.gunivers.commandlistgenerator.gui.functionality;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
@@ -22,14 +24,21 @@ import net.gunivers.core.language.tuple.Tuple;
 import net.gunivers.core.language.tuple.Tuple4;
 
 public class SequenceController extends FunctionalityController implements Initializable {
+
+	//Sequence
 	@FXML
 	private JFXTextField TOP_TEXT;
 
+	//InitValue
 	@FXML
 	private JFXTextField MIDDLE_TEXT;
 
+	//Round
 	@FXML
 	private JFXTextField BOTTOM_TEXT;
+	
+	@FXML 
+	private JFXComboBox<String> COMBO_BOX;
 
 	private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel()
 			.getSelectedIndex();
@@ -39,7 +48,7 @@ public class SequenceController extends FunctionalityController implements Initi
 		setDialog(ButtonNextHandler.newDialog);
 
 		getDoneButton().setOnAction(event -> saveAll());
-
+		COMBO_BOX.getItems().setAll(Arrays.stream(Type.values()).map(name -> name.toString()).toArray(String[]::new));
 		MIDDLE_TEXT.textProperty().addListener(new OnlyDoublePosChangeListener(MIDDLE_TEXT));
 		BOTTOM_TEXT.textProperty().addListener(new OnlyIntPosChangeListener(BOTTOM_TEXT));
 
@@ -53,6 +62,7 @@ public class SequenceController extends FunctionalityController implements Initi
 			TOP_TEXT.setText(tuple._2);
 			MIDDLE_TEXT.setText(Double.toString(tuple._1));
 			BOTTOM_TEXT.setText(Integer.toString(tuple._3));
+			COMBO_BOX.setValue(tuple._4.toString());
 		}
 	}
 
@@ -63,11 +73,7 @@ public class SequenceController extends FunctionalityController implements Initi
 						.getText());
 		tag.setType(Functionality.getFunctionalities("Sequence"));
 
-		try {
-			tag.setParameters(Tuple.newTuple(Double.valueOf(MIDDLE_TEXT.getText()), TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText())));
-		} catch (Exception e) {
-			return;
-		}
+		tag.setParameters(Tuple.newTuple(Double.valueOf(MIDDLE_TEXT.getText()), TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()), Type.valueOf(COMBO_BOX.getValue().toUpperCase())));
 
 		CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO,
 				new Label(tag.getType().toString()), INDEX);

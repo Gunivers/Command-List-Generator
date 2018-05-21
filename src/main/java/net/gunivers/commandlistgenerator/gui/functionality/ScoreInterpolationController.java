@@ -17,10 +17,8 @@ import net.gunivers.commandlistgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.commandlistgenerator.gui.util.FunctionalityController;
 import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
-import net.gunivers.llistgenerator.util.value.BooleanValue;
-import net.gunivers.llistgenerator.util.value.DoubleValue;
-import net.gunivers.llistgenerator.util.value.IValue;
-import net.gunivers.llistgenerator.util.value.ValueManager;
+import net.gunivers.core.language.tuple.Tuple;
+import net.gunivers.core.language.tuple.Tuple4;
 
 public class ScoreInterpolationController extends FunctionalityController implements Initializable
 {
@@ -52,11 +50,12 @@ public class ScoreInterpolationController extends FunctionalityController implem
 				!CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
 		{
 			setDialog(ButtonEditHandler.dialog);
-			IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());
-			TEXT_FIELD_1.setText(((DoubleValue) values[0]).get() + "");
-			TEXT_FIELD_2.setText(((DoubleValue) values[1]).get() + "");
-			TEXT_FIELD_3.setText(((DoubleValue) values[2]).get() + "");
-			CHECK_BOX.setSelected(((BooleanValue) values[3]).get());
+			Tuple t = Tag.tags.get(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText()).getParameters();
+			Tuple4<Double, Double, Double, Boolean> tuple = Tuple.castTo(t,Tuple.newTuple(Double.class, Double.class, Double.class, Boolean.class));
+			TEXT_FIELD_1.setText(Double.toString(tuple._1));
+			TEXT_FIELD_2.setText(Double.toString(tuple._2));
+			TEXT_FIELD_3.setText(Double.toString(tuple._3));
+			CHECK_BOX.setSelected(tuple._4);
 		}
 	}
 
@@ -66,13 +65,7 @@ public class ScoreInterpolationController extends FunctionalityController implem
 		Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
 		tag.setType(Functionality.getFunctionalities("ScoreInterpolation"));
 
-		try
-		{
-			ValueManager.register(tag, Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected(), CommandListGeneratorController.CONTROLLER.getMaxCommand());
-		} catch (Exception e)
-		{
-			return;
-		}
+			tag.setParameters(Tuple.newTuple(tag, Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected()));
 
 		CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
 		getDialog().close();

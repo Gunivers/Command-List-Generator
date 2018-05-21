@@ -39,8 +39,7 @@ public class ClassTest
 				System.out.println("\n");
 			}
 		} else {
-			String test = "5-47";
-			System.out.println(test.replaceAll("[^-?\\d]", ""));
+			System.out.println(Type.DOUBLE.toString());
 		}
 	
 

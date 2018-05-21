@@ -3,7 +3,7 @@ version 'Alpha-1'
 
 apply plugin: 'idea'
 apply plugin: 'eclipse'
-apply plugin: 'eclipse-wtp' //Eclipse c'est du caca
+apply plugin: 'eclipse-wtp'
 apply plugin: 'java'
 
 
@@ -36,7 +36,7 @@ jar {
     }
     manifest {
         attributes(
-                'Main-Class': 'net.gunivers.listgenerator.CommandListGenerator'
+                'Main-Class': 'net.gunivers.commandlistgenerator.CommandListGenerator'
         )
     }
 }
@@ -53,7 +53,7 @@ buildscript {
 
 jfx {
     // minimal requirement for jfxJar-task
-    mainClass = 'net.gunivers.listgenerator.CommandListGenerator'
+    mainClass = 'net.gunivers.commandlistgenerator.CommandListGenerator'
 
     // minimal requirement for jfxNative-task
     vendor = 'Gunivers'

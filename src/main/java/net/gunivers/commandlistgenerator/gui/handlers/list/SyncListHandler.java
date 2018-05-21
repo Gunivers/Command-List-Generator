@@ -8,9 +8,9 @@ import javafx.scene.control.ListView;
 public class SyncListHandler<E>
 {
 	private ListView<? super E> listView1;
-	private ListView listView2;
+	private ListView<?> listView2;
 
-	public SyncListHandler(ListView<? super E> listView1, ListView listView2)
+	public SyncListHandler(ListView<? super E> listView1, ListView<?> listView2)
 	{
 		this.listView1 = listView1;
 		this.listView2 = listView2;
@@ -45,7 +45,7 @@ public class SyncListHandler<E>
 		return listView1;
 	}
 
-	public ListView getListViewTwo()
+	public ListView<?> getListViewTwo()
 	{
 		return listView2;
 	}

@@ -1,4 +1,4 @@
-package net.gunivers.commandlistgenerator.gui.functionality;
+/*package net.gunivers.commandlistgenerator.gui.functionality;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -68,4 +68,4 @@ public class DichotomyController extends FunctionalityController implements Init
 				new Label(tag.getType().toString()), INDEX);
 		getDialog().close();
 	}
-}
+}*/

@@ -15,9 +15,8 @@ import net.gunivers.commandlistgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.commandlistgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.commandlistgenerator.gui.util.FunctionalityController;
 import net.gunivers.commandlistgenerator.util.Tag;
-import net.gunivers.llistgenerator.util.value.IValue;
-import net.gunivers.llistgenerator.util.value.StringValue;
-import net.gunivers.llistgenerator.util.value.ValueManager;
+import net.gunivers.core.language.tuple.Tuple;
+import net.gunivers.core.language.tuple.Tuple1;
 
 public class ListController extends FunctionalityController implements Initializable
 {
@@ -37,8 +36,13 @@ public class ListController extends FunctionalityController implements Initializ
 				!CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem().getText().isEmpty())
 		{
 			setDialog(ButtonEditHandler.dialog);
-			IValue[] values = ValueManager.getValues(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText());
-			TEXT_AREA.setText(((StringValue) values[0]).get() + "");
+			Tuple t = Tag.tags.get(CommandListGeneratorController.CONTROLLER.getTagList().getSelectionModel().getSelectedItem().getText()).getParameters();
+			Tuple1<String[]> tuple = Tuple.castTo(t, Tuple.newTuple(String[].class));
+			String text = "";
+			for(int i = 0; i < tuple._1.length; i++)
+				text += tuple._1[i] + ((i == text.length() - 1) ? "" : "\n");
+				
+			TEXT_AREA.setText(text);
 		}
 	}
 
@@ -47,14 +51,8 @@ public class ListController extends FunctionalityController implements Initializ
 	{
 		Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
 		tag.setType(Functionality.getFunctionalities("List"));
-
-		try
-		{
-			ValueManager.register(tag, TEXT_AREA.getText(), CommandListGeneratorController.CONTROLLER.getMaxCommand());
-		} catch (Exception e)
-		{
-			return;
-		}
+		
+		tag.setParameters(Tuple.newTuple(TEXT_AREA.getText().split("\n")));
 
 		CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
 		getDialog().close();
