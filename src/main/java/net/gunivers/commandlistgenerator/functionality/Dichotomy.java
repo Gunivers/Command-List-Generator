@@ -2,9 +2,11 @@ package net.gunivers.commandlistgenerator.functionality;
 
 import java.util.ArrayList;
 
+import net.gunivers.commandlistgenerator.util.HelpFunctionality;
+
 
 @Deprecated
-public class Dichotomy {
+public class Dichotomy extends HelpFunctionality {
 
 	public String toString() {
 		return "Dichotomy";
@@ -22,5 +24,11 @@ public class Dichotomy {
 		}
 
 		return commands;
+	}
+
+	//TODO OROMIS Remplis on sait pas comment ça fonctionne sinon
+	@Override
+	public String getHelp() {
+		return "Je sais pas comment ça fonctionne :/";
 	}
 }

@@ -40,8 +40,23 @@ public class Duplication extends Functionality {
 
 	@Override
 	public String getHelp() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Parameters:"
+				+ "\n - Text: It will be duplicated then placed in your command"
+				+ "\n - Multiplier: It will multiply your text"
+				+ "\n - Adder: After the multiplication, the original text will be added"
+				+ "\n"
+				+ "\nExample:"
+				+ "\n Text:❤; Multiplier:1.0; Adder:0.0"
+				+ "\n Command: cmd #Duplication:example#"
+				+ "\n cmd ❤"
+				+ "\n cmd ❤❤"
+				+ "\n cmd ❤❤❤ "
+				+ "\n [...]"
+				+ "\n Text:❤; Multiplier:5.0; Adder:2.0"
+				+ "\n cmd ❤❤❤❤❤❤❤"
+				+ "\n cmd ❤❤❤❤❤❤❤❤❤❤❤❤"
+				+ "\n cmd ❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤ "
+				+ "\n [...]";
 	}
 
 }

@@ -1,6 +1,6 @@
 package net.gunivers.commandlistgenerator.util;
 
-public class Calculator
+public class Calculator extends HelpFunctionality
 {
 
 	private int index = 0;
@@ -148,5 +148,13 @@ public class Calculator
 		}
 
 		return 0;
+	}
+
+	@Override
+	public String getHelp() {
+		return "Calculate an equation"
+				+ "\nIn the equation:"
+				+ "\n X: the current value, default is 1"
+				+ "\n U: the previous value, default is 0";
 	}
 }

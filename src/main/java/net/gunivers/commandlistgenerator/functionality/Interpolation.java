@@ -114,7 +114,6 @@ public class Interpolation extends Functionality {
 
 	@Override
 	public String getHelp() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Ask KubbyDev to know how it works :/";
 	}
 }

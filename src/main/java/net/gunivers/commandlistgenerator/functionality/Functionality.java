@@ -3,6 +3,7 @@ package net.gunivers.commandlistgenerator.functionality;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import net.gunivers.commandlistgenerator.util.HelpFunctionality;
 import net.gunivers.core.language.tuple.Tuple;
 
 
@@ -10,7 +11,7 @@ import net.gunivers.core.language.tuple.Tuple;
  * @author Oromis Abstract method representing a functionality of the Command
  *         List Generator
  */
-public abstract class Functionality {
+public abstract class Functionality extends HelpFunctionality {
 
 	/**
 	 * This Map stocks all functionalities

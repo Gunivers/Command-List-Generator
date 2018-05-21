@@ -3,6 +3,7 @@ package net.gunivers.commandlistgenerator.functionality;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import net.gunivers.commandlistgenerator.util.HelpFunctionality;
 import net.gunivers.core.language.tuple.Tuple;
 import net.gunivers.core.language.tuple.Tuple1;
 import net.gunivers.core.minecraft.Entity;
@@ -10,7 +11,7 @@ import net.gunivers.core.minecraft.Entity;
 /**
  * @authors A~Z, Oromis Generate by list
  */
-public class GeneratorByList {
+public class GeneratorByList extends HelpFunctionality {
 
 	public String toString() {
 		return "List";
@@ -30,5 +31,10 @@ public class GeneratorByList {
 		ArrayList<Class<? extends Enum<?>>> list = new ArrayList<>();
 		list.add(Entity.class);
 		return list;
+	}
+
+	@Override
+	public String getHelp() {
+		return "It manages some lists of text. Default lists can be modified";
 	}
 }

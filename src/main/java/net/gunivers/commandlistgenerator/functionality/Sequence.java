@@ -71,7 +71,23 @@ public class Sequence extends Functionality {
 
 	@Override
 	public String getHelp() {
-		// TODO Auto-generated method stub
-		return null;
+		return "A simple incrementer"
+				+ "\n"
+				+ "\nParameters:"
+				+ "\n initValue: the initial value"
+				+ "\n increment: the increment value"
+				+ "\n"
+				+ "\nExample:"
+				+ "\n Command: cmd #Sequence:example#"
+				+ "\n initValue:0; increment:1.0;"
+				+ "\n cmd 0"
+				+ "\n cmd 1"
+				+ "\n cmd 2"
+				+ "\n [...]"
+				+ "\n initValue:5; increment:2.3;"
+				+ "\n cmd 5"
+				+ "\n cmd 7.3"
+				+ "\n cmd 9.6"
+				+ "\n [...]";
 	}
 }
