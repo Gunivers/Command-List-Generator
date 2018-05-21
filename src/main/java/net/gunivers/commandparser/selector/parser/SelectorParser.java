@@ -32,7 +32,7 @@ public enum SelectorParser {
 			}
 		}*/
 
-		System.out.println(compound.length());
+		System.out.println(compound);
 		String[] parts = compound.substring(1, value.length() - 2).split(",");
 
 		for (int i = 0; i < parts.length; i++) {

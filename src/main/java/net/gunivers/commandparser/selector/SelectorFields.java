@@ -12,7 +12,7 @@ public enum SelectorFields {
 	DY((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
 	DZ((String s) -> s.matches(FieldType.DOUBLE_BOUNDED.getMatch())),
 	
-	//TODO Remove TEST
+	//TODO Remove TEST field in SelectorFields
 	TEST((String s) -> s.matches(".*")),
 	
 	GAMEMODE((String s) -> s.matches("spectator|adventure|survival|creative"), 1),
@@ -23,6 +23,7 @@ public enum SelectorFields {
 	NAME((String s) -> s.matches(FieldType.STRING.getMatch()), 1),
 	
 	//TODO NBTS
+	//NBTS((String s) -> SelectorParser.NBTS.parse(s);
 	SCORES(((String s) -> SelectorParser.SCORES.parse(s))),
 	
 	SORT((String s) -> s.matches("nearest|furthest|random|arbitrary")),
