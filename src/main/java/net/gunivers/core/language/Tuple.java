@@ -2,20 +2,20 @@ package net.gunivers.core.language;
 
 public class Tuple<A, B> {
 	
-	private A value1;
-	private B value2;
+	private A key;
+	private B entry;
 	
-	public Tuple(A value1, B value2) {
-		this.value1 = value1;
-		this.value2 = value2;
+	public Tuple(A key, B entry) {
+		this.key = key;
+		this.entry = entry;
 	}
 	
 	public A _1() {
-		return value1;
+		return key;
 	}
 	
 	public B _2() {
-		return value2;
+		return entry;
 	}
 
 }

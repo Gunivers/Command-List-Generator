@@ -54,6 +54,7 @@ public class Tag
 	/**
 	 * @return the parameters of the tag
 	 */
+	@SuppressWarnings("rawtypes")
 	public IValue[] getParameters()
 	{
 		return ValueManager.getValues(this);

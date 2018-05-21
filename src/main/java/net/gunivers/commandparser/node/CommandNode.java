@@ -31,7 +31,7 @@ public class CommandNode extends Node
 
 	public Tuple<Integer, String> matches(String value)
 	{
-		return value.matches(match) ? new Tuple<Integer, String>(1, null) : new Tuple<Integer, String>(0, "Argument invalide.");
+		return value.matches(match) ? new Tuple<Integer, String>(1, null) : new Tuple<Integer, String>(0, "Invalid argument");
 	}
 	
 	public void setMatch(String value) {
@@ -48,5 +48,5 @@ public class CommandNode extends Node
 		this.silent = silent;
 	}
 
-
+	
 }
