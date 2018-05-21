@@ -6,7 +6,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.*?>
 <JFXDialogLayout fx:id="layout" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
-                 fx:controller="net.gunivers.listgenerator.gui.EditController">
+                 fx:controller="net.gunivers.commandlistgenerator.gui.EditController">
     <children>
         <VBox>
             <children>

@@ -6,7 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.gunivers.commandparser.node.CommandNode;
-import net.gunivers.core.language.Tuple;
+import net.gunivers.core.language.tuple.Tuple;
+import net.gunivers.core.language.tuple.Tuple2;
 
 public class SelectorNode extends CommandNode {
 
@@ -15,13 +16,13 @@ public class SelectorNode extends CommandNode {
 	}
 
 	@Override
-	public Tuple<Integer, String> matches(String value) {
+	public Tuple2<Integer, String> matches(String value) {
 		if (value.length() == 2 && value.matches("@a|@e|@p|@r|@s"))
-			return new Tuple<Integer, String>(1, null);
+			return Tuple.newTuple(1, null);
 		else if (value.matches("[0-9a-zA-Z_-]+"))
-			return new Tuple<Integer, String>(1, null);
+			return Tuple.newTuple(1, null);
 		else if (!(value.length() > 3 || value.substring(0, 3).matches("(@a|@e|@p|@r|@s\\[)")))
-			return new Tuple<Integer, String>(0, "Sélecteur invalide.");
+			return Tuple.newTuple(0, "Sélecteur invalide.");
 		else {
 			Pattern p = Pattern.compile(
 					"[^\\[\\],{}]+(?:[^\\[\\],{}]+|(?=\\{)(?:(?=.*?\\{(?!.*?\\1)(.*\\}(?!.*\\2).*))(?=.*?\\}(?!.*?\\2)(.*)).)+?.*?(?=\\1)[^{]*(?=\\2$))");
@@ -33,7 +34,7 @@ public class SelectorNode extends CommandNode {
 		}
 	}
 
-	private Tuple<Integer, String> check(String[] value) {
+	private Tuple2<Integer, String> check(String[] value) {
 		HashMap<String, Integer> reference = new HashMap<String, Integer>();
 		int index = 3;
 		for (int i = 0; i < value.length; i++) {
@@ -42,9 +43,9 @@ public class SelectorNode extends CommandNode {
 				SelectorFields arg = SelectorFields.valueOf(map[0].toUpperCase());
 				if (arg.matches(map[1])) {
 					if (map[1].startsWith("!") && reference.containsKey('!' + map[0]) && arg.canBeRepeated() == 0)
-						return new Tuple<Integer, String>(index, "La négation de ce paramètre n'est autorisée qu'une seule fois.");
+						return Tuple.newTuple(index, "La négation de ce paramètre n'est autorisée qu'une seule fois.");
 					if(!map[1].startsWith("!") && reference.containsKey(map[0]) && (arg.canBeRepeated() >= 0 && arg.canBeRepeated() <= 1))
-						return new Tuple<Integer, String>(index, "Ce paramètre n'est autorisé qu'une seule fois.");
+						return Tuple.newTuple(index, "Ce paramètre n'est autorisé qu'une seule fois.");
 					index += map[0].length() + 1;
 					if(map[1].startsWith("!"))
 						reference.put('!' + map[0], reference.containsKey('!' + map[0]) ? reference.get('!' + map[0]) + 1 : 1);
@@ -52,11 +53,11 @@ public class SelectorNode extends CommandNode {
 						reference.put(map[0], reference.containsKey(map[0]) ? reference.get(map[0]) + 1 : 1);
 					index += map[1].length() + 1;
 				} else
-					return new Tuple<Integer, String>(index, "La valeur ne correspond pas au format.");
+					return Tuple.newTuple(index, "La valeur ne correspond pas au format.");
 			} catch (IllegalArgumentException e) {
-				return new Tuple<Integer, String>(index, "Le paramètre n'existe pas.");
+				return Tuple.newTuple(index, "Le paramètre n'existe pas.");
 			}
 		}
-		return new Tuple<Integer, String>(-1, "ucune erreur n'a été détectée.");
+		return Tuple.newTuple(-1, "Aucune erreur n'a été détectée.");
 	}
 }

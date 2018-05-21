@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 import net.gunivers.commandparser.Command;
 import net.gunivers.commandparser.commands.CommandGamemode;
+import net.gunivers.core.language.tuple.Tuple;
+import net.gunivers.commandlistgenerator.functionality.Sequence;
+import net.gunivers.commandlistgenerator.util.Type;
 
 public class ClassTest
 {
 	
-	private static int TEST_NUMBER = 1;
+	private static int TEST_NUMBER = 2;
 
 	public static void main(String[] args)
 	{
@@ -35,9 +38,12 @@ public class ClassTest
 				System.out.println(Command.validSyntax(entry));
 				System.out.println("\n");
 			}
+		} else {
+			String test = "5-47";
+			System.out.println(test.replaceAll("[^-?\\d]", ""));
 		}
+	
 
 		
 	}
-
 }
