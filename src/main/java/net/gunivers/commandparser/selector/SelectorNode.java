@@ -17,12 +17,21 @@ public class SelectorNode extends CommandNode {
 
 	@Override
 	public Tuple2<Integer, String> matches(String value) {
-		if (value.length() == 2 && value.matches("@a|@e|@p|@r|@s"))
+		if (value.length() < 2)
+			return Tuple.newTuple(0, "Sélecteur invalide");
+		
+		if (!value.substring(0, 2).matches("@a|@e|@p|@r|@s"))
+			return Tuple.newTuple(0, "Sélecteur invalide");
+		
+		if (value.matches("@a|@e|@p|@r|@s$"))
 			return Tuple.newTuple(1, null);
-		else if (value.matches("[0-9a-zA-Z_-]+"))
+		
+		if (value.matches("[0-9a-zA-Z_-]+"))
 			return Tuple.newTuple(1, null);
+		
 		else if (!(value.length() > 3 || value.substring(0, 3).matches("(@a|@e|@p|@r|@s\\[)")))
 			return Tuple.newTuple(0, "Sélecteur invalide.");
+		
 		else {
 			Pattern p = Pattern.compile(
 					"[^\\[\\],{}]+(?:[^\\[\\],{}]+|(?=\\{)(?:(?=.*?\\{(?!.*?\\1)(.*\\}(?!.*\\2).*))(?=.*?\\}(?!.*?\\2)(.*)).)+?.*?(?=\\1)[^{]*(?=\\2$))");
