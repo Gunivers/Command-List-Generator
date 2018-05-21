@@ -15,4 +15,8 @@ public abstract class HelpFunctionality {
 	public static String getHelp(String name) {
 		return help.get(name);
 	}
+	
+	public static HashMap<String, String> getHelpList() {
+		return help;
+	}
 }
