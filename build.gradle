@@ -25,7 +25,7 @@ apply plugin: 'javafx-gradle-plugin'
 dependencies {
     compile files('libs/jfoenix-8.0.4.jar')
 
-    if(JavaVersion.current().isJava8Compatible() ){
+    if(JavaVersion.current().isJava9Compatible() ){
         extraLibs files('libs/jfoenix-9.0.4.jar')
     } else {
         extraLibs files('libs/jfoenix-8.0.4.jar')
