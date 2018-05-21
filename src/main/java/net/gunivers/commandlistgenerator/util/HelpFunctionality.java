@@ -7,7 +7,7 @@ public abstract class HelpFunctionality {
 	private static HashMap<String, String> help = new HashMap<String, String>();
 	
 	{
-		help.put(this.getClass().getName(), this.getHelp());
+		help.putIfAbsent(this.getClass().getName(), this.getHelp());
 	}
 	
 	public abstract String getHelp();
