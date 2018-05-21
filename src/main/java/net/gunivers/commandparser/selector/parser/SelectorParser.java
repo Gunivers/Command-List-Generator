@@ -2,38 +2,58 @@ package net.gunivers.commandparser.selector.parser;
 
 import net.gunivers.commandparser.selector.FieldType;
 
-public class SelectorParser
-{
+public enum SelectorParser {
+	NBTS,
+	SCORES("\\w+", FieldType.INT_BOUNDED.getMatch()),
+	ADVANCEMENTS("(minecraft:)?\\w(/\\w)*", "(minecraft:)?\\w(/\\w)*");
 
-	public static boolean parseScore(String value)
-	{
-		String[] scores = value.substring(1, value.length() - 2).split(",");
+	private String key = null;
+	private String value = null;
 
-		for (int i = 0; i < scores.length; i++)
-		{
-			String[] score = scores[i].split("=");
+	//TODO: NBTParser
+	//private static JsonParser jparse = new JsonParser();
 
-			if (score.length != 2) return false;
-			if (!score[0].matches("\\w+")) return false;
-			if (!score[1].matches(FieldType.DOUBLE_BOUNDED.getMatch())) return false;
+	private SelectorParser(String key, String value) {
+		this.key = key;
+		this.value = value;
+	}
+
+	private SelectorParser() {
+	}
+
+	public boolean parse(String compound) {
+
+		/*if (key == null || value == null) {
+			try {
+				jparse.parse(compound);
+				return true;
+			} catch (JsonParseException e) {
+				return false;
+			}
+		}*/
+
+		System.out.println(compound);
+		String[] parts = compound.substring(1, value.length() - 2).split(",");
+
+		for (int i = 0; i < parts.length; i++) {
+			String[] part = parts[i].split("=");
+
+			if (part.length != 2)
+				return false;
+			if (!part[0].matches(this.key))
+				return false;
+			if (!part[1].matches(this.value))
+				return false;
 		}
 
 		return true;
 	}
 
-	public static boolean parseAdvancement(String value)
-	{
-		String[] advancements = value.substring(1, value.length() - 2).split(",");
+	public String getKey() {
+		return key;
+	}
 
-		for (int i = 0; i < advancements.length; i++)
-		{
-			String[] advancement = advancements[i].split("=");
-
-			if (advancement.length != 2) return false;
-			if (!advancement[0].matches("(minecraft:)?(\\w|/\\w)+")) return false;
-			if (!advancement[1].matches("true|false")) return false;
-		}
-
-		return true;
+	public String getValue() {
+		return value;
 	}
 }
