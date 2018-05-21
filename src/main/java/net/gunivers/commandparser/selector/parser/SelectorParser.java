@@ -1,9 +1,8 @@
 package net.gunivers.commandparser.selector.parser;
 
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-
 import net.gunivers.commandparser.selector.FieldType;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public enum SelectorParser {
 	NBTS,
@@ -13,7 +12,7 @@ public enum SelectorParser {
 	private String key = null;
 	private String value = null;
 
-	private static JsonParser jparse = new JsonParser();
+	private static JSONParser jparse = new JSONParser();
 
 	private SelectorParser(String key, String value) {
 		this.key = key;
@@ -29,7 +28,7 @@ public enum SelectorParser {
 			try {
 				jparse.parse(compound);
 				return true;
-			} catch (JsonParseException e) {
+			} catch (ParseException e) {
 				return false;
 			}
 		}
