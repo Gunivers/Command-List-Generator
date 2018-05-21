@@ -6,7 +6,6 @@ apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp' //Eclipse c'est du caca
 apply plugin: 'java'
 
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -36,6 +35,8 @@ dependencies {
 }
 
 jar {
+    destinationDir = file("$rootDir/builds/")
+
     from {
         configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
     }
