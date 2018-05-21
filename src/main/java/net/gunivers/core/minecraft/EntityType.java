@@ -3,6 +3,8 @@ package net.gunivers.core.minecraft;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import net.gunivers.commandlistgenerator.util.BooleanFunctionalInterface;
+
 /**
  * @author A~Z
  * Represent the different properties of a block
@@ -10,27 +12,32 @@ import java.lang.reflect.Method;
 public enum EntityType
 {
 
-	FLY("canFly"),
+	FLY((Object e) -> ((Entity) e).canFly()),
+	LIVE((Object e) -> ((Entity) e).hasLife()),
+	HAS_NATURAL_SPAWN((Object e) -> ((Entity) e).hasNaturalSpawn()),
+	
+	SPAWN_ENDER((Object e) -> ((Entity) e).hasSpawnEnder()),
+	SPAWN_NETHER((Object e) -> ((Entity) e).hasSpawnNether()),
+	SPAWN_OVERWORLD((Object e) -> ((Entity) e).hasSpawnOverworld()),
 
-	LIVE("hasLife"),
-	HAS_NATURAL_SPAWN("hasNaturalSpawn"),
-	SPAWN_ENDER("hasSpawnEnder"),
-	SPAWN_NETHER("hasSpawnNether"),
-	SPAWN_OVERWORLD("hasSpawnOerworld"),
+	ANIMAL((Object e) -> ((Entity) e).isAnimal()),
+	MINECART((Object e) -> ((Entity) e).isMinecart()),
+	MONSTER((Object e) -> ((Entity) e).isMonster()),
+	VILLAGER((Object e) -> ((Entity) e).isVillager());
 
-	ANIMAL("isAnimal"),
-	MINECART("isMinecart"),
-	MONSTER("isMonster"),
-	VILLAGER("isVillager");
-
-	StringBuilder method = new StringBuilder();
+	BooleanFunctionalInterface method;
 
 	/**
 	 * @param method a string corresponding at a name of a method
 	 */
-	EntityType(String method)
+	EntityType(BooleanFunctionalInterface bool)
 	{
-		this.method.append(method);
+		this.method = bool;
+	}
+	
+	public BooleanFunctionalInterface getMethod()
+	{
+		return method;
 	}
 
 	/**
