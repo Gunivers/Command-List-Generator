@@ -84,4 +84,10 @@ public class ScoreInterpolation extends Functionality {
 		return commands;
 
 	}
+
+	@Override
+	public String getHelp() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

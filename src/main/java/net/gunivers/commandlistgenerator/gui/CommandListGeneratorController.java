@@ -51,7 +51,7 @@ public class CommandListGeneratorController implements Initializable {
 	private JFXListView<Label> TYPE_LIST;
 
 	public static SyncListHandler<Label> SYNC_LIST_HANDLER = null;
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		CONTROLLER = this;
@@ -61,7 +61,7 @@ public class CommandListGeneratorController implements Initializable {
 
 		MAX_COMMAND.textProperty().addListener(new OnlyIntPosChangeListener(MAX_COMMAND));
 
-		COMMAND_INPUT.setOnKeyTyped(new TextFieldCommandChangeHandler(COMMAND_INPUT));
+		COMMAND_INPUT.setOnKeyReleased(new TextFieldCommandChangeHandler(COMMAND_INPUT));
 
 		BUTTON_GENERATE.setOnAction(
 				new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT));

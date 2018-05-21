@@ -22,7 +22,6 @@ import net.gunivers.core.language.tuple.Tuple6;
 
 public class InterpolationController extends FunctionalityController implements Initializable {
 	
-	//TODO Manque une textbox
 	@FXML
 	private JFXCheckBox CHECK_BOX_1;
 

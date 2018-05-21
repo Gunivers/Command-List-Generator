@@ -1,8 +1,5 @@
 package net.gunivers.core.minecraft;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import net.gunivers.commandlistgenerator.util.BooleanFunctionalInterface;
 
 /**
@@ -38,24 +35,5 @@ public enum EntityType
 	public BooleanFunctionalInterface getMethod()
 	{
 		return method;
-	}
-
-	/**
-	 * @param entity a Entity
-	 * @param et     a EntityType
-	 * @return the result of the method having for name et of entity
-	 */
-	public static boolean checkEntity(Entity entity, EntityType et)
-	{
-		try
-		{
-			Method m = Entity.class.getMethod(et.method.toString());
-			return (boolean) m.invoke(entity, new Object[]{});
-
-		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
-		{
-			e.printStackTrace();
-			return false;
-		}
 	}
 }

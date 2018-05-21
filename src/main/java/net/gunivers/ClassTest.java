@@ -2,11 +2,9 @@ package net.gunivers;
 
 import java.util.ArrayList;
 
+import net.gunivers.commandlistgenerator.util.Type;
 import net.gunivers.commandparser.Command;
 import net.gunivers.commandparser.commands.CommandGamemode;
-import net.gunivers.core.language.tuple.Tuple;
-import net.gunivers.commandlistgenerator.functionality.Sequence;
-import net.gunivers.commandlistgenerator.util.Type;
 
 public class ClassTest
 {

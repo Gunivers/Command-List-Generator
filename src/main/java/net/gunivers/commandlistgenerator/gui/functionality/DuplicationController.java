@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -32,11 +33,18 @@ public class DuplicationController extends FunctionalityController implements In
 	private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel()
 			.getSelectedIndex();
 
+	
+	@FXML
+	public void onEnter(ActionEvent ae){
+	   System.out.println("test") ;
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setDialog(ButtonNextHandler.newDialog);
 
 		getDoneButton().setOnAction(event -> saveAll());
+		getDoneButton().setDefaultButton(true);
 
 		MIDDLE_TEXT.textProperty().addListener(new OnlyDoublePosChangeListener(MIDDLE_TEXT));
 		BOTTOM_TEXT.textProperty().addListener(new OnlyDoublePosChangeListener(BOTTOM_TEXT));

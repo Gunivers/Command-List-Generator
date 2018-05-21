@@ -46,4 +46,6 @@ public abstract class Functionality {
 	}
 
 	public abstract ArrayList<String> generate(Tuple tuple, Integer nbLoop);
+	
+	public abstract String getHelp();
 }

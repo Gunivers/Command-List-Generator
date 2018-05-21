@@ -88,7 +88,7 @@ public class Interpolation extends Functionality {
 	 */
 	@Override
 	public ArrayList<String> generate(Tuple t, Integer nbLoop) {
-		//<start, end, power, revert, nbreDecimales, noExt>
+		//	  <start,  end,    power,  revert,  nbreDecimales, noExt>
 		Tuple6<Double, Double, Double, Boolean, Integer, Boolean> tuple = Tuple.castTo(t, Tuple.newTuple(Double.class, Double.class, Double.class, Boolean.class, Integer.class, Boolean.class));
 		ArrayList<String> commands = new ArrayList<>();
 
@@ -110,5 +110,11 @@ public class Interpolation extends Functionality {
 				commands.add(String.valueOf(round(interp(tuple._1, tuple._2, i, tuple._3, tuple._4, nbLoop), tuple._5)));
 
 		return commands;
+	}
+
+	@Override
+	public String getHelp() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
