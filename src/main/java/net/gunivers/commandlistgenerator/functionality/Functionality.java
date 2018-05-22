@@ -3,8 +3,10 @@ package net.gunivers.commandlistgenerator.functionality;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.commandlistgenerator.util.HelpFunctionality;
-import net.gunivers.core.language.tuple.Tuple;
+import net.gunivers.core.language.Language;
+import net.gunivers.core.utils.tuple.Tuple;
 
 
 /**
@@ -17,7 +19,7 @@ public abstract class Functionality extends HelpFunctionality {
 	 * This Map stocks all functionalities
 	 */
 	private static HashMap<String, Functionality> functionalities = new HashMap<String, Functionality>();
-
+	
 	/**
 	 * @return a HashMap of all available functionnalities
 	 */
@@ -32,6 +34,9 @@ public abstract class Functionality extends HelpFunctionality {
 		return functionalities.get(name);
 	}
 
+	
+	protected Language l = CommandListGenerator.language;
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -44,8 +49,8 @@ public abstract class Functionality extends HelpFunctionality {
 	 */
 	 {
 		functionalities.put(this.toString(), this);
-	}
-
+	 }
+	 
 	public abstract ArrayList<String> generate(Tuple tuple, Integer nbLoop);
 	
 	public abstract String getHelp();

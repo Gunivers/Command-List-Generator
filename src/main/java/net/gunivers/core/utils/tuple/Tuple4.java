@@ -1,4 +1,4 @@
-package net.gunivers.core.language.tuple;
+package net.gunivers.core.utils.tuple;
 
 public class Tuple4<A, B, C, D> extends Tuple {
 

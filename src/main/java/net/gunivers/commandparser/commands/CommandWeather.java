@@ -3,8 +3,8 @@ package net.gunivers.commandparser.commands;
 import net.gunivers.commandparser.Command;
 import net.gunivers.commandparser.node.CommandNode;
 import net.gunivers.commandparser.node.EndNode;
-import net.gunivers.core.language.tuple.Tuple;
-import net.gunivers.core.language.tuple.Tuple2;
+import net.gunivers.core.utils.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple2;
 
 public class CommandWeather extends Command
 {

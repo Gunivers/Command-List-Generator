@@ -1,7 +1,7 @@
 package net.gunivers.commandparser.node;
 
-import net.gunivers.core.language.tuple.Tuple;
-import net.gunivers.core.language.tuple.Tuple2;
+import net.gunivers.core.utils.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple2;
 
 public class CommandNode extends Node
 {

@@ -5,23 +5,15 @@ import java.util.ArrayList;
 
 import net.gunivers.commandlistgenerator.util.Calculator;
 import net.gunivers.commandlistgenerator.util.Type;
-import net.gunivers.core.language.tuple.Tuple;
-import net.gunivers.core.language.tuple.Tuple4;
+import net.gunivers.core.utils.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple4;
 
 /**
  * @author Oromis A function to increment at each loop
  */
 public class Sequence extends Functionality {
 
-	/**
-	 * @param initValue
-	 *            first value of the loop
-	 * @param incr
-	 *            number to add at each loop
-	 * @param nbLoop
-	 *            number of loop
-	 * @return an ArrayList<String> with all the value replacing the tag
-	 */
+
 	@Override
 	public ArrayList<String> generate(Tuple t, Integer nbLoop) {
 		//<initValue, operation, round, type>
@@ -51,14 +43,21 @@ public class Sequence extends Functionality {
 
 		BigDecimal bd = new BigDecimal(tuple._1);
 		bd = bd.setScale(tuple._3, BigDecimal.ROUND_HALF_UP);
-		save.add(bd.toString());
+		save.add(bd.toString() + end);
+		
+		Double precedValue = tuple._1;
 
 		for (int i = 0; i < nbLoop; i++) {
-			Calculator calc = new Calculator(tuple._2.replaceAll("[uU]", Double.toString(tuple._1)));
-			Double initValue = calc.calculate();
-			BigDecimal bd2 = new BigDecimal(initValue);
-			bd2 = bd2.setScale(tuple._3, BigDecimal.ROUND_HALF_UP);
-			save.add(bd2.toString() + end);
+			try {
+				Calculator calc = new Calculator(tuple._2.replaceAll("[uU]", Double.toString(precedValue)));
+				precedValue = calc.calculate();
+				BigDecimal bd2 = new BigDecimal(precedValue);
+				bd2 = bd2.setScale(tuple._3, BigDecimal.ROUND_HALF_UP);
+				save.add(bd2.toString() + end);
+			} catch(Exception e) {
+				//TODO
+				e.printStackTrace();
+			}
 		}
 		
 		return save;
@@ -66,26 +65,31 @@ public class Sequence extends Functionality {
 
 	@Override
 	public String toString() {
-		return "Sequence";
+		return l.get("gui.sequence.title");
 	}
 
 	@Override
 	public String getHelp() {
-		return "A simple incrementer"
+		String operation = l.get("gui.sequence.parameter.operation");
+		String initialValue = l.get("gui.sequence.parameter.initialvalue");
+		String round = l.get("gui.sequence.parameter.round");
+		
+		return 	l.get("gui.sequence.description")
 				+ "\n"
-				+ "\nParameters:"
-				+ "\n initValue: the initial value"
-				+ "\n increment: the increment value"
+				+ "\n" + l.get("gui.functionalities.description.parameters") + ":"
+				+ "\n" + operation + ": " + l.get("gui.sequence.description.operation")
+				+ "\n" + initialValue +": " + l.get("gui.sequence.description.initialvalue")
+				+ "\n" + round + ": " + l.get("gui.sequence.description.round")
 				+ "\n"
-				+ "\nExample:"
-				+ "\n Command: cmd #Sequence:example#"
-				+ "\n initValue:0; increment:1.0;"
+				+ "\n" + l.get("gui.functionalities.description.example") + ":"
+				+ "\n " + l.get("gui.commandlistgenerator.command") + ": cmd #Sequence:example#"
+				+ "\n " + operation + ": \"U + 1\"; " + initialValue + ": 0; " + round + ": 0;"
 				+ "\n cmd 0"
 				+ "\n cmd 1"
 				+ "\n cmd 2"
 				+ "\n [...]"
-				+ "\n initValue:5; increment:2.3;"
-				+ "\n cmd 5"
+				+ "\n " + operation + ": \"U + 2.3\"; " + initialValue + ": 5; " + round + ": 1;"
+				+ "\n cmd 5.0"
 				+ "\n cmd 7.3"
 				+ "\n cmd 9.6"
 				+ "\n [...]";

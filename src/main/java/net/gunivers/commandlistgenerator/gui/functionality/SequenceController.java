@@ -21,8 +21,8 @@ import net.gunivers.commandlistgenerator.gui.util.OnlyIntPosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.commandlistgenerator.util.Type;
 import net.gunivers.core.gui.ShakeEffect;
-import net.gunivers.core.language.tuple.Tuple;
-import net.gunivers.core.language.tuple.Tuple4;
+import net.gunivers.core.utils.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple4;
 
 public class SequenceController extends FunctionalityController implements Initializable {
 

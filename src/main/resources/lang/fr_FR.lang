@@ -1,0 +1,35 @@
+##############################
+#     Fenêtre principale     #
+##############################
+
+gui.commandlistgenerator.title=Command List Generator
+gui.commandlistgenerator.command=Commande
+gui.commandlistgenerator.notagselected=Veuillez sélectionner un tag
+
+##############################
+#       Fonctionnalités      #
+##############################
+
+gui.functionalities.description.parameters=Paramètre
+gui.functionalities.description.example=Exemple
+
+gui.interpolation.title=Interpolation
+
+gui.duplication.title=Duplication
+gui.duplication.parameter.text=Texte
+gui.duplication.parameter.multiplier=Multiplicateur
+gui.duplication.parameter.adder=Additionneur
+gui.duplication.description.text=Il sera dupliqué puis placé dans votre commande
+gui.duplication.description.multiplier=Cela va multiplier votre texte
+gui.duplication.description.adder=Après la multiplication, le texte original sera ajouté
+
+gui.sequence.title=Suite
+gui.sequence.parameter.operation=Opération
+gui.sequence.parameter.initialvalue=Valeur initiale
+gui.sequence.parameter.round=Arrondis
+gui.sequence.description=Permet de faire évoluer le tag en fonction d'une suite arithmétique
+gui.sequence.description.operation=La suite. Mettre 'U' pour obtenir la valeur précédente (U(n-1) à l'étape n)
+gui.sequence.description.initialvalue=La première valeur U(0)
+qui.sequence.description.round=Le nombre de décimale
+
+gui.scoreinterpolation.title=Interpolation pour score

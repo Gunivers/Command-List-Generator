@@ -19,8 +19,8 @@ import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.gui.util.OnlyIntPosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.core.gui.ShakeEffect;
-import net.gunivers.core.language.tuple.Tuple;
-import net.gunivers.core.language.tuple.Tuple6;
+import net.gunivers.core.utils.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple6;
 
 public class InterpolationController extends FunctionalityController implements Initializable {
 	

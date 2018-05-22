@@ -2,8 +2,8 @@ package net.gunivers.commandlistgenerator.functionality;
 
 import java.util.ArrayList;
 
-import net.gunivers.core.language.tuple.Tuple;
-import net.gunivers.core.language.tuple.Tuple6;
+import net.gunivers.core.utils.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple6;
 
 public class Interpolation extends Functionality {
 
@@ -78,7 +78,7 @@ public class Interpolation extends Functionality {
 
 	@Override
 	public String toString() {
-		return "Interpolation";
+		return l.get("gui.interpolation.title");
 	}
 
 	/**

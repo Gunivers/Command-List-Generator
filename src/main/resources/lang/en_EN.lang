@@ -2,4 +2,34 @@
 #          Main Window       #
 ##############################
 
-gui.listgenerator.title=Command List Generator
+gui.commandlistgenerator.title=Command List Generator
+gui.commandlistgenerator.command=Command
+gui.commandlistgenerator.notagselected=Please select a tag
+
+##############################
+#       Functionalities      #
+##############################
+
+gui.functionalities.description.parameters=Parameters
+gui.functionalities.description.example=Example
+
+gui.interpolation.title=Interpolation
+
+gui.duplication.title=Duplication
+gui.duplication.parameter.text=Text
+gui.duplication.parameter.multiplier=Multiplier
+gui.duplication.parameter.adder=Adder
+gui.duplication.description.text=It will be duplicated then placed in your command
+gui.duplication.description.multiplier=It will multiply your text
+gui.duplication.description.adder=After the multiplication, the original text will be added
+
+gui.sequence.title=Sequence
+gui.sequence.parameter.operation=Operation
+gui.sequence.parameter.initialvalue=Initial Value
+gui.sequence.parameter.round=Round
+gui.sequence.description=Allows a tag to evolve by following a sequence.
+gui.sequence.description.operation=The sequence. Put 'U' to get the precedent value (U(n-1) at n step)
+gui.sequence.description.initialvalue=The first value U(0)
+qui.sequence.description.round=The number of decimal
+
+gui.scoreinterpolation.title=Score Interpolation

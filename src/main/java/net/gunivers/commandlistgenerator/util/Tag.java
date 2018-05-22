@@ -3,7 +3,7 @@ package net.gunivers.commandlistgenerator.util;
 import java.util.HashMap;
 
 import net.gunivers.commandlistgenerator.functionality.Functionality;
-import net.gunivers.core.language.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple;
 
 /**
  * @author Oromis This object represent a tag in the mold

@@ -39,11 +39,6 @@ public class CommandListGenerator extends Application
 	{
 		CommandListGenerator.MAIN_STAGE = primaryStage;
 
-		new Duplication();
-		new Sequence();
-		new Interpolation();
-		new ScoreInterpolation();
-
 		//Start of fxml load
 		FXMLLoader loader = new FXMLLoader(new URL(getClass().getResource("/fxml/CommandListGenerator.fxml").toExternalForm()));
 
@@ -57,8 +52,8 @@ public class CommandListGenerator extends Application
 		JFXDecorator decorator = new JFXDecorator(primaryStage, loader.getRoot(), false, true, true);
 
 		//Set the tittle of window
-		/*decorator.setText(language.get("gui.commandlistgenerator.title"));
-		primaryStage.setTitle(language.get("gui.commandlistgenerator.title"));*/
+		decorator.setText(language.get("gui.commandlistgenerator.title"));
+		primaryStage.setTitle(language.get("gui.commandlistgenerator.title"));
 
 		//Create new scene
 		Scene scene = new Scene(decorator);
@@ -81,5 +76,16 @@ public class CommandListGenerator extends Application
 
 		//Show the scene
 		primaryStage.show();
+		
+		/*for(Entry<String, String> e : language.stringToComponent.entrySet())
+			System.out.println(e.getKey() + " : " + e.getValue());*/
+		
+		System.out.println(language.get("gui.duplication.parameter.text"));
+		
+		//Init of functionalities
+		new Duplication();
+		new Sequence();
+		new Interpolation();
+		new ScoreInterpolation();
 	}
 }

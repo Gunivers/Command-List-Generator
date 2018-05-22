@@ -70,6 +70,7 @@ public class CommandListGeneratorController implements Initializable {
 				new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, MAX_COMMAND));
 
 		BUTTON_EDIT.setOnAction(new ButtonEditHandler());
+		
 		BUTTON_GENERATE.setDefaultButton(true);
 		
 		EventHandler<MouseEvent> event = new EventHandler<MouseEvent>() {

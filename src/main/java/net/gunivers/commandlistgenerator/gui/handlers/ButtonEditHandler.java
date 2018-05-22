@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXSnackbar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.commandlistgenerator.functionality.Functionality;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
 import net.gunivers.commandlistgenerator.util.Tag;
@@ -55,7 +56,7 @@ public class ButtonEditHandler implements EventHandler<ActionEvent> {
 				dialog.show(CommandListGeneratorController.MAIN_PANE);
 			}
 		} else {
-			bar.show("Please select a tag.", 3 * 1000);
+			bar.show(CommandListGenerator.language.get("gui.commandlistgenerator.notagselected"), 3 * 1000);
 		}
 	}
 }

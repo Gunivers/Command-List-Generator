@@ -15,8 +15,8 @@ import net.gunivers.commandlistgenerator.gui.handlers.ButtonNextHandler;
 import net.gunivers.commandlistgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.commandlistgenerator.gui.util.FunctionalityController;
 import net.gunivers.commandlistgenerator.util.Tag;
-import net.gunivers.core.language.tuple.Tuple;
-import net.gunivers.core.language.tuple.Tuple1;
+import net.gunivers.core.utils.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple1;
 
 public class ListController extends FunctionalityController implements Initializable
 {

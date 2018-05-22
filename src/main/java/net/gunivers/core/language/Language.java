@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class Language
 {
 	//			   Key	   Value
-	private HashMap<String, String> stringToComponent = new HashMap<>();
+	public HashMap<String, String> stringToComponent = new HashMap<>();
 
 	//Default locale
 	private Locale locale;

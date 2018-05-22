@@ -2,8 +2,8 @@ package net.gunivers.commandlistgenerator.functionality;
 
 import java.util.ArrayList;
 
-import net.gunivers.core.language.tuple.Tuple;
-import net.gunivers.core.language.tuple.Tuple3;
+import net.gunivers.core.utils.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple3;
 
 public class Duplication extends Functionality {
 	public Duplication() {
@@ -12,7 +12,7 @@ public class Duplication extends Functionality {
 
 	@Override
 	public String toString() {
-		return "Duplication";
+		return l.get("gui.duplication.title");
 	}
 
 	@Override
@@ -40,19 +40,23 @@ public class Duplication extends Functionality {
 
 	@Override
 	public String getHelp() {
-		return "Parameters:"
-				+ "\n - Text: It will be duplicated then placed in your command"
-				+ "\n - Multiplier: It will multiply your text"
-				+ "\n - Adder: After the multiplication, the original text will be added"
+		String text =  l.get("gui.duplication.parameter.text");
+		String multiplier =  l.get("gui.duplication.parameter.multiplier");
+		String adder =  l.get("gui.duplication.parameter.adder");
+		
+		return l.get("gui.functionalities.description.parameters")
+				+ "\n - " + text + ": "  + l.get("gui.duplication.description.text")
+				+ "\n - " + multiplier + ": " + l.get("gui.duplication.description.multiplier")
+				+ "\n - " + adder + ": " + l.get("gui.duplication.description.adder")
 				+ "\n"
-				+ "\nExample:"
-				+ "\n Text:❤; Multiplier:1.0; Adder:0.0"
-				+ "\n Command: cmd #Duplication:example#"
+				+ "\n" + l.get("gui.functionalities.example") + ":"
+				+ "\n " + text + ":❤; " + multiplier + ":1.0; " + adder + ":0.0"
+				+ "\n " + l.get("gui.commandlistgenerator.command") + ": cmd #Duplication:example#"
 				+ "\n cmd ❤"
 				+ "\n cmd ❤❤"
 				+ "\n cmd ❤❤❤ "
 				+ "\n [...]"
-				+ "\n Text:❤; Multiplier:5.0; Adder:2.0"
+				+ "\n " + text + ":❤; " + multiplier + ":5.0; " + adder + ":2.0"
 				+ "\n cmd ❤❤❤❤❤❤❤"
 				+ "\n cmd ❤❤❤❤❤❤❤❤❤❤❤❤"
 				+ "\n cmd ❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤ "

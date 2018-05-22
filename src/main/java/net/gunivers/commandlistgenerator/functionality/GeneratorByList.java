@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import net.gunivers.commandlistgenerator.util.HelpFunctionality;
-import net.gunivers.core.language.tuple.Tuple;
-import net.gunivers.core.language.tuple.Tuple1;
 import net.gunivers.core.minecraft.Entity;
+import net.gunivers.core.utils.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple1;
 
 /**
  * @authors A~Z, Oromis Generate by list
