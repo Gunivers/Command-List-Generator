@@ -148,4 +148,9 @@ public class Interpolation extends Functionality {
 				+ "\n 8"
 				+ "\n 10";
 	}
+
+	@Override
+	public String getDefaultName() {
+		return "Interpolation";
+	}
 }

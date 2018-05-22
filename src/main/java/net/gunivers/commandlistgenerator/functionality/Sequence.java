@@ -94,4 +94,9 @@ public class Sequence extends Functionality {
 				+ "\n cmd 9.6"
 				+ "\n [...]";
 	}
+
+	@Override
+	public String getDefaultName() {
+		return "Sequence";
+	}
 }

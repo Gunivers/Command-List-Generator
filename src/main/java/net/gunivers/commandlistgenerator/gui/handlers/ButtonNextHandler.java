@@ -38,7 +38,7 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
 
 			try
 			{
-				layout = FXMLLoader.load(getClass().getResource("/fxml/functionality/" + functionality.toString() + ".fxml"));
+				layout = FXMLLoader.load(getClass().getResource("/fxml/functionality/" + functionality.getDefaultName() + ".fxml"));
 			} catch (IOException e)
 			{
 				e.printStackTrace();

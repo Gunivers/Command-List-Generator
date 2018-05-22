@@ -38,6 +38,8 @@ public abstract class Functionality extends HelpFunctionality {
 	 * @see java.lang.Object#toString()
 	 */
 	public abstract String toString();
+	
+	public abstract String getDefaultName();
 
 	/**
 	 * Save each instance of a functionality

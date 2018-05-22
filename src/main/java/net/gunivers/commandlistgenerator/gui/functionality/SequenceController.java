@@ -48,13 +48,14 @@ public class SequenceController extends FunctionalityController implements Initi
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Language l = CommandListGenerator.language;
+		
 		
 		setDialog(ButtonNextHandler.newDialog);
 
 		getDoneButton().setOnAction(event -> saveAll());
 		getDoneButton().setDefaultButton(true);
 		
+		Language l = CommandListGenerator.language;
 		getDoneButton().setText(l.get("gui.button.done"));
 		TOP_TEXT.setPromptText(l.get("gui.sequence.parameter.operation"));
 		MIDDLE_TEXT.setPromptText(l.get("gui.sequence.parameter.initialvalue"));

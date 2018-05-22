@@ -60,4 +60,9 @@ public class Duplication extends Functionality {
 				+ "\n [...]";
 	}
 
+	@Override
+	public String getDefaultName() {
+		return "Duplication";
+	}
+
 }

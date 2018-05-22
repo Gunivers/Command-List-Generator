@@ -109,4 +109,9 @@ public class ScoreInterpolation extends Functionality {
 				+ "\n 85..96"
 				+ "\n 97..100";
 	}
+
+	@Override
+	public String getDefaultName() {
+		return "ScoreInterpolation";
+	}
 }
