@@ -3,9 +3,7 @@ package net.gunivers.commandlistgenerator.functionality;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.commandlistgenerator.util.HelpFunctionality;
-import net.gunivers.core.language.Language;
 import net.gunivers.core.utils.tuple.Tuple;
 
 
@@ -33,9 +31,6 @@ public abstract class Functionality extends HelpFunctionality {
 	public static Functionality getFunctionalities(String name) {
 		return functionalities.get(name);
 	}
-
-	
-	protected Language l = CommandListGenerator.language;
 	
 	/*
 	 * (non-Javadoc)

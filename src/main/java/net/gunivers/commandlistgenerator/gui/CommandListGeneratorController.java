@@ -17,12 +17,14 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.commandlistgenerator.gui.handlers.ButtonEditHandler;
 import net.gunivers.commandlistgenerator.gui.handlers.ButtonGenerateHandler;
 import net.gunivers.commandlistgenerator.gui.handlers.TextFieldCommandChangeHandler;
 import net.gunivers.commandlistgenerator.gui.handlers.list.SyncListHandler;
 import net.gunivers.commandlistgenerator.gui.util.OnlyIntPosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
+import net.gunivers.core.language.Language;
 
 public class CommandListGeneratorController implements Initializable {
 	public static CommandListGeneratorController CONTROLLER;
@@ -52,26 +54,41 @@ public class CommandListGeneratorController implements Initializable {
 
 	@FXML
 	private JFXListView<Label> TYPE_LIST;
+	
+	@FXML
+	private Label LABEL_TAG;
+	
+	@FXML
+	private Label LABEL_TYPE;
 
 	public static SyncListHandler<Label> SYNC_LIST_HANDLER = null;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Language l = CommandListGenerator.language;
 		CONTROLLER = this;
 		MAIN_PANE = PANE;
 
 		SYNC_LIST_HANDLER = new SyncListHandler<Label>(TAG_LIST, TYPE_LIST);
 
+		MAX_COMMAND.setPromptText(l.get("gui.textfield.maxcommand"));
+		COMMAND_INPUT.setPromptText(l.get("gui.commandlistgenerator.command"));
+		COMMAND_OUTPUT.setPromptText(l.get("gui.textarea.output"));
+		BUTTON_GENERATE.setText(l.get("gui.button.generate"));
+		BUTTON_EDIT.setText(l.get("gui.button.edit"));
+		LABEL_TAG.setText(l.get("gui.label.tag"));
+		LABEL_TYPE.setText(l.get("gui.label.type"));
+		
 		MAX_COMMAND.textProperty().addListener(new OnlyIntPosChangeListener(MAX_COMMAND));
 
 		COMMAND_INPUT.setOnKeyReleased(new TextFieldCommandChangeHandler(COMMAND_INPUT));
+		
 
-		BUTTON_GENERATE.setOnAction(
-				new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, MAX_COMMAND));
-
+		BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, MAX_COMMAND));
+		BUTTON_GENERATE.setDefaultButton(true);
+		
 		BUTTON_EDIT.setOnAction(new ButtonEditHandler());
 		
-		BUTTON_GENERATE.setDefaultButton(true);
 		
 		EventHandler<MouseEvent> event = new EventHandler<MouseEvent>() {
 			 @Override

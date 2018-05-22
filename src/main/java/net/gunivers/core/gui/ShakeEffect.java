@@ -28,6 +28,11 @@ public class ShakeEffect {
 		tl.play();
 	}
 	
+	public static void shake(Node... n) {
+		for(Node node : n)
+			shake(node);
+	}
+	
 	public static boolean isFullOrElseShake(TextInputControl... nodes) {
 		boolean isFull = true;
 		for(TextInputControl n : nodes)
@@ -37,5 +42,4 @@ public class ShakeEffect {
 			}
 		return isFull;
 	}
-	
 }

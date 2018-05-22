@@ -72,14 +72,14 @@ public class Sequence extends Functionality {
 	public String getHelp() {
 		String operation = l.get("gui.sequence.parameter.operation");
 		String initialValue = l.get("gui.sequence.parameter.initialvalue");
-		String round = l.get("gui.sequence.parameter.round");
+		String round = l.get("gui.functionalities.decimale");
 		
 		return 	l.get("gui.sequence.description")
 				+ "\n"
 				+ "\n" + l.get("gui.functionalities.description.parameters") + ":"
 				+ "\n" + operation + ": " + l.get("gui.sequence.description.operation")
 				+ "\n" + initialValue +": " + l.get("gui.sequence.description.initialvalue")
-				+ "\n" + round + ": " + l.get("gui.sequence.description.round")
+				+ "\n" + round + ": " + l.get("gui.functionalities.description.decimale")
 				+ "\n"
 				+ "\n" + l.get("gui.functionalities.description.example") + ":"
 				+ "\n " + l.get("gui.commandlistgenerator.command") + ": cmd #Sequence:example#"

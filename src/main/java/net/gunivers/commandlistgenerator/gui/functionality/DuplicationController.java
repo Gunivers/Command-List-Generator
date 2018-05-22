@@ -5,10 +5,10 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextField;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.commandlistgenerator.functionality.Functionality;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
 import net.gunivers.commandlistgenerator.gui.handlers.ButtonEditHandler;
@@ -18,6 +18,7 @@ import net.gunivers.commandlistgenerator.gui.util.FunctionalityController;
 import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.core.gui.ShakeEffect;
+import net.gunivers.core.language.Language;
 import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple3;
 
@@ -33,19 +34,20 @@ public class DuplicationController extends FunctionalityController implements In
 
 	private int INDEX = CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getSelectionModel()
 			.getSelectedIndex();
-
-	
-	@FXML
-	public void onEnter(ActionEvent ae){
-	   System.out.println("test") ;
-	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Language l = CommandListGenerator.language;
+		
 		setDialog(ButtonNextHandler.newDialog);
 
 		getDoneButton().setOnAction(event -> saveAll());
 		getDoneButton().setDefaultButton(true);
+		
+		getDoneButton().setText(l.get("gui.button.done"));
+		TOP_TEXT.setPromptText(l.get("gui.duplication.parameter.text"));
+		MIDDLE_TEXT.setPromptText(l.get("gui.duplication.parameter.multiplier"));
+		BOTTOM_TEXT.setPromptText(l.get("gui.duplication.parameter.adder"));
 		
 		MIDDLE_TEXT.textProperty().addListener(new OnlyDoublePosChangeListener(MIDDLE_TEXT));
 		BOTTOM_TEXT.textProperty().addListener(new OnlyDoublePosChangeListener(BOTTOM_TEXT));

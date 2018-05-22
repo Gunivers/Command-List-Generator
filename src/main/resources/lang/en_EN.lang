@@ -4,7 +4,21 @@
 
 gui.commandlistgenerator.title=Command List Generator
 gui.commandlistgenerator.command=Command
+gui.commandlistgenerator.commands=Commands
 gui.commandlistgenerator.notagselected=Please select a tag
+
+##############################
+#         Node texts         #
+##############################
+
+gui.button.done=Done
+gui.button.edit=Edit
+gui.button.generate=Generate
+gui.button.next=Next
+gui.textfield.maxcommand=Max Command
+gui.textarea.output=Output
+gui.label.tag=Tag
+gui.label.type=Type
 
 ##############################
 #       Functionalities      #
@@ -12,8 +26,27 @@ gui.commandlistgenerator.notagselected=Please select a tag
 
 gui.functionalities.description.parameters=Parameters
 gui.functionalities.description.example=Example
+gui.functionalities.decimale=Decimale
+gui.functionalities.description.decimale=The precision of the output
+
+gui.functionalities.error.startsuperiorthanend=The start value can't be superior than end value
+
+gui.interpolation.parameter.start=Start value
+gui.interpolation.parameter.end=End value
+gui.interpolation.parameter.power=Power
+gui.interpolation.parameter.revert=Revert
+gui.interpolation.description.start=Start bound of the range
+gui.interpolation.description.end=End bound of the range
+gui.interpolation.description.power=The slope of the raise. If this number is 2 for example, the resulting numbers will slowly increase in the begining and increase faster in the end
+gui.interpolation.description.revert=Reverts the slope
 
 gui.interpolation.title=Interpolation
+gui.interpolation.description=Allows you to get a list of ordered numbers between 2 bounds
+gui.interpolation.parameter.noextremes=No Extremes
+gui.interpolation.description.noextremes=If true, the bounds will be exclusive
+
+gui.scoreinterpolation.title=Score Interpolation
+gui.scoreinterpolation.description=Allows you to get a list of ordered ranges between 2 bounds
 
 gui.duplication.title=Duplication
 gui.duplication.parameter.text=Text
@@ -26,10 +59,13 @@ gui.duplication.description.adder=After the multiplication, the original text wi
 gui.sequence.title=Sequence
 gui.sequence.parameter.operation=Operation
 gui.sequence.parameter.initialvalue=Initial Value
-gui.sequence.parameter.round=Round
 gui.sequence.description=Allows a tag to evolve by following a sequence.
 gui.sequence.description.operation=The sequence. Put 'U' to get the precedent value (U(n-1) at n step)
 gui.sequence.description.initialvalue=The first value U(0)
-qui.sequence.description.round=The number of decimal
 
-gui.scoreinterpolation.title=Score Interpolation
+##############################
+#           Others           #
+##############################
+
+gui.others.true=true
+gui.others.false=false

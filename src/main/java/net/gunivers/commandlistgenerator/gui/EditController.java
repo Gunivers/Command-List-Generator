@@ -39,6 +39,8 @@ public class EditController implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
+		NEXT_BUTTON.setText(CommandListGenerator.language.get("gui.button.next"));
+		
 		layout.setPrefSize(CommandListGenerator.MAIN_STAGE.getWidth() / 1.25, CommandListGenerator.MAIN_STAGE.getHeight() / 1.25);
 
 		FUNCTIONALITY_LIST.setOnMouseClicked(new EventHandler<MouseEvent>() {

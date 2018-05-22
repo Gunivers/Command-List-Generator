@@ -114,6 +114,38 @@ public class Interpolation extends Functionality {
 
 	@Override
 	public String getHelp() {
-		return "Ask KubbyDev to know how it works :/";
+		String start = l.get("gui.interpolation.parameter.start");
+		String end = l.get("gui.interpolation.parameter.end");
+		String power = l.get("gui.interpolation.parameter.power");
+		String round = l.get("gui.functionalities.decimale");
+		String revert = l.get("gui.interpolation.parameter.revert");
+		String noExtremes = l.get("gui.interpolation.parameter.noextremes");
+		String trueS = l.get("gui.others.true");
+		String falseS = l.get("gui.others.false");
+		
+		return 	l.get("gui.sequence.description")
+				+ "\n"
+				+ "\n" + l.get("gui.functionalities.description.parameters") + ":"
+				+ "\n" + start + ": " + l.get("gui.interpolation.description.start")
+				+ "\n" + end +": " + l.get("gui.interpolation.description.end")
+				+ "\n" + round + ": " + l.get("gui.functionalities.description.decimale")
+				+ "\n" + power + ": " + l.get("gui.interpolation.description.power")
+				+ "\n" + revert + ": " + l.get("gui.interpolation.description.revert")
+				+ "\n" + noExtremes + ":" + l.get("gui.interpolation.description.noextremes")
+				+ "\n"
+				+ "\n" + l.get("gui.functionalities.description.example") + ":"
+				+ "\n 5 " + l.get("gui.commandlistgenerator.commands") + ": #Interpolation:example#"
+				+ "\n " + start + ": 0; " + end + ": 10; " + power + ": 1;" + round + ": 0;" + revert + ": " + falseS + ";" + noExtremes + ": " + trueS +";"  
+				+ "\n 1"
+				+ "\n 3"
+				+ "\n 5"
+				+ "\n 7"
+				+ "\n 9"
+				+ "\n " + start + ": 0; " + end + ": 10; " + power + ": 1;" + round + ": 0;" + revert + ": " + falseS + ";" + noExtremes + ": " + falseS +";"  
+				+ "\n 0"
+				+ "\n 3"
+				+ "\n 5"
+				+ "\n 8"
+				+ "\n 10";
 	}
 }

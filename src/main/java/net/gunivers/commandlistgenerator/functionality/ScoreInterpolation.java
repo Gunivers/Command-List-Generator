@@ -87,6 +87,26 @@ public class ScoreInterpolation extends Functionality {
 
 	@Override
 	public String getHelp() {
-		return "Ask KubbyDev to know how it works :/";
+		String start = l.get("gui.interpolation.parameter.start");
+		String end = l.get("gui.interpolation.parameter.end");
+		String power = l.get("gui.interpolation.parameter.power");
+		String revert = l.get("gui.interpolation.parameter.revert");
+		String trueS = l.get("gui.others.true");
+		
+		return 	l.get("gui.sequence.description")
+				+ "\n"
+				+ "\n" + l.get("gui.functionalities.description.parameters") + ":"
+				+ "\n" + start + ": " + l.get("gui.interpolation.description.start")
+				+ "\n" + end +": " + l.get("gui.interpolation.description.end")
+				+ "\n" + power + ": " + l.get("gui.interpolation.description.power")
+				+ "\n" + revert + ": " + l.get("gui.interpolation.description.revert")
+				+ "\n" + l.get("gui.functionalities.description.example") + ":"
+				+ "\n 5 " + l.get("gui.commandlistgenerator.commands") + ": #Interpolation:example#"
+				+ "\n " + start + ": 0; " + end + ": 100; " + power + ": 2;" + revert + ": " + trueS + ";"  
+				+ "\n 0..36"
+				+ "\n 37..64"
+				+ "\n 65..84"
+				+ "\n 85..96"
+				+ "\n 97..100";
 	}
 }

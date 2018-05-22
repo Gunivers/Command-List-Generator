@@ -4,11 +4,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.commandlistgenerator.functionality.Functionality;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
 import net.gunivers.commandlistgenerator.gui.handlers.ButtonEditHandler;
@@ -19,10 +21,13 @@ import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.gui.util.OnlyIntPosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.core.gui.ShakeEffect;
+import net.gunivers.core.language.Language;
 import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple6;
 
 public class InterpolationController extends FunctionalityController implements Initializable {
+	
+	private JFXSnackbar bar;
 	
 	@FXML
 	private JFXCheckBox CHECK_BOX_1;
@@ -47,15 +52,25 @@ public class InterpolationController extends FunctionalityController implements 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Language l = CommandListGenerator.language;
+		
 		setDialog(ButtonNextHandler.newDialog);
 
 		getDoneButton().setOnAction(event -> saveAll());
 		getDoneButton().setDefaultButton(true);
+		
+		getDoneButton().setText(l.get("gui.button.done"));
+		TEXT_FIELD_1.setPromptText(l.get("gui.interpolation.parameter.start"));
+		TEXT_FIELD_2.setPromptText(l.get("gui.interpolation.parameter.end"));
+		TEXT_FIELD_3.setPromptText(l.get("gui.interpolation.parameter.power"));
+		TEXT_FIELD_4.setPromptText(l.get("gui.functionalities.decimale"));
+		CHECK_BOX_1.setText(l.get("gui.interpolation.parameter.revert"));
+		CHECK_BOX_2.setText(l.get("gui.interpolation.parameter.noextremes"));
 
 		TEXT_FIELD_1.textProperty().addListener(new OnlyDoublePosChangeListener(TEXT_FIELD_1));
 		TEXT_FIELD_2.textProperty().addListener(new OnlyDoublePosChangeListener(TEXT_FIELD_2));
 		TEXT_FIELD_3.textProperty().addListener(new OnlyDoublePosChangeListener(TEXT_FIELD_3));
-		TEXT_FIELD_3.textProperty().addListener(new OnlyIntPosChangeListener(TEXT_FIELD_4));
+		TEXT_FIELD_4.textProperty().addListener(new OnlyIntPosChangeListener(TEXT_FIELD_4));
 
 		if (CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem() != null
 				&& !CommandListGeneratorController.CONTROLLER.getTypeList().getSelectionModel().getSelectedItem()
@@ -72,21 +87,27 @@ public class InterpolationController extends FunctionalityController implements 
 			TEXT_FIELD_4.setText(Double.toString(tuple._5));
 			CHECK_BOX_2.setSelected(tuple._6);
 		}
+		bar = new JFXSnackbar(this.getDialog());
 	}
 
 	@Override
 	public void saveAll() {
 		if(ShakeEffect.isFullOrElseShake(TEXT_FIELD_1, TEXT_FIELD_2, TEXT_FIELD_3, TEXT_FIELD_4)) {
-			Tag tag = Tag.tags
-					.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX))
-							.getText());
-			tag.setType(Functionality.getFunctionalities("Interpolation"));
-				tag.setParameters(Tuple.newTuple(Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()),
-						Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX_1.isSelected(), TEXT_FIELD_4.getText(), CHECK_BOX_2.isSelected()));
-	
-			CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO,
-					new Label(tag.getType().toString()), INDEX);
-			getDialog().close();
+			if(Double.valueOf(TEXT_FIELD_1.getText()) >= Double.valueOf(TEXT_FIELD_2.getText())) {
+				ShakeEffect.shake(TEXT_FIELD_1, TEXT_FIELD_2);
+				bar.show(CommandListGenerator.language.get("gui.functionalities.error.startsuperiorthanend"), 5 * 1000);
+			} else {
+				Tag tag = Tag.tags
+						.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX))
+								.getText());
+				tag.setType(Functionality.getFunctionalities("Interpolation"));
+					tag.setParameters(Tuple.newTuple(Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()),
+							Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX_1.isSelected(), TEXT_FIELD_4.getText(), CHECK_BOX_2.isSelected()));
+		
+				CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO,
+						new Label(tag.getType().toString()), INDEX);
+				getDialog().close();
+			}
 		}
 	}
 }

@@ -55,13 +55,12 @@ public class Language
 		if (has(k))
 		{
 			return stringToComponent.get(k);
-		} else if (isNullOrEmpty(defaultLanguage.get(k)))
-		{
-			return k;
-		} else
-		{
-			return defaultLanguage.get(k);
 		}
+		String value = (this != defaultLanguage) ? defaultLanguage.get(k) : null;
+		if (isNullOrEmpty(value))
+			return k;
+		else
+			return value;
 	}
 
 	public void registerValue(String key, String value)

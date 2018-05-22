@@ -22,7 +22,7 @@ public class CommandListGenerator extends Application
 
 	public static Stage MAIN_STAGE;
 
-	public static Language language = Language.getLanguage(Locale.ENGLISH);
+	public static Language language = Language.getLanguage(Locale.FRENCH);
 
 	public static void main(String[] args)
 	{
@@ -64,6 +64,7 @@ public class CommandListGenerator extends Application
 
 		//Clear all CSS option
 		scene.getStylesheets().clear();
+		
 		//Add custom CSS value
 		scene.getStylesheets().add(getClass().getResource("/css/Gunivers.css").toExternalForm());
 
@@ -76,12 +77,7 @@ public class CommandListGenerator extends Application
 
 		//Show the scene
 		primaryStage.show();
-		
-		/*for(Entry<String, String> e : language.stringToComponent.entrySet())
-			System.out.println(e.getKey() + " : " + e.getValue());*/
-		
-		System.out.println(language.get("gui.duplication.parameter.text"));
-		
+				
 		//Init of functionalities
 		new Duplication();
 		new Sequence();

@@ -2,9 +2,14 @@ package net.gunivers.commandlistgenerator.util;
 
 import java.util.HashMap;
 
+import net.gunivers.commandlistgenerator.CommandListGenerator;
+import net.gunivers.core.language.Language;
+
 public abstract class HelpFunctionality {
 	
 	private static HashMap<String, String> help = new HashMap<String, String>();
+	
+	protected Language l = CommandListGenerator.language;
 	
 	{
 		help.putIfAbsent(this.getClass().getName(), this.getHelp());

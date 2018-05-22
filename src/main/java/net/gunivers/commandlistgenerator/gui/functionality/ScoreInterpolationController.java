@@ -4,11 +4,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.commandlistgenerator.functionality.Functionality;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
 import net.gunivers.commandlistgenerator.gui.handlers.ButtonEditHandler;
@@ -18,11 +20,15 @@ import net.gunivers.commandlistgenerator.gui.util.FunctionalityController;
 import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.core.gui.ShakeEffect;
+import net.gunivers.core.language.Language;
 import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple4;
 
 public class ScoreInterpolationController extends FunctionalityController implements Initializable
 {
+	
+	private JFXSnackbar bar = new JFXSnackbar(this.getDialog());
+
 	@FXML
 	private JFXCheckBox CHECK_BOX;
 
@@ -40,10 +46,17 @@ public class ScoreInterpolationController extends FunctionalityController implem
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
+		Language l = CommandListGenerator.language;
+		
 		setDialog(ButtonNextHandler.newDialog);
 		getDoneButton().setOnAction(event -> saveAll());
 		getDoneButton().setDefaultButton(true);
-
+		
+		getDoneButton().setText(l.get("gui.button.done"));
+		TEXT_FIELD_1.setPromptText(l.get("gui.interpolation.parameter.start"));
+		TEXT_FIELD_2.setPromptText(l.get("gui.interpolation.parameter.end"));
+		TEXT_FIELD_3.setPromptText(l.get("gui.interpolation.parameter.power"));
+		CHECK_BOX.setText(l.get("gui.interpolation.parameter.revert"));
 
 		TEXT_FIELD_1.textProperty().addListener(new OnlyDoublePosChangeListener(TEXT_FIELD_1));
 		TEXT_FIELD_2.textProperty().addListener(new OnlyDoublePosChangeListener(TEXT_FIELD_2));
@@ -66,13 +79,18 @@ public class ScoreInterpolationController extends FunctionalityController implem
 	public void saveAll()
 	{
 		if(ShakeEffect.isFullOrElseShake(TEXT_FIELD_1, TEXT_FIELD_2, TEXT_FIELD_3)) {
-			Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
-			tag.setType(Functionality.getFunctionalities("ScoreInterpolation"));
-	
-				tag.setParameters(Tuple.newTuple(Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected()));
-	
-			CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
-			getDialog().close();
+			if(Double.valueOf(TEXT_FIELD_1.getText()) >= Double.valueOf(TEXT_FIELD_2.getText())) {
+				ShakeEffect.shake(TEXT_FIELD_1, TEXT_FIELD_2);
+				bar.show(CommandListGenerator.language.get("gui.functionalities.error.startsuperiorthanend"), 5 * 1000);
+			} else {
+				Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
+				tag.setType(Functionality.getFunctionalities("ScoreInterpolation"));
+		
+					tag.setParameters(Tuple.newTuple(Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected()));
+		
+				CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO, new Label(tag.getType().toString()), INDEX);
+				getDialog().close();
+			}
 		}
 	}
 }

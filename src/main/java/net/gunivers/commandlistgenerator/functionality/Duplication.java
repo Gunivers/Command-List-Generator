@@ -6,9 +6,6 @@ import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple3;
 
 public class Duplication extends Functionality {
-	public Duplication() {
-		super();
-	}
 
 	@Override
 	public String toString() {
