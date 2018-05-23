@@ -4,9 +4,12 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 
 import javafx.fxml.FXML;
+import net.gunivers.commandlistgenerator.CommandListGenerator;
+import net.gunivers.core.language.Language;
 
 public abstract class FunctionalityController
 {
+	protected Language l = CommandListGenerator.language;
 	private JFXDialog dialog;
 
 	@FXML

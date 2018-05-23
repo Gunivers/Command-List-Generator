@@ -94,7 +94,7 @@ public enum Entity
 	zombie_pigman,
 	zombie_villager;
 
-	public boolean hasSpawnEnder()
+	public boolean isEnderEntity()
 	{
 		switch (this)
 		{
@@ -113,11 +113,10 @@ public enum Entity
 		}
 	}
 
-	public boolean hasSpawnOverworld()
+	public boolean isOverworldEntity()
 	{
 		switch (this)
 		{
-			case arrow:
 			case bat:
 			case cave_spider:
 			case chicken:
@@ -162,7 +161,6 @@ public enum Entity
 			case vindication_illager:
 			case witch:
 			case wolf:
-			case xp_orb:
 			case zombie:
 			case zombie_villager:
 				return true;
@@ -172,7 +170,7 @@ public enum Entity
 		}
 	}
 
-	public boolean hasSpawnNether()
+	public boolean isNetherEntity()
 	{
 		switch (this)
 		{
@@ -183,7 +181,6 @@ public enum Entity
 			case wither:
 			case wither_skeleton:
 			case wither_skull:
-			case xp_orb:
 			case zombie_pigman:
 				return true;
 

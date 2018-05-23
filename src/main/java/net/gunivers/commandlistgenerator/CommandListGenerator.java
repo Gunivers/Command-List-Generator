@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import net.gunivers.commandlistgenerator.functionality.Duplication;
+import net.gunivers.commandlistgenerator.functionality.GeneratorByList;
 import net.gunivers.commandlistgenerator.functionality.Interpolation;
 import net.gunivers.commandlistgenerator.functionality.ScoreInterpolation;
 import net.gunivers.commandlistgenerator.functionality.Sequence;
@@ -83,5 +84,6 @@ public class CommandListGenerator extends Application
 		new Sequence();
 		new Interpolation();
 		new ScoreInterpolation();
+		new GeneratorByList();
 	}
 }

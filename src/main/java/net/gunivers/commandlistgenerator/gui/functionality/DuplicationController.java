@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.commandlistgenerator.functionality.Functionality;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
 import net.gunivers.commandlistgenerator.gui.handlers.ButtonEditHandler;
@@ -18,7 +17,6 @@ import net.gunivers.commandlistgenerator.gui.util.FunctionalityController;
 import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.core.gui.ShakeEffect;
-import net.gunivers.core.language.Language;
 import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple3;
 
@@ -36,9 +34,7 @@ public class DuplicationController extends FunctionalityController implements In
 			.getSelectedIndex();
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		Language l = CommandListGenerator.language;
-		
+	public void initialize(URL location, ResourceBundle resources) {		
 		setDialog(ButtonNextHandler.newDialog);
 
 		getDoneButton().setOnAction(event -> saveAll());

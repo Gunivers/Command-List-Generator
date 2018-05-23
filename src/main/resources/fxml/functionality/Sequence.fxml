@@ -12,7 +12,7 @@
     <children>
         <VBox>
             <children>
-                <JFXTextField fx:id="TOP_TEXT" labelFloat="true" promptText="Operation (put 'U' to use U(n-1))" VBox.vgrow="ALWAYS">
+                <JFXTextField fx:id="TOP_TEXT" labelFloat="true" promptText="Operation" VBox.vgrow="ALWAYS">
                     <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                     </VBox.margin>

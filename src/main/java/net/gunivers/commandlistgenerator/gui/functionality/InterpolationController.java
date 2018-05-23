@@ -21,7 +21,6 @@ import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.gui.util.OnlyIntPosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.core.gui.ShakeEffect;
-import net.gunivers.core.language.Language;
 import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple6;
 
@@ -51,9 +50,7 @@ public class InterpolationController extends FunctionalityController implements 
 			.getSelectedIndex();
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		Language l = CommandListGenerator.language;
-		
+	public void initialize(URL location, ResourceBundle resources) {		
 		setDialog(ButtonNextHandler.newDialog);
 
 		getDoneButton().setOnAction(event -> saveAll());

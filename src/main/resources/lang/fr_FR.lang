@@ -15,6 +15,7 @@ gui.button.done=Valider
 gui.button.edit=Éditer
 gui.button.generate=Générer
 gui.button.next=Suivant
+gui.button.load=Charger
 gui.textfield.maxcommand=Nombre de commandes
 gui.textarea.output=Sortie
 gui.label.tag=Balise
@@ -29,7 +30,7 @@ gui.functionalities.description.example=Exemple
 gui.functionalities.decimale=Décimale
 gui.functionalities.description.decimale=La précision de la sortie
 
-gui.functionalities.error.startsuperiorthanend=La valeur de départ ne peut être supérieur à celle d'arrivée
+gui.functionalities.error.startsuperiorthanend=La valeur de départ ne peut être supérieure à celle d'arrivée
 
 gui.interpolation.parameter.start=Valeur de départ
 gui.interpolation.parameter.end=Valeur de fin
@@ -62,6 +63,48 @@ gui.sequence.parameter.initialvalue=Valeur initiale
 gui.sequence.description=Permet de faire évoluer la balise en fonction d'une suite arithmétique
 gui.sequence.description.operation=La suite. Mettre 'U' pour obtenir la valeur précédente (U(n-1) à l'étape n)
 gui.sequence.description.initialvalue=La première valeur U(0)
+
+gui.list.title=Liste
+gui.list.description1=Permet de créer sa propre liste pour remplacer le tag.
+gui.list.description2=Chaque élément est séparé par un retour à la ligne.
+gui.list.description3=Des listes peuvent être chargées.
+gui.list.list.prompttext=Liste
+gui.list.sublist.prompttext=Sous-liste
+gui.list.textarea.prompttext=Liste des éléments
+gui.list.label=Utiliser une liste
+gui.list.button.import=Importer
+gui.list.button.export=Exporter
+gui.list.item.all=Tout
+gui.list.item.material=Matériaux
+gui.list.item.material.block=Bloc
+gui.list.item.material.item=Item
+gui.list.item.material.burnableblock=Bloc Brûlable
+gui.list.item.material.edibleitem=Item comestible
+gui.list.item.material.flammableblock=Bloc Inflammable
+gui.list.item.material.fuelitem=Combustible
+gui.list.item.material.occludingblock=Bloc Opaque
+gui.list.item.material.record=CD
+gui.list.item.material.solidblock=Bloc Solide
+gui.list.item.material.transparentblock=Bloc Transparent
+gui.list.item.material.gravityblock=Bloc Chûtant
+gui.list.item.entity=Entité
+gui.list.item.entity.animal=Animaux
+gui.list.item.entity.monster=Monstre
+gui.list.item.entity.enderentity=Entité de l'End
+gui.list.item.entity.netherentity=Entité du Nether
+gui.list.item.entity.overworldentity=Entité de la Surface
+gui.list.item.entity.flyingentity=Entité Volante
+gui.list.item.entity.livingentity=Entité Vivante
+gui.list.item.entity.inanimateentity=Entité Inanimée
+gui.list.item.entity.naturalspawnentity=Entité spawnant naturellement
+gui.list.item.entity.minecart=Wagon
+gui.list.item.entity.villager=Villageois
+
+gui.list.error.nolist=Aucune liste n'a été choisie
+gui.list.toast.exportcomplet=Export Réussi
+gui.list.toast.importcomplet=Import Réussi
+gui.list.error.importfail=Import Échoué
+gui.list.error.exportfail=Export Échoué
 
 ##############################
 #           Others           #

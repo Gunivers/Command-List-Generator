@@ -10,7 +10,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.commandlistgenerator.functionality.Functionality;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
 import net.gunivers.commandlistgenerator.gui.handlers.ButtonEditHandler;
@@ -22,7 +21,6 @@ import net.gunivers.commandlistgenerator.gui.util.OnlyIntPosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.commandlistgenerator.util.Type;
 import net.gunivers.core.gui.ShakeEffect;
-import net.gunivers.core.language.Language;
 import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple4;
 
@@ -48,14 +46,11 @@ public class SequenceController extends FunctionalityController implements Initi
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
 		setDialog(ButtonNextHandler.newDialog);
 
 		getDoneButton().setOnAction(event -> saveAll());
 		getDoneButton().setDefaultButton(true);
 		
-		Language l = CommandListGenerator.language;
 		getDoneButton().setText(l.get("gui.button.done"));
 		TOP_TEXT.setPromptText(l.get("gui.sequence.parameter.operation"));
 		MIDDLE_TEXT.setPromptText(l.get("gui.sequence.parameter.initialvalue"));

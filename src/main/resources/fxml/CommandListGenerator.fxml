@@ -44,7 +44,7 @@
                                 </JFXTextField>
                             </right>
                         </BorderPane>
-                        <JFXTextArea fx:id="COMMAND_OUTPUT" editable="false" labelFloat="true" promptText="Output" VBox.vgrow="ALWAYS">
+                        <JFXTextArea fx:id="COMMAND_OUTPUT" editable="false" labelFloat="true" promptText="Output" wrapText="false" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
                             </VBox.margin>

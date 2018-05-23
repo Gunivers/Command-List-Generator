@@ -20,7 +20,6 @@ import net.gunivers.commandlistgenerator.gui.util.FunctionalityController;
 import net.gunivers.commandlistgenerator.gui.util.OnlyDoublePosChangeListener;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.core.gui.ShakeEffect;
-import net.gunivers.core.language.Language;
 import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple4;
 
@@ -45,9 +44,7 @@ public class ScoreInterpolationController extends FunctionalityController implem
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
-	{
-		Language l = CommandListGenerator.language;
-		
+	{		
 		setDialog(ButtonNextHandler.newDialog);
 		getDoneButton().setOnAction(event -> saveAll());
 		getDoneButton().setDefaultButton(true);

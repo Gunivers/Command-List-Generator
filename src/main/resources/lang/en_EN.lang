@@ -15,6 +15,7 @@ gui.button.done=Done
 gui.button.edit=Edit
 gui.button.generate=Generate
 gui.button.next=Next
+gui.button.load=Load
 gui.textfield.maxcommand=Max Command
 gui.textarea.output=Output
 gui.label.tag=Tag
@@ -62,6 +63,48 @@ gui.sequence.parameter.initialvalue=Initial Value
 gui.sequence.description=Allows a tag to evolve by following a sequence.
 gui.sequence.description.operation=The sequence. Put 'U' to get the precedent value (U(n-1) at n step)
 gui.sequence.description.initialvalue=The first value U(0)
+
+gui.list.title=List
+gui.list.description1=Create your own list to replace the tag. 
+gui.list.description2=Each element is separated by line break.
+gui.list.description3=Presets can also be loaded.
+gui.list.list.prompttext=List
+gui.list.sublist.prompttext=Sub list
+gui.list.textarea.prompttext=List of elements
+gui.list.label=Use preset
+gui.list.button.import=Import preset
+gui.list.button.export=Export preset
+gui.list.item.all=All
+gui.list.item.material=Material
+gui.list.item.material.block=Block
+gui.list.item.material.item=Item
+gui.list.item.material.burnableblock=Burnable Block
+gui.list.item.material.edibleitem=Edible Item
+gui.list.item.material.flammableblock=Flammable Block
+gui.list.item.material.fuelitem=Fuel Item
+gui.list.item.material.occludingblock=Occluding Block
+gui.list.item.material.record=Record
+gui.list.item.material.solidblock=Solid Block
+gui.list.item.material.transparentblock=Transparent Block
+gui.list.item.material.gravityblock=Gravity Block
+gui.list.item.entity=Entity
+gui.list.item.entity.animal=Animal
+gui.list.item.entity.monster=Monster
+gui.list.item.entity.enderentity=Ender Entity
+gui.list.item.entity.netherentity=Nether Entity
+gui.list.item.entity.overworldentity=Overworld Entity
+gui.list.item.entity.flyingentity=Flying Entity
+gui.list.item.entity.livingentity=Living Entity
+gui.list.item.entity.inanimateentity=Inanimate Entity
+gui.list.item.entity.naturalspawnentity=Natural Spawn Entity
+gui.list.item.entity.minecart=Minecart
+gui.list.item.entity.villager=Villager
+
+gui.list.toast.exportcomplet=Export Successful
+gui.list.toast.importcomplet=Import Successful
+gui.list.error.importfail=Import Failed
+gui.list.error.exportfail=Export Failed
+gui.list.error.nolist=No list was chosen
 
 ##############################
 #           Others           #
