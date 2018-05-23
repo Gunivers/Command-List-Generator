@@ -1,6 +1,8 @@
 package net.gunivers.core.utils.tuple;
 
 public class Tuple4<A, B, C, D> extends Tuple {
+	
+	private static final long serialVersionUID = 5L;
 
 	public final A _1;
 	public final B _2;
