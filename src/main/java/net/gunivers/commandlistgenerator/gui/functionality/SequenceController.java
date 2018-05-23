@@ -70,12 +70,14 @@ public class SequenceController extends FunctionalityController implements Initi
 			TOP_TEXT.setText(tuple._2);
 			MIDDLE_TEXT.setText(Double.toString(tuple._1));
 			BOTTOM_TEXT.setText(Integer.toString(tuple._3));
-			COMBO_BOX.setValue(tuple._4.toString());
+			COMBO_BOX.setValue(tuple._4.getName());
 		}
 	}
 
 	@Override
 	public void saveAll() {
+		if(COMBO_BOX.getValue() == null)
+			COMBO_BOX.setValue(l.get("gui.sequence.type.default"));
 		if(ShakeEffect.isFullOrElseShake(TOP_TEXT, MIDDLE_TEXT, BOTTOM_TEXT)) {
 			Tag tag = Tag.tags
 					.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX))

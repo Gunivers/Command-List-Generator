@@ -1,13 +1,13 @@
 package net.gunivers.commandlistgenerator.util;
 
-import com.sun.xml.internal.ws.util.StringUtils;
+import net.gunivers.commandlistgenerator.CommandListGenerator;
 
 public enum Type {
 	
 	DEFAULT, FLOAT, DOUBLE, BYTE, SHORT, LONG;
 	
 	public String getName() {
-		return StringUtils.capitalize(name().toLowerCase());
+		return CommandListGenerator.language.get("gui.sequence.type." + toString().toLowerCase());
 	}
 
 	public String getDefaultName() {

@@ -64,6 +64,13 @@ gui.sequence.description=Permet de faire évoluer la balise en fonction d'une su
 gui.sequence.description.operation=La suite. Mettre 'U' pour obtenir la valeur précédente (U(n-1) à l'étape n)
 gui.sequence.description.initialvalue=La première valeur U(0)
 
+gui.sequence.type.default=Défaut
+gui.sequence.type.float=Float
+gui.sequence.type.Double=Double
+gui.sequence.type.Byte=Byte
+gui.sequence.type.Short=Short
+gui.sequence.type.long=Long
+
 gui.sequence.error.sequencemalformat=Mauvais format de suite : %s%
 
 gui.list.title=Liste

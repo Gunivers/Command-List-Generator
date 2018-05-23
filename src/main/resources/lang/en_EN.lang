@@ -64,6 +64,13 @@ gui.sequence.description=Allows a tag to evolve by following a sequence.
 gui.sequence.description.operation=The sequence. Put 'U' to get the precedent value (U(n-1) at n step)
 gui.sequence.description.initialvalue=The first value U(0)
 
+gui.sequence.type.default=Default
+gui.sequence.type.float=Float
+gui.sequence.type.Double=Double
+gui.sequence.type.Byte=Byte
+gui.sequence.type.Short=Short
+gui.sequence.type.long=Long
+
 gui.sequence.error.sequencemalformat=Bad sequence format : %s%
 
 gui.list.title=List

@@ -9,9 +9,11 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import net.gunivers.commandlistgenerator.functionality.GeneratorByList;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
 import net.gunivers.commandlistgenerator.util.Tag;
 import net.gunivers.core.gui.ShakeEffect;
+import net.gunivers.core.utils.tuple.Tuple;
 
 public class ButtonGenerateHandler implements EventHandler<ActionEvent> {
 
@@ -35,6 +37,10 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent> {
 		if(prerequisites) {
 			int maxSize = CommandListGeneratorController.CONTROLLER.getMaxCommand();
 			HashMap<String, ArrayList<String>> replaceTag = new HashMap<>();
+			
+			for(Tag t : Tag.tags.values())
+				if(t.getType() instanceof GeneratorByList && Tuple.castTo(t.getParameters(), Tuple.newTuple(String[].class))._1.length < maxSize)
+					maxSize = Tuple.castTo(t.getParameters(), Tuple.newTuple(String[].class))._1.length;
 	
 			for (Tag t : Tag.tags.values())
 				replaceTag.put(t.getId() ,t.getType().generate(t.getParameters(), maxSize));
