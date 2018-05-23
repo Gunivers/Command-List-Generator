@@ -56,7 +56,7 @@ public class SequenceController extends FunctionalityController implements Initi
 		MIDDLE_TEXT.setPromptText(l.get("gui.sequence.parameter.initialvalue"));
 		BOTTOM_TEXT.setPromptText(l.get("gui.functionalities.decimale"));
 		
-		COMBO_BOX.getItems().setAll(Arrays.stream(Type.values()).map(name -> name.toString()).toArray(String[]::new));
+		COMBO_BOX.getItems().setAll(Arrays.stream(Type.values()).map(name -> name.getName()).toArray(String[]::new));
 		MIDDLE_TEXT.textProperty().addListener(new OnlyDoublePosChangeListener(MIDDLE_TEXT));
 		BOTTOM_TEXT.textProperty().addListener(new OnlyIntPosChangeListener(BOTTOM_TEXT));
 
@@ -80,9 +80,9 @@ public class SequenceController extends FunctionalityController implements Initi
 			Tag tag = Tag.tags
 					.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX))
 							.getText());
-			tag.setType(Functionality.getFunctionalities("Sequence"));
+			tag.setType(Functionality.getFunctionalityByDefaultName("Sequence"));
 	
-			tag.setParameters(Tuple.newTuple(Double.valueOf(MIDDLE_TEXT.getText()), TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()), Type.valueOf(COMBO_BOX.getValue().toUpperCase())));
+			tag.setParameters(Tuple.newTuple(Double.valueOf(MIDDLE_TEXT.getText()), TOP_TEXT.getText(), Integer.valueOf(BOTTOM_TEXT.getText()), Type.getByName(COMBO_BOX.getValue())));
 	
 			CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO,
 					new Label(tag.getType().toString()), INDEX);

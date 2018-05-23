@@ -1,6 +1,7 @@
 package net.gunivers.commandlistgenerator.gui.handlers;
 
 import java.io.IOException;
+import java.util.Map.Entry;
 
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -32,7 +33,10 @@ public class ButtonNextHandler implements EventHandler<ActionEvent>
 	{
 		if (listView.getSelectionModel().getSelectedItem() != null)
 		{
-			Functionality functionality = Functionality.getFunctionalities(listView.getSelectionModel().getSelectedItem().getText());
+			Functionality functionality = null;
+			for(Entry<String, Functionality> f : Functionality.getFunctionalities().entrySet())
+				if(f.getValue().toString().equals(listView.getSelectionModel().getSelectedItem().getText()))
+					functionality = f.getValue();
 			newDialog = new JFXDialog();
 			JFXDialogLayout layout = null;
 

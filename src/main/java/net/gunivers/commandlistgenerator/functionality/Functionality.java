@@ -2,6 +2,7 @@ package net.gunivers.commandlistgenerator.functionality;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import net.gunivers.commandlistgenerator.util.HelpFunctionality;
 import net.gunivers.core.utils.tuple.Tuple;
@@ -28,7 +29,14 @@ public abstract class Functionality extends HelpFunctionality {
 	/**
 	 * @return the functionality
 	 */
-	public static Functionality getFunctionalities(String name) {
+	public static Functionality getFunctionalityByTag(String name) {
+		for(Entry<String, Functionality> f : getFunctionalities().entrySet())
+			if(f.getValue().toString().equals(name))
+				return f.getValue();
+		return null;
+	}
+	
+	public static Functionality getFunctionalityByDefaultName(String name) {
 		return functionalities.get(name);
 	}
 	
@@ -45,7 +53,7 @@ public abstract class Functionality extends HelpFunctionality {
 	 * Save each instance of a functionality
 	 */
 	 {
-		functionalities.put(this.toString(), this);
+		functionalities.put(this.getDefaultName(), this);
 	 }
 	 
 	public abstract ArrayList<String> generate(Tuple tuple, Integer nbLoop);

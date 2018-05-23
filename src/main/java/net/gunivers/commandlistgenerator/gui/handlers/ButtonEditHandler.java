@@ -41,13 +41,13 @@ public class ButtonEditHandler implements EventHandler<ActionEvent> {
 			} else {
 				dialog = new JFXDialog();
 
-				Functionality functionality = Functionality.getFunctionalities(CommandListGeneratorController.CONTROLLER
+				Functionality functionality = Functionality.getFunctionalityByTag(CommandListGeneratorController.CONTROLLER
 						.getTypeList().getSelectionModel().getSelectedItem().getText());
 				JFXDialogLayout layout = null;
 
 				try {
 					layout = FXMLLoader
-							.load(getClass().getResource("/fxml/functionality/" + functionality.toString() + ".fxml"));
+							.load(getClass().getResource("/fxml/functionality/" + functionality.getDefaultName() + ".fxml"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

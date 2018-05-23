@@ -64,6 +64,8 @@ gui.sequence.description=Permet de faire évoluer la balise en fonction d'une su
 gui.sequence.description.operation=La suite. Mettre 'U' pour obtenir la valeur précédente (U(n-1) à l'étape n)
 gui.sequence.description.initialvalue=La première valeur U(0)
 
+gui.sequence.error.sequencemalformat=Mauvais format de suite : %s%
+
 gui.list.title=Liste
 gui.list.description1=Permet de créer sa propre liste pour remplacer le tag.
 gui.list.description2=Chaque élément est séparé par un retour à la ligne.

@@ -26,7 +26,7 @@ import net.gunivers.core.utils.tuple.Tuple6;
 
 public class InterpolationController extends FunctionalityController implements Initializable {
 	
-	private JFXSnackbar bar;
+	private JFXSnackbar bar = new JFXSnackbar(CommandListGeneratorController.MAIN_PANE);
 	
 	@FXML
 	private JFXCheckBox CHECK_BOX_1;
@@ -84,7 +84,6 @@ public class InterpolationController extends FunctionalityController implements 
 			TEXT_FIELD_4.setText(Double.toString(tuple._5));
 			CHECK_BOX_2.setSelected(tuple._6);
 		}
-		bar = new JFXSnackbar(this.getDialog());
 	}
 
 	@Override
@@ -97,9 +96,9 @@ public class InterpolationController extends FunctionalityController implements 
 				Tag tag = Tag.tags
 						.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX))
 								.getText());
-				tag.setType(Functionality.getFunctionalities("Interpolation"));
+				tag.setType(Functionality.getFunctionalityByDefaultName("Interpolation"));
 					tag.setParameters(Tuple.newTuple(Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()),
-							Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX_1.isSelected(), TEXT_FIELD_4.getText(), CHECK_BOX_2.isSelected()));
+							Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX_1.isSelected(), Integer.valueOf(TEXT_FIELD_4.getText()), CHECK_BOX_2.isSelected()));
 		
 				CommandListGeneratorController.SYNC_LIST_HANDLER.putInAndSelect(SyncListHandler.ListNumber.TWO,
 						new Label(tag.getType().toString()), INDEX);

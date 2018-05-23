@@ -3,6 +3,9 @@ package net.gunivers.commandlistgenerator.functionality;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import com.jfoenix.controls.JFXSnackbar;
+
+import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
 import net.gunivers.commandlistgenerator.util.Calculator;
 import net.gunivers.commandlistgenerator.util.Type;
 import net.gunivers.core.utils.tuple.Tuple;
@@ -13,6 +16,7 @@ import net.gunivers.core.utils.tuple.Tuple4;
  */
 public class Sequence extends Functionality {
 
+	private JFXSnackbar bar = new JFXSnackbar(CommandListGeneratorController.MAIN_PANE);
 
 	@Override
 	public ArrayList<String> generate(Tuple t, Integer nbLoop) {
@@ -55,8 +59,7 @@ public class Sequence extends Functionality {
 				bd2 = bd2.setScale(tuple._3, BigDecimal.ROUND_HALF_UP);
 				save.add(bd2.toString() + end);
 			} catch(Exception e) {
-				//TODO
-				e.printStackTrace();
+				bar.show(l.get("gui.sequence.error.sequencemalformat").replace("%s%", tuple._2), 5 * 1000);
 			}
 		}
 		

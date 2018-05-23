@@ -64,6 +64,8 @@ gui.sequence.description=Allows a tag to evolve by following a sequence.
 gui.sequence.description.operation=The sequence. Put 'U' to get the precedent value (U(n-1) at n step)
 gui.sequence.description.initialvalue=The first value U(0)
 
+gui.sequence.error.sequencemalformat=Bad sequence format : %s%
+
 gui.list.title=List
 gui.list.description1=Create your own list to replace the tag. 
 gui.list.description2=Each element is separated by line break.

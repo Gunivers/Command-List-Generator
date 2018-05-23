@@ -68,7 +68,7 @@ public class DuplicationController extends FunctionalityController implements In
 			Tag tag = Tag.tags
 					.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX))
 							.getText());
-			tag.setType(Functionality.getFunctionalities("Duplication"));
+			tag.setType(Functionality.getFunctionalityByDefaultName("Duplication"));
 			tag.setParameters(Tuple.newTuple(TOP_TEXT.getText(), Double.valueOf(MIDDLE_TEXT.getText()),
 					Double.valueOf(BOTTOM_TEXT.getText())));
 	

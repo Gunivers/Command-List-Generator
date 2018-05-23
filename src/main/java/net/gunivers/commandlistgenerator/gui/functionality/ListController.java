@@ -157,7 +157,7 @@ public class ListController extends FunctionalityController implements Initializ
 	{
 		if(ShakeEffect.isFullOrElseShake(TEXT_AREA)) {
 			Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
-			tag.setType(Functionality.getFunctionalities("List"));
+			tag.setType(Functionality.getFunctionalityByDefaultName("List"));
 			
 			tag.setParameters(Tuple.newTuple(TEXT_AREA.getText().split("\n")));
 	

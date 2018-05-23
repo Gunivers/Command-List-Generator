@@ -81,7 +81,7 @@ public class ScoreInterpolationController extends FunctionalityController implem
 				bar.show(CommandListGenerator.language.get("gui.functionalities.error.startsuperiorthanend"), 5 * 1000);
 			} else {
 				Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
-				tag.setType(Functionality.getFunctionalities("ScoreInterpolation"));
+				tag.setType(Functionality.getFunctionalityByDefaultName("ScoreInterpolation"));
 		
 					tag.setParameters(Tuple.newTuple(Double.valueOf(TEXT_FIELD_1.getText()), Double.valueOf(TEXT_FIELD_2.getText()), Double.valueOf(TEXT_FIELD_3.getText()), CHECK_BOX.isSelected()));
 		
