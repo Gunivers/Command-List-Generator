@@ -1,89 +1,91 @@
 package net.gunivers.core.minecraft;
 
+import java.util.ArrayList;
+
 public enum Entity
 {
-	area_effect_cloud,
-	armor_stand,
-	arrow,
-	bat,
-	blaze,
-	boat,
-	cave_spider,
-	chest_minecart,
-	chicken,
-	cod_mob,
-	commandblock_minecart,
-	cow,
-	creeper,
-	donkey,
-	dragon_fireball,
-	egg,
-	elder_guardian,
-	ender_crystal,
-	ender_dragon,
-	ender_pearl,
-	enderman,
-	endermite,
-	evocation_fangs,
-	evocation_illager,
-	eye_of_ender_signal,
-	falling_block,
-	fireball,
-	fireworks_rocket,
-	furnace_minecart,
-	ghast,
-	giant,
-	guardian,
-	hopper_minecart,
-	horse,
-	husk,
-	illusion_illager,
-	item,
-	item_frame,
-	leash_knot,
-	lightning_bolt,
-	llama,
-	llama_spit,
-	magma_cube,
-	minecart,
-	mooshroom,
-	mule,
-	ocelot,
-	painting,
-	parrot,
-	phantom,
-	pig,
-	polar_bear,
-	potion,
-	puffer_fish,
-	rabbit,
-	salmon_mob,
-	sheep,
-	shulker,
-	shulker_bullet,
-	silverfish,
-	skeleton,
-	skeleton_horse,
-	slime,
-	small_fireball,
-	snowball,
-	snowman,
-	spawner_minecart,
-	spectral_arrow,
-	spider,
-	squid,
-	stray,
-	tnt,
-	tnt_minecart,
-	trident,
-	tropical_fish,
-	turtle,
-	vex,
-	villager,
-	villager_golem,
-	vindication_illager,
-	witch,
-	wither,
+	area_effect_cloud(EntityType.HAS_LIMITED_LIFE, EntityType.TERRESTRIAL, EntityType.SUMMONED_BY_PLAYER, EntityType.STAY_ON_BLOCK),
+	armor_stand(EntityType.HEIGHT_2_BLOCK, EntityType.HAS_GRAVITY, EntityType.SUMMONED_BY_PLAYER, EntityType.STAY_ON_BLOCK),
+	arrow(EntityType.PROJECTILE, EntityType.INFLICT_DAMAGE),
+	bat(EntityType.CAN_FLY, EntityType.ANIMAL),
+	blaze(EntityType.HEIGHT_2_BLOCK, EntityType.CAN_FLY, EntityType.SPAWN_IN_NETHER, EntityType.MONSTER, EntityType.SUMMON_OTHER),
+	boat(EntityType.CAN_SWIM, EntityType.RIDEABLE),
+	cave_spider(EntityType.SPIDER),
+	chest_minecart(EntityType.HAS_INVENTORY, EntityType.MINECART),
+	chicken(EntityType.CAN_WALK, EntityType.LITTLE_ANIMAL),
+	cod(EntityType.FISH),
+	commandblock_minecart(EntityType.MINECART),
+	cow(EntityType.PROCREATE, EntityType.BIG_ANIMAL),
+	creeper(EntityType.CAN_WALK, EntityType.SPAWN_IN_OVERWORLD, EntityType.MONSTER),
+	donkey(EntityType.HAS_INVENTORY, EntityType.CAN_WALK, EntityType.SPAWN_IN_OVERWORLD),
+	dragon_fireball(EntityType.SUMMON_OTHER, EntityType.PROJECTILE, EntityType.EXPLODE),
+	egg(EntityType.SUMMON_OTHER, EntityType.SUMMONED_BY_PLAYER, EntityType.PROJECTILE),
+	elder_guardian(EntityType.REALLY_BIG_HEIGHT, EntityType.REALLY_BIG_WIDTH, EntityType.CAN_SWIM, EntityType.MONSTER),
+	ender_crystal(EntityType.STAY_ON_BLOCK, EntityType.SPAWN_IN_ENDER, EntityType.SUMMONED_BY_PLAYER, EntityType.EXPLODE),
+	ender_dragon(EntityType.REALLY_BIG_HEIGHT, EntityType.REALLY_BIG_WIDTH, EntityType.CAN_INTERACT_ON_BLOCK, EntityType.SPAWN_IN_ENDER, EntityType.BOSS),
+	ender_pearl(EntityType.SUMMON_OTHER, EntityType.PROJECTILE),
+	enderman(EntityType.HEIGHT_3_BLOCK, EntityType.CAN_WALK, EntityType.CAN_INTERACT_ON_BLOCK, EntityType.SPAWN_IN_ENDER, EntityType.SPAWN_IN_OVERWORLD, EntityType.MONSTER, EntityType.SUMMON_OTHER),
+	endermite(EntityType.CAN_WALK, EntityType.MONSTER, EntityType.SUMMONED_BY_OTHER),
+	evocation_fangs(EntityType.HAS_LIMITED_LIFE, EntityType.INFLICT_DAMAGE, EntityType.TERRESTRIAL, EntityType.SUMMONED_BY_OTHER, EntityType.STAY_ON_BLOCK),
+	evocation_illager(EntityType.CAN_WALK, EntityType.MONSTER, EntityType.SPAWN_IN_OVERWORLD, EntityType.SUMMON_OTHER, EntityType.ILLAGER),
+	eye_of_ender_signal(EntityType.SUMMONED_BY_PLAYER, EntityType.PROJECTILE),
+	falling_block(EntityType.SPAWN_IN_OVERWORLD, EntityType.SUMMONED_BY_PLAYER, EntityType.STAY_ON_BLOCK),
+	fireball(EntityType.PROJECTILE, EntityType.EXPLODE),
+	fireworks_rocket(EntityType.SUMMONED_BY_PLAYER, EntityType.PROJECTILE, EntityType.EXPLODE),
+	furnace_minecart(EntityType.MINECART),
+	ghast(EntityType.REALLY_BIG_HEIGHT, EntityType.REALLY_BIG_WIDTH, EntityType.CAN_FLY, EntityType.SPAWN_IN_NETHER, EntityType.MONSTER, EntityType.SUMMON_OTHER),
+	giant(EntityType.REALLY_BIG_HEIGHT, EntityType.REALLY_BIG_WIDTH, EntityType.CAN_WALK, EntityType.MONSTER),
+	guardian(EntityType.CAN_SWIM, EntityType.MONSTER),
+	hopper_minecart(EntityType.HAS_INVENTORY, EntityType.MINECART),
+	horse(EntityType.FRIENDLY, EntityType.CAN_RUN, EntityType.SPAWN_IN_OVERWORLD, EntityType.BIG_ANIMAL, EntityType.RIDEABLE),
+	husk(EntityType.CAN_RESIST_FIRE, EntityType.ZOMBIE),
+	illusion_illager(EntityType.SPAWN_IN_OVERWORLD, EntityType.CAN_WALK, EntityType.MONSTER, EntityType.ILLAGER),
+	item(EntityType.HAS_LIMITED_LIFE, EntityType.HAS_GRAVITY, EntityType.SPAWN_IN_OVERWORLD, EntityType.SPAWN_IN_NETHER, EntityType.SUMMONED_BY_PLAYER, EntityType.STAY_ON_BLOCK),
+	item_frame(EntityType.HAS_INVENTORY, EntityType.SUMMONED_BY_PLAYER, EntityType.STAY_ON_BLOCK),
+	leash_knot(EntityType.SUMMONED_BY_PLAYER, EntityType.STAY_ON_BLOCK),
+	lightning_bolt(EntityType.SPAWN_IN_OVERWORLD, EntityType.INFLICT_DAMAGE),
+	llama(EntityType.CAN_WALK, EntityType.BIG_ANIMAL, EntityType.SUMMON_OTHER),
+	llama_spit(EntityType.PROJECTILE),
+	magma_cube(EntityType.CAN_WALK, EntityType.SPAWN_IN_NETHER, EntityType.MONSTER, EntityType.SUMMON_OTHER, EntityType.SUMMONED_BY_OTHER),
+	minecart(EntityType.RIDEABLE, EntityType.MINECART),
+	mooshroom(EntityType.CAN_RUN, EntityType.BIG_ANIMAL),
+	mule(EntityType.HAS_INVENTORY, EntityType.CAN_WALK, EntityType.BIG_ANIMAL, EntityType.RIDEABLE),
+	ocelot(EntityType.CAN_WALK, EntityType.LITTLE_ANIMAL),
+	painting(EntityType.SUMMONED_BY_PLAYER, EntityType.STAY_ON_BLOCK),
+	parrot(EntityType.FRIENDLY, EntityType.CAN_FLY, EntityType.SPAWN_IN_OVERWORLD, EntityType.LITTLE_ANIMAL),
+	phantom(EntityType.CAN_FLY, EntityType.SPAWN_IN_OVERWORLD, EntityType.MONSTER),
+	pig(EntityType.CAN_WALK, EntityType.LITTLE_ANIMAL, EntityType.RIDEABLE),
+	polar_bear(EntityType.WIDTH_2_BLOCK, EntityType.AGRESSIVE, EntityType.CAN_WALK, EntityType.BIG_ANIMAL),
+	potion(EntityType.SUMMONED_BY_PLAYER, EntityType.SUMMON_OTHER, EntityType.PROJECTILE),
+	puffer_fish(EntityType.AGRESSIVE, EntityType.FISH),
+	rabbit(EntityType.CAN_RUN, EntityType.LITTLE_ANIMAL),
+	salmon(EntityType.FISH),
+	sheep(EntityType.CAN_RUN, EntityType.LITTLE_ANIMAL),
+	shulker(EntityType.SPAWN_IN_ENDER, EntityType.MONSTER, EntityType.SUMMON_OTHER, EntityType.STAY_ON_BLOCK),
+	shulker_bullet(EntityType.FOLLOW_TARGET, EntityType.PROJECTILE),
+	silverfish(EntityType.SPAWN_IN_OVERWORLD, EntityType.MONSTER, EntityType.SUMMON_OTHER, EntityType.SUMMONED_BY_OTHER, EntityType.STAY_ON_BLOCK),
+	skeleton(EntityType.SPAWN_IN_OVERWORLD, EntityType.SKELETON),
+	skeleton_horse(EntityType.SPAWN_IN_OVERWORLD, EntityType.RIDEABLE, EntityType.BIG_ANIMAL),
+	slime(EntityType.SPAWN_IN_OVERWORLD, EntityType.MONSTER, EntityType.SUMMON_OTHER, EntityType.SUMMONED_BY_OTHER),
+	small_fireball(EntityType.PROJECTILE, EntityType.EXPLODE),
+	snowball(EntityType.PROJECTILE),
+	snowman(EntityType.CAN_INTERACT_ON_BLOCK, EntityType.GOLEM),
+	spawner_minecart(EntityType.SUMMON_OTHER, EntityType.MINECART),
+	spectral_arrow(EntityType.PROJECTILE, EntityType.SUMMONED_BY_PLAYER),
+	spider(EntityType.WIDTH_2_BLOCK, EntityType.SPIDER),
+	squid(EntityType.FISH),
+	stray(EntityType.ZOMBIE, EntityType.SUMMON_OTHER),
+	tnt(EntityType.HAS_LIMITED_LIFE, EntityType.SUMMONED_BY_PLAYER, EntityType.EXPLODE, EntityType.STAY_ON_BLOCK),
+	tnt_minecart(EntityType.MINECART, EntityType.EXPLODE),
+	trident(EntityType.SUMMONED_BY_PLAYER, EntityType.INFLICT_DAMAGE,  EntityType.PROJECTILE),
+	tropical_fish(EntityType.FISH),
+	turtle(EntityType.CAN_INTERACT_ON_BLOCK, EntityType.FISH),
+	vex(EntityType.CAN_FLY, EntityType.MONSTER, EntityType.SUMMONED_BY_OTHER),
+	villager(EntityType.FRIENDLY, EntityType.ILLAGER),
+	villager_golem(EntityType.HEIGHT_3_BLOCK, EntityType.WIDTH_2_BLOCK, EntityType.GOLEM),
+	vindication_illager(EntityType.MONSTER, EntityType.ILLAGER),
+	witch(EntityType.MONSTER, EntityType.SUMMON_OTHER, EntityType.ILLAGER),
+	wither(EntityType.HEIGHT_3_BLOCK, EntityType.WIDTH_3_BLOCK, EntityType.BOSS),
 	wither_skeleton,
 	wither_skull,
 	wolf,
@@ -94,325 +96,70 @@ public enum Entity
 	zombie_pigman,
 	zombie_villager;
 
-	public boolean isEnderEntity()
+	private ArrayList<EntityType> cate = new ArrayList<EntityType>();
+	
+	/** <strong>Constuctor<strong>
+	 * Create an Entity
+	 * @param categories
+	 *                  the categories of the entity
+	 */
+	private Entity(EntityType... categories)
 	{
-		switch (this)
+		for (EntityType cate : categories)
 		{
-			case area_effect_cloud:
-			case dragon_fireball:
-			case ender_crystal:
-			case ender_dragon:
-			case enderman:
-			case endermite:
-			case shulker:
-			case shulker_bullet:
-				return true;
-
-			default:
-				return false;
+			this.cate.addAll(cate.getCategories());
 		}
+		
+		singleton();
 	}
-
-	public boolean isOverworldEntity()
+	
+	/** <strong>Entity.<italic>filter<italic><strong>
+	 * Filter the entities then return what is left
+	 * @param categories
+	 *                  an Array of the categories 
+	 * @return an ArrayList of the entity that matches the categories
+	 */
+	public static ArrayList<Entity> filter(EntityType... categories)
 	{
-		switch (this)
+		ArrayList<Entity> filter = new ArrayList<>();
+		
+		for (Entity e : Entity.values())
 		{
-			case bat:
-			case cave_spider:
-			case chicken:
-			case cod_mob:
-			case cow:
-			case creeper:
-			case donkey:
-			case elder_guardian:
-			case enderman:
-			case endermite:
-			case evocation_fangs:
-			case evocation_illager:
-			case guardian:
-			case horse:
-			case illusion_illager:
-			case lightning_bolt:
-			case llama:
-			case llama_spit:
-			case mooshroom:
-			case mule:
-			case ocelot:
-			case parrot:
-			case phantom:
-			case pig:
-			case polar_bear:
-			case puffer_fish:
-			case rabbit:
-			case salmon_mob:
-			case sheep:
-			case silverfish:
-			case skeleton:
-			case skeleton_horse:
-			case slime:
-			case spider:
-			case squid:
-			case stray:
-			case tropical_fish:
-			case turtle:
-			case vex:
-			case villager:
-			case villager_golem:
-			case vindication_illager:
-			case witch:
-			case wolf:
-			case zombie:
-			case zombie_villager:
-				return true;
-
-			default:
-				return false;
+			for (EntityType cate : categories)
+			{
+				if (!e.cate.contains(cate))
+					continue;
+				
+				filter.add(e);
+			}
 		}
+		
+		return filter;
 	}
-
-	public boolean isNetherEntity()
+	
+	/**
+	 * This method will sort the categories in order to have only one of each
+	 */
+	private void singleton()
 	{
-		switch (this)
+		ArrayList<EntityType> temp = new ArrayList<>();
+		
+		for (EntityType category : cate)
 		{
-			case blaze:
-			case fireball:
-			case ghast:
-			case magma_cube:
-			case wither:
-			case wither_skeleton:
-			case wither_skull:
-			case zombie_pigman:
-				return true;
-
-			default:
-				return false;
+			if(!temp.contains(category )) temp.add(category );
 		}
-	}
-
-	public boolean isMinecart()
-	{
-		switch (this)
-		{
-			case chest_minecart:
-			case commandblock_minecart:
-			case furnace_minecart:
-			case hopper_minecart:
-			case minecart:
-			case spawner_minecart:
-			case tnt_minecart:
-				return true;
-
-			default:
-				return false;
-		}
-	}
-
-	public boolean hasNaturalSpawn()
-	{
-		switch (this)
-		{
-			case bat:
-			case blaze:
-			case cave_spider:
-			case chicken:
-			case cod_mob:
-			case cow:
-			case creeper:
-			case donkey:
-			case elder_guardian:
-			case ender_dragon:
-			case enderman:
-			case endermite:
-			case evocation_illager:
-			case ghast:
-			case guardian:
-			case horse:
-			case husk:
-			case illusion_illager:
-			case lightning_bolt:
-			case llama:
-			case magma_cube:
-			case mooshroom:
-			case mule:
-			case ocelot:
-			case parrot:
-			case phantom:
-			case pig:
-			case polar_bear:
-			case rabbit:
-			case salmon_mob:
-			case sheep:
-			case shulker:
-			case skeleton:
-			case slime:
-			case snowman:
-			case spider:
-			case squid:
-			case stray:
-			case tropical_fish:
-			case turtle:
-			case villager:
-			case villager_golem:
-			case vindication_illager:
-			case witch:
-			case wither_skeleton:
-			case wolf:
-			case zombie:
-			case zombie_pigman:
-				return true;
-
-			default:
-				return false;
-		}
-	}
-
-	public boolean hasLife()
-	{
-		return !this.hasNoLife();
-	}
-
-	public boolean hasNoLife()
-	{
-		switch (this)
-		{
-			case area_effect_cloud:
-			case armor_stand:
-			case arrow:
-			case boat:
-			case dragon_fireball:
-			case egg:
-			case ender_crystal:
-			case ender_pearl:
-			case evocation_fangs:
-			case falling_block:
-			case fireball:
-			case fireworks_rocket:
-			case item:
-			case item_frame:
-			case leash_knot:
-			case lightning_bolt:
-			case llama_spit:
-			case painting:
-			case potion:
-			case shulker_bullet:
-			case snowball:
-			case spectral_arrow:
-			case trident:
-			case wither_skull:
-			case xp_bottle:
-			case xp_orb:
-				return true;
-
-			default:
-				return false;
-		}
-	}
-
-	public boolean canFly()
-	{
-		switch (this)
-		{
-			case bat:
-			case blaze:
-			case eye_of_ender_signal:
-			case fireworks_rocket:
-			case ghast:
-			case shulker_bullet:
-			case wither:
-			case xp_orb:
-				return true;
-
-			default:
-				return false;
-		}
-	}
-
-	public boolean isVillager()
-	{
-		switch (this)
-		{
-			case evocation_illager:
-			case illusion_illager:
-			case villager:
-			case vindication_illager:
-			case witch:
-			case zombie_villager:
-				return true;
-
-			default:
-				return false;
-		}
-	}
-
-	public boolean isAnimal()
-	{
-		switch (this)
-		{
-			case bat:
-			case chicken:
-			case cod_mob:
-			case cow:
-			case donkey:
-			case horse:
-			case llama:
-			case mooshroom:
-			case mule:
-			case ocelot:
-			case parrot:
-			case pig:
-			case polar_bear:
-			case rabbit:
-			case salmon_mob:
-			case sheep:
-			case squid:
-			case tropical_fish:
-			case turtle:
-			case villager_golem:
-				return true;
-
-			default:
-				return false;
-		}
-	}
-
-	public boolean isMonster()
-	{
-		switch (this)
-		{
-			case blaze:
-			case cave_spider:
-			case creeper:
-			case elder_guardian:
-			case ender_dragon:
-			case enderman:
-			case endermite:
-			case evocation_illager:
-			case ghast:
-			case giant:
-			case guardian:
-			case husk:
-			case illusion_illager:
-			case magma_cube:
-			case phantom:
-			case shulker:
-			case silverfish:
-			case skeleton:
-			case slime:
-			case snowman:
-			case spider:
-			case stray:
-			case vex:
-			case vindication_illager:
-			case witch:
-			case wither:
-			case wither_skeleton:
-			case zombie:
-			case zombie_pigman:
-			case zombie_villager:
-				return true;
-
-			default:
-				return false;
-		}
+		
+		cate = temp;
+		
+		if (!temp.contains(EntityType.HEIGHT_1_BLOCK) && !temp.contains(EntityType.HEIGHT_2_BLOCK) &&
+				!temp.contains(EntityType.HEIGHT_3_BLOCK) && !temp.contains(EntityType.REALLY_BIG_HEIGHT))
+			cate.add(EntityType.HEIGHT_1_BLOCK);
+		
+		if (!temp.contains(EntityType.WIDTH_1_BLOCK) && !temp.contains(EntityType.WIDTH_2_BLOCK) &&
+				!temp.contains(EntityType.WIDTH_3_BLOCK) && !temp.contains(EntityType.REALLY_BIG_WIDTH))
+			cate.add(EntityType.WIDTH_1_BLOCK);
+		
+		if (!temp.contains(EntityType.PASSIVE) && !temp.contains(EntityType.AGRESSIVE) && !temp.contains(EntityType.FRIENDLY))
+			cate.add(EntityType.PASSIVE);
 	}
 }
