@@ -86,15 +86,15 @@ public enum Entity
 	vindication_illager(EntityType.MONSTER, EntityType.ILLAGER),
 	witch(EntityType.MONSTER, EntityType.SUMMON_OTHER, EntityType.ILLAGER),
 	wither(EntityType.HEIGHT_3_BLOCK, EntityType.WIDTH_3_BLOCK, EntityType.BOSS),
-	wither_skeleton,
-	wither_skull,
-	wolf,
-	xp_bottle,
-	xp_orb,
-	zombie,
-	zombie_horse,
-	zombie_pigman,
-	zombie_villager;
+	wither_skeleton(EntityType.CAN_RUN, EntityType.SPAWN_IN_NETHER, EntityType.SKELETON),
+	wither_skull(EntityType.PROJECTILE, EntityType.EXPLODE),
+	wolf(EntityType.INFLICT_DAMAGE, EntityType.ANIMAL),
+	xp_bottle(EntityType.SUMMON_OTHER, EntityType.SUMMONED_BY_PLAYER, EntityType.PROJECTILE),
+	xp_orb(EntityType.SUMMONED_BY_OTHER, EntityType.FOLLOW_TARGET),
+	zombie(EntityType.SPAWN_IN_OVERWORLD, EntityType.ZOMBIE),
+	zombie_horse(EntityType.CAN_WALK, EntityType.BIG_ANIMAL, EntityType.RIDEABLE),
+	zombie_pigman(EntityType.SPAWN_IN_NETHER, EntityType.ZOMBIE),
+	zombie_villager(EntityType.SPAWN_IN_OVERWORLD, EntityType.ILLAGER, EntityType.ZOMBIE);
 
 	private ArrayList<EntityType> cate = new ArrayList<EntityType>();
 	

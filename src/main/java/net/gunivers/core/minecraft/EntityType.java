@@ -78,7 +78,7 @@ public enum EntityType {
 	UNDEAD(HEIGHT_2_BLOCK, CAN_WALK, MONSTER),
 	
 	SKELETON(UNDEAD),
-	ZOMBIE(UNDEAD, SPAWN_IN_OVERWORLD),
+	ZOMBIE(UNDEAD),
 	SPIDER(CAN_INTERACT_ON_BLOCK, CAN_WALK, SPAWN_IN_OVERWORLD, MONSTER);
 	
 	private ArrayList<EntityType> categories = new ArrayList<EntityType>();
