@@ -6,9 +6,11 @@ import net.gunivers.commandlistgenerator.util.BooleanFunctionalInterface;
 import net.gunivers.core.minecraft.Entity;
 import net.gunivers.core.utils.tuple.Tuple;
 
-public class EntityList extends List {
+public class EntityList extends List
+{
 	
-	public EntityList() {
+	public EntityList()
+	{
 		super("gui.list.item.entity");
 		addEntityList((Object e) -> ((Entity) e) instanceof Entity, "gui.list.item.all");
 		addEntityList((Object e) -> ((Entity) e).isAnimal(), "gui.list.item.entity.animal");
@@ -24,12 +26,14 @@ public class EntityList extends List {
 		addEntityList((Object e) -> ((Entity) e).isVillager(), "gui.list.item.entity.villager");
 	}
 	
-	public void addEntityList(BooleanFunctionalInterface b, String name) {
+	public void addEntityList(BooleanFunctionalInterface bfi, String name)
+	{
 		ArrayList<String> entities = new ArrayList<String>();
+		
 		for(Entity entity : Entity.values())
-			if(b.invoke(entity))
+			if(bfi.invoke(entity))
 				entities.add(entity.toString());
+		
 		addSubList(Tuple.newTuple(name, entities.toArray(new String[entities.size()])));
 	}
-
 }
