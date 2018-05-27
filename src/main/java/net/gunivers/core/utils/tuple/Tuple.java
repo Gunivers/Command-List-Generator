@@ -1,7 +1,11 @@
 package net.gunivers.core.utils.tuple;
 
-@SuppressWarnings("unchecked")
-public abstract class Tuple {
+import java.io.Serializable;
+
+@SuppressWarnings({ "unchecked" })
+public abstract class Tuple implements Serializable {
+
+	protected static final long serialVersionUID = 9L;
 	
 	public static <A> Tuple1<A> newTuple(A value) {
 		return new Tuple1<A>(value);

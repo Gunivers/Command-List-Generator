@@ -1,5 +1,6 @@
 package net.gunivers.commandlistgenerator.util;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import net.gunivers.commandlistgenerator.functionality.Functionality;
@@ -8,10 +9,13 @@ import net.gunivers.core.utils.tuple.Tuple;
 /**
  * @author Oromis This object represent a tag in the mold
  */
-public class Tag {
+public class Tag implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	public static HashMap<String, Tag> tags = new HashMap<>();
-	public static final char tagDelimiter = '&';	
+	public static final char tagDelimiter = '#';
+	
 	private Functionality type;
 	private String id;
 	private Tuple parameters;
