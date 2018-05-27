@@ -1,7 +1,5 @@
 package net.gunivers.core.language;
 
-import com.sun.istack.internal.Nullable;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -147,7 +145,7 @@ public class Language
 		Language.defaultLanguage = Language.getLanguage(Locale.ENGLISH);
 	}
 
-	static boolean isNullOrEmpty(@Nullable String string)
+	static boolean isNullOrEmpty(String string)
 	{
 		return string == null || string.isEmpty();
 	}

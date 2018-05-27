@@ -8,6 +8,7 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
 
 configurations {
     // configuration that holds jars to include in the jar
