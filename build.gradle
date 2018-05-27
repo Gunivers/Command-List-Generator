@@ -3,9 +3,8 @@ version 'Alpha-1'
 
 apply plugin: 'idea'
 apply plugin: 'eclipse'
-apply plugin: 'eclipse-wtp'
+apply plugin: 'eclipse-wtp' //Eclipse c'est du caca
 apply plugin: 'java'
-
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -24,36 +23,44 @@ repositories {
 apply plugin: 'javafx-gradle-plugin'
 
 dependencies {
-    compile files('libs/jfoenix-8.0.1.jar')
-    extraLibs files('libs/jfoenix-8.0.1.jar')
+    compile files('libs/jfoenix-8.0.4.jar')
+
+    if(JavaVersion.current().isJava9Compatible() ){
+        extraLibs files('libs/jfoenix-9.0.4.jar')
+    } else {
+        extraLibs files('libs/jfoenix-8.0.4.jar')
+    }
 
     configurations.compile.extendsFrom(configurations.extraLibs)
 }
 
 jar {
+    destinationDir = file("$rootDir/builds/")
+
     from {
         configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
     }
     manifest {
         attributes(
-                'Main-Class': 'net.gunivers.commandlistgenerator.CommandListGenerator'
+                'Main-Class': 'net.gunivers.listgenerator.CommandListGenerator'
         )
     }
 }
 
 buildscript {
     dependencies {
-        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
+        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.+'
     }
     repositories {
         mavenLocal()
         mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
 }
 
 jfx {
     // minimal requirement for jfxJar-task
-    mainClass = 'net.gunivers.commandlistgenerator.CommandListGenerator'
+    mainClass = 'net.gunivers.listgenerator.CommandListGenerator'
 
     // minimal requirement for jfxNative-task
     vendor = 'Gunivers'
