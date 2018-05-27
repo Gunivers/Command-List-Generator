@@ -13,23 +13,42 @@ import net.gunivers.commandlistgenerator.functionality.*;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
 import net.gunivers.core.language.Language;
 import net.gunivers.core.language.Locale;
+import net.gunivers.updater.Updater;
 
-public class CommandListGenerator extends Application {
+public class CommandListGenerator extends Application
+{
+
+    public static Boolean DEBUG = false;
 
     public static Stage MAIN_STAGE;
 
     public static Language language = Language.getLanguage(Locale.FRENCH);
 
-    public static void main(String[] args) {
-        if (args.length > 0) {
-            for (String arg : args)
+    public static void main(String[] args)
+    {
+        if (args.length > 0)
+        {
+            for (int index = 0; args.length < index; index++)
             {
-                if (arg.equalsIgnoreCase("-updater"))
+                String arg = args[index];
+
+                if (arg.startsWith("-update"))
                 {
+                    launch(Updater.class, "-DUpdate-File=" + args[index].split("=")[1]);
+                    index += 1;
+                } else if (arg.startsWith("-debug"))
+                {
+                    DEBUG = true;
+
+                    if (arg.split("=").length > 0)
+                    {
+                        DEBUG = Boolean.valueOf(arg.split("=")[1]);
+                    }
 
                 }
             }
-        } else {
+        } else
+        {
             launch(args);
         }
     }
@@ -40,7 +59,8 @@ public class CommandListGenerator extends Application {
      * @param primaryStage Default stage giving by JavaFX
      */
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception
+    {
         CommandListGenerator.MAIN_STAGE = primaryStage;
 
         //Start of fxml load
@@ -84,7 +104,6 @@ public class CommandListGenerator extends Application {
 
         //Init of functionalities
         boolean b = Functionality.register();
-        if (!b)
-            System.out.println("Functionality has been not correctly registered.");
+        if (!b) System.out.println("Functionality has been not correctly registered.");
     }
 }
