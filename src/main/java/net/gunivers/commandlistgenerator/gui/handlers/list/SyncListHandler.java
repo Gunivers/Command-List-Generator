@@ -45,7 +45,7 @@ public class SyncListHandler<E>
 		return listView1;
 	}
 
-	public ListView<?> getListViewTwo()
+	public ListView<? super E> getListViewTwo()
 	{
 		return listView2;
 	}
@@ -61,7 +61,7 @@ public class SyncListHandler<E>
 	 * @param listNumber
 	 * @return
 	 */
-	public ListView getListView(ListNumber listNumber)
+	public ListView<? super E> getListView(ListNumber listNumber)
 	{
 		return listNumber == ListNumber.ONE ? getListViewOne() : getListViewTwo();
 	}
@@ -73,7 +73,7 @@ public class SyncListHandler<E>
 	 * @param value
 	 * @param index
 	 */
-	public void putInAndSelect(ListNumber listNumber, Node value, int index)
+	public void putInAndSelect(ListNumber listNumber, E value, int index)
 	{
 		this.putIn(listNumber, value, index);
 		getListView(listNumber).getSelectionModel().clearAndSelect(index);
@@ -86,7 +86,7 @@ public class SyncListHandler<E>
 	 * @param value
 	 * @param index
 	 */
-	public void putIn(ListNumber listNumber, Node value, int index)
+	public void putIn(ListNumber listNumber, E value, int index)
 	{
 		ListView listView = getListView(listNumber);
 
@@ -94,7 +94,7 @@ public class SyncListHandler<E>
 		{
 			for (int i = listView.getItems().size(); i < index; i++)
 			{
-				listView.getItems().add(new Label());
+				listView.getItems().add(null);
 			}
 		}
 

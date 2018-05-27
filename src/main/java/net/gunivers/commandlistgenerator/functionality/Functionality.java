@@ -11,55 +11,68 @@ import net.gunivers.core.utils.tuple.Tuple;
 
 /**
  * @author Oromis Abstract method representing a functionality of the Command
- *         List Generator
+ * List Generator
  */
 public abstract class Functionality extends HelpFunctionality implements Serializable {
 
-	private static final long serialVersionUID = 11L;
-	
-	/**
-	 * This Map stocks all functionalities
-	 */
-	private static HashMap<String, Functionality> functionalities = new HashMap<String, Functionality>();
-	
-	/**
-	 * @return a HashMap of all available functionnalities
-	 */
-	public static HashMap<String, Functionality> getFunctionalities() {
-		return functionalities;
-	}
+    private static final long serialVersionUID = 11L;
 
-	/**
-	 * @return the functionality
-	 */
-	public static Functionality getFunctionalityByTag(String name) {
-		for(Entry<String, Functionality> f : getFunctionalities().entrySet())
-			if(f.getValue().toString().equals(name))
-				return f.getValue();
-		return null;
-	}
-	
-	public static Functionality getFunctionalityByDefaultName(String name) {
-		return functionalities.get(name);
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	public abstract String toString();
-	
-	public abstract String getDefaultName();
+    /**
+     * This Map stocks all functionalities
+     */
+    private static HashMap<String, Functionality> functionalities = new HashMap<String, Functionality>();
 
-	/**
-	 * Save each instance of a functionality
-	 */
-	 {
-		functionalities.put(this.getDefaultName(), this);
-	 }
-	 
-	public abstract ArrayList<String> generate(Tuple tuple, Integer nbLoop);
-	
-	public abstract String getHelp();
+    /**
+     * @return a HashMap of all available functionnalities
+     */
+    public static HashMap<String, Functionality> getFunctionalities() {
+        return functionalities;
+    }
+
+    /**
+     * @return the functionality
+     */
+    public static Functionality getFunctionalityByTag(String name) {
+        for (Entry<String, Functionality> f : getFunctionalities().entrySet())
+            if (f.getValue().toString().equals(name))
+                return f.getValue();
+        return null;
+    }
+
+    public static Functionality getFunctionalityByDefaultName(String name) {
+        return functionalities.get(name);
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#toString()
+     */
+    public abstract String toString();
+
+    public abstract String getDefaultName();
+
+    /**
+     * Save each instance of a functionality
+     */ {
+        functionalities.put(this.getDefaultName(), this);
+    }
+
+    public abstract ArrayList<String> generate(Tuple tuple, Integer nbLoop);
+
+    public abstract String getHelp();
+
+    //Init of functionalities
+    public static boolean register() {
+        try {
+            new Duplication();
+            new Sequence();
+            new Interpolation();
+            new ScoreInterpolation();
+            new GeneratorByList();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
