@@ -55,7 +55,6 @@ public class CommandListGenerator extends Application
 		//Set the tittle of window
 		decorator.setText(language.get("gui.commandlistgenerator.title"));
 		primaryStage.setTitle(language.get("gui.commandlistgenerator.title"));
-
 		//Create new scene
 		Scene scene = new Scene(decorator);
 

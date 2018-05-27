@@ -84,7 +84,7 @@ public class CommandListGeneratorController implements Initializable {
 		COMMAND_INPUT.setOnKeyReleased(new TextFieldCommandChangeHandler(COMMAND_INPUT));
 		
 
-		BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, MAX_COMMAND));
+		BUTTON_GENERATE.setOnAction(new ButtonGenerateHandler(BUTTON_GENERATE, COMMAND_INPUT, COMMAND_OUTPUT, MAX_COMMAND, TYPE_LIST));
 		BUTTON_GENERATE.setDefaultButton(true);
 		
 		BUTTON_EDIT.setOnAction(new ButtonEditHandler());

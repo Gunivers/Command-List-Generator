@@ -39,11 +39,7 @@ public class Language
 	 */
 	public boolean has(String k)
 	{
-		if (stringToComponent.containsKey(k))
-			return true;
-		if (defaultLanguage == null)
-			return false;
-		return defaultLanguage.stringToComponent.containsKey(k);
+		return stringToComponent.containsKey(k);
 	}
 
 	/**
@@ -143,7 +139,6 @@ public class Language
 		{
 			e.printStackTrace();
 		}
-
 		Language.defaultLanguage = Language.getLanguage(Locale.ENGLISH);
 	}
 

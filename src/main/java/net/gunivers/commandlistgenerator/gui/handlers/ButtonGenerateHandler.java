@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import com.jfoenix.controls.JFXListView;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import net.gunivers.commandlistgenerator.functionality.GeneratorByList;
@@ -21,18 +24,26 @@ public class ButtonGenerateHandler implements EventHandler<ActionEvent> {
 	private TextField commandTextField;
 	private TextArea output;
 	private TextField maxCommand;
+	private JFXListView<Label> type;
 
-	public ButtonGenerateHandler(Button button, TextField textField, TextArea output, TextField maxCommand) {
+	public ButtonGenerateHandler(Button button, TextField textField, TextArea output, TextField maxCommand, JFXListView<Label> type) {
 		this.button = button;
 		this.commandTextField = textField;
 		this.output = output;
 		this.maxCommand = maxCommand;
+		this.type = type;
 	}
 
 	@Override
 	public void handle(ActionEvent event) {
 		boolean prerequisites = true;
-		prerequisites = ShakeEffect.isFullOrElseShake(commandTextField, maxCommand);
+		for(Label l : type.getItems())
+			if(l.getText().equals("")) {
+				ShakeEffect.shake(l);
+				prerequisites = false;
+				System.out.println("aaa");
+			}
+		prerequisites &= ShakeEffect.isFullOrElseShake(commandTextField, maxCommand);
 		
 		if(prerequisites) {
 			int maxSize = CommandListGeneratorController.CONTROLLER.getMaxCommand();
