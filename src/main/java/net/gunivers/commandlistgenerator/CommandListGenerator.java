@@ -1,6 +1,5 @@
 package net.gunivers.commandlistgenerator;
 
-import java.io.Console;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -57,11 +56,11 @@ public class CommandListGenerator extends Application
                         try
                         {
                             Thread.currentThread().setDaemon(true);
+                            Thread.currentThread().stop();
                         } catch (Exception e)
                         {
                             System.out.println("Starting as debug !");
                         }
-                        Thread.currentThread().stop();
                     } catch (IOException e)
                     {
                         e.printStackTrace();
