@@ -1,6 +1,9 @@
 package net.gunivers.commandlistgenerator;
 
+import java.io.Console;
+import java.io.IOException;
 import java.net.URL;
+import java.net.URLDecoder;
 
 import com.jfoenix.controls.JFXDecorator;
 
@@ -28,7 +31,7 @@ public class CommandListGenerator extends Application
     {
         if (args.length > 0)
         {
-            for (int index = 0; args.length < index; index++)
+            for (int index = 0; args.length > index; index++)
             {
                 String arg = args[index];
 
@@ -40,17 +43,29 @@ public class CommandListGenerator extends Application
                 {
                     DEBUG = true;
 
-                    if (arg.split("=").length > 0)
+                    if (arg.split("=").length > 1)
                     {
                         DEBUG = Boolean.valueOf(arg.split("=")[1]);
                     }
 
+                    try
+                    {
+                        String path = CommandListGenerator.class.getProtectionDomain().getCodeSource().getLocation().getPath().substring(1);
+                        String decodedPath = URLDecoder.decode(path, "UTF-8");
+                        System.out.println(decodedPath);
+                        Runtime.getRuntime().exec("cmd /c start java -jar \"" + decodedPath + "\" actual_run");
+                        Thread.currentThread().setDaemon(true);
+                        Thread.currentThread().stop();
+                    } catch (IOException e)
+                    {
+                        e.printStackTrace();
+                    }
+
                 }
             }
-        } else
-        {
-            launch(args);
         }
+
+        if (!DEBUG) launch(args);
     }
 
     /**

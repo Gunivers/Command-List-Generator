@@ -72,6 +72,7 @@ public abstract class Functionality extends HelpFunctionality implements Seriali
             new GeneratorByList();
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }

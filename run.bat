@@ -12,8 +12,5 @@ if not exist ./builds/Minecraft-GDK-Alpha-1.jar (
 	ECHO.
 	call build.bat && call run.bat
 ) else (
-	java -jar ./builds/Minecraft-GDK-Alpha-1.jar
+	java -jar ./builds/Minecraft-GDK-Alpha-1.jar -debug
 )
-
-ECHO.
-pause
