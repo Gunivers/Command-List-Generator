@@ -106,7 +106,7 @@ public class Language
 					continue;
 				}
 
-				BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+				BufferedReader reader = new BufferedReader(new InputStreamReader(input, "UTF-8"));
 				String line;
 
 				while ((line = reader.readLine()) != null)
