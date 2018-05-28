@@ -54,7 +54,13 @@ public class CommandListGenerator extends Application
                         String decodedPath = URLDecoder.decode(path, "UTF-8");
                         System.out.println(decodedPath);
                         Runtime.getRuntime().exec("cmd /c start java -jar \"" + decodedPath + "\" actual_run");
-                        Thread.currentThread().setDaemon(true);
+                        try
+                        {
+                            Thread.currentThread().setDaemon(true);
+                        } catch (Exception e)
+                        {
+                            System.out.println("Starting as debug !");
+                        }
                         Thread.currentThread().stop();
                     } catch (IOException e)
                     {
