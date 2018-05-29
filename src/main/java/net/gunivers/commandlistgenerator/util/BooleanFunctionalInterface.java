@@ -1,7 +1,7 @@
 package net.gunivers.commandlistgenerator.util;
 
 @FunctionalInterface
-public interface BooleanFunctionalInterface {
+public interface BooleanFunctionalInterface<T> {
 
-	public boolean invoke(Object e);
+	public boolean invoke(T e);
 }
