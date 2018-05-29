@@ -1,0 +1,12 @@
+#TODO#
+
+ - Main Project																			- WAITING Command Parser
+
+Write your name after the feature if you decide to do this later.
+Possible states:
+- UNSTARTED
+- IN PROGRESS
+- WAITING [reason]
+- TEST PERIOD
+- DONE
+If the state of a feature is DONE, then wait some days before delete the line of the TODO list.
