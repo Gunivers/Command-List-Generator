@@ -10,7 +10,7 @@ public class Updater extends Application
 {
 
     @Override
-    public void start(Stage primaryStage) throws Exception
+    public void start(Stage primaryStage) throws FileNotFoundException
     {
         //Option = -DUpdate-File
         String fileUpdate = System.getProperty("Update-File");
@@ -18,6 +18,6 @@ public class Updater extends Application
         File file = new File(fileUpdate);
 
         if (!file.exists())
-            new Error(new FileNotFoundException("Update file not found ! \n" + file.toString() + "\n"));
+            throw new FileNotFoundException("Update file not found ! \n" + file.toString() + "\n");
     }
 }
