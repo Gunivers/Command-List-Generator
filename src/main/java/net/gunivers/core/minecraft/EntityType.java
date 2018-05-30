@@ -20,16 +20,16 @@ public enum EntityType {
 	HAS_GRAVITY,
 	HAS_AI,
 	HAS_LIMITED_LIFE,
-	
-	TERRESTRIAL(HAS_GRAVITY),
-	AERIAL,
-	MARINE(HAS_GRAVITY),
 
 	INFLICT_DAMAGE,
 	
 	PASSIVE,
 	AGRESSIVE(HAS_AI, INFLICT_DAMAGE),
 	FRIENDLY(HAS_AI),
+	
+	TERRESTRIAL(HAS_GRAVITY),
+	AERIAL,
+	MARINE(HAS_GRAVITY),
 
 	CAN_MOVE(HAS_AI),
 	
@@ -105,7 +105,7 @@ public enum EntityType {
 		
 		for (EntityType category : categories)
 		{
-			constructor(category .getCategories());
+			constructor(category.getCategories());	
 		}
 	}
 	
@@ -122,15 +122,5 @@ public enum EntityType {
 		}
 		
 		categories = temp;
-		categories.add(this);
-		
-		if (!temp.contains(HEIGHT_1_BLOCK) && !temp.contains(HEIGHT_2_BLOCK) && !temp.contains(HEIGHT_3_BLOCK) && !temp.contains(REALLY_BIG_HEIGHT))
-			categories.add(HEIGHT_1_BLOCK);
-		
-		if (!temp.contains(WIDTH_1_BLOCK) && !temp.contains(WIDTH_2_BLOCK) && !temp.contains(WIDTH_3_BLOCK) && !temp.contains(REALLY_BIG_WIDTH))
-			categories.add(WIDTH_1_BLOCK);
-		
-		if (!temp.contains(PASSIVE) && !temp.contains(AGRESSIVE) && !temp.contains(FRIENDLY))
-			categories.add(PASSIVE);
 	}
 }
