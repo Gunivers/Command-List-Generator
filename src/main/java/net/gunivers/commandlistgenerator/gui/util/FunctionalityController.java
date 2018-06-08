@@ -9,7 +9,7 @@ import net.gunivers.core.language.Language;
 
 public abstract class FunctionalityController
 {
-	protected Language l = CommandListGenerator.language;
+	protected Language l = CommandListGenerator.LANGUAGE;
 	private JFXDialog dialog;
 
 	@FXML

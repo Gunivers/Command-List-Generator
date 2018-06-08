@@ -56,7 +56,7 @@ public class ButtonEditHandler implements EventHandler<ActionEvent> {
 				dialog.show(CommandListGeneratorController.MAIN_PANE);
 			}
 		} else {
-			bar.show(CommandListGenerator.language.get("gui.commandlistgenerator.notagselected"), 3 * 1000);
+			bar.show(CommandListGenerator.LANGUAGE.get("gui.commandlistgenerator.notagselected"), 3 * 1000);
 		}
 	}
 }

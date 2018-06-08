@@ -78,7 +78,7 @@ public class ScoreInterpolationController extends FunctionalityController implem
 		if(ShakeEffect.isFullOrElseShake(TEXT_FIELD_1, TEXT_FIELD_2, TEXT_FIELD_3)) {
 			if(Double.valueOf(TEXT_FIELD_1.getText()) >= Double.valueOf(TEXT_FIELD_2.getText())) {
 				ShakeEffect.shake(TEXT_FIELD_1, TEXT_FIELD_2);
-				bar.show(CommandListGenerator.language.get("gui.functionalities.error.startsuperiorthanend"), 5 * 1000);
+				bar.show(CommandListGenerator.LANGUAGE.get("gui.functionalities.error.startsuperiorthanend"), 5 * 1000);
 			} else {
 				Tag tag = Tag.tags.get(((Label) CommandListGeneratorController.SYNC_LIST_HANDLER.getListViewOne().getItems().get(INDEX)).getText());
 				tag.setType(Functionality.getFunctionalityByDefaultName("ScoreInterpolation"));

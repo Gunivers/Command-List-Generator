@@ -7,7 +7,7 @@ public enum Type {
 	DEFAULT, FLOAT, DOUBLE, BYTE, SHORT, LONG;
 	
 	public String getName() {
-		return CommandListGenerator.language.get("gui.sequence.type." + toString().toLowerCase());
+		return CommandListGenerator.LANGUAGE.get("gui.sequence.type." + toString().toLowerCase());
 	}
 
 	public String getDefaultName() {

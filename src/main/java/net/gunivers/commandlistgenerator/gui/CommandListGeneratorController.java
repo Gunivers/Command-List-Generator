@@ -65,7 +65,7 @@ public class CommandListGeneratorController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Language l = CommandListGenerator.language;
+		Language l = CommandListGenerator.LANGUAGE;
 		CONTROLLER = this;
 		MAIN_PANE = PANE;
 

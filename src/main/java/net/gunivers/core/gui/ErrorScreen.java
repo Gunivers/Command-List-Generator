@@ -1,15 +1,17 @@
 package net.gunivers.core.gui;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 
-public class ErrorScreen extends Application
+import java.net.URL;
+
+public class ErrorScreen
 {
 
     private Exception error;
 
     public ErrorScreen(Exception e)
     {
+        this.error = e;
 
     }
 
@@ -18,9 +20,8 @@ public class ErrorScreen extends Application
         return error;
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception
+    public void show() throws Exception
     {
-
+        FXMLLoader loader = new FXMLLoader(new URL(getClass().getResource("/fxml/error/Error.fxml").toExternalForm()));
     }
 }
