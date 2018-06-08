@@ -13,7 +13,7 @@ public class EntityList extends List
 
 		for (EntityType et : EntityType.values())
 		{
-			addSubList(Tuple.newTuple(et.toString().toLowerCase(), (String[]) Entity.filter(et).toArray()));
+			addSubList(Tuple.newTuple(et.toString().toLowerCase(), Entity.filter(et).toArray(new String[Entity.filter(et).size()])));
 		}
 	}
 }
