@@ -6,109 +6,135 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="PANE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="PANE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <HBox prefHeight="400.0" prefWidth="640.0" styleClass="hbox">
-            <children>
-                <VBox styleClass=".vbox" HBox.hgrow="ALWAYS">
-                    <children>
-                        <JFXTextField fx:id="COMMAND_INPUT" alignment="CENTER" labelFloat="true" promptText="Command" VBox.vgrow="ALWAYS">
-                            <VBox.margin>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
-                            </VBox.margin>
-                        </JFXTextField>
-                        <BorderPane VBox.vgrow="NEVER">
-                            <VBox.margin>
-                                <Insets />
-                            </VBox.margin>
-                            <left>
-                                <JFXButton fx:id="BUTTON_GENERATE" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" text="Generate" BorderPane.alignment="CENTER">
-                                    <padding>
-                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                    </padding>
-                                    <BorderPane.margin>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                    </BorderPane.margin>
-                                </JFXButton>
-                            </left>
-                            <right>
-                                <JFXTextField fx:id="MAX_COMMAND" alignment="CENTER" labelFloat="true" prefHeight="25.0" prefWidth="155.0" promptText="Max Command" BorderPane.alignment="CENTER">
-                                    <BorderPane.margin>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                    </BorderPane.margin>
-                                </JFXTextField>
-                            </right>
-                        </BorderPane>
-                        <JFXTextArea fx:id="COMMAND_OUTPUT" editable="false" labelFloat="true" promptText="Output" wrapText="false" VBox.vgrow="ALWAYS">
-                            <VBox.margin>
-                                <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
-                            </VBox.margin>
-                        </JFXTextArea>
-                    </children>
-                </VBox>
-                <VBox layoutX="10.0" layoutY="10.0" styleClass=".vbox" HBox.hgrow="ALWAYS">
-                    <children>
-                        <HBox fillHeight="false" styleClass=".hbox" VBox.vgrow="NEVER">
-                            <children>
-                                <BorderPane HBox.hgrow="ALWAYS">
-                                    <HBox.margin>
-                                        <Insets />
-                                    </HBox.margin>
-                                    <center>
-                                        <Label fx:id="LABEL_TAG" text="Tag" BorderPane.alignment="CENTER">
-                                            <BorderPane.margin>
-                                                <Insets top="5.0" />
-                                            </BorderPane.margin>
-                                        </Label>
-                                    </center>
-                                </BorderPane>
-                                <BorderPane HBox.hgrow="ALWAYS">
-                                    <center>
-                                        <Label fx:id="LABEL_TYPE" text="Type" BorderPane.alignment="CENTER" />
-                                    </center>
-                                    <HBox.margin>
-                                        <Insets top="5.0" />
-                                    </HBox.margin>
-                                </BorderPane>
-                            </children>
-                        </HBox>
-                        <HBox styleClass=".hbox" VBox.vgrow="ALWAYS">
-                            <children>
-                                <JFXListView fx:id="TAG_LIST" minHeight="315.0" minWidth="160.0" HBox.hgrow="ALWAYS">
-                                    <HBox.margin>
-                                        <Insets bottom="5.0" left="5.0" top="5.0" />
-                                    </HBox.margin>
-                                </JFXListView>
-                                <JFXListView fx:id="TYPE_LIST" minHeight="315.0" minWidth="160.0" HBox.hgrow="ALWAYS">
-                                    <HBox.margin>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                    </HBox.margin>
-                                </JFXListView>
-                            </children>
-                            <VBox.margin>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                            </VBox.margin>
-                        </HBox>
-                        <BorderPane maxHeight="20.0" VBox.vgrow="NEVER">
-                            <center>
-                                <JFXButton fx:id="BUTTON_EDIT" buttonType="RAISED" text="Edit" BorderPane.alignment="CENTER">
-                                    <padding>
-                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                    </padding>
-                                    <BorderPane.margin>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" />
-                                    </BorderPane.margin>
-                                </JFXButton>
-                            </center>
-                        </BorderPane>
-                    </children>
-                </VBox>
-            </children>
-        </HBox>
+      <VBox>
+         <children>
+            <MenuBar VBox.vgrow="ALWAYS">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+              <HBox prefHeight="400.0" prefWidth="640.0" styleClass="hbox" VBox.vgrow="ALWAYS">
+                  <children>
+                      <VBox styleClass=".vbox" HBox.hgrow="ALWAYS">
+                          <children>
+                              <JFXTextField fx:id="COMMAND_INPUT" alignment="CENTER" labelFloat="true" promptText="Command" VBox.vgrow="ALWAYS">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
+                                  </VBox.margin>
+                              </JFXTextField>
+                              <BorderPane VBox.vgrow="NEVER">
+                                  <VBox.margin>
+                                      <Insets />
+                                  </VBox.margin>
+                                  <left>
+                                      <JFXButton fx:id="BUTTON_GENERATE" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" text="Generate" BorderPane.alignment="CENTER">
+                                          <padding>
+                                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                          </padding>
+                                          <BorderPane.margin>
+                                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                          </BorderPane.margin>
+                                      </JFXButton>
+                                  </left>
+                                  <right>
+                                      <JFXTextField fx:id="MAX_COMMAND" alignment="CENTER" labelFloat="true" prefHeight="25.0" prefWidth="155.0" promptText="Max Command" BorderPane.alignment="CENTER">
+                                          <BorderPane.margin>
+                                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                          </BorderPane.margin>
+                                      </JFXTextField>
+                                  </right>
+                              </BorderPane>
+                              <JFXTextArea fx:id="COMMAND_OUTPUT" editable="false" labelFloat="true" promptText="Output" wrapText="false" VBox.vgrow="ALWAYS">
+                                  <VBox.margin>
+                                      <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                                  </VBox.margin>
+                              </JFXTextArea>
+                          </children>
+                      </VBox>
+                      <VBox layoutX="10.0" layoutY="10.0" styleClass=".vbox" HBox.hgrow="ALWAYS">
+                          <children>
+                              <HBox fillHeight="false" styleClass=".hbox" VBox.vgrow="NEVER">
+                                  <children>
+                                      <BorderPane HBox.hgrow="ALWAYS">
+                                          <HBox.margin>
+                                              <Insets />
+                                          </HBox.margin>
+                                          <center>
+                                              <Label fx:id="LABEL_TAG" text="Tag" BorderPane.alignment="CENTER">
+                                                  <BorderPane.margin>
+                                                      <Insets top="5.0" />
+                                                  </BorderPane.margin>
+                                              </Label>
+                                          </center>
+                                      </BorderPane>
+                                      <BorderPane HBox.hgrow="ALWAYS">
+                                          <center>
+                                              <Label fx:id="LABEL_TYPE" text="Type" BorderPane.alignment="CENTER" />
+                                          </center>
+                                          <HBox.margin>
+                                              <Insets top="5.0" />
+                                          </HBox.margin>
+                                      </BorderPane>
+                                  </children>
+                              </HBox>
+                              <HBox styleClass=".hbox" VBox.vgrow="ALWAYS">
+                                  <children>
+                                      <JFXListView fx:id="TAG_LIST" minHeight="315.0" minWidth="160.0" HBox.hgrow="ALWAYS">
+                                          <HBox.margin>
+                                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                                          </HBox.margin>
+                                      </JFXListView>
+                                      <JFXListView fx:id="TYPE_LIST" minHeight="315.0" minWidth="160.0" HBox.hgrow="ALWAYS">
+                                          <HBox.margin>
+                                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                          </HBox.margin>
+                                      </JFXListView>
+                                  </children>
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                  </VBox.margin>
+                              </HBox>
+                              <BorderPane maxHeight="20.0" VBox.vgrow="NEVER">
+                                  <center>
+                                      <JFXButton fx:id="BUTTON_EDIT" buttonType="RAISED" text="Edit" BorderPane.alignment="CENTER">
+                                          <padding>
+                                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                          </padding>
+                                          <BorderPane.margin>
+                                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                                          </BorderPane.margin>
+                                      </JFXButton>
+                                  </center>
+                              </BorderPane>
+                          </children>
+                      </VBox>
+                  </children>
+              </HBox>
+         </children>
+      </VBox>
     </children>
 </StackPane>

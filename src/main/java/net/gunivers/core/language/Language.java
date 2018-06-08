@@ -63,14 +63,14 @@ public class Language
 	}
 
 	/**
-	 * This method return to language is local is null return to the default language !
+	 * This method return to LANGUAGE is local is null return to the default LANGUAGE !
 	 *
-	 * @param locale the key of language
-	 * @return a language
+	 * @param locale the key of LANGUAGE
+	 * @return a LANGUAGE
 	 */
 	public static Language getLanguage(Locale locale)
 	{
-		//Init if language is not init
+		//Init if LANGUAGE is not init
 		if (!isInit)
 		{
 			init();
@@ -82,7 +82,7 @@ public class Language
 	}
 
 	/**
-	 * @return To the language name
+	 * @return To the LANGUAGE name
 	 */
 	public String getLanguageName()
 	{
@@ -102,7 +102,7 @@ public class Language
 
 				if (input == null)
 				{
-					System.out.println("Cannot register the language " + locale.getCountryCode().toUpperCase());
+					System.out.println("Cannot register the LANGUAGE " + locale.getCountryCode().toUpperCase());
 					continue;
 				}
 
@@ -123,7 +123,7 @@ public class Language
 
 					if (language.has(k))
 					{
-						System.out.println("Language: The key: " + k + " has been already registered for language: " + language.getLanguageName());
+						System.out.println("Language: The key: " + k + " has been already registered for LANGUAGE: " + language.getLanguageName());
 					} else
 					{
 						language.registerValue(k, value);
