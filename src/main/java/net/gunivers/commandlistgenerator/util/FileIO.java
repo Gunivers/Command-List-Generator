@@ -4,7 +4,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -24,11 +23,15 @@ public class FileIO {
 	 * @param path
 	 * @throws FileNotFoundException, IOException
 	 */
-	public static void save(String data, String path) throws FileNotFoundException, IOException
+	public static void save(String data, String path)
 	{
-		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), StandardCharsets.UTF_8));
-		out.write(data);
-		out.close();
+		try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), StandardCharsets.UTF_8)))
+		{
+			out.write(data);
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -37,25 +40,30 @@ public class FileIO {
 	 * @return data a String read
 	 * @throws FileNotFoundException, IOException
 	 */
-	public static String get(String path) throws FileNotFoundException, IOException
+	public static String get(String path)
 	{
-		BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
-		
-		String str;
 		String result = "";
 		
-		while ((str = in.readLine()) != null) {
-		    result += str + '\n';
-		}
-		 result = result.substring(0, result.length() - 1);   
+		try(BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)))
+		{
+			String str;
 		
-        in.close();
+			while ((str = in.readLine()) != null) {
+				result += str + '\n';
+			}
+			result = result.substring(0, result.length() - 1);   
+			
+			in.close();
+		} catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 
 		return result;
 	}
 	
-	/** <strong>Serialize<strong>
-	 * This method will save a set in the gave path.
+	/** <strong>Serialize</strong>
+	 * This method will save a set in the given path.
 	 * 
 	 * @param path
 	 *            the file location
@@ -85,6 +93,13 @@ public class FileIO {
 		}
 	}
 	
+	/**<strong>Deserialize</strong>
+	 * This method will get a set deserializing it from the given path file.
+	 * @param path
+	 *            the file location
+	 * @return Object[3]
+	 *                 the set
+	 */
 	public static Object[] deserialize(String path)
 	{
 		try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(path))))
