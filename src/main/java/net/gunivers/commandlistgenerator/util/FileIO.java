@@ -72,7 +72,7 @@ public class FileIO {
 	{
 		try (ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(path))))
 		{
-			oos.writeChars(command);
+			oos.writeObject(command);
 			oos.writeInt(maxCommand);
 			oos.writeObject(tags);
 			
@@ -87,7 +87,7 @@ public class FileIO {
 	
 	public static Object[] deserialize(String path)
 	{
-		try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new DataInputStream(new FileInputStream(path)))))
+		try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(path))))
 		{
 			String command = (String) ois.readObject();
 			int maxCommand = ois.readInt();
