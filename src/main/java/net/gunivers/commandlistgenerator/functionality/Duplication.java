@@ -7,6 +7,11 @@ import net.gunivers.core.utils.tuple.Tuple3;
 
 public class Duplication extends Functionality {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5144240444727405718L;
+
 	@Override
 	public String toString() {
 		return l.get("gui.duplication.title");

@@ -16,6 +16,10 @@ import net.gunivers.core.utils.tuple.Tuple4;
  */
 public class Sequence extends Functionality {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 653116429362297064L;
 	private JFXSnackbar bar = new JFXSnackbar(CommandListGeneratorController.MAIN_PANE);
 
 	@Override

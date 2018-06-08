@@ -24,7 +24,7 @@ public class MaterialList extends List {
 		addMaterialList((Object e) -> ((Material) e).hasGravity(), "gravityblock");
 	}
 	
-	public void addMaterialList(BooleanFunctionalInterface b, String name) {
+	public void addMaterialList(BooleanFunctionalInterface<Object> b, String name) {
 		ArrayList<String> materials = new ArrayList<String>();
 		for(Material material : Material.values())
 			if(b.invoke(material))

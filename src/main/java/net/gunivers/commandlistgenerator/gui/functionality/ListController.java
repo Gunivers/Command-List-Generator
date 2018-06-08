@@ -1,7 +1,6 @@
 package net.gunivers.commandlistgenerator.gui.functionality;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -132,7 +131,7 @@ public class ListController extends FunctionalityController implements Initializ
 			String content = FileIO.get(f.getAbsolutePath());
 			TEXT_AREA.setText(content);
 			bar.show(l.get("gui.list.toast.importcomplet"), 5 * 1000);
-		} catch (IOException|NullPointerException e) {
+		} catch (NullPointerException e) {
 			bar.show(l.get("gui.list.error.importfail"), 5 * 1000);
 		}
 	}
@@ -146,7 +145,7 @@ public class ListController extends FunctionalityController implements Initializ
                 try {
 					FileIO.save(TEXT_AREA.getText(), file.getAbsolutePath());
 					bar.show(l.get("gui.list.toast.exportcomplet"), 5 * 1000);
-				} catch (IOException|NullPointerException e) {
+				} catch (NullPointerException e) {
 					bar.show(l.get("gui.list.error.exportfail"), 5 * 1000);
 				}
          }
