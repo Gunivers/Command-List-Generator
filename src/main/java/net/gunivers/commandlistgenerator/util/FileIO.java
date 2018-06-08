@@ -59,7 +59,7 @@ public class FileIO {
 			e.printStackTrace();
 		}
 
-		return result;
+		return result.equals("") ? null : result;
 	}
 	
 	/** <strong>Serialize</strong>
