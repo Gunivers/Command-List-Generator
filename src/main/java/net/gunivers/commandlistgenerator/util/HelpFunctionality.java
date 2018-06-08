@@ -9,7 +9,7 @@ public abstract class HelpFunctionality {
 	
 	private static HashMap<String, String> help = new HashMap<String, String>();
 	
-	protected Language l = CommandListGenerator.language;
+	protected Language l = CommandListGenerator.LANGUAGE;
 	
 	{
 		help.putIfAbsent(this.getClass().getName(), this.getHelp());

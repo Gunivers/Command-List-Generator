@@ -1,8 +1,6 @@
 package net.gunivers.commandlistgenerator;
 
-import java.io.IOException;
 import java.net.URL;
-import java.net.URLDecoder;
 
 import com.jfoenix.controls.JFXDecorator;
 
@@ -20,11 +18,9 @@ import net.gunivers.updater.Updater;
 public class CommandListGenerator extends Application
 {
 
-    public static Boolean DEBUG = false;
-
     public static Stage MAIN_STAGE;
 
-    public static Language language = Language.getLanguage(Locale.FRENCH);
+    public static Language LANGUAGE = Language.getLanguage(Locale.FRENCH);
 
     public static void main(String[] args)
     {
@@ -40,37 +36,18 @@ public class CommandListGenerator extends Application
                     index += 1;
                 } else if (arg.startsWith("-debug"))
                 {
-                    DEBUG = true;
-
-                    if (arg.split("=").length > 1)
-                    {
-                        DEBUG = Boolean.valueOf(arg.split("=")[1]);
-                    }
-
-                    try
-                    {
-                        String path = CommandListGenerator.class.getProtectionDomain().getCodeSource().getLocation().getPath().substring(1);
-                        String decodedPath = URLDecoder.decode(path, "UTF-8");
-                        System.out.println(decodedPath);
-                        Runtime.getRuntime().exec("cmd /c start java -jar \"" + decodedPath + "\" actual_run");
-                        try
-                        {
-                            Thread.currentThread().setDaemon(true);
-                            Thread.currentThread().stop();
-                        } catch (Exception e)
-                        {
-                            System.out.println("Starting as debug !");
-                        }
-                    } catch (IOException e)
-                    {
-                        e.printStackTrace();
-                    }
-
+                    Debug.initialize(arg);
                 }
             }
         }
 
-        if (!DEBUG) launch(args);
+        try
+        {
+            launch(args);
+        } catch (Exception e)
+        {
+            System.out.println("An error has been detected !");
+        }
     }
 
     /**
@@ -96,8 +73,8 @@ public class CommandListGenerator extends Application
         JFXDecorator decorator = new JFXDecorator(primaryStage, loader.getRoot(), false, true, true);
 
         //Set the tittle of window
-        decorator.setText(language.get("gui.commandlistgenerator.title"));
-        primaryStage.setTitle(language.get("gui.commandlistgenerator.title"));
+        decorator.setText(LANGUAGE.get("gui.commandlistgenerator.title"));
+        primaryStage.setTitle(LANGUAGE.get("gui.commandlistgenerator.title"));
 
         //Create new scene
         Scene scene = new Scene(decorator);
