@@ -14,16 +14,22 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
-public class FileIO {
-
+/**<strong>FileIO</strong>
+ * This class manage the input/output of this program with the files. Able to write down some String and Presets
+ * @author A~Z
+ * @author Oromis
+ */
+public class FileIO
+{
 	/**
 	 * 
-	 * @param data
-	 *            a String to save
 	 * @param path
+	 *            String | the file's location
+	 * @param data
+	 *            String | to save
 	 * @throws FileNotFoundException, IOException
 	 */
-	public static void save(String data, String path)
+	public static void save(String path, String data)
 	{
 		try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), StandardCharsets.UTF_8)))
 		{
@@ -34,26 +40,27 @@ public class FileIO {
 		}
 	}
 
-	/**
+	/**<strong>get</strong>
 	 * 
 	 * @param path
-	 * @return data a String read
+	 *            String | the file's location
+	 * @return String
+	 *               the data read, or null if got nothing
 	 * @throws FileNotFoundException, IOException
 	 */
 	public static String get(String path)
 	{
 		String result = "";
 		
-		try(BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)))
+		try (BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)))
 		{
 			String str;
 		
-			while ((str = in.readLine()) != null) {
+			while ((str = in.readLine()) != null)
+			{
 				result += str + '\n';
 			}
-			result = result.substring(0, result.length() - 1);   
-			
-			in.close();
+			result = result.substring(0, result.length() - 1);
 		} catch(IOException e)
 		{
 			e.printStackTrace();
@@ -62,19 +69,19 @@ public class FileIO {
 		return result.equals("") ? null : result;
 	}
 	
-	/** <strong>Serialize</strong>
+	/** <strong>serialize</strong>
 	 * This method will save a set in the given path.
 	 * 
 	 * @param path
-	 *            the file location
+	 *            String | the file location
 	 * @param command
-	 *               the command
+	 *               String | the command
 	 * @param maxCommand
-	 *                  the max commands amount
+	 *                  int | the max commands amount
 	 * @param tags
-	 *            the tags of the set
-	 * @return success
-	 *                a boolean
+	 *            Tag[] | the tags of the set
+	 * @return boolean
+	 *                the success of the serialization
 	 */
 	public static boolean serialize(String path, String command, int maxCommand, Tag ... tags)
 	{
@@ -93,10 +100,10 @@ public class FileIO {
 		}
 	}
 	
-	/**<strong>Deserialize</strong>
+	/**<strong>deserialize</strong>
 	 * This method will get a set deserializing it from the given path file.
 	 * @param path
-	 *            the file location
+	 *            String | the file location
 	 * @return Object[3]
 	 *                 the set
 	 */
