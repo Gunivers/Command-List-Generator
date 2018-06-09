@@ -83,8 +83,12 @@ gui.list.textarea.prompttext=Liste des éléments
 gui.list.label=Utiliser une liste
 gui.list.button.import=Importer
 gui.list.button.export=Exporter
+
 gui.list.item.all=Tout
+
+
 gui.list.item.material=Matériaux
+
 gui.list.item.material.block=Bloc
 gui.list.item.material.item=Item
 gui.list.item.material.burnableblock=Bloc Brûlable
@@ -92,28 +96,93 @@ gui.list.item.material.edibleitem=Item comestible
 gui.list.item.material.flammableblock=Bloc Inflammable
 gui.list.item.material.fuelitem=Combustible
 gui.list.item.material.occludingblock=Bloc Opaque
-gui.list.item.material.record=CD
+gui.list.item.material.record=Disque
 gui.list.item.material.solidblock=Bloc Solide
 gui.list.item.material.transparentblock=Bloc Transparent
-gui.list.item.material.gravityblock=Bloc Chûtant
+gui.list.item.material.gravityblock=Bloc Soumis à la Gtavité
+
+
 gui.list.item.entity=Entité
-gui.list.item.entity.animal=Animaux
+
+gui.list.item.entity.height_1_block=Taille de 1 Bloc
+gui.list.item.entity.height_2_block=Taille de 2 Blocs
+gui.list.item.entity.height_3_block=Taille de 3 Blocs
+gui.list.item.entity.really_big_height=Vraiment Très Grand
+
+gui.list.item.entity.width_1_block=Épaisseur de 1 Bloc
+gui.list.item.entity.width_2_block=Épaisseur de 2 Blocs
+gui.list.item.entity.width_3_block=Épaisseur de 3 Blocs
+gui.list.item.entity.really_big_width=Vraiment Très Gros
+
+gui.list.item.entity.has_inventory=A un Inventaire
+gui.list.item.entity.has_spawner=A un Spawner
+gui.list.item.entity.has_gravity=A la Gravitée
+gui.list.item.entity.has_ai=A une IA
+gui.list.item.entity.has_limited_life=A une Vie Limitée
+
+gui.list.item.entity.inflict_damage=Inflige des Dégats
+
+gui.list.item.entity.passive=Passif
+gui.list.item.entity.agressive=Agressif
+gui.list.item.entity.friendly=Ami !
+
+gui.list.item.entity.terrestrial=Terrien
+gui.list.item.entity.aerial=Aérien
+gui.list.item.entity.marine=Marin
+
+gui.list.item.entity.can_move=Peut Bouger
+gui.list.item.entity.can_fly=Peut Voler
+gui.list.item.entity.can_walk=Peut Marcher
+gui.list.item.entity.can_swim=Peut Nager
+gui.list.item.entity.can_run=Peut Courir
+gui.list.item.entity.can_interact_on_block=Peut Interagir avec les Blocs
+gui.list.item.entity.can_resist_fire=Résiste au Feu
+
+gui.list.item.entity.explode=Explose
+gui.list.item.entity.follow_target=Suis une Cible
+gui.list.item.entity.run_away=S'Enfuis
+gui.list.item.entity.procreate=Peut Procréer
+
+gui.list.item.entity.spawn_naturally=Spawn Naturellement
+gui.list.item.entity.spawn_in_overworld=Spawn dans L'Overworld
+gui.list.item.entity.spawn_in_nether=Spawn dans le Nether
+gui.list.item.entity.spawn_in_ender=Spawn dans l'End
+
+gui.list.item.entity.object=Objet
+
+gui.list.item.entity.summon_other=Invoque des Entités
+gui.list.item.entity.summoned_by_other=Est Invoqué par une Entité
+gui.list.item.entity.summoned_by_player=Est Invoqué par un Joueur
+
 gui.list.item.entity.monster=Monstre
-gui.list.item.entity.enderentity=Entité de l'End
-gui.list.item.entity.netherentity=Entité du Nether
-gui.list.item.entity.overworldentity=Entité de la Surface
-gui.list.item.entity.flyingentity=Entité Volante
-gui.list.item.entity.livingentity=Entité Vivante
-gui.list.item.entity.inanimateentity=Entité Inanimée
-gui.list.item.entity.naturalspawnentity=Entité spawnant naturellement
-gui.list.item.entity.minecart=Wagon
-gui.list.item.entity.villager=Villageois
+gui.list.item.entity.human=Humain
+gui.list.item.entity.animal=Animal
+gui.list.item.entity.boss=Boss
+
+gui.list.item.entity.rideable=Chevauchable
+gui.list.item.entity.golem=Golem
+gui.list.item.entity.minecart=Minecart
+
+gui.list.item.entity.projectile=Projectile
+gui.list.item.entity.stay_on_block=Reste sur un Block
+
+gui.list.item.entity.little_animal=Petit Animal
+gui.list.item.entity.big_animal=Grand Animal
+gui.list.item.entity.fish=Poisson
+
+gui.list.item.entity.illager=Variante de Villageois
+gui.list.item.entity.undead=Mort-Vivant
+
+gui.list.item.entity.skeleton=Squelette
+gui.list.item.entity.zombie=Zombie
+gui.list.item.entity.spider=Araignée
+
 
 gui.list.error.nolist=Aucune liste n'a été choisie
-gui.list.toast.exportcomplet=Export Réussi
-gui.list.toast.importcomplet=Import Réussi
-gui.list.error.importfail=Import Échoué
-gui.list.error.exportfail=Export Échoué
+gui.list.toast.exportcomplet=Exportation Réussie
+gui.list.toast.importcomplet=Importation Réussie
+gui.list.error.importfail=Importation Échouée
+gui.list.error.exportfail=Exportation Échouée
 
 ##############################
 #           Others           #
