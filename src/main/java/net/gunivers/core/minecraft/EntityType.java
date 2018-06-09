@@ -21,10 +21,10 @@ public enum EntityType {
 	HAS_AI,
 	HAS_LIMITED_LIFE,
 
-	INFLICT_DAMAGE,
+	INFLICT_DAMAGE(HAS_AI),
 	
 	PASSIVE,
-	AGRESSIVE(HAS_AI, INFLICT_DAMAGE),
+	AGRESSIVE(INFLICT_DAMAGE),
 	FRIENDLY(HAS_AI),
 	
 	TERRESTRIAL(HAS_GRAVITY),
@@ -64,7 +64,6 @@ public enum EntityType {
 	
 	RIDEABLE(HAS_GRAVITY, CAN_MOVE),
 	GOLEM(FRIENDLY, INFLICT_DAMAGE,  SUMMONED_BY_PLAYER),
-	
 	MINECART(CAN_WALK),
 	
 	PROJECTILE(HAS_LIMITED_LIFE, AERIAL, CAN_MOVE, OBJECT, SUMMONED_BY_OTHER),
@@ -101,7 +100,10 @@ public enum EntityType {
 	 */
 	private void constructor(List<EntityType> categories)
 	{
-		this.categories.addAll(categories);
+		for (EntityType category : categories)
+		{
+			if (!this.categories.contains(category)) this.categories.add(category);
+		}
 		
 		for (EntityType category : categories)
 		{

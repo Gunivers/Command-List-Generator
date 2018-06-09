@@ -8,6 +8,11 @@ import net.gunivers.core.utils.tuple.Tuple4;
 public class ScoreInterpolation extends Functionality {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -806197144269663089L;
+
+	/**
 	 * Return value a alpha % of interval [start; end]
 	 *
 	 * @param start:

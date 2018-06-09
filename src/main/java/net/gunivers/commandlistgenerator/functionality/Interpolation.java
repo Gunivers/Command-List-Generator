@@ -8,6 +8,11 @@ import net.gunivers.core.utils.tuple.Tuple6;
 public class Interpolation extends Functionality {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2858314594082153155L;
+
+	/**
 	 * Return value a alpha % of interval [start; end]
 	 *
 	 * @param start:

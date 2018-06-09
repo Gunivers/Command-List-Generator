@@ -12,7 +12,7 @@ public class EntityList extends List
 	public EntityList()
 	{
 		super("gui.list.item.entity");
-
+		
 		for (EntityType et : EntityType.values())
 		{
 			ArrayList<String> array = new ArrayList<String>();
@@ -21,7 +21,7 @@ public class EntityList extends List
 				array.add(e.toString().toLowerCase());
 			}
 			
-			addSubList(Tuple.newTuple(et.toString().toLowerCase(), array.toArray(new String[array.size()])));
+			addSubList(Tuple.newTuple("gui.list.item.entity." + et.toString().toLowerCase(), array.toArray(new String[array.size()])));
 		}
 	}
 }

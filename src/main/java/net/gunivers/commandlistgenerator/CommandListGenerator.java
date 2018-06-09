@@ -73,7 +73,7 @@ public class CommandListGenerator extends Application
         JFXDecorator decorator = new JFXDecorator(primaryStage, loader.getRoot(), false, true, true);
 
         //Set the tittle of window
-        decorator.setText(LANGUAGE.get("gui.commandlistgenerator.title"));
+        decorator.setTitle(LANGUAGE.get("gui.commandlistgenerator.title"));
         primaryStage.setTitle(LANGUAGE.get("gui.commandlistgenerator.title"));
 
         //Create new scene

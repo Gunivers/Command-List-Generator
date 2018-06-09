@@ -10,21 +10,21 @@ public class MaterialList extends List {
 	
 	public MaterialList() {
 		super("gui.list.item.material");
-		addMaterialList((Object e) -> ((Material) e) instanceof Material, "gui.list.item.all");
-		addMaterialList((Object e) -> ((Material) e).isBlock(), "gui.list.item.material.block");
-		addMaterialList((Object e) -> ((Material) e).isItem(), "gui.list.item.material.item");
-		addMaterialList((Object e) -> ((Material) e).isBurnable(), "gui.list.item.material.burnableblock");
-		addMaterialList((Object e) -> ((Material) e).isEdible(), "gui.list.item.material.edibleitem");
-		addMaterialList((Object e) -> ((Material) e).isFlammable(), "gui.list.item.material.flammableblock");
-		addMaterialList((Object e) -> ((Material) e).isFuel(), "gui.list.item.material.fuelitem");
-		addMaterialList((Object e) -> ((Material) e).isOccluding(), "gui.list.item.material.occludingblock");
-		addMaterialList((Object e) -> ((Material) e).isRecord(), "gui.list.item.material.record");
-		addMaterialList((Object e) -> ((Material) e).isSolid(), "gui.list.item.material.solidblock");
-		addMaterialList((Object e) -> ((Material) e).isTransparent(), "gui.list.item.material.transparentblock");
-		addMaterialList((Object e) -> ((Material) e).hasGravity(), "gravityblock");
+		addMaterialList((Material e) -> e instanceof Material, "gui.list.item.all");
+		addMaterialList((Material e) -> e.isBlock(), "gui.list.item.material.block");
+		addMaterialList((Material e) -> e.isItem(), "gui.list.item.material.item");
+		addMaterialList((Material e) -> e.isBurnable(), "gui.list.item.material.burnableblock");
+		addMaterialList((Material e) -> e.isEdible(), "gui.list.item.material.edibleitem");
+		addMaterialList((Material e) -> e.isFlammable(), "gui.list.item.material.flammableblock");
+		addMaterialList((Material e) -> e.isFuel(), "gui.list.item.material.fuelitem");
+		addMaterialList((Material e) -> e.isOccluding(), "gui.list.item.material.occludingblock");
+		addMaterialList((Material e) -> e.isRecord(), "gui.list.item.material.record");
+		addMaterialList((Material e) -> e.isSolid(), "gui.list.item.material.solidblock");
+		addMaterialList((Material e) -> e.isTransparent(), "gui.list.item.material.transparentblock");
+		addMaterialList((Material e) -> e.hasGravity(), "gravityblock");
 	}
 	
-	public void addMaterialList(BooleanFunctionalInterface b, String name) {
+	public void addMaterialList(BooleanFunctionalInterface<Material> b, String name) {
 		ArrayList<String> materials = new ArrayList<String>();
 		for(Material material : Material.values())
 			if(b.invoke(material))

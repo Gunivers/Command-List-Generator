@@ -47,7 +47,7 @@ public class SyncListHandler<E extends Parent>
         return listView2;
     }
 
-    public ObservableList getObjectInList(ListNumber number)
+    public ObservableList<?> getObjectInList(ListNumber number)
     {
         return number == ListNumber.ONE ? listView1.getItems() : listView2.getItems();
     }
