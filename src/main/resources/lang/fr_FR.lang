@@ -114,11 +114,11 @@ gui.list.item.entity.width_2_block=Épaisseur de 2 Blocs
 gui.list.item.entity.width_3_block=Épaisseur de 3 Blocs
 gui.list.item.entity.really_big_width=Vraiment Très Gros
 
-gui.list.item.entity.has_inventory=A un Inventaire
-gui.list.item.entity.has_spawner=A un Spawner
-gui.list.item.entity.has_gravity=A la Gravitée
-gui.list.item.entity.has_ai=A une IA
-gui.list.item.entity.has_limited_life=A une Vie Limitée
+gui.list.item.entity.has_inventory=Possède un Inventaire
+gui.list.item.entity.has_spawner=Possède un Spawner
+gui.list.item.entity.has_gravity=Est Affecté par la Gravitée
+gui.list.item.entity.has_ai=Possède une IA
+gui.list.item.entity.has_limited_life=Possède une Vie Limitée
 
 gui.list.item.entity.inflict_damage=Inflige des Dégats
 
