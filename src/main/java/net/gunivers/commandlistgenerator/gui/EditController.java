@@ -41,7 +41,7 @@ public class EditController implements Initializable
 	{
 		NEXT_BUTTON.setText(CommandListGenerator.LANGUAGE.get("gui.button.next"));
 		
-		layout.setPrefSize(CommandListGenerator.MAIN_STAGE.getWidth() / 1.25, CommandListGenerator.MAIN_STAGE.getHeight() / 1.25);
+		layout.setPrefSize(CommandListGenerator.STAGE.getWidth() / 1.25, CommandListGenerator.STAGE.getHeight() / 1.25);
 
 		FUNCTIONALITY_LIST.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			 @Override

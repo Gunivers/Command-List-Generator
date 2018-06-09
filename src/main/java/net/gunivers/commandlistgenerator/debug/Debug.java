@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class Debug
 {
-    public static Boolean DEBUG = false;
+    public static boolean DEBUG = false;
 
     public static Stage STAGE;
 
@@ -38,8 +38,8 @@ public class Debug
 
         if (DEBUG)
         {
-            System.setErr(new PrintStream(new ConsoleOutPutStream()));
-            System.setOut(new PrintStream(new ConsoleOutPutStream()));
+            System.setErr(new PrintStream(new ConsoleOutPutStream(System.err)));
+            System.setOut(new PrintStream(new ConsoleOutPutStream(System.out)));
 
             DEBUG_THREAD = new Thread(() -> Platform.runLater(() ->
             {
@@ -68,13 +68,31 @@ public class Debug
         }
     }
 
+    public static void exit()
+    {
+        if (DEBUG)
+        {
+            STAGE.close();
+            DEBUG_THREAD.stop();
+            Platform.exit();
+        }
+    }
+
     private static class ConsoleOutPutStream extends OutputStream
     {
+        private OutputStream backup;
+
         private StringBuilder builder = new StringBuilder();
+
+        public ConsoleOutPutStream(OutputStream stream)
+        {
+            this.backup = stream;
+        }
 
         @Override
         public void write(int b) throws IOException
         {
+            backup.write(b);
             builder.append((char) b);
 
             String d = new SimpleDateFormat("HH:mm:ss").format(new Date());

@@ -1,11 +1,11 @@
 package net.gunivers.commandlistgenerator;
 
-import java.io.IOException;
 import java.net.URL;
 
 import com.jfoenix.controls.JFXDecorator;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
@@ -21,11 +21,13 @@ import net.gunivers.core.utils.SystemOS;
 public class CommandListGenerator extends Application
 {
 
-    public static Stage MAIN_STAGE;
+    public static CommandListGenerator MAIN;
+
+    public static Stage STAGE;
 
     public static Language LANGUAGE = Language.getLanguage(Locale.FRENCH);
 
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args)
     {
 
         if (args.length > 0)
@@ -66,7 +68,8 @@ public class CommandListGenerator extends Application
         System.out.println("System Arch: " + SystemOS.getArch());
         System.out.println("Java Version: " + SystemOS.getJavaVersion());
 
-        CommandListGenerator.MAIN_STAGE = primaryStage;
+        CommandListGenerator.MAIN = this;
+        CommandListGenerator.STAGE = primaryStage;
 
         //Start of fxml load
         FXMLLoader loader = new FXMLLoader(new URL(getClass().getResource("/fxml/CommandListGenerator.fxml").toExternalForm()));
@@ -111,6 +114,12 @@ public class CommandListGenerator extends Application
         boolean b = Functionality.register();
         if (!b) System.out.println("Functionality has been not correctly registered.");
 
-        MAIN_STAGE.setOnCloseRequest(new ShutdownThread());
+        STAGE.setOnCloseRequest(new ShutdownThread());
+    }
+
+    public void exit()
+    {
+        STAGE.close();
+        Platform.exit();
     }
 }
