@@ -23,6 +23,8 @@ public class Debug
 
     public static Stage STAGE;
 
+    public static Thread DEBUG_THREAD;
+
     private static Controller CONTROLLER;
 
     public static void initialize(String arg)
@@ -39,7 +41,7 @@ public class Debug
             System.setErr(new PrintStream(new ConsoleOutPutStream()));
             System.setOut(new PrintStream(new ConsoleOutPutStream()));
 
-            new Thread(() -> Platform.runLater(() ->
+            DEBUG_THREAD = new Thread(() -> Platform.runLater(() ->
             {
                 FXMLLoader loader = null;
 
@@ -61,7 +63,8 @@ public class Debug
                 STAGE.setTitle("Debug Console");
                 STAGE.show();
                 STAGE.setOnCloseRequest(new ShutdownThread());
-            })).start();
+            }));
+            DEBUG_THREAD.start();
         }
     }
 

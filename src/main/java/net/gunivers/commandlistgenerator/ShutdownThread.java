@@ -12,7 +12,10 @@ public class ShutdownThread implements EventHandler<WindowEvent>
     {
         if (CommandListGenerator.MAIN_STAGE.isShowing()) CommandListGenerator.MAIN_STAGE.close();
 
-        if (Debug.DEBUG) if (Debug.STAGE.isShowing()) Debug.STAGE.close();
+        if (Debug.DEBUG) {
+            Debug.DEBUG_THREAD.stop();
+            if (Debug.STAGE.isShowing()) Debug.STAGE.close();
+        }
 
         System.exit(0);
     }
