@@ -1,5 +1,6 @@
 package net.gunivers.commandlistgenerator;
 
+import java.io.IOException;
 import java.net.URL;
 
 import com.jfoenix.controls.JFXDecorator;
@@ -9,11 +10,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import net.gunivers.commandlistgenerator.debug.Debug;
 import net.gunivers.commandlistgenerator.functionality.*;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
 import net.gunivers.core.language.Language;
 import net.gunivers.core.language.Locale;
-import net.gunivers.updater.Updater;
+import net.gunivers.commandlistgenerator.updater.Updater;
+import net.gunivers.core.utils.SystemOS;
 
 public class CommandListGenerator extends Application
 {
@@ -22,8 +25,9 @@ public class CommandListGenerator extends Application
 
     public static Language LANGUAGE = Language.getLanguage(Locale.FRENCH);
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
+
         if (args.length > 0)
         {
             for (int index = 0; args.length > index; index++)
@@ -33,7 +37,7 @@ public class CommandListGenerator extends Application
                 if (arg.startsWith("-update"))
                 {
                     launch(Updater.class, "-DUpdate-File=" + args[index].split("=")[1]);
-                    index += 1;
+                    return;
                 } else if (arg.startsWith("-debug"))
                 {
                     Debug.initialize(arg);
@@ -58,6 +62,10 @@ public class CommandListGenerator extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+        System.out.println("System name : " + SystemOS.getOsName());
+        System.out.println("System Arch: " + SystemOS.getArch());
+        System.out.println("Java Version: " + SystemOS.getJavaVersion());
+
         CommandListGenerator.MAIN_STAGE = primaryStage;
 
         //Start of fxml load
@@ -102,5 +110,7 @@ public class CommandListGenerator extends Application
         //Init of functionalities
         boolean b = Functionality.register();
         if (!b) System.out.println("Functionality has been not correctly registered.");
+
+        MAIN_STAGE.setOnCloseRequest(new ShutdownThread());
     }
 }

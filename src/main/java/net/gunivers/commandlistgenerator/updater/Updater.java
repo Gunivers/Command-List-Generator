@@ -1,4 +1,4 @@
-package net.gunivers.updater;
+package net.gunivers.commandlistgenerator.updater;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

@@ -15,7 +15,7 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
 /**<strong>FileIO</strong>
- * This class manage the input/output of this program with the files. Able to write down some String and Presets
+ * This class manage the input/output of this program with the files. Able to append down some String and Presets
  * @author A~Z
  * @author Oromis
  */
