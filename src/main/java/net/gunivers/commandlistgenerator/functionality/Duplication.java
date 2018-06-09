@@ -10,7 +10,7 @@ public class Duplication extends Functionality {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5144240444727405718L;
+	private static final long serialVersionUID = -5144240444727305718L;
 
 	@Override
 	public String toString() {
