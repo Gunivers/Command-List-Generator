@@ -14,3 +14,4 @@ if not exist ./builds/Minecraft-GDK-Alpha-1.jar (
 ) else (
 	java -jar ./builds/Minecraft-GDK-Alpha-1.jar -debug
 )
+pause
