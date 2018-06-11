@@ -1,7 +1,7 @@
 #TODO#
 
 Update:
-	- Update Material to 1.13 and clear it														- Oromis			WAITING Spigot 1.13
+	- Update Material to 1.13 and clear it														- A~Z						DONE
 	- Reupdate TO-DO																			-
 
 Write your name after the feature if you decide to do this later.
