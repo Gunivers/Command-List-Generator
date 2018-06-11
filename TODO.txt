@@ -3,6 +3,12 @@
 Update:
 	- Update Material to 1.13 and clear it														- A~Z						DONE
 	- Reupdate TO-DO																			-
+	
+Interface:
+	- Finish CSS																				-
+
+Core:
+	- Make the Integer kind types generate without "n.0"										-
 
 Write your name after the feature if you decide to do this later.
 Possible states:
