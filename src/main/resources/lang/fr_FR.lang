@@ -112,6 +112,7 @@ gui.list.item.material.gravityblock=Bloc Soumis à la Gtavité
 
 
 gui.list.item.entity=Entité
+gui/list.item.entity.all=Tout
 
 gui.list.item.entity.height_1_block=Taille de 1 Bloc
 gui.list.item.entity.height_2_block=Taille de 2 Blocs
