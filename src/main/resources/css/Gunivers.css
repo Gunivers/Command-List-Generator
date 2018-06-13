@@ -4,7 +4,7 @@
     -fx-secondary-color: #F0F0F0;             /* Change according to your needs */
     -fx-font-color: #111111;                  /* Change according to your needs */
     -fx-font-color-highlighted: #F0F0F0;      /* Change according to your needs */
-    -fx-pompt-text-color: rgb(128, 128, 128); /* Change according to your needs */
+    -fx-pompt-text-color: #808080; /* Change according to your needs */
     -fx-button-color: #FF7835;                /* Change according to your needs */
     -fx-root-color: -fx-button-color;           /* Change according to your needs */
 }
@@ -39,6 +39,23 @@
     -fx-padding: 14.0 0.0 -20.0 0.0;
     -fx-text-fill: rgba(0.0, 0.0, 0.0, 0.87);
 }
+
+.scroll-bar:vertical {
+	-fx-background-color: -fx-primary-color;
+}
+
+.scroll-bar:vertical .thumb {
+	-fx-background-color: -fx-button-color;
+}
+
+.menu-bar {
+	-fx-background-color: derive(-fx-primary-color, 50%);
+}
+
+.context-menu {
+	-fx-background-color: derive(-fx-primary-color, 50%);
+}
+
 /*******************************************************************************
 *                                                                              *
 * JFX Dialog                                                                   *
@@ -167,6 +184,31 @@
     -fx-focus-color:  -fx-secondary-color;
     -fx-text-fill:  -fx-secondary-color;
     -fx-prompt-text-fill:  -fx-pompt-text-color;
+}
+
+
+/*
+* === Combo Box ===
+*/
+
+.combo-box {
+	-fx-alignment: center;
+	-fx-font-weight: BOLD;
+    -fx-prompt-text-fill:  -fx-pompt-text-color;
+	-fx-background-color:  derive(-fx-primary-color, 50%);
+	-jfx-focus-color: -fx-button-color;
+    -jfx-unfocus-color: derive(-fx-button-color, 10%);
+}
+
+.combo-box-popup .list-view .list-cell 
+{
+	-fx-text-fill:  -fx-pompt-text-color;
+	-fx-font-weight: BOLD;
+	-fx-background-color:  derive(-fx-primary-color, 50%);
+}  
+
+.combo-box-popup .list-view .list-cell:selected {
+	-fx-text-fill: white;
 }
 
 /*******************************************************************************

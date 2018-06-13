@@ -14,6 +14,9 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
+import net.gunivers.core.utils.tuple.Tuple;
+import net.gunivers.core.utils.tuple.Tuple4;
+
 /**<strong>FileIO</strong>
  * This class manage the input/output of this program with the files. Able to append down some String and Presets
  * @author A~Z
@@ -83,11 +86,12 @@ public class FileIO
 	 * @return boolean
 	 *                the success of the serialization
 	 */
-	public static boolean serialize(String path, String command, int maxCommand, Tag ... tags)
+	public static boolean serialize(String path, String command, String output, int maxCommand, Tag ... tags)
 	{
 		try (ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(path))))
 		{
 			oos.writeObject(command);
+			oos.writeObject(output);
 			oos.writeInt(maxCommand);
 			oos.writeObject(tags);
 			
@@ -107,15 +111,16 @@ public class FileIO
 	 * @return Object[3]
 	 *                 the set
 	 */
-	public static Object[] deserialize(String path)
+	public static Tuple4<String, String, Integer, Tag[]> deserialize(String path)
 	{
 		try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(path))))
 		{
 			String command = (String) ois.readObject();
+			String output = (String) ois.readObject();
 			int maxCommand = ois.readInt();
 			Tag[] tags = (Tag[]) ois.readObject();
 			
-			return new Object[] {command, maxCommand, tags};
+			return Tuple.newTuple(command, output, maxCommand, tags);
 			
 		} catch (ClassNotFoundException | IOException e)
 		{

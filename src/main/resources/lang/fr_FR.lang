@@ -4,8 +4,17 @@
 
 gui.commandlistgenerator.title=Command List Generator
 gui.commandlistgenerator.command=Commande
+gui.commandlistgenerator.commands=Commandes
 gui.commandlistgenerator.notagselected=Veuillez sélectionner une balise
-
+gui.commandlistgenerator.menu.file=Fichier
+gui.commandlistgenerator.menu.edit=Éditer
+gui.commandlistgenerator.menu.help=Aide
+gui.commandlistgenerator.menu.file.open=Ouvrir
+gui.commandlistgenerator.menu.file.save=Sauvegarder
+gui.commandlistgenerator.menu.file.export=Exporter
+gui.commandlistgenerator.menu.help.language=Langage
+gui.commandlistgenerator.menu.help.help=Activer l'aide
+gui.commandlistgenerator.menu.help.about=À propos de...
 
 ##############################
 #      Texte des Noeuds      #

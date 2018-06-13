@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -60,6 +61,9 @@ public class CommandListGeneratorController implements Initializable {
 	
 	@FXML
 	private Label LABEL_TYPE;
+	
+	@FXML
+	private MenuBar MENU;
 
 	public static SyncListHandler<Label> SYNC_LIST_HANDLER = null;
 	
@@ -78,6 +82,8 @@ public class CommandListGeneratorController implements Initializable {
 		BUTTON_EDIT.setText(l.get("gui.button.edit"));
 		LABEL_TAG.setText(l.get("gui.label.tag"));
 		LABEL_TYPE.setText(l.get("gui.label.type"));
+		
+		new MenuBarController(MENU, COMMAND_INPUT, MAX_COMMAND, COMMAND_OUTPUT);
 		
 		MAX_COMMAND.textProperty().addListener(new OnlyIntPosChangeListener(MAX_COMMAND));
 

@@ -6,6 +6,15 @@ gui.commandlistgenerator.title=Command List Generator
 gui.commandlistgenerator.command=Command
 gui.commandlistgenerator.commands=Commands
 gui.commandlistgenerator.notagselected=Please select a tag
+gui.commandlistgenerator.menu.file=File
+gui.commandlistgenerator.menu.edit=Edit
+gui.commandlistgenerator.menu.help=Help
+gui.commandlistgenerator.menu.file.open=Open
+gui.commandlistgenerator.menu.file.save=Save
+gui.commandlistgenerator.menu.file.export=Export
+gui.commandlistgenerator.menu.help.language=Language
+gui.commandlistgenerator.menu.help.help=Enable help
+gui.commandlistgenerator.menu.help.about=About...
 
 ##############################
 #         Node texts         #
