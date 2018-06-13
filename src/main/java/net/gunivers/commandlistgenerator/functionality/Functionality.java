@@ -1,6 +1,5 @@
 package net.gunivers.commandlistgenerator.functionality;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -13,11 +12,11 @@ import net.gunivers.core.utils.tuple.Tuple;
  * @author Oromis Abstract method representing a functionality of the Command
  * List Generator
  */
-public abstract class Functionality extends HelpFunctionality implements Serializable {
-
-    private static final long serialVersionUID = 11L;
-
-    /**
+public abstract class Functionality extends HelpFunctionality implements java.io.Serializable
+{
+	private static final long serialVersionUID = 7L;
+	
+	/**
      * This Map stocks all functionalities
      */
     private static HashMap<String, Functionality> functionalities = new HashMap<String, Functionality>();

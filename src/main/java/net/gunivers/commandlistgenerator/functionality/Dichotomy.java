@@ -6,7 +6,9 @@ import net.gunivers.commandlistgenerator.util.HelpFunctionality;
 
 
 @Deprecated
-public class Dichotomy extends HelpFunctionality {
+public class Dichotomy extends HelpFunctionality  implements java.io.Serializable
+{
+	private static final long serialVersionUID = 5L;
 
 	public String toString() {
 		return "Dichotomy";

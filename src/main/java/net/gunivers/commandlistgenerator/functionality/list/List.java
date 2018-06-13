@@ -6,8 +6,10 @@ import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.core.language.Language;
 import net.gunivers.core.utils.tuple.Tuple2;
 
-public abstract class List
+public abstract class List implements java.io.Serializable
 {
+	private static final long serialVersionUID = 3L;
+	
 	public static ArrayList<List> lists = new ArrayList<List>();
 	private ArrayList<String> content = new ArrayList<String>();
 	private ArrayList<Tuple2<String, String[]>> subLists = new ArrayList<Tuple2<String, String[]>>();

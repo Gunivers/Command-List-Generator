@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple4;
 
-public class ScoreInterpolation extends Functionality {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -806197144269663089L;
+public class ScoreInterpolation extends Functionality
+{
+	private static final long serialVersionUID = 10L;
 
 	/**
 	 * Return value a alpha % of interval [start; end]

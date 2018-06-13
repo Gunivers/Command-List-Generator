@@ -14,12 +14,10 @@ import net.gunivers.core.utils.tuple.Tuple4;
 /**
  * @author Oromis A function to increment at each loop
  */
-public class Sequence extends Functionality {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 653116429362297064L;
+public class Sequence extends Functionality
+{
+	private static final long serialVersionUID = 11L;
+	
 	private JFXSnackbar bar = new JFXSnackbar(CommandListGeneratorController.MAIN_PANE);
 
 	@Override

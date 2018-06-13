@@ -11,12 +11,9 @@ import net.gunivers.core.utils.tuple.Tuple1;
 /**
  * @authors A~Z, Oromis Generate by list
  */
-public class GeneratorByList extends Functionality {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3580307125805726896L;
+public class GeneratorByList extends Functionality
+{
+	private static final long serialVersionUID = 8L;
 
 	{
 		new MaterialList();
