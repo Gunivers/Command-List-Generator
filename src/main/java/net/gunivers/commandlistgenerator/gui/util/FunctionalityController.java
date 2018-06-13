@@ -9,8 +9,8 @@ import net.gunivers.core.language.Language;
 
 public abstract class FunctionalityController
 {
-	protected Language l = CommandListGenerator.LANGUAGE;
 	private JFXDialog dialog;
+	protected static Language l = CommandListGenerator.LANGUAGE;
 
 	@FXML
 	private JFXButton DONE;
@@ -30,5 +30,9 @@ public abstract class FunctionalityController
 	public void setDialog(JFXDialog dialog)
 	{
 		this.dialog = dialog;
+	}
+	
+	public static void refreshLanguage() {
+		l = CommandListGenerator.LANGUAGE;
 	}
 }

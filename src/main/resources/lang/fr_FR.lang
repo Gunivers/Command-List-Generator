@@ -75,9 +75,9 @@ gui.sequence.description.initialvalue=La première valeur U(0)
 
 gui.sequence.type.default=Défaut
 gui.sequence.type.float=Float
-gui.sequence.type.Double=Double
-gui.sequence.type.Byte=Byte
-gui.sequence.type.Short=Short
+gui.sequence.type.double=Double
+gui.sequence.type.byte=Byte
+gui.sequence.type.short=Short
 gui.sequence.type.long=Long
 
 gui.sequence.error.sequencemalformat=Mauvais format de suite : %s%
@@ -96,7 +96,7 @@ gui.list.button.export=Exporter
 gui.list.item.all=Tout
 
 
-gui.list.item.material=Matériaux
+gui.list.item.material=Matériau
 
 gui.list.item.material.block=Bloc
 gui.list.item.material.item=Item
@@ -108,7 +108,7 @@ gui.list.item.material.occludingblock=Bloc Opaque
 gui.list.item.material.record=Disque
 gui.list.item.material.solidblock=Bloc Solide
 gui.list.item.material.transparentblock=Bloc Transparent
-gui.list.item.material.gravityblock=Bloc Soumis à la Gtavité
+gui.list.item.material.gravityblock=Bloc soumis à la Gravité
 
 
 gui.list.item.entity=Entité

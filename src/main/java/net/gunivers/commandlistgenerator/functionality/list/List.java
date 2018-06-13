@@ -12,7 +12,7 @@ public abstract class List
 	private ArrayList<String> content = new ArrayList<String>();
 	private ArrayList<Tuple2<String, String[]>> subLists = new ArrayList<Tuple2<String, String[]>>();
 	private String tag;
-	protected Language language = CommandListGenerator.LANGUAGE;
+	protected static Language language = CommandListGenerator.LANGUAGE;
 	
 	public static List getList(String tag)
 	{
@@ -66,6 +66,10 @@ public abstract class List
 	public ArrayList<String> getContent()
 	{
 		return content;
+	}
+	
+	public static void refreshText() {
+		language = CommandListGenerator.LANGUAGE;
 	}
 	
 }

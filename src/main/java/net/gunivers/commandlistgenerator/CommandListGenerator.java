@@ -1,6 +1,7 @@
 package net.gunivers.commandlistgenerator;
 
 import java.net.URL;
+import java.util.prefs.Preferences;
 
 import com.jfoenix.controls.JFXDecorator;
 
@@ -24,8 +25,10 @@ public class CommandListGenerator extends Application
     public static CommandListGenerator MAIN;
 
     public static Stage STAGE;
+    
+    public static Preferences prefs;
 
-    public static Language LANGUAGE = Language.getLanguage(Locale.FRENCH);
+    public static Language LANGUAGE;
 
     public static void main(String[] args)
     {
@@ -64,6 +67,12 @@ public class CommandListGenerator extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+    	
+    	//Init preference
+    	prefs = Preferences.userRoot().node(this.getClass().getName());
+    	
+    	LANGUAGE = Language.getLanguage(Locale.fromName(prefs.get("Language", "English")));
+    	
         System.out.println("System name : " + SystemOS.getOsName());
         System.out.println("System Arch: " + SystemOS.getArch());
         System.out.println("Java Version: " + SystemOS.getJavaVersion());

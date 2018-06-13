@@ -56,6 +56,14 @@
 	-fx-background-color: derive(-fx-primary-color, 50%);
 }
 
+.arrow {
+	-fx-background-color: -fx-primary-color;
+}
+
+.check-menu-item {
+    -fx-mark-color: -fx-primary-color;
+}
+
 /*******************************************************************************
 *                                                                              *
 * JFX Dialog                                                                   *
@@ -194,7 +202,7 @@
 .combo-box {
 	-fx-alignment: center;
 	-fx-font-weight: BOLD;
-    -fx-prompt-text-fill:  -fx-pompt-text-color;
+    -fx-prompt-text-fill:  white;
 	-fx-background-color:  derive(-fx-primary-color, 50%);
 	-jfx-focus-color: -fx-button-color;
     -jfx-unfocus-color: derive(-fx-button-color, 10%);
@@ -202,7 +210,7 @@
 
 .combo-box-popup .list-view .list-cell 
 {
-	-fx-text-fill:  -fx-pompt-text-color;
+	-fx-text-fill:  white;
 	-fx-font-weight: BOLD;
 	-fx-background-color:  derive(-fx-primary-color, 50%);
 }  
