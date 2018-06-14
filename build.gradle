@@ -37,6 +37,7 @@ dependencies {
 
 jar {
     destinationDir = file("$rootDir/builds/")
+    archiveName = "Minecraft-GDK.jar"
 
     from {
         configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
@@ -50,7 +51,7 @@ jar {
 
 buildscript {
     dependencies {
-        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.+'
+        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.9.+'
     }
     repositories {
         mavenLocal()
