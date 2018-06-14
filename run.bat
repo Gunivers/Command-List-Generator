@@ -10,6 +10,7 @@ ECHO.
 if not exist ./builds/Minecraft-GDK-Alpha-1.jar (
 	ECHO File not found, Starting a new build !
 	ECHO.
+	pause
 	call build.bat && call run.bat
 ) else (
 	java -jar ./builds/Minecraft-GDK-Alpha-1.jar -debug
