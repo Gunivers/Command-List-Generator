@@ -11,8 +11,8 @@ public abstract class FunctionalityController implements java.io.Serializable
 {
 	private static final long serialVersionUID = 5411321654475446563L;
 	
-	protected Language l = CommandListGenerator.LANGUAGE;
 	private JFXDialog dialog;
+	protected static Language l = CommandListGenerator.LANGUAGE;
 
 	@FXML
 	private JFXButton DONE;
@@ -32,5 +32,9 @@ public abstract class FunctionalityController implements java.io.Serializable
 	public void setDialog(JFXDialog dialog)
 	{
 		this.dialog = dialog;
+	}
+	
+	public static void refreshLanguage() {
+		l = CommandListGenerator.LANGUAGE;
 	}
 }

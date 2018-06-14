@@ -39,7 +39,7 @@ public class EditController implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
-		NEXT_BUTTON.setText(CommandListGenerator.LANGUAGE.get("gui.button.next"));
+		
 		
 		layout.setPrefSize(CommandListGenerator.STAGE.getWidth() / 1.25, CommandListGenerator.STAGE.getHeight() / 1.25);
 
@@ -51,10 +51,13 @@ public class EditController implements Initializable
 			            	NEXT_BUTTON.fire();	            
 			 }
 		});
-		
+		NEXT_BUTTON.setOnAction(new ButtonNextHandler(FUNCTIONALITY_LIST, ButtonEditHandler.dialog));
+		setText();
+	}
+	
+	public void setText() {
+		NEXT_BUTTON.setText(CommandListGenerator.LANGUAGE.get("gui.button.next"));
 		for (Functionality functionality : Functionality.getFunctionalities().values())
 			FUNCTIONALITY_LIST.getItems().add(new Label(functionality.toString()));
-
-		NEXT_BUTTON.setOnAction(new ButtonNextHandler(FUNCTIONALITY_LIST, ButtonEditHandler.dialog));
 	}
 }

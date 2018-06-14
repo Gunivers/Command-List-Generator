@@ -41,7 +41,7 @@ public class Sequence extends Functionality
 
 			else if (tuple._4.equals(Type.BYTE))
 				end = "b";
-			if (tuple._3 == 0 && (end == "D" || end == "D"))
+			if (tuple._3 == 0 && end == "D")
 				end = ".0" + end;
 		}
 

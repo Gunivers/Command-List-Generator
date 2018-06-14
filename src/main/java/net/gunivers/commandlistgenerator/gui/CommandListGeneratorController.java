@@ -69,19 +69,12 @@ public class CommandListGeneratorController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Language l = CommandListGenerator.LANGUAGE;
 		CONTROLLER = this;
 		MAIN_PANE = PANE;
 
 		SYNC_LIST_HANDLER = new SyncListHandler<Label>(TAG_LIST, TYPE_LIST);
 
-		MAX_COMMAND.setPromptText(l.get("gui.textfield.maxcommand"));
-		COMMAND_INPUT.setPromptText(l.get("gui.commandlistgenerator.command"));
-		COMMAND_OUTPUT.setPromptText(l.get("gui.textarea.output"));
-		BUTTON_GENERATE.setText(l.get("gui.button.generate"));
-		BUTTON_EDIT.setText(l.get("gui.button.edit"));
-		LABEL_TAG.setText(l.get("gui.label.tag"));
-		LABEL_TYPE.setText(l.get("gui.label.type"));
+		setText();
 		
 		new MenuBarController(MENU, COMMAND_INPUT, MAX_COMMAND, COMMAND_OUTPUT);
 		
@@ -108,6 +101,18 @@ public class CommandListGeneratorController implements Initializable {
 		
 		TAG_LIST.setOnMouseClicked(event);
 		TYPE_LIST.setOnMouseClicked(event);
+	}
+
+	public void setText() {
+		Language l = CommandListGenerator.LANGUAGE;
+		MAX_COMMAND.setPromptText(l.get("gui.textfield.maxcommand"));
+		COMMAND_INPUT.setPromptText(l.get("gui.commandlistgenerator.command"));
+		COMMAND_OUTPUT.setPromptText(l.get("gui.textarea.output"));
+		BUTTON_GENERATE.setText(l.get("gui.button.generate"));
+		BUTTON_EDIT.setText(l.get("gui.button.edit"));
+		LABEL_TAG.setText(l.get("gui.label.tag"));
+		LABEL_TYPE.setText(l.get("gui.label.type"));
+		
 	}
 
 	public SyncListHandler<Label> getSyncListHandler() {

@@ -1,6 +1,7 @@
 package net.gunivers.core.language;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public enum Locale
 {
@@ -29,6 +30,14 @@ public enum Locale
 	public static Locale fromCountryCode(String s)
 	{
 		return hashMap.get(s);
+	}
+	
+	public static Locale fromName(String s)
+	{
+		for(Entry<String, Locale> entry : hashMap.entrySet())
+			if(entry.getValue().getName().equals(s))
+				return entry.getValue();
+		return null;
 	}
 
 	static

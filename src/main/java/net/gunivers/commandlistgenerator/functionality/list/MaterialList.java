@@ -23,7 +23,7 @@ public class MaterialList extends List
 		addMaterialList((Material e) -> e.isRecord(), "gui.list.item.material.record");
 		addMaterialList((Material e) -> e.isSolid(), "gui.list.item.material.solidblock");
 		addMaterialList((Material e) -> e.isTransparent(), "gui.list.item.material.transparentblock");
-		addMaterialList((Material e) -> e.hasGravity(), "gravityblock");
+		addMaterialList((Material e) -> e.hasGravity(), "gui.list.item.material.gravityblock");
 	}
 	
 	public void addMaterialList(BooleanFunctionalInterface<Material> b, String name) {
