@@ -12,14 +12,17 @@ import net.gunivers.commandlistgenerator.ShutdownThread;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.Serializable;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class Debug
+public class Debug implements Serializable
 {
-    public static boolean DEBUG = false;
+	private static final long serialVersionUID = 1L;
+
+	public static boolean DEBUG = false;
 
     public static Stage STAGE;
 

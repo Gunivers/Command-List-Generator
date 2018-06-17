@@ -6,8 +6,10 @@ import net.gunivers.commandlistgenerator.util.BooleanFunctionalInterface;
 import net.gunivers.core.minecraft.Material;
 import net.gunivers.core.utils.tuple.Tuple;
 
-public class MaterialList extends List {
-	
+public class MaterialList extends List
+{
+	private static final long serialVersionUID = 4L;
+
 	public MaterialList() {
 		super("gui.list.item.material");
 		addMaterialList((Material e) -> e instanceof Material, "gui.list.item.all");

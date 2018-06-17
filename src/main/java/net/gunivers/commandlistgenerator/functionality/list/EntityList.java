@@ -8,7 +8,8 @@ import net.gunivers.core.utils.tuple.Tuple;
 
 public class EntityList extends List
 {
-	
+	private static final long serialVersionUID = 2L;
+
 	public EntityList()
 	{
 		super("gui.list.item.entity");

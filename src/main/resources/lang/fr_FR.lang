@@ -16,6 +16,11 @@ gui.commandlistgenerator.menu.help.language=Langage
 gui.commandlistgenerator.menu.help.help=Activer l'aide
 gui.commandlistgenerator.menu.help.about=À propos de...
 
+gui.updater.newversion=Une nouvelle version est disponible :
+gui.updater.currentversion=Version actuelle :
+gui.updater.hyperlink=Accéder au téléchargement
+gui.updater.button.ignore=Ignorer
+
 ##############################
 #      Texte des Noeuds      #
 ##############################

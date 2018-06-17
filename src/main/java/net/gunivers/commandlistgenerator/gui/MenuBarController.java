@@ -141,7 +141,7 @@ public class MenuBarController {
 
 	private void load() {
 		FileChooser fc = new FileChooser();
-		fc.getExtensionFilters().add(new ExtensionFilter("List file", "*.list"));
+		fc.getExtensionFilters().add(new ExtensionFilter("Command List Generator file", "*.clg"));
 		File f = fc.showOpenDialog(null);
 		try {
 			Tuple4<String, String, Integer, Tag[]> content = FileIO.deserialize(f.getAbsolutePath());

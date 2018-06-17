@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import net.gunivers.commandlistgenerator.debug.Debug;
 import net.gunivers.commandlistgenerator.functionality.*;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
+import net.gunivers.commandlistgenerator.gui.UpdateController;
 import net.gunivers.core.language.Language;
 import net.gunivers.core.language.Locale;
 import net.gunivers.commandlistgenerator.updater.Updater;
@@ -55,6 +56,7 @@ public class CommandListGenerator extends Application
             launch(args);
         } catch (Exception e)
         {
+        	e.printStackTrace();
             System.out.println("An error has been detected !");
         }
     }
@@ -67,6 +69,7 @@ public class CommandListGenerator extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+    	
     	
     	//Init preference
     	prefs = Preferences.userRoot().node(this.getClass().getName());
@@ -123,6 +126,8 @@ public class CommandListGenerator extends Application
         boolean b = Functionality.register();
         if (!b) System.out.println("Functionality has been not correctly registered.");
 
+        UpdateController.availableUpdate();
+        
         STAGE.setOnCloseRequest(new ShutdownThread());
     }
 

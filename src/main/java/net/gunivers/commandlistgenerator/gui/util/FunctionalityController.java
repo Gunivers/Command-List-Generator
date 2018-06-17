@@ -7,8 +7,10 @@ import javafx.fxml.FXML;
 import net.gunivers.commandlistgenerator.CommandListGenerator;
 import net.gunivers.core.language.Language;
 
-public abstract class FunctionalityController
+public abstract class FunctionalityController implements java.io.Serializable
 {
+	private static final long serialVersionUID = 5411321654475446563L;
+	
 	private JFXDialog dialog;
 	protected static Language l = CommandListGenerator.LANGUAGE;
 

@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple6;
 
-public class Interpolation extends Functionality {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2858314594082153155L;
+public class Interpolation extends Functionality
+{
+	private static final long serialVersionUID = 9L;
 
 	/**
 	 * Return value a alpha % of interval [start; end]

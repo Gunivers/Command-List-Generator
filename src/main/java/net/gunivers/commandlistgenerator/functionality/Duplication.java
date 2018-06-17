@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import net.gunivers.core.utils.tuple.Tuple;
 import net.gunivers.core.utils.tuple.Tuple3;
 
-public class Duplication extends Functionality {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5144240444727305718L;
+public class Duplication extends Functionality
+{
+	private static final long serialVersionUID = 6L;
 
 	@Override
 	public String toString() {

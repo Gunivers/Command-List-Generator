@@ -16,6 +16,11 @@ gui.commandlistgenerator.menu.help.language=Language
 gui.commandlistgenerator.menu.help.help=Enable help
 gui.commandlistgenerator.menu.help.about=About...
 
+gui.updater.newversion=A new update is available:
+gui.updater.currentversion=Current version:
+gui.updater.hyperlink=Access to download
+gui.updater.button.ignore=Ignore
+
 ##############################
 #         Node texts         #
 ##############################
