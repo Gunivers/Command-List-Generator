@@ -5,6 +5,8 @@ import java.util.prefs.Preferences;
 
 import com.jfoenix.controls.JFXDecorator;
 
+import fr.bretzel.update.Updater;
+import fr.bretzel.update.Version;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +16,8 @@ import javafx.stage.Stage;
 import net.gunivers.commandlistgenerator.debug.Debug;
 import net.gunivers.commandlistgenerator.functionality.*;
 import net.gunivers.commandlistgenerator.gui.CommandListGeneratorController;
-import net.gunivers.commandlistgenerator.gui.UpdateController;
 import net.gunivers.core.language.Language;
 import net.gunivers.core.language.Locale;
-import net.gunivers.commandlistgenerator.updater.Updater;
 import net.gunivers.core.utils.SystemOS;
 
 public class CommandListGenerator extends Application
@@ -31,6 +31,8 @@ public class CommandListGenerator extends Application
 
     public static Language LANGUAGE;
 
+    public static Updater UPDATER;
+
     public static void main(String[] args)
     {
 
@@ -40,16 +42,14 @@ public class CommandListGenerator extends Application
             {
                 String arg = args[index];
 
-                if (arg.startsWith("-update"))
-                {
-                    launch(Updater.class, "-DUpdate-File=" + args[index].split("=")[1]);
-                    return;
-                } else if (arg.startsWith("-debug"))
+                if (arg.startsWith("-debug"))
                 {
                     Debug.initialize(arg);
                 }
             }
         }
+
+        UPDATER = new Updater("https://gist.githubusercontent.com/MrBretze/20edc04f4b6329a8e66958d29fe559a3/raw/be68427a6481a650f04a2b8e2b697674690cde11/sfsdf", "Minecraft-GDK", new Version(0, 0, 0));
 
         try
         {
@@ -126,7 +126,11 @@ public class CommandListGenerator extends Application
         boolean b = Functionality.register();
         if (!b) System.out.println("Functionality has been not correctly registered.");
 
-        UpdateController.availableUpdate();
+
+        //Init Update
+        new Thread(() -> UPDATER.init()).start();
+        //TODO Modify this
+        //UpdateController.availableUpdate();
         
         STAGE.setOnCloseRequest(new ShutdownThread());
     }

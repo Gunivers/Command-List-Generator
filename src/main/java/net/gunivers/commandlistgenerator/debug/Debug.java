@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import net.gunivers.commandlistgenerator.ShutdownThread;
 
@@ -64,6 +65,7 @@ public class Debug implements Serializable
                 STAGE = new Stage();
                 STAGE.setScene(new Scene(loader.getRoot()));
                 STAGE.setTitle("Debug Console");
+                STAGE.setX(Screen.getPrimary().getVisualBounds().getMaxX() / 1.8);
                 STAGE.show();
                 STAGE.setOnCloseRequest(new ShutdownThread());
             }));
