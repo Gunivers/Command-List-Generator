@@ -156,6 +156,17 @@ public class Updater
     }
 
     /**
+     * Run the runnable if a new version is available.
+     * @param chanel The chanel of your choice !
+     * @param runnable the action if you want execute
+     */
+    public void hasNewVersion(UpdateChanel chanel, Runnable runnable)
+    {
+        if (hasNewVersion(chanel))
+            new Thread(() -> runnable.run()).start();
+    }
+
+    /**
      * @param version String usage: 0.0.0
      * @return Check version exist or not exist
      */
